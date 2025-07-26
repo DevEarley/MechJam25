@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://fkcd1xnw1b1y"]
+
+[ext_resource type="Script" uid="uid://bxy3br0irscae" path="res://scripts/add-self-to-scaled-ui.gd" id="1_3xs3o"]
+[ext_resource type="Script" uid="uid://b1vfqm6g6si6x" path="res://scene-scripts/start_menu.gd" id="1_xf5ny"]
+[ext_resource type="PackedScene" uid="uid://bunfxp7cx281n" path="res://prefabs/title-bar-wide.tscn" id="2_q21ov"]
+[ext_resource type="PackedScene" uid="uid://jqfcrgtcowf1" path="res://prefabs/left-hand-button.tscn" id="2_ycvuw"]
+
+[node name="START_MENU" type="CanvasLayer"]
+script = ExtResource("1_3xs3o")
+
+[node name="TITLE" parent="." instance=ExtResource("2_q21ov")]
+anchors_preset = 5
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_left = -480.0
+offset_top = 16.0
+offset_right = 480.0
+offset_bottom = 44.0
+grow_vertical = 1
+text = "[center]MECH JAM 25"
+
+[node name="START_MENU_BUTTONS" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -224.0
+offset_right = 137.0
+offset_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+script = ExtResource("1_xf5ny")
+
+[node name="MISSIONS" parent="START_MENU_BUTTONS" instance=ExtResource("2_ycvuw")]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_vertical = 6
+text = "MISSIONS"
+
+[node name="PILOTS" parent="START_MENU_BUTTONS" instance=ExtResource("2_ycvuw")]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_vertical = 6
+text = "PILOTS"
+
+[node name="MECHS" parent="START_MENU_BUTTONS" instance=ExtResource("2_ycvuw")]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_vertical = 6
+text = "MECHS"
+
+[node name="PARTS" parent="START_MENU_BUTTONS" instance=ExtResource("2_ycvuw")]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_vertical = 6
+text = "PARTS"
+
+[node name="DEPLOYMENTS" parent="START_MENU_BUTTONS" instance=ExtResource("2_ycvuw")]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_vertical = 6
+text = "DEPLOYMENTS"
+
+[node name="LOCATIONS" parent="START_MENU_BUTTONS" instance=ExtResource("2_ycvuw")]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_vertical = 6
+text = "LOCATIONS"
+
+[node name="LOG_OFF" parent="START_MENU_BUTTONS" instance=ExtResource("2_ycvuw")]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_vertical = 6
+text = "LOG OFF"

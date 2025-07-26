@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1gap44bgx3de"]
+
+[ext_resource type="Script" uid="uid://bxy3br0irscae" path="res://scripts/add-self-to-scaled-ui.gd" id="1_ed1ed"]
+[ext_resource type="PackedScene" uid="uid://bunfxp7cx281n" path="res://prefabs/title-bar-wide.tscn" id="2_n2a46"]
+[ext_resource type="PackedScene" uid="uid://c4koj71ge37td" path="res://prefabs/back_button.tscn" id="3_hbt48"]
+
+[node name="Missions-menu" type="CanvasLayer"]
+script = ExtResource("1_ed1ed")
+
+[node name="TITLE" parent="." instance=ExtResource("2_n2a46")]
+anchors_preset = 5
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_left = -208.0
+offset_top = 16.0
+offset_right = 206.0
+offset_bottom = 44.0
+grow_vertical = 1
+text = "[center]MISSIONS"
+
+[node name="BACK_BUTTON" parent="." instance=ExtResource("3_hbt48")]

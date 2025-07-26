@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://q3apfh65koxm"]
+
+[ext_resource type="Script" uid="uid://bxy3br0irscae" path="res://scripts/add-self-to-scaled-ui.gd" id="1_xg1py"]
+[ext_resource type="PackedScene" uid="uid://bunfxp7cx281n" path="res://prefabs/title-bar-wide.tscn" id="2_0u6b5"]
+[ext_resource type="Script" uid="uid://dv6573lowt7bf" path="res://scene-scripts/main_menu.gd" id="3_ismwm"]
+[ext_resource type="PackedScene" uid="uid://jqfcrgtcowf1" path="res://prefabs/left-hand-button.tscn" id="4_nbft7"]
+
+[node name="MAIN_MENU" type="CanvasLayer"]
+script = ExtResource("1_xg1py")
+
+[node name="TITLE" parent="." instance=ExtResource("2_0u6b5")]
+offset_top = -106.0
+offset_bottom = -72.0
+text = "[center]MAIN MENU"
+
+[node name="Main_Menu_Buttons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_ismwm")
+
+[node name="START" parent="Main_Menu_Buttons" instance=ExtResource("4_nbft7")]
+layout_mode = 1
+offset_left = -112.0
+offset_top = -32.0
+offset_right = 72.0
+offset_bottom = 8.0
+text = "START"
+
+[node name="EXIT" parent="Main_Menu_Buttons" instance=ExtResource("4_nbft7")]
+layout_mode = 1
+offset_left = -112.0
+offset_top = 130.0
+offset_right = 72.0
+offset_bottom = 170.0
+text = "EXIT"
+
+[node name="OPTIONS" parent="Main_Menu_Buttons" instance=ExtResource("4_nbft7")]
+layout_mode = 1
+offset_left = -113.0
+offset_top = 48.0
+offset_right = 113.0
+offset_bottom = 88.0
+text = "OPTIONS"

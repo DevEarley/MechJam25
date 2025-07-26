@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://bunfxp7cx281n"]
+
+[ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="1_70qfg"]
+[ext_resource type="Texture2D" uid="uid://x66vokp7xc81" path="res://UI/ui-sheet-1.svg" id="2_uw6q5"]
+
+[node name="TITLE" type="RichTextLabel"]
+clip_contents = false
+custom_minimum_size = Vector2(120, 35)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -207.0
+offset_top = -13.0
+offset_right = 207.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_70qfg")
+bbcode_enabled = true
+text = "[center]SELECT GAME MODE"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -10.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_uw6q5")
+region_rect = Rect2(304, 310, 536, 56)
+patch_margin_left = 89
+patch_margin_right = 90

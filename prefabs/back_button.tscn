@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4koj71ge37td"]
+
+[ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="1_efptu"]
+[ext_resource type="Script" uid="uid://cskto3diymuf" path="res://scripts/back_button.gd" id="2_65l0c"]
+
+[node name="BACK_BUTTON" type="Button"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -56.0
+offset_right = 147.0
+offset_bottom = -16.0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_efptu")
+text = "  BACK   "
+script = ExtResource("2_65l0c")

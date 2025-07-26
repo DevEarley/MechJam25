@@ -1,0 +1,38 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://nowk0pjebs75"]
+
+[ext_resource type="Texture2D" uid="uid://x66vokp7xc81" path="res://UI/ui-sheet-1.svg" id="1_2bgus"]
+[ext_resource type="FontFile" uid="uid://c1mvwrbaacjl" path="res://fonts/justabit.ttf" id="1_limxw"]
+[ext_resource type="StyleBox" uid="uid://c7tt7io1m63p0" path="res://themes/focus_box.tres" id="3_vhmof"]
+[ext_resource type="StyleBox" uid="uid://do7ngev6e5m41" path="res://themes/normal_box.tres" id="4_lecfs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bgus"]
+atlas = ExtResource("1_2bgus")
+region = Rect2(350, 48, 40, 40)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2bgus"]
+
+[resource]
+Button/colors/font_color = Color(0.32, 0.32, 0.32, 1)
+Button/colors/font_disabled_color = Color(0.29, 0.29, 0.29, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/colors/icon_focus_color = Color(0, 1, 0.666667, 1)
+Button/colors/icon_hover_color = Color(0.76, 0.76, 0.76, 1)
+Button/colors/icon_normal_color = Color(0, 0, 0, 1)
+Button/colors/icon_pressed_color = Color(0, 1, 0.666667, 1)
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_limxw")
+Button/icons/icon = SubResource("AtlasTexture_2bgus")
+Button/styles/disabled = SubResource("StyleBoxEmpty_2bgus")
+Button/styles/focus = ExtResource("3_vhmof")
+Button/styles/hover = ExtResource("4_lecfs")
+Button/styles/normal = ExtResource("4_lecfs")
+Button/styles/pressed = ExtResource("3_vhmof")
+Label/colors/font_shadow_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("1_limxw")
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/font_sizes/normal_font_size = 32
+RichTextLabel/fonts/normal_font = ExtResource("1_limxw")

@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://bo8kdbsr15ptf"]
+
+[ext_resource type="Script" uid="uid://bxy3br0irscae" path="res://scripts/add-self-to-scaled-ui.gd" id="1_86hdi"]
+[ext_resource type="Script" uid="uid://24v83hvf5tg2" path="res://scene-scripts/options_menu.gd" id="2_cyjlj"]
+[ext_resource type="PackedScene" uid="uid://jqfcrgtcowf1" path="res://prefabs/left-hand-button.tscn" id="3_8jhlc"]
+[ext_resource type="PackedScene" uid="uid://bunfxp7cx281n" path="res://prefabs/title-bar-wide.tscn" id="4_uduq7"]
+[ext_resource type="PackedScene" uid="uid://c4koj71ge37td" path="res://prefabs/back_button.tscn" id="5_uduq7"]
+
+[node name="OPTIONS_MENU" type="CanvasLayer"]
+script = ExtResource("1_86hdi")
+
+[node name="options_menu_buttons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_cyjlj")
+
+[node name="difficulty_24_hours_button" parent="options_menu_buttons" instance=ExtResource("3_8jhlc")]
+layout_mode = 1
+offset_left = -240.0
+offset_top = -56.0
+offset_right = 216.0
+offset_bottom = 0.0
+text = "TURN RESETS AFTER
+ONE DAY IN REAL TIME"
+
+[node name="difficulty_instant_button" parent="options_menu_buttons" instance=ExtResource("3_8jhlc")]
+layout_mode = 1
+offset_left = -240.0
+offset_top = 40.0
+offset_right = 216.0
+offset_bottom = 96.0
+text = "TURN RESETS
+AT YOUR WILL"
+
+[node name="save_button" parent="options_menu_buttons" instance=ExtResource("3_8jhlc")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -298.0
+offset_top = -82.0
+offset_right = -42.0
+offset_bottom = -26.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "SAVE"
+
+[node name="TITLE" parent="." instance=ExtResource("4_uduq7")]
+offset_left = -360.0
+offset_top = -128.0
+offset_right = 368.0
+offset_bottom = -90.0
+
+[node name="TITLE2" parent="." instance=ExtResource("4_uduq7")]
+anchors_preset = 5
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_left = -208.0
+offset_top = 16.0
+offset_right = 206.0
+offset_bottom = 44.0
+grow_vertical = 1
+text = "[center]OPTIONS"
+
+[node name="BACK_BUTTON" parent="." instance=ExtResource("5_uduq7")]
