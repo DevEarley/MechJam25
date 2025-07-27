@@ -7,3 +7,6 @@ https://www.pentacom.jp/pentacom/bitfontmaker2/gallery/?id=179
 W40k_Rocks
 	https://github.com/w40krocks
 	https://wrocks.itch.io
+Some cc0 assets:
+https://opengameart.org/content/64-crosshairs-pack
+
