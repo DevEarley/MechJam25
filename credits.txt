@@ -8,3 +8,5 @@ W40k_Rocks
 	https://github.com/w40krocks
 	https://wrocks.itch.io
 
+Some cc0 assets:
+https://opengameart.org/content/64-crosshairs-pack
