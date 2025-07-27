@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1gap44bgx3de"]
+[gd_scene load_steps=5 format=3 uid="uid://d1gap44bgx3de"]
 
 [ext_resource type="Script" uid="uid://bxy3br0irscae" path="res://scripts/add-self-to-scaled-ui.gd" id="1_ed1ed"]
 [ext_resource type="PackedScene" uid="uid://bunfxp7cx281n" path="res://prefabs/title-bar-wide.tscn" id="2_n2a46"]
+[ext_resource type="Script" uid="uid://bv2xjass1750v" path="res://scripts/W40K_ROCKS_mission_display.gd" id="3_1xm5e"]
 [ext_resource type="PackedScene" uid="uid://c4koj71ge37td" path="res://prefabs/back_button.tscn" id="3_hbt48"]
 
 [node name="Missions-menu" type="CanvasLayer"]
@@ -17,5 +18,14 @@ offset_right = 206.0
 offset_bottom = 44.0
 grow_vertical = 1
 text = "[center]MISSIONS"
+script = ExtResource("3_1xm5e")
 
 [node name="BACK_BUTTON" parent="." instance=ExtResource("3_hbt48")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -116.0
+offset_bottom = 1076.0
+grow_horizontal = 0
