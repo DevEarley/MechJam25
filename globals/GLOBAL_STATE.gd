@@ -14,3 +14,5 @@ var DEPLOYMENTS_MENU:CanvasLayer;
 var MECH_MENU:CanvasLayer;
 var CONVERSATION_SCREEN:CanvasLayer;
 var START_MENU:CanvasLayer
+
+var SPEED = 1.0

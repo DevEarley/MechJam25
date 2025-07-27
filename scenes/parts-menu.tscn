@@ -1,14 +1,52 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkoa56i1h4muo"]
+[gd_scene load_steps=10 format=3 uid="uid://bkoa56i1h4muo"]
 
 [ext_resource type="Script" uid="uid://bxy3br0irscae" path="res://scripts/add-self-to-scaled-ui.gd" id="1_a7qba"]
 [ext_resource type="PackedScene" uid="uid://c4koj71ge37td" path="res://prefabs/back_button.tscn" id="2_2dqvc"]
 [ext_resource type="PackedScene" uid="uid://bunfxp7cx281n" path="res://prefabs/title-bar-wide.tscn" id="2_ardf4"]
+[ext_resource type="PackedScene" uid="uid://dpgf5w3yji5il" path="res://parts-3D/heat-blade.glb" id="3_6v034"]
+[ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="4_6v034"]
+[ext_resource type="Environment" uid="uid://c7ssmhiiplyg8" path="res://world_environment.tres" id="4_d1idq"]
+
+[sub_resource type="Animation" id="Animation_d1idq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6v034"]
+resource_name = "spin"
+length = 2.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qppqj"]
+_data = {
+&"RESET": SubResource("Animation_d1idq"),
+&"spin": SubResource("Animation_6v034")
+}
 
 [node name="Parts-menu" type="CanvasLayer"]
 script = ExtResource("1_a7qba")
-
-[node name="BACK_BUTTON" parent="." instance=ExtResource("2_2dqvc")]
-text = "BACK"
 
 [node name="TITLE" parent="." instance=ExtResource("2_ardf4")]
 anchors_preset = 5
@@ -20,3 +58,45 @@ offset_right = 206.0
 offset_bottom = 44.0
 grow_vertical = 1
 text = "[center]PARTS"
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_left = 632.0
+offset_top = 64.0
+offset_right = 1232.0
+offset_bottom = 664.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(600, 600)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.972986, 0.230865, 0, -0.230865, 0.972986, 0, 1.93177, 3.94815)
+environment = ExtResource("4_d1idq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport"]
+libraries = {
+&"": SubResource("AnimationLibrary_qppqj")
+}
+autoplay = "spin"
+
+[node name="Node3D" type="Node3D" parent="SubViewportContainer/SubViewport"]
+
+[node name="heat-blade" parent="SubViewportContainer/SubViewport/Node3D" instance=ExtResource("3_6v034")]
+transform = Transform3D(0.976582, -0.215144, -1.5482e-08, 0.215144, 0.976582, -7.1932e-08, 3.05952e-08, 6.69166e-08, 1, 0.186366, 0.066, -1.16733e-07)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_top = 56.0
+offset_right = 640.0
+offset_bottom = -74.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+custom_minimum_size = Vector2(640, 0)
+layout_mode = 2
+theme = ExtResource("4_6v034")
+
+[node name="BACK_BUTTON" parent="." instance=ExtResource("2_2dqvc")]
