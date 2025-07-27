@@ -12,7 +12,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node3D:rotation")
+tracks/0/path = NodePath("PARTS_NODE:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -29,7 +29,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node3D:rotation")
+tracks/0/path = NodePath("PARTS_NODE:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -81,9 +81,9 @@ libraries = {
 }
 autoplay = "spin"
 
-[node name="Node3D" type="Node3D" parent="SubViewportContainer/SubViewport"]
+[node name="PARTS_NODE" type="Node3D" parent="SubViewportContainer/SubViewport"]
 
-[node name="heat-blade" parent="SubViewportContainer/SubViewport/Node3D" instance=ExtResource("3_6v034")]
+[node name="heat-blade" parent="SubViewportContainer/SubViewport/PARTS_NODE" instance=ExtResource("3_6v034")]
 transform = Transform3D(0.976582, -0.215144, -1.5482e-08, 0.215144, 0.976582, -7.1932e-08, 3.05952e-08, 6.69166e-08, 1, 0.186366, 0.066, -1.16733e-07)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
