@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SCALED_UI="*res://globals/GLOBAL_SCALED_UI.gd"
 STATE="*res://globals/GLOBAL_STATE.gd"
+WAIT="*res://globals/GLOBAL_WAIT.gd"
 
 [display]
 
