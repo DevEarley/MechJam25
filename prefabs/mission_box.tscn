@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://duhd2dsufgyj0"]
+
+[node name="MissionBox" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MissionID" type="Label" parent="."]
+layout_mode = 2
+text = "Mission ID"
+
+[node name="MissonTitle" type="Label" parent="."]
+layout_mode = 2
+text = "Mission Title"
+
+[node name="FlavorText" type="Label" parent="."]
+layout_mode = 2
+text = "Flavor Text"
+
+[node name="Odds" type="Label" parent="."]
+layout_mode = 2
+text = "Odds"
+
+[node name="Environment" type="Label" parent="."]
+layout_mode = 2
+text = "Environment"
+
+[node name="AllowedMechs" type="Label" parent="."]
+layout_mode = 2
+text = "Allowed Mechs"
+
+[node name="Location" type="Label" parent="."]
+layout_mode = 2
+text = "Location"
+
+[node name="Result" type="Label" parent="."]
+layout_mode = 2
+text = "Result"
