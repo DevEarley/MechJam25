@@ -11,7 +11,10 @@ func _ready():
 
 	STATE.MAIN_MENU_CANVAS = preload("res://scenes/main-menu.tscn").instantiate();
 	SCALED_UI.add_canvas_to_viewport(STATE.MAIN_MENU_CANVAS)
-	STATE.MAIN_MENU_CANVAS.hide()
+	if STATE.DIFFICULTY_ALREADY_CHOSEN:
+		STATE.MAIN_MENU_CANVAS.show()
+	else:
+		STATE.MAIN_MENU_CANVAS.hide()
 
 	STATE.PARTS_MENU_CANVAS = preload("res://scenes/parts-menu.tscn").instantiate();
 	SCALED_UI.add_canvas_to_viewport(STATE.PARTS_MENU_CANVAS)
@@ -39,4 +42,7 @@ func _ready():
 
 	STATE.DIFFICULTY_SETTTING_MENU_CANVAS = preload("res://scenes/difficulty-setting.tscn").instantiate();
 	SCALED_UI.add_canvas_to_viewport(STATE.DIFFICULTY_SETTTING_MENU_CANVAS)
-	STATE.DIFFICULTY_SETTTING_MENU_CANVAS.show()
+	if STATE.DIFFICULTY_ALREADY_CHOSEN:
+		STATE.DIFFICULTY_SETTTING_MENU_CANVAS.hide()
+	else:
+		STATE.DIFFICULTY_SETTTING_MENU_CANVAS.show()

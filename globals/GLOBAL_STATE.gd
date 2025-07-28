@@ -15,6 +15,8 @@ var MECH_MENU_CANVAS:CanvasLayer;
 var CONVERSATION_SCREEN_CANVAS:CanvasLayer;
 var START_MENU_CANVAS:CanvasLayer
 
+var USER_REAL_TIME : bool
+var DIFFICULTY_ALREADY_CHOSEN : bool
 var SPEED = 1.0
 var PILOTS:Array[Pilot]
 var PARTS:Array[Part]
