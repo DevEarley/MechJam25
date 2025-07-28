@@ -10,7 +10,7 @@ func _ready():
 
 
 func _on_difficulty_24_hours_button_pressed():
-	pass
+	real_time = true
 	#save to options user file
 	#get_tree().change_scene("res://scenes/main_menu.tscn")
 
@@ -24,7 +24,7 @@ func _on_difficulty_instant_button_pressed():
 
 
 func _on_save_button_pressed():
-	real_time = true
+	_save_difficulty_choice()
 	#save to options user file
 	#get_tree().change_scene("res://scenes/main_menu.tscn")
 
@@ -37,5 +37,6 @@ func _save_difficulty_choice():
 		config_user.set_value("USER","USER_REAL_TIME",real_time)
 		config_user.save("user://user_data.cfg")
 	else:
+		print("hello")
 		config_user.set_value("USER","USER_REAL_TIME",real_time)
 		config_user.save("user://user_data.cfg")
