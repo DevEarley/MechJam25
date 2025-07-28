@@ -11,7 +11,10 @@ func _ready():
 
 	STATE.MAIN_MENU = preload("res://scenes/main-menu.tscn").instantiate();
 	SCALED_UI.add_canvas_to_viewport(STATE.MAIN_MENU)
-	STATE.MAIN_MENU.hide()
+	if _difficulty_already_chosen():
+		STATE.MAIN_MENU.show()
+	else:
+		STATE.MAIN_MENU.hide()
 
 	STATE.PARTS_MENU = preload("res://scenes/parts-menu.tscn").instantiate();
 	SCALED_UI.add_canvas_to_viewport(STATE.PARTS_MENU)
@@ -39,4 +42,15 @@ func _ready():
 
 	STATE.DIFFICULTY_SETTTING_MENU = preload("res://scenes/difficulty-setting.tscn").instantiate();
 	SCALED_UI.add_canvas_to_viewport(STATE.DIFFICULTY_SETTTING_MENU)
-	STATE.DIFFICULTY_SETTTING_MENU.show()
+	if !_difficulty_already_chosen():
+		STATE.DIFFICULTY_SETTTING_MENU.show()
+	else:
+		STATE.DIFFICULTY_SETTTING_MENU.hide()
+
+func _difficulty_already_chosen():
+	var config_user = ConfigFile.new()
+	var err = config_user.load("user://user_data.cfg")
+	if err == 7: #if file doesn't exist, load difficulty screen
+		return false
+	else:
+		return true
