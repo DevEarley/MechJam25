@@ -9,18 +9,18 @@ func _ready():
 	$OPTIONS.connect("pressed",_on_OPTIONS_pressed)
 
 func on_back_to_main_menu():
-	STATE.MAIN_MENU.show()
-	STATE.OPTIONS_MENU.hide()
+	STATE.MAIN_MENU_CANVAS.show()
+	STATE.OPTIONS_MENU_CANVAS.hide()
 
 
 func _on_START_pressed():
-	STATE.MAIN_MENU.hide()
-	STATE.START_MENU.show()
+	STATE.MAIN_MENU_CANVAS.hide()
+	STATE.START_MENU_CANVAS.show()
 
 func _on_EXIT_pressed():
 	get_tree().quit()
 
 func _on_OPTIONS_pressed():
-	STATE.MAIN_MENU.hide()
-	STATE.OPTIONS_MENU.show()
+	STATE.MAIN_MENU_CANVAS.hide()
+	STATE.OPTIONS_MENU_CANVAS.show()
 	STATE.ON_BACK_BUTTON_PRESSED = on_back_to_main_menu

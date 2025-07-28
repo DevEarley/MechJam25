@@ -19,3 +19,11 @@ grow_vertical = 1
 text = "[center]MECHS"
 
 [node name="BACK_BUTTON" parent="." instance=ExtResource("3_8erph")]
+
+[node name="SCROLLABLE" type="ScrollContainer" parent="."]
+offset_top = 64.0
+offset_right = 552.0
+offset_bottom = 632.0
+
+[node name="BUTTONS" type="VBoxContainer" parent="SCROLLABLE"]
+layout_mode = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bkoa56i1h4muo"]
+[gd_scene load_steps=16 format=4 uid="uid://bkoa56i1h4muo"]
 
 [ext_resource type="Script" uid="uid://bxy3br0irscae" path="res://scripts/add-self-to-scaled-ui.gd" id="1_a7qba"]
 [ext_resource type="PackedScene" uid="uid://c4koj71ge37td" path="res://prefabs/back_button.tscn" id="2_2dqvc"]
@@ -27,25 +27,42 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_6v034"]
 resource_name = "spin"
-length = 2.5
+length = 4.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("PARTS_NODE:rotation")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.5),
+"times": PackedFloat32Array(0, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_pia31"]
+resource_name = "spin_up"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PARTS_NODE:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 3.76667),
+"transitions": PackedFloat32Array(0.392292, 2.92817),
+"update": 0,
+"values": [Vector3(0, 6.28319, 0), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qppqj"]
 _data = {
 &"RESET": SubResource("Animation_d1idq"),
-&"spin": SubResource("Animation_6v034")
+&"spin": SubResource("Animation_6v034"),
+&"spin_up": SubResource("Animation_pia31")
 }
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_toch8"]
@@ -96,6 +113,30 @@ offset_bottom = 44.0
 grow_vertical = 1
 text = "[center]PARTS"
 
+[node name="EQUIP_BUTTON" type="Button" parent="."]
+offset_left = 640.0
+offset_top = 664.0
+offset_right = 832.0
+offset_bottom = 704.0
+theme = ExtResource("4_6v034")
+text = "EQUIP"
+
+[node name="RECYCLE_BUTTON" type="Button" parent="."]
+offset_left = 1016.0
+offset_top = 664.0
+offset_right = 1248.0
+offset_bottom = 704.0
+theme = ExtResource("4_6v034")
+text = "RECYCLE"
+
+[node name="SELL_BUTTON" type="Button" parent="."]
+offset_left = 832.0
+offset_top = 664.0
+offset_right = 1016.0
+offset_bottom = 704.0
+theme = ExtResource("4_6v034")
+text = "SELL"
+
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 offset_left = 632.0
 offset_top = 64.0
@@ -117,14 +158,18 @@ libraries = {
 &"": SubResource("AnimationLibrary_qppqj")
 }
 autoplay = "spin"
+next/spin_up = &"spin"
+blend_times = [&"spin", &"spin_up", 0.25, &"spin_up", &"spin", 0.25]
 
 [node name="PARTS_NODE" type="Node3D" parent="SubViewportContainer/SubViewport"]
 
 [node name="BLUE_NUT" parent="SubViewportContainer/SubViewport/PARTS_NODE" instance=ExtResource("4_mnac2")]
-transform = Transform3D(0.506425, -0.862284, 0, 0.862284, 0.506425, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(0.355122, -0.604662, 0.712932, 0.862284, 0.506425, 0, -0.361047, 0.61475, 0.701233, 0, 0, 0)
+visible = false
 
 [node name="RED_NUT" type="Node3D" parent="SubViewportContainer/SubViewport/PARTS_NODE"]
-transform = Transform3D(0.506425, -0.862284, 0, 0.862284, 0.506425, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(-0.134246, 0.228578, 0.964225, 0.862284, 0.506425, 0, -0.488308, 0.831436, -0.265085, 0, 0, 0)
+visible = false
 
 [node name="Cylinder1" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/PARTS_NODE/RED_NUT"]
 mesh = SubResource("ArrayMesh_toch8")
@@ -144,17 +189,13 @@ material_override = ExtResource("5_pia31")
 mesh = SubResource("ArrayMesh_04fvn")
 skeleton = NodePath("")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_top = 56.0
-offset_right = 640.0
-offset_bottom = -74.0
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
-custom_minimum_size = Vector2(640, 0)
-layout_mode = 2
-theme = ExtResource("4_6v034")
-
 [node name="BACK_BUTTON" parent="." instance=ExtResource("2_2dqvc")]
+
+[node name="SCROLLABLE" type="ScrollContainer" parent="."]
+offset_top = 64.0
+offset_right = 608.0
+offset_bottom = 632.0
+
+[node name="BUTTONS" type="VBoxContainer" parent="SCROLLABLE"]
+layout_mode = 2
+theme_override_constants/separation = 33

@@ -1,8 +1,8 @@
 class_name Mission
 
-var id : int
-var title : String
-var flavor_text : String
+var ID : int
+var name : String
+var flavor : String
 var flavor_icon : ENUMS.MISSION_FLAVOR_TYPE
 var one_over_odds_of_success : float
 var environment : int
@@ -12,7 +12,8 @@ var pilot_id : int
 var allowed_mech_types : Array[ENUMS.MECH_TYPE]
 var status : ENUMS.MISSION_STATUS
 
-var time_to_complete #UTC string
+var time_started #UTC string
+var time_remaining #UTC string
 
 var reward_type_1;
 var reward_value_1;

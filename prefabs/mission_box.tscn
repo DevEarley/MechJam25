@@ -1,40 +1,70 @@
-[gd_scene format=3 uid="uid://duhd2dsufgyj0"]
+[gd_scene load_steps=2 format=3 uid="uid://duhd2dsufgyj0"]
 
-[node name="MissionBox" type="VBoxContainer"]
+[ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="1_hw3iu"]
+
+[node name="MISSION_BOX" type="VBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MissionID" type="Label" parent="."]
+[node name="ID" type="Label" parent="."]
 layout_mode = 2
+theme = ExtResource("1_hw3iu")
 text = "Mission ID"
 
-[node name="MissonTitle" type="Label" parent="."]
+[node name="NAME" type="Label" parent="."]
 layout_mode = 2
+theme = ExtResource("1_hw3iu")
 text = "Mission Title"
 
-[node name="FlavorText" type="Label" parent="."]
+[node name="FLAVOR" type="Label" parent="."]
 layout_mode = 2
+theme = ExtResource("1_hw3iu")
 text = "Flavor Text"
 
-[node name="Odds" type="Label" parent="."]
+[node name="ONE_OVER_ODDS_OF_SUCCESS" type="Label" parent="."]
 layout_mode = 2
+theme = ExtResource("1_hw3iu")
 text = "Odds"
 
-[node name="Environment" type="Label" parent="."]
+[node name="ENVIRONMENT" type="Label" parent="."]
 layout_mode = 2
+theme = ExtResource("1_hw3iu")
 text = "Environment"
 
-[node name="AllowedMechs" type="Label" parent="."]
+[node name="ALLOWED_MECH_TYPES" type="Label" parent="."]
 layout_mode = 2
+theme = ExtResource("1_hw3iu")
 text = "Allowed Mechs"
 
-[node name="Location" type="Label" parent="."]
+[node name="LOCATION_ID" type="Label" parent="."]
 layout_mode = 2
+theme = ExtResource("1_hw3iu")
 text = "Location"
 
-[node name="Result" type="Label" parent="."]
+[node name="MECH_ID" type="Label" parent="."]
 layout_mode = 2
+theme = ExtResource("1_hw3iu")
+text = "Result"
+
+[node name="PILOT_ID" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_hw3iu")
+text = "Result"
+
+[node name="STATUS" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_hw3iu")
+text = "Result"
+
+[node name="TIME_STARTED" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_hw3iu")
+text = "Result"
+
+[node name="TIME_REMAINING" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_hw3iu")
 text = "Result"

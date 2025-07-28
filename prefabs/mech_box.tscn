@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3 uid="uid://dborn77vl2s8c"]
+
+[ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="1_peavg"]
+
+[node name="MECH_BOX" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ID" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_peavg")
+text = "Mission ID"
+
+[node name="NAME" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_peavg")
+text = "Mission Title"
+
+[node name="FLAVOR" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_peavg")
+text = "Flavor Text"
+
+[node name="COST" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_peavg")
+text = "Odds"
+
+[node name="COMPATIBLE_ENVIRONMENT" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_peavg")
+text = "Environment"
+
+[node name="TYPE" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_peavg")
+text = "Allowed Mechs"
+
+[node name="MISSION" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_peavg")
+text = "Location"
+
+[node name="SELLING_PRICE" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_peavg")
+text = "Result"
+
+[node name="BASE_HEALTH" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_peavg")
+text = "Result"
+
+[node name="STATUS" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_peavg")
+text = "Result"
+
+[node name="CURRENT_HEALTH" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_peavg")
+text = "Result"

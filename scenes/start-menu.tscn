@@ -59,6 +59,7 @@ size_flags_vertical = 6
 text = "PARTS"
 
 [node name="DEPLOYMENTS" parent="START_MENU_BUTTONS" instance=ExtResource("2_ycvuw")]
+visible = false
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 size_flags_vertical = 6

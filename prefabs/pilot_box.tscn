@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://dx4i0u2phohdh"]
+
+[node name="PILOT_BOX" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ID" type="Label" parent="."]
+layout_mode = 2
+text = "Mission ID"
+
+[node name="NAME" type="Label" parent="."]
+layout_mode = 2
+text = "Mission Title"
+
+[node name="COST" type="Label" parent="."]
+layout_mode = 2
+text = "Mission Title"
+
+[node name="FLAVOR" type="Label" parent="."]
+layout_mode = 2
+text = "Flavor Text"
+
+[node name="MISSION" type="Label" parent="."]
+layout_mode = 2
+text = "Flavor Text"
+
+[node name="STATUS" type="Label" parent="."]
+layout_mode = 2
+text = "Odds"
+
+[node name="THEME" type="Label" parent="."]
+layout_mode = 2
+text = "Environment"
+
+[node name="CRITERIA_FOR_BETTER_ODDS" type="Label" parent="."]
+layout_mode = 2
+text = "Allowed Mechs"
+
+[node name="CRITERIA_FOR_WORSE_ODDS" type="Label" parent="."]
+layout_mode = 2
+text = "Location"
+
+[node name="WORSE_ODDS" type="Label" parent="."]
+layout_mode = 2
+text = "Location"
+
+[node name="BETTER_ODDS" type="Label" parent="."]
+layout_mode = 2
+text = "Location"
