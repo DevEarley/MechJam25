@@ -1,6 +1,11 @@
 extends Node
 
 func _ready():
+
+	STATE.DIFFICULTY_SETTTING_MENU_CANVAS = preload("res://scenes/difficulty-setting.tscn").instantiate();
+	SCALED_UI.add_canvas_to_viewport(STATE.DIFFICULTY_SETTTING_MENU_CANVAS)
+	STATE.DIFFICULTY_SETTTING_MENU_CANVAS.hide()
+
 	STATE.DEPLOYMENTS_MENU_CANVAS = preload("res://scenes/deployments-menu.tscn").instantiate();
 	SCALED_UI.add_canvas_to_viewport(STATE.DEPLOYMENTS_MENU_CANVAS)
 	STATE.DEPLOYMENTS_MENU_CANVAS.hide()
@@ -37,6 +42,6 @@ func _ready():
 	SCALED_UI.add_canvas_to_viewport(STATE.START_MENU_CANVAS)
 	STATE.START_MENU_CANVAS.hide()
 
-	STATE.DIFFICULTY_SETTTING_MENU_CANVAS = preload("res://scenes/difficulty-setting.tscn").instantiate();
-	SCALED_UI.add_canvas_to_viewport(STATE.DIFFICULTY_SETTTING_MENU_CANVAS)
-	STATE.DIFFICULTY_SETTTING_MENU_CANVAS.show()
+	STATE.EQUIP_PART_TO_MECH_POP_UP = preload("res://pop-ups/equip-part-to-mech-pop-up.tscn").instantiate();
+	SCALED_UI.add_canvas_to_viewport(STATE.EQUIP_PART_TO_MECH_POP_UP)
+	STATE.EQUIP_PART_TO_MECH_POP_UP.hide()

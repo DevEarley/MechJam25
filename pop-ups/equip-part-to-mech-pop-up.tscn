@@ -1,0 +1,250 @@
+[gd_scene load_steps=16 format=3 uid="uid://dtko4kfvuquwf"]
+
+[ext_resource type="PackedScene" uid="uid://bwlhvw7r5jrdg" path="res://prefabs/parts_viewport_container.tscn" id="1_lply7"]
+[ext_resource type="Script" uid="uid://cj3a6yqvipcks" path="res://pop-up-scripts/equip_part_to_mech_pop_up.gd" id="1_o25yi"]
+[ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="2_alhsh"]
+[ext_resource type="PackedScene" uid="uid://b046x8i5jrnqw" path="res://prefabs/mech_viewport_container.tscn" id="2_sx2e2"]
+[ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="3_03yan"]
+[ext_resource type="Texture2D" uid="uid://86yf6tf46r08" path="res://UI/crosshairs64.png" id="4_tc0r2"]
+[ext_resource type="Script" uid="uid://cskto3diymuf" path="res://scripts/back_button.gd" id="5_g60p8"]
+[ext_resource type="PackedScene" uid="uid://bunfxp7cx281n" path="res://prefabs/title-bar-wide.tscn" id="7_g60p8"]
+
+[sub_resource type="Animation" id="Animation_g60p8"]
+resource_name = "step_0"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG2:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(944, 656)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BG2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(48, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_alhsh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG2:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(704, 656)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BG2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(288, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_vv5og"]
+resource_name = "step_1"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG2:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1248, 688)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BG2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(16, 16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fjylc"]
+_data = {
+&"RESET": SubResource("Animation_alhsh"),
+&"step_0": SubResource("Animation_g60p8"),
+&"step_1": SubResource("Animation_vv5og")
+}
+
+[sub_resource type="Gradient" id="Gradient_o25yi"]
+offsets = PackedFloat32Array(0, 0.984979)
+colors = PackedColorArray(0.47, 0.47, 0.47, 0.964706, 0.42, 0.42, 0.42, 0.964706)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_g60p8"]
+gradient = SubResource("Gradient_o25yi")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o25yi"]
+atlas = ExtResource("4_tc0r2")
+region = Rect2(380, 399, 32, 34)
+
+[node name="Equip-part-to-mech-pop-up" type="CanvasLayer"]
+script = ExtResource("1_o25yi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fjylc")
+}
+autoplay = "step_0"
+blend_times = [&"step_0", &"step_0", 0.5, &"step_0", &"step_1", 0.3]
+
+[node name="BG" type="TextureRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 0
+texture = SubResource("GradientTexture1D_g60p8")
+
+[node name="BG2" parent="." instance=ExtResource("2_alhsh")]
+visible = false
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 1264.0
+offset_bottom = 704.0
+
+[node name="Part_SubViewportContainer" parent="." instance=ExtResource("1_lply7")]
+visible = false
+offset_left = 88.0
+offset_top = 96.0
+offset_right = 688.0
+offset_bottom = 696.0
+
+[node name="Mech_SubViewportContainer" parent="." instance=ExtResource("2_sx2e2")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 656.0
+offset_top = 96.0
+offset_right = 1256.0
+offset_bottom = 696.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="EQUIP_BUTTON" type="Button" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -328.0
+offset_top = 200.0
+offset_right = -7.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_03yan")
+text = "EQUIP TO MECH  "
+
+[node name="CONFIRM_MECH" type="Button" parent="."]
+visible = false
+offset_left = 312.0
+offset_top = 560.0
+offset_right = 633.0
+offset_bottom = 600.0
+theme = ExtResource("3_03yan")
+text = "CONFIRM MECH"
+
+[node name="CANCEL_BUTTON" type="Button" parent="."]
+visible = false
+offset_left = 408.0
+offset_top = 624.0
+offset_right = 629.0
+offset_bottom = 664.0
+theme = ExtResource("3_03yan")
+text = "CANCEL   "
+script = ExtResource("5_g60p8")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+offset_left = 592.5
+offset_top = 400.0
+offset_right = 624.5
+offset_bottom = 434.0
+texture = SubResource("AtlasTexture_o25yi")
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+visible = false
+offset_left = 592.5
+offset_top = 272.0
+offset_right = 624.5
+offset_bottom = 306.0
+texture = SubResource("AtlasTexture_o25yi")
+stretch_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+visible = false
+offset_left = 592.0
+offset_top = 144.0
+offset_right = 624.0
+offset_bottom = 178.0
+texture = SubResource("AtlasTexture_o25yi")
+stretch_mode = 1
+
+[node name="SELECT_MECH" parent="." instance=ExtResource("7_g60p8")]
+visible = false
+anchors_preset = 5
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_left = -560.0
+offset_top = 56.0
+offset_right = 336.0
+offset_bottom = 91.0
+grow_vertical = 1
+text = "[center]SELECT MECH TO EQUIP TO"
+
+[node name="EQUIP_PART" parent="." instance=ExtResource("7_g60p8")]
+visible = false
+anchors_preset = 5
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_left = -608.0
+offset_top = 40.0
+offset_right = 608.0
+offset_bottom = 75.0
+grow_vertical = 1
+text = "[center]EQUIP PART"
+
+[node name="MECH_LIST" type="ScrollContainer" parent="."]
+visible = false
+offset_left = 5.0
+offset_top = 96.0
+offset_right = 655.0
+offset_bottom = 520.0
+
+[node name="MECH_BUTTONS" type="VBoxContainer" parent="MECH_LIST"]
+layout_mode = 2
+theme_override_constants/separation = 30

@@ -15,9 +15,17 @@ var MECH_MENU_CANVAS:CanvasLayer;
 var CONVERSATION_SCREEN_CANVAS:CanvasLayer;
 var START_MENU_CANVAS:CanvasLayer
 
+var EQUIP_PART_TO_MECH_POP_UP:CanvasLayer
+
 var SPEED = 1.0
 var PILOTS:Array[Pilot]
 var PARTS:Array[Part]
 var MECHS:Array[Mech]
 var MISSIONS:Array[Mission]
 var LOCATIONS:Array[Location]
+
+var CURRENT_PART_ID:int;
+var CURRENT_MECH_ID:int;
+var CURRENT_PILOT_ID:int;
+var CURRENT_MISSION_ID:int;
+var CURRENT_LOCATION_ID:int;

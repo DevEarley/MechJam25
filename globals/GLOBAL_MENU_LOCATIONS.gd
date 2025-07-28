@@ -1,5 +1,7 @@
 extends Node
+
 var LOCATION_BOX_PREFAB = preload("res://prefabs/location_box.tscn")
+
 func show_locations():
 	var LOCATION_BUTTONS = STATE.LOCATION_SELECT_MENU_CANVAS.get_node("SCROLLABLE/BUTTONS")
 	for child in LOCATION_BUTTONS.get_children():
