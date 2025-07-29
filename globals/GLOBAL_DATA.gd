@@ -6,6 +6,7 @@ func _ready() -> void:
 	load_or_create_user_parts()
 	load_or_create_user_mechs()
 	load_or_create_user_pilots()
+	load_or_create_user_data_and_push_to_STATE()
 
 func load_or_create_user_missions():
 	var slot_index = 1
@@ -275,5 +276,25 @@ func save_mech_user_data():
 
 		index+=1;
 	var err = data_user.save("user://mechs.cfg")
+	if err != OK:
+		print(err)
+
+func load_or_create_user_data_and_push_to_STATE():
+	#this may have to be expanded or completely changed as the user has more options they can change, such as volume mixing
+	var config_user_options = ConfigFile.new()
+	var err = await config_user_options.load("user://user_options.cfg")
+	if err == 7: #if file doesn't exist, load base user info, and then save it user side
+		STATE.DIFFICULTY_ALREADY_CHOSEN = false
+		config_user_options.load("res://data/data_user_options.cfg")
+		config_user_options.save("user://user_options.cfg")
+	else:
+		STATE.DIFFICULTY_ALREADY_CHOSEN = true
+		STATE.USER_REAL_TIME = config_user_options.get_value("USER","USER_REAL_TIME")
+
+func save_user_data(value):
+	var config_user_options = ConfigFile.new()
+	config_user_options.set_value("USER","USER_REAL_TIME",value)
+	#put in any extra user options that may come up
+	var err = config_user_options.save("user://user_options.cfg")
 	if err != OK:
 		print(err)
