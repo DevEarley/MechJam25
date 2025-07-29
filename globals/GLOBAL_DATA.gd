@@ -4,7 +4,7 @@ func _ready() -> void:
 	load_or_create_user_locations()
 	load_or_create_user_missions()
 	load_or_create_user_parts()
-	#load_or_create_user_mechs()
+	load_or_create_user_mechs()
 	load_or_create_user_pilots()
 	load_or_create_user_data_and_push_to_STATE()
 
@@ -77,7 +77,7 @@ func load_or_create_user_parts():
 		var number_of_parts:int = data_res.get_value("DEFAULT","NUMBER_OF_PARTS")
 		for part_index in number_of_parts:
 			create_and_push_part_to_STATE("DEFAULT",part_index,data_res)
-		save_parts_to_user_data(section)
+		save_parts_to_user_data()
 	elif(data_user_err != 7 ):
 		var number_of_parts:int = data_user.get_value(section,"NUMBER_OF_PARTS")
 		for part_index in number_of_parts:
@@ -100,7 +100,9 @@ func create_and_push_part_to_STATE(section,part_index,data):
 			part.attached_to_mech_id = data.get_value(section,"PART_%s_ATTACHED_TO_MECH_ID"%part_index)
 			STATE.PARTS.push_back(part);
 
-func save_parts_to_user_data(section):
+func save_parts_to_user_data():
+	var slot_index = 1
+	var section = "SAVESLOT_%s"%slot_index
 	var data_user = ConfigFile.new()
 	var index = 0;
 	data_user.set_value(section,"NUMBER_OF_PARTS",STATE.PARTS.size())
@@ -134,7 +136,7 @@ func load_or_create_user_pilots():
 		var number_of_pilots:int = data_res.get_value("DEFAULT","NUMBER_OF_PILOTS")
 		for pilot_index in number_of_pilots:
 			create_and_push_pilot_to_STATE("DEFAULT",pilot_index,data_res)
-		save_pilot_user_data(section)
+		save_pilot_user_data()
 	elif(data_user_err != 7 ):
 		var number_of_pilots:int = data_user.get_value(section,"NUMBER_OF_PILOTS")
 		for pilot_index in number_of_pilots:
@@ -155,7 +157,9 @@ func create_and_push_pilot_to_STATE(section,pilot_index,data):
 			pilot.criteria_for_worse_odds = data.get_value(section,"PILOT_%s_CRITERIA_FOR_WORSE_ODDS"%pilot_index)
 			STATE.PILOTS.push_back(pilot);
 
-func save_pilot_user_data(section):
+func save_pilot_user_data():
+	var slot_index = 1
+	var section = "SAVESLOT_%s"%slot_index
 	var data_user = ConfigFile.new()
 	var index = 0;
 	data_user.set_value(section,"NUMBER_OF_PILOTS",STATE.PILOTS.size())
@@ -188,7 +192,7 @@ func load_or_create_user_locations():
 		var number_of_locations:int = data_res.get_value("DEFAULT","NUMBER_OF_LOCATIONS")
 		for location_index in number_of_locations:
 			create_and_push_location_to_STATE("DEFAULT",location_index,data_res)
-		save_location_user_data(section)
+		save_location_user_data()
 	elif(data_user_err != 7 ):
 		var number_of_locations:int = data_user.get_value(section,"NUMBER_OF_LOCATIONS")
 		for location_index in number_of_locations:
@@ -202,7 +206,9 @@ func create_and_push_location_to_STATE(section,location_index,data):
 			location.map_position = data.get_value(section,"LOCATION_%s_POSITION"%location_index)
 			STATE.LOCATIONS.push_back(location);
 
-func save_location_user_data(section):
+func save_location_user_data():
+	var slot_index = 1
+	var section = "SAVESLOT_%s"%slot_index
 	var data_user = ConfigFile.new()
 	var index = 0;
 	data_user.set_value(section,"NUMBER_OF_LOCATIONS",STATE.LOCATIONS.size())
@@ -228,7 +234,7 @@ func load_or_create_user_mechs():
 		var number_of_mechs:int = data_res.get_value("DEFAULT","NUMBER_OF_MECHS")
 		for mech_index in number_of_mechs:
 			create_and_push_mech_to_STATE("DEFAULT",mech_index,data_res)
-		save_mech_user_data(section)
+		save_mech_user_data()
 	elif(data_user_err != 7 ):
 		var number_of_mechs:int = data_user.get_value(section,"NUMBER_OF_MECHS")
 		for mech_index in number_of_mechs:
@@ -249,7 +255,9 @@ func create_and_push_mech_to_STATE(section,mech_index,data):
 			mech.type = data.get_value(section,"MECH_%s_TYPE"%mech_index)
 			STATE.MECHS.push_back(mech);
 
-func save_mech_user_data(section):
+func save_mech_user_data():
+	var slot_index = 1
+	var section = "SAVESLOT_%s"%slot_index
 	var data_user = ConfigFile.new()
 	var index = 0;
 	data_user.set_value(section,"NUMBER_OF_MECHS",STATE.MECHS.size())

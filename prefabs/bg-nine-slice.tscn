@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://jgrspl5bog1o"]
+
+[ext_resource type="Texture2D" uid="uid://86yf6tf46r08" path="res://UI/crosshairs64.png" id="1_v2aoo"]
+
+[sub_resource type="Gradient" id="Gradient_g60p8"]
+offsets = PackedFloat32Array(0, 0.128755, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.901961, 0, 0, 0, 0.447059)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_alhsh"]
+gradient = SubResource("Gradient_g60p8")
+fill_from = Vector2(1, 0.621795)
+
+[node name="BG2" type="NinePatchRect"]
+offset_left = 64.0
+offset_top = 32.0
+offset_right = 992.0
+offset_bottom = 688.0
+mouse_filter = 0
+texture = ExtResource("1_v2aoo")
+region_rect = Rect2(456, 264, 51, 49)
+patch_margin_left = 26
+patch_margin_top = 26
+patch_margin_right = 27
+patch_margin_bottom = 25
+
+[node name="BG" type="TextureRect" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+texture = SubResource("GradientTexture2D_alhsh")

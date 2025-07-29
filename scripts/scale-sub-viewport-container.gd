@@ -14,8 +14,9 @@ func _ready():
 	timer.timeout.connect(_on_view_port_resize_timer_timeout)
 	get_viewport().connect("size_changed", _on_viewport_resize)
 	_on_viewport_resize()
-	await WAIT.for_seconds(0.1)
-	_on_viewport_resize()
+	await WAIT.for_seconds(1.0)
+
+	STATE.DIFFICULTY_SETTTING_MENU_CANVAS.show()
 
 func _on_viewport_resize():
 	timer.start()

@@ -2,64 +2,120 @@
 
 [ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="1_peavg"]
 
-[node name="MECH_BOX" type="VBoxContainer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MECH_BOX" type="Control"]
+custom_minimum_size = Vector2(640, 200)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 200.0
+mouse_filter = 2
 
 [node name="ID" type="Label" parent="."]
 layout_mode = 2
+offset_left = 8.0
+offset_right = 56.0
+offset_bottom = 28.0
 theme = ExtResource("1_peavg")
-text = "Mission ID"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
+text = "001"
 
 [node name="NAME" type="Label" parent="."]
 layout_mode = 2
+offset_left = 64.0
+offset_right = 140.0
+offset_bottom = 28.0
 theme = ExtResource("1_peavg")
-text = "Mission Title"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
+text = "NAME"
 
 [node name="FLAVOR" type="Label" parent="."]
 layout_mode = 2
+offset_left = 96.0
+offset_top = 72.0
+offset_right = 632.0
+offset_bottom = 162.0
 theme = ExtResource("1_peavg")
-text = "Flavor Text"
-
-[node name="COST" type="Label" parent="."]
-layout_mode = 2
-theme = ExtResource("1_peavg")
-text = "Odds"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
+text = "Flavor Text Flavor Text Flavor Text Flavor Text Flavor Text Flavor Text Flavor Text Flavor."
+autowrap_mode = 2
 
 [node name="COMPATIBLE_ENVIRONMENT" type="Label" parent="."]
 layout_mode = 2
+offset_left = 120.0
+offset_top = 32.0
+offset_right = 192.0
+offset_bottom = 60.0
 theme = ExtResource("1_peavg")
-text = "Environment"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
+text = "ENVS"
 
 [node name="TYPE" type="Label" parent="."]
 layout_mode = 2
+offset_left = 8.0
+offset_top = 32.0
+offset_right = 80.0
+offset_bottom = 60.0
 theme = ExtResource("1_peavg")
-text = "Allowed Mechs"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
+text = "TYPE"
 
 [node name="MISSION" type="Label" parent="."]
 layout_mode = 2
+offset_left = 512.0
+offset_top = 176.0
+offset_right = 620.0
+offset_bottom = 204.0
 theme = ExtResource("1_peavg")
-text = "Location"
-
-[node name="SELLING_PRICE" type="Label" parent="."]
-layout_mode = 2
-theme = ExtResource("1_peavg")
-text = "Result"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
+text = "MISSION"
+horizontal_alignment = 2
 
 [node name="BASE_HEALTH" type="Label" parent="."]
 layout_mode = 2
+offset_left = 552.0
+offset_right = 588.0
+offset_bottom = 28.0
 theme = ExtResource("1_peavg")
-text = "Result"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
+text = "BH"
+horizontal_alignment = 2
 
 [node name="STATUS" type="Label" parent="."]
 layout_mode = 2
+offset_left = 16.0
+offset_top = 176.0
+offset_right = 124.0
+offset_bottom = 204.0
 theme = ExtResource("1_peavg")
-text = "Result"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
+text = "STATUS"
 
 [node name="CURRENT_HEALTH" type="Label" parent="."]
 layout_mode = 2
+offset_left = 600.0
+offset_top = 16.0
+offset_right = 636.0
+offset_bottom = 44.0
 theme = ExtResource("1_peavg")
-text = "Result"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
+text = "CH"
+
+[node name="SLASH" type="Label" parent="."]
+layout_mode = 2
+offset_left = 584.0
+offset_top = 16.0
+offset_right = 594.0
+offset_bottom = 44.0
+theme = ExtResource("1_peavg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
+text = "/"

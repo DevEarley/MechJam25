@@ -1,6 +1,9 @@
 extends Node
 
 func _ready():
+
+
+
 	STATE.DEPLOYMENTS_MENU_CANVAS = preload("res://scenes/deployments-menu.tscn").instantiate();
 	SCALED_UI.add_canvas_to_viewport(STATE.DEPLOYMENTS_MENU_CANVAS)
 	STATE.DEPLOYMENTS_MENU_CANVAS.hide()
@@ -8,13 +11,6 @@ func _ready():
 	STATE.LOCATION_SELECT_MENU_CANVAS = preload("res://scenes/locations-menu.tscn").instantiate();
 	SCALED_UI.add_canvas_to_viewport(STATE.LOCATION_SELECT_MENU_CANVAS)
 	STATE.LOCATION_SELECT_MENU_CANVAS.hide()
-
-	STATE.MAIN_MENU_CANVAS = preload("res://scenes/main-menu.tscn").instantiate();
-	SCALED_UI.add_canvas_to_viewport(STATE.MAIN_MENU_CANVAS)
-	if STATE.DIFFICULTY_ALREADY_CHOSEN:
-		STATE.MAIN_MENU_CANVAS.show()
-	else:
-		STATE.MAIN_MENU_CANVAS.hide()
 
 	STATE.PARTS_MENU_CANVAS = preload("res://scenes/parts-menu.tscn").instantiate();
 	SCALED_UI.add_canvas_to_viewport(STATE.PARTS_MENU_CANVAS)
@@ -40,9 +36,20 @@ func _ready():
 	SCALED_UI.add_canvas_to_viewport(STATE.START_MENU_CANVAS)
 	STATE.START_MENU_CANVAS.hide()
 
+	STATE.EQUIP_PART_TO_MECH_POP_UP = preload("res://pop-ups/equip-part-to-mech-pop-up.tscn").instantiate();
+	SCALED_UI.add_canvas_to_viewport(STATE.EQUIP_PART_TO_MECH_POP_UP)
+	STATE.EQUIP_PART_TO_MECH_POP_UP.hide()
+
 	STATE.DIFFICULTY_SETTTING_MENU_CANVAS = preload("res://scenes/difficulty-setting.tscn").instantiate();
 	SCALED_UI.add_canvas_to_viewport(STATE.DIFFICULTY_SETTTING_MENU_CANVAS)
 	if STATE.DIFFICULTY_ALREADY_CHOSEN:
 		STATE.DIFFICULTY_SETTTING_MENU_CANVAS.hide()
 	else:
 		STATE.DIFFICULTY_SETTTING_MENU_CANVAS.show()
+
+	STATE.MAIN_MENU_CANVAS = preload("res://scenes/main-menu.tscn").instantiate();
+	SCALED_UI.add_canvas_to_viewport(STATE.MAIN_MENU_CANVAS)
+	if STATE.DIFFICULTY_ALREADY_CHOSEN:
+		STATE.MAIN_MENU_CANVAS.show()
+	else:
+		STATE.MAIN_MENU_CANVAS.hide()
