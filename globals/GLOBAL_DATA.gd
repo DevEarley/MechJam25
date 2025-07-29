@@ -1,12 +1,26 @@
 extends Node
 
 func _ready() -> void:
+	load_or_create_user_data_and_push_to_STATE()
 	load_or_create_user_locations()
 	load_or_create_user_missions()
 	load_or_create_user_parts()
 	load_or_create_user_mechs()
 	load_or_create_user_pilots()
-	load_or_create_user_data_and_push_to_STATE()
+	await WAIT.for_seconds(1.0) #waiting for the view to resize.
+	show_difficulty_select_or_main_menu()
+
+
+func show_difficulty_select_or_main_menu():
+	if STATE.DIFFICULTY_ALREADY_CHOSEN == true:
+		STATE.DIFFICULTY_SETTTING_MENU_CANVAS.hide()
+		STATE.MAIN_MENU_CANVAS.show()
+	else:
+		STATE.DIFFICULTY_SETTTING_MENU_CANVAS.show()
+		STATE.MAIN_MENU_CANVAS.hide()
+
+
+
 
 func load_or_create_user_missions():
 	var slot_index = 1

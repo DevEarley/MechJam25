@@ -42,14 +42,8 @@ func _ready():
 
 	STATE.DIFFICULTY_SETTTING_MENU_CANVAS = preload("res://scenes/difficulty-setting.tscn").instantiate();
 	SCALED_UI.add_canvas_to_viewport(STATE.DIFFICULTY_SETTTING_MENU_CANVAS)
-	if STATE.DIFFICULTY_ALREADY_CHOSEN:
-		STATE.DIFFICULTY_SETTTING_MENU_CANVAS.hide()
-	else:
-		STATE.DIFFICULTY_SETTTING_MENU_CANVAS.show()
+	STATE.DIFFICULTY_SETTTING_MENU_CANVAS.hide()
 
 	STATE.MAIN_MENU_CANVAS = preload("res://scenes/main-menu.tscn").instantiate();
 	SCALED_UI.add_canvas_to_viewport(STATE.MAIN_MENU_CANVAS)
-	if STATE.DIFFICULTY_ALREADY_CHOSEN:
-		STATE.MAIN_MENU_CANVAS.show()
-	else:
-		STATE.MAIN_MENU_CANVAS.hide()
+	STATE.MAIN_MENU_CANVAS.hide()
