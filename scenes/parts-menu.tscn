@@ -57,15 +57,10 @@ theme = ExtResource("4_6v034")
 text = "SELL"
 
 [node name="SubViewportContainer" parent="." instance=ExtResource("5_d1idq")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
 offset_left = 744.0
 offset_top = 104.0
 offset_right = 744.0
 offset_bottom = 104.0
-grow_horizontal = 1
-grow_vertical = 1
 
 [node name="BACK_BUTTON" parent="." instance=ExtResource("2_2dqvc")]
 

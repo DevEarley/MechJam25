@@ -3,19 +3,19 @@
 [ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="1_w8og1"]
 
 [node name="PART_BOX" type="Button"]
-custom_minimum_size = Vector2(576, 280)
+custom_minimum_size = Vector2(576, 248)
 anchors_preset = -1
 anchor_right = 0.45
-anchor_bottom = 0.444
-offset_bottom = -39.68
+anchor_bottom = 0.344
+offset_bottom = 0.319992
 theme = ExtResource("1_w8og1")
 vertical_icon_alignment = 0
 
 [node name="ID" type="Label" parent="."]
 layout_mode = 2
-offset_left = 520.0
+offset_left = 80.0
 offset_top = 8.0
-offset_right = 568.0
+offset_right = 128.0
 offset_bottom = 36.0
 theme = ExtResource("1_w8og1")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -24,54 +24,33 @@ text = "ID"
 
 [node name="NAME" type="Label" parent="."]
 layout_mode = 2
-offset_left = 72.0
+offset_left = 136.0
 offset_top = 8.0
-offset_right = 172.0
+offset_right = 236.0
 offset_bottom = 36.0
 theme = ExtResource("1_w8og1")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
 text = "NAME"
 
-[node name="THEME" type="Label" parent="."]
-layout_mode = 2
-offset_left = 480.0
-offset_top = 112.0
-offset_right = 580.0
-offset_bottom = 140.0
-theme = ExtResource("1_w8og1")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
-text = "THEME"
-
 [node name="FLAVOR" type="Label" parent="."]
 layout_mode = 2
-offset_left = 64.0
-offset_top = 40.0
-offset_right = 568.0
-offset_bottom = 96.0
+offset_left = 40.0
+offset_top = 168.0
+offset_right = 544.0
+offset_bottom = 227.0
 theme = ExtResource("1_w8og1")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
-text = "FLAVOR"
-
-[node name="COST" type="Label" parent="."]
-layout_mode = 2
-offset_left = 16.0
-offset_top = 144.0
-offset_right = 116.0
-offset_bottom = 172.0
-theme = ExtResource("1_w8og1")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
-text = "COST"
+text = "FLAVOR Text. Flavor Text, Flavor Text, Flavor Text, Flavor Text, Flavor Text."
+autowrap_mode = 2
 
 [node name="RECYCLE_POINTS" type="Label" parent="."]
 layout_mode = 2
-offset_left = 128.0
-offset_top = 176.0
-offset_right = 228.0
-offset_bottom = 204.0
+offset_left = 320.0
+offset_top = 112.0
+offset_right = 420.0
+offset_bottom = 140.0
 theme = ExtResource("1_w8og1")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
@@ -79,10 +58,10 @@ text = "POINTS"
 
 [node name="SELLING_PRICE" type="Label" parent="."]
 layout_mode = 2
-offset_left = 16.0
-offset_top = 176.0
-offset_right = 116.0
-offset_bottom = 204.0
+offset_left = 456.0
+offset_top = 112.0
+offset_right = 556.0
+offset_bottom = 140.0
 theme = ExtResource("1_w8og1")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
@@ -90,21 +69,22 @@ text = "PRICE"
 
 [node name="BETTER_ODDS" type="Label" parent="."]
 layout_mode = 2
-offset_left = 208.0
-offset_top = 216.0
-offset_right = 256.0
-offset_bottom = 244.0
+offset_left = 32.0
+offset_top = 40.0
+offset_right = 80.0
+offset_bottom = 68.0
 theme = ExtResource("1_w8og1")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
 text = "+1"
+horizontal_alignment = 2
 
 [node name="CRITERIA_FOR_BETTER_ODDS" type="Label" parent="."]
 layout_mode = 2
-offset_left = 272.0
-offset_top = 216.0
-offset_right = 392.0
-offset_bottom = 244.0
+offset_left = 88.0
+offset_top = 40.0
+offset_right = 560.0
+offset_bottom = 68.0
 theme = ExtResource("1_w8og1")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
@@ -112,21 +92,22 @@ text = "CRITERIA"
 
 [node name="WORSE_ODDS" type="Label" parent="."]
 layout_mode = 2
-offset_left = 208.0
-offset_top = 248.0
-offset_right = 256.0
-offset_bottom = 276.0
+offset_left = 32.0
+offset_top = 72.0
+offset_right = 80.0
+offset_bottom = 100.0
 theme = ExtResource("1_w8og1")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
 text = "-1"
+horizontal_alignment = 2
 
 [node name="CRITERIA_FOR_WORSE_ODDS" type="Label" parent="."]
 layout_mode = 2
-offset_left = 272.0
-offset_top = 248.0
-offset_right = 414.0
-offset_bottom = 276.0
+offset_left = 88.0
+offset_top = 72.0
+offset_right = 544.0
+offset_bottom = 100.0
 theme = ExtResource("1_w8og1")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
@@ -135,9 +116,9 @@ text = "CRITERIA II"
 [node name="STATUS" type="Label" parent="."]
 layout_mode = 2
 offset_left = 24.0
-offset_top = 216.0
+offset_top = 104.0
 offset_right = 132.0
-offset_bottom = 244.0
+offset_bottom = 132.0
 theme = ExtResource("1_w8og1")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
@@ -146,9 +127,9 @@ text = "STATUS"
 [node name="MECH" type="Label" parent="."]
 layout_mode = 2
 offset_left = 24.0
-offset_top = 256.0
+offset_top = 136.0
 offset_right = 124.0
-offset_bottom = 284.0
+offset_bottom = 164.0
 theme = ExtResource("1_w8og1")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
@@ -156,10 +137,10 @@ text = "MECH"
 
 [node name="TYPE" type="Label" parent="."]
 layout_mode = 2
-offset_left = 16.0
-offset_top = 112.0
-offset_right = 116.0
-offset_bottom = 140.0
+offset_left = 472.0
+offset_top = 8.0
+offset_right = 572.0
+offset_bottom = 36.0
 theme = ExtResource("1_w8og1")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)

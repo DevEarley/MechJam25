@@ -1,9 +1,11 @@
 extends Node
 
-var PART_BOX_PREFAB = preload("res://prefabs/part_box.tscn")
+var PART_BOX_PREFAB = preload("res://prefabs/part_box_small.tscn")
 var EQUIP_BUTTON
 var RECYCLE_BUTTON
 var SELL_BUTTON
+
+
 
 func show_parts():
 	var part_noded =  STATE.PARTS_MENU_CANVAS.get_node("SubViewportContainer/Control/SubViewportContainer/SubViewport/PARTS_NODE")
@@ -12,6 +14,7 @@ func show_parts():
 	EQUIP_BUTTON = part_buttons.get_node("EQUIP_BUTTON");
 	EQUIP_BUTTON.connect("pressed",on_equip_pressed)
 	EQUIP_BUTTON.disabled = true
+
 	RECYCLE_BUTTON = part_buttons.get_node("RECYCLE_BUTTON");
 	RECYCLE_BUTTON.connect("pressed",on_recycle_button_pressed)
 	RECYCLE_BUTTON.disabled = true
@@ -20,34 +23,19 @@ func show_parts():
 	SELL_BUTTON.connect("pressed",on_sell_button_pressed)
 	SELL_BUTTON.disabled = true
 
-
 	for child in part_list_buttons.get_children():
 		child.queue_free()
 
 	for part:Part in STATE.PARTS:
-		var part_button = PART_BOX_PREFAB.instantiate()
-		part_button.get_node("ID").text = "%s"%part.ID
-		part_button.get_node("NAME").text = "%s"%part.name
-		part_button.get_node("THEME").text = "%s"%part.theme
-		part_button.get_node("FLAVOR").text = "%s"%part.flavor
-		part_button.get_node("COST").text = "%s"%part.cost
-		part_button.get_node("RECYCLE_POINTS").text = "%s"%part.recycle_points
-		part_button.get_node("SELLING_PRICE").text = "%s"%part.selling_price
-		part_button.get_node("BETTER_ODDS").text = "%s"%part.better_odds
-		part_button.get_node("CRITERIA_FOR_BETTER_ODDS").text = "%s"%part.criteria_for_better_odds
-		part_button.get_node("WORSE_ODDS").text = "%s"%part.worse_odds
-		part_button.get_node("CRITERIA_FOR_WORSE_ODDS").text = "%s"%part.criteria_for_worse_odds
-		part_button.get_node("STATUS").text = "%s"%part.status
-		part_button.get_node("TYPE").text = "%s"%part.type
+		var part_button = DATA_TO_UI.build_small_part_box(PART_BOX_PREFAB,part)
 		part_button.connect("pressed",on_part_pressed.bind(part.ID))
 		part_list_buttons.add_child(part_button)
-
 func on_cancel_equip_part_pop_up():
-	STATE.EQUIP_PART_TO_MECH_POP_UP.hide();
+	pass
 
 func on_equip_pressed():
 	STATE.EQUIP_PART_TO_MECH_POP_UP.show();
-	STATE.ON_BACK_BUTTON_PRESSED = on_cancel_equip_part_pop_up;
+	STATE.EQUIP_PART_TO_MECH_POP_UP.show_popup(on_cancel_equip_part_pop_up)
 
 func on_recycle_button_pressed():
 	#todo show popup

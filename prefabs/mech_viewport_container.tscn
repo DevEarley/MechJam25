@@ -111,6 +111,7 @@ offset_bottom = 600.0
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 light_mask = 0
 visibility_layer = 13
+layout_mode = 0
 offset_right = 600.0
 offset_bottom = 600.0
 
@@ -138,6 +139,7 @@ blend_times = [&"spin", &"spin_up", 0.25, &"spin_up", &"spin", 0.25]
 
 [node name="BLUE_MECH_001" parent="SubViewportContainer/SubViewport/MECHS_NODE" instance=ExtResource("3_jiv2m")]
 transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0, 0, 0)
+visible = false
 
 [node name="Cube2_copy4" parent="SubViewportContainer/SubViewport/MECHS_NODE/BLUE_MECH_001" index="0"]
 layers = 8

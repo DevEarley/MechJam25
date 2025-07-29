@@ -2,12 +2,23 @@ extends CanvasLayer
 
 var MECH_BOX_PREFAB = preload("res://prefabs/mech_box.tscn")
 var BUTTON = preload("res://prefabs/left-hand-button.tscn");
+var ON_CANCEL:Callable
+
+
 
 func _ready():
 	$CONFIRM_MECH.connect("pressed",on_confirm_mech)
 	$EQUIP_BUTTON.connect("pressed",on_equip_button_pressed)
-	connect("visibility_changed",on_visibility_changed)
+	$CANCEL_BUTTON.connect("pressed",on_cancel_equip_part_pop_up)
 	init_children()
+
+func on_cancel_equip_part_pop_up():
+	ON_CANCEL.call()
+	STATE.EQUIP_PART_TO_MECH_POP_UP.hide()
+
+func show_popup(on_cancel):
+	ON_CANCEL = on_cancel;
+	init_children();
 
 func init_children():
 	$AnimationPlayer.queue("step_0")
@@ -37,11 +48,9 @@ func init_children():
 
 func on_pick_mech(mech:Mech):
 	$CONFIRM_MECH.disabled = false;
-
 	STATE.CURRENT_MECH_ID = mech.ID
 
 func on_confirm_mech():
-
 	$AnimationPlayer.play("step_1")
 	$Part_SubViewportContainer.show()
 	$Mech_SubViewportContainer.show()
@@ -54,6 +63,7 @@ func on_confirm_mech():
 	$TextureRect2.show()
 	$TextureRect3.show()
 	$MECH_LIST.hide()
+	ON_CANCEL.call()
 
 func on_equip_button_pressed():
 	var current_part:Part = LINQ.First(STATE.PARTS, func (part:Part):

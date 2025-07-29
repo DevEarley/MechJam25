@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7cbf5rya0nt0"]
+
+[ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="1_7b2su"]
+
+[node name="PART_BOX_SMALL" type="Button"]
+custom_minimum_size = Vector2(576, 96)
+anchors_preset = -1
+offset_right = 576.0
+offset_bottom = 96.0
+theme = ExtResource("1_7b2su")
+vertical_icon_alignment = 0
+
+[node name="ID" type="Label" parent="."]
+layout_mode = 2
+offset_left = 80.0
+offset_top = 8.0
+offset_right = 128.0
+offset_bottom = 36.0
+theme = ExtResource("1_7b2su")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
+text = "ID"
+
+[node name="NAME" type="Label" parent="."]
+layout_mode = 2
+offset_left = 136.0
+offset_top = 8.0
+offset_right = 236.0
+offset_bottom = 36.0
+theme = ExtResource("1_7b2su")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
+text = "NAME"
+
+[node name="STATUS" type="Label" parent="."]
+layout_mode = 2
+offset_left = 24.0
+offset_top = 56.0
+offset_right = 132.0
+offset_bottom = 84.0
+theme = ExtResource("1_7b2su")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
+text = "STATUS"
+
+[node name="MECH" type="Label" parent="."]
+layout_mode = 2
+offset_left = 424.0
+offset_top = 56.0
+offset_right = 524.0
+offset_bottom = 84.0
+theme = ExtResource("1_7b2su")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
+text = "MECH"

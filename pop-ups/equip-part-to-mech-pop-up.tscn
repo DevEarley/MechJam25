@@ -9,6 +9,33 @@
 [ext_resource type="Script" uid="uid://cskto3diymuf" path="res://scripts/back_button.gd" id="5_g60p8"]
 [ext_resource type="PackedScene" uid="uid://bunfxp7cx281n" path="res://prefabs/title-bar-wide.tscn" id="7_g60p8"]
 
+[sub_resource type="Animation" id="Animation_alhsh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG2:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(704, 656)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BG2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(288, 32)]
+}
+
 [sub_resource type="Animation" id="Animation_g60p8"]
 resource_name = "step_0"
 length = 0.1
@@ -35,33 +62,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(48, 32)]
-}
-
-[sub_resource type="Animation" id="Animation_alhsh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BG2:size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(704, 656)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BG2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(288, 32)]
 }
 
 [sub_resource type="Animation" id="Animation_vv5og"]
@@ -128,10 +128,7 @@ texture = SubResource("GradientTexture1D_g60p8")
 
 [node name="BG2" parent="." instance=ExtResource("2_alhsh")]
 visible = false
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 1264.0
-offset_bottom = 704.0
+offset_left = 288.0
 
 [node name="Part_SubViewportContainer" parent="." instance=ExtResource("1_lply7")]
 visible = false
@@ -142,15 +139,10 @@ offset_bottom = 696.0
 
 [node name="Mech_SubViewportContainer" parent="." instance=ExtResource("2_sx2e2")]
 visible = false
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
 offset_left = 656.0
 offset_top = 96.0
 offset_right = 1256.0
 offset_bottom = 696.0
-grow_horizontal = 1
-grow_vertical = 1
 
 [node name="EQUIP_BUTTON" type="Button" parent="."]
 visible = false
