@@ -1,5 +1,6 @@
 extends Node
 
+var ON_QUEST_SCRIPT_DONE:Callable
 var ON_BACK_BUTTON_PRESSED:Callable
 
 var DIFFICULTY_SETTTING_MENU_CANVAS: CanvasLayer;
@@ -16,7 +17,6 @@ var CONVERSATION_SCREEN_CANVAS:CanvasLayer;
 var START_MENU_CANVAS:CanvasLayer
 
 var STATUS_BAR_CANVAS:CanvasLayer;
-
 var EQUIP_PART_TO_MECH_POP_UP:CanvasLayer
 var USE_REAL_TIME : bool
 var DIFFICULTY_ALREADY_CHOSEN : bool = false

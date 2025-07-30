@@ -1,0 +1,20 @@
+say[GAME BY ASFUNASFUN]
+say[RING!! RING!!]
+say[RING!! RING!!]
+say[HELLO?]YOU
+say[Don't tell me your name.]???
+say[I am looking for someone interested in managing a fleet of mechs.]???
+say[Are you interested?]???
+choice[YES,NO]
+[NO]
+say[No]YOU
+say[...]
+say[GAME OVER]
+do[quit]
+go[end]
+[YES]
+say[Yeah, sure.]YOU
+say[OK, Just refer to me as the 'Benefactor']???
+say[I have a mission for you.]Benefactor
+say[There is a pilot I'd like you to talk to]Benefator
+[end]

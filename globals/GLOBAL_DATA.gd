@@ -1,6 +1,8 @@
 extends Node
 
 func _ready() -> void:
+
+
 	load_or_create_user_user_options()
 	load_or_create_user_locations()
 	load_or_create_user_missions()
@@ -10,14 +12,24 @@ func _ready() -> void:
 	await WAIT.for_seconds(3.0) #waiting for the view to resize.
 	show_difficulty_select_or_main_menu()
 
-
 func show_difficulty_select_or_main_menu():
 	if STATE.DIFFICULTY_ALREADY_CHOSEN == true:
 		STATE.DIFFICULTY_SETTTING_MENU_CANVAS.hide()
+		CONVERSATION_UI.hide_ui()
 		STATE.MAIN_MENU_CANVAS.show()
 	else:
+		STATE.DIFFICULTY_SETTTING_MENU_CANVAS.hide()
+		#intro script
+		var intro_script = FileAccess.open("res://quest_scripts/intro.qs.txt", FileAccess.READ)
+		var content = intro_script.get_as_text()
+		QS.run_script(content)
+		STATE.ON_QUEST_SCRIPT_DONE = on_initial_script_done
+
+func on_initial_script_done():
+		CONVERSATION_UI.hide_ui()
 		STATE.DIFFICULTY_SETTTING_MENU_CANVAS.show()
-		STATE.MAIN_MENU_CANVAS.hide()
+
+
 
 func load_or_create_user_missions():
 	var slot_index = 1

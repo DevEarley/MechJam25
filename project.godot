@@ -27,6 +27,10 @@ PARTS_MENU="*res://globals/GLOBAL_MENU_PARTS.gd"
 PILOTS_MENU="*res://globals/GLOBAL_MENU_PILOTS.gd"
 DATA="*res://globals/GLOBAL_DATA.gd"
 MAP="*res://globals/GLOBAL_MAP.gd"
+CONVERSATION_UI="*res://globals/GLOBAL_CONVERSATION_UI.gd"
+QS="*res://globals/GLOBAL_QUEST_SCRIPT.gd"
+QS_IF="*res://globals/GLOBAL_QS_IF.gd"
+QS_DO="*res://globals/GLOBAL_QS_DO.gd"
 
 [display]
 

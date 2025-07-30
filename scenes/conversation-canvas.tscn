@@ -1,0 +1,150 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpm85ack71trn"]
+
+[ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="1_nkykf"]
+[ext_resource type="PackedScene" uid="uid://jqfcrgtcowf1" path="res://prefabs/left-hand-button.tscn" id="1_ri371"]
+
+[node name="CONVERSATION_CANVAS" type="CanvasLayer"]
+
+[node name="CHOICE_1" parent="." instance=ExtResource("1_ri371")]
+custom_minimum_size = Vector2(500, 0)
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 104.0
+offset_top = 392.0
+offset_right = 604.0
+offset_bottom = 432.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="CHOICE_2" parent="." instance=ExtResource("1_ri371")]
+custom_minimum_size = Vector2(500, 0)
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 104.0
+offset_top = 456.0
+offset_right = 604.0
+offset_bottom = 496.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="CHOICE_3" parent="." instance=ExtResource("1_ri371")]
+custom_minimum_size = Vector2(500, 0)
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 104.0
+offset_top = 520.0
+offset_right = 604.0
+offset_bottom = 560.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="CHOICE_4" parent="." instance=ExtResource("1_ri371")]
+custom_minimum_size = Vector2(500, 0)
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 104.0
+offset_top = 584.0
+offset_right = 604.0
+offset_bottom = 624.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="ACTION_1" parent="." instance=ExtResource("1_ri371")]
+custom_minimum_size = Vector2(500, 0)
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 104.0
+offset_top = 392.0
+offset_right = 604.0
+offset_bottom = 432.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="ACTION_2" parent="." instance=ExtResource("1_ri371")]
+custom_minimum_size = Vector2(500, 0)
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 104.0
+offset_top = 456.0
+offset_right = 604.0
+offset_bottom = 496.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="ACTION_3" parent="." instance=ExtResource("1_ri371")]
+custom_minimum_size = Vector2(500, 0)
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 104.0
+offset_top = 520.0
+offset_right = 604.0
+offset_bottom = 560.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="ACTION_4" parent="." instance=ExtResource("1_ri371")]
+custom_minimum_size = Vector2(500, 0)
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 104.0
+offset_top = 584.0
+offset_right = 604.0
+offset_bottom = 624.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="TEXT" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -560.0
+offset_top = -110.0
+offset_right = 80.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_nkykf")
+theme_override_colors/font_color = Color(0, 1, 0.666667, 1)
+text = "TEST"
+
+[node name="NAME" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -584.0
+offset_top = -152.0
+offset_right = -16.0
+offset_bottom = -124.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_nkykf")
+theme_override_colors/font_color = Color(0, 1, 0.666667, 1)
+text = "NAME"
