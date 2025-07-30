@@ -1,0 +1,108 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1jiwn2rdpt6o"]
+
+[ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="1_oev27"]
+[ext_resource type="Texture2D" uid="uid://l6oe44m1j68v" path="res://UI/ui-sheet-1.png" id="2_la0j6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0u7ju"]
+atlas = ExtResource("2_la0j6")
+region = Rect2(906, 670, 42, 47)
+
+[node name="MECH_BOX" type="Button"]
+custom_minimum_size = Vector2(580, 110)
+offset_right = 640.0
+offset_bottom = 128.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_oev27")
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+icon = SubResource("AtlasTexture_0u7ju")
+vertical_icon_alignment = 0
+
+[node name="ID" type="Label" parent="."]
+layout_mode = 2
+offset_left = 72.0
+offset_top = 16.0
+offset_right = 120.0
+offset_bottom = 44.0
+theme = ExtResource("1_oev27")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
+text = "001"
+
+[node name="NAME" type="Label" parent="."]
+layout_mode = 2
+offset_left = 128.0
+offset_top = 16.0
+offset_right = 204.0
+offset_bottom = 44.0
+theme = ExtResource("1_oev27")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
+text = "NAME"
+
+[node name="COMPATIBLE_ENVIRONMENT" type="Label" parent="."]
+layout_mode = 2
+offset_left = 184.0
+offset_top = 48.0
+offset_right = 256.0
+offset_bottom = 76.0
+theme = ExtResource("1_oev27")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
+text = "ENVS"
+
+[node name="TYPE" type="Label" parent="."]
+layout_mode = 2
+offset_left = 72.0
+offset_top = 48.0
+offset_right = 144.0
+offset_bottom = 76.0
+theme = ExtResource("1_oev27")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
+text = "TYPE"
+
+[node name="BASE_HEALTH" type="Label" parent="."]
+layout_mode = 2
+offset_left = 480.0
+offset_top = 32.0
+offset_right = 516.0
+offset_bottom = 60.0
+theme = ExtResource("1_oev27")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
+text = "BH"
+horizontal_alignment = 2
+
+[node name="STATUS" type="Label" parent="."]
+layout_mode = 2
+offset_left = 80.0
+offset_top = 88.0
+offset_right = 188.0
+offset_bottom = 116.0
+theme = ExtResource("1_oev27")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
+text = "STATUS"
+
+[node name="CURRENT_HEALTH" type="Label" parent="."]
+layout_mode = 2
+offset_left = 528.0
+offset_top = 48.0
+offset_right = 564.0
+offset_bottom = 76.0
+theme = ExtResource("1_oev27")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
+text = "CH"
+
+[node name="SLASH" type="Label" parent="."]
+layout_mode = 2
+offset_left = 512.0
+offset_top = 48.0
+offset_right = 522.0
+offset_bottom = 76.0
+theme = ExtResource("1_oev27")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
+text = "/"

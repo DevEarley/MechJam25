@@ -1,18 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7cbf5rya0nt0"]
+[gd_scene load_steps=4 format=3 uid="uid://byho8dl1u73va"]
 
-[ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="1_7b2su"]
-[ext_resource type="Texture2D" uid="uid://l6oe44m1j68v" path="res://UI/ui-sheet-1.png" id="2_ypapv"]
+[ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="1_ighwi"]
+[ext_resource type="Texture2D" uid="uid://l6oe44m1j68v" path="res://UI/ui-sheet-1.png" id="2_46qc3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_doabv"]
-atlas = ExtResource("2_ypapv")
-region = Rect2(777, 673, 43, 42)
+atlas = ExtResource("2_46qc3")
+region = Rect2(863, 674, 38, 41)
 
-[node name="PART_BOX_SMALL" type="Button"]
+[node name="MISSION_BOX_SMALL" type="Button"]
 custom_minimum_size = Vector2(576, 96)
 offset_right = 576.0
 offset_bottom = 96.0
 mouse_default_cursor_shape = 2
-theme = ExtResource("1_7b2su")
+theme = ExtResource("1_ighwi")
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 icon = SubResource("AtlasTexture_doabv")
 vertical_icon_alignment = 0
@@ -23,7 +23,7 @@ offset_left = 80.0
 offset_top = 8.0
 offset_right = 128.0
 offset_bottom = 36.0
-theme = ExtResource("1_7b2su")
+theme = ExtResource("1_ighwi")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
 text = "ID"
@@ -34,7 +34,7 @@ offset_left = 136.0
 offset_top = 8.0
 offset_right = 236.0
 offset_bottom = 36.0
-theme = ExtResource("1_7b2su")
+theme = ExtResource("1_ighwi")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
 text = "NAME"
@@ -45,7 +45,7 @@ offset_left = 24.0
 offset_top = 56.0
 offset_right = 132.0
 offset_bottom = 84.0
-theme = ExtResource("1_7b2su")
+theme = ExtResource("1_ighwi")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
 text = "STATUS"

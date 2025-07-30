@@ -1,11 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://byjnijv6ykw8o"]
+[gd_scene load_steps=5 format=3 uid="uid://byjnijv6ykw8o"]
 
 [ext_resource type="Script" uid="uid://bxy3br0irscae" path="res://scripts/add-self-to-scaled-ui.gd" id="1_03jkt"]
+[ext_resource type="PackedScene" uid="uid://b046x8i5jrnqw" path="res://prefabs/mech_viewport_container.tscn" id="2_rkopl"]
 [ext_resource type="PackedScene" uid="uid://bunfxp7cx281n" path="res://prefabs/title-bar-wide.tscn" id="2_vlf3c"]
 [ext_resource type="PackedScene" uid="uid://c4koj71ge37td" path="res://prefabs/back_button.tscn" id="3_8erph"]
 
 [node name="Mechs-menu" type="CanvasLayer"]
 script = ExtResource("1_03jkt")
+
+[node name="MECH_VIEW" parent="." instance=ExtResource("2_rkopl")]
+offset_left = 656.0
+offset_top = 56.0
+offset_right = 656.0
+offset_bottom = 56.0
 
 [node name="TITLE" parent="." instance=ExtResource("2_vlf3c")]
 anchors_preset = 5
@@ -23,10 +30,22 @@ offset_top = -704.0
 offset_right = 213.0
 offset_bottom = -664.0
 
-[node name="SCROLLABLE" type="ScrollContainer" parent="."]
-offset_top = 64.0
-offset_right = 552.0
-offset_bottom = 632.0
+[node name="Control" type="Control" parent="."]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 72.0
+offset_right = 640.0
+offset_bottom = 648.0
 
-[node name="BUTTONS" type="VBoxContainer" parent="SCROLLABLE"]
+[node name="SCROLLABLE" type="ScrollContainer" parent="Control"]
+clip_contents = false
+layout_mode = 0
+offset_top = 8.0
+offset_right = 592.0
+offset_bottom = 576.0
+
+[node name="BUTTONS" type="VBoxContainer" parent="Control/SCROLLABLE"]
 layout_mode = 2
+theme_override_constants/separation = 33

@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-var MECH_BOX_PREFAB = preload("res://prefabs/mech_box.tscn")
+var MECH_BOX_PREFAB = preload("res://prefabs/mech_box_small.tscn")
 var BUTTON = preload("res://prefabs/left-hand-button.tscn");
 var ON_CANCEL:Callable
 
@@ -40,8 +40,8 @@ func init_children():
 	STATE.CURRENT_MECH_ID = 0;
 	for mech:Mech in STATE.MECHS:
 		var mech_button:Button = BUTTON.instantiate()
-		mech_button.custom_minimum_size = Vector2(640,220)
-		var mech_box = DATA_TO_UI.build_mech_box(MECH_BOX_PREFAB, mech)
+		mech_button.custom_minimum_size = Vector2(640,120)
+		var mech_box = DATA_TO_UI.build_mech_box_small(MECH_BOX_PREFAB, mech)
 		mech_button.add_child(mech_box)
 		mech_button.connect("pressed",on_pick_mech.bind(mech))
 		$MECH_LIST/MECH_BUTTONS.add_child(mech_button);
@@ -50,6 +50,8 @@ func on_pick_mech(mech:Mech):
 	$CONFIRM_MECH.disabled = false;
 	STATE.CURRENT_MECH_ID = mech.ID
 	DATA_TO_UI.display_node_for_mech(STATE.CURRENT_MECH_ID,$Mech_SubViewportContainer/SubViewportContainer/SubViewport/MECHS_NODE);
+	$Mech_SubViewportContainer/Button.show()
+	$Mech_SubViewportContainer/Button/MECH_BOX.hide()
 
 func on_confirm_mech():
 	var current_part:Part = LINQ.First(STATE.PARTS, func (part:Part):
@@ -59,6 +61,10 @@ func on_confirm_mech():
 	$AnimationPlayer.play("step_1")
 	$Part_SubViewportContainer.show()
 	$Mech_SubViewportContainer.show()
+	$Part_SubViewportContainer/Button.show()
+	$Part_SubViewportContainer/Button/PART_BOX.hide()
+	$Mech_SubViewportContainer/Button.show()
+	$Mech_SubViewportContainer/Button/MECH_BOX.hide()
 	$EQUIP_BUTTON.show()
 	$CANCEL_BUTTON.show()
 	$CONFIRM_MECH.hide()

@@ -1,9 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://b046x8i5jrnqw"]
+[gd_scene load_steps=14 format=3 uid="uid://b046x8i5jrnqw"]
 
 [ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="1_jiv2m"]
 [ext_resource type="Environment" uid="uid://c7ssmhiiplyg8" path="res://world_environment.tres" id="1_ph5yv"]
 [ext_resource type="PackedScene" uid="uid://dimmt4xbgqqdb" path="res://mechs-3D/mech-001.glb" id="3_jiv2m"]
 [ext_resource type="Material" uid="uid://dj2chdusgvktn" path="res://materials/world_mat_alt.tres" id="4_pg47d"]
+[ext_resource type="PackedScene" uid="uid://jqfcrgtcowf1" path="res://prefabs/left-hand-button.tscn" id="5_pg47d"]
+[ext_resource type="Texture2D" uid="uid://l6oe44m1j68v" path="res://UI/ui-sheet-1.png" id="6_b1eyc"]
+[ext_resource type="Script" uid="uid://c54sr8yv6jh1t" path="res://prefabs/show_mech_info_button.gd" id="7_h87oc"]
+[ext_resource type="PackedScene" uid="uid://dborn77vl2s8c" path="res://prefabs/mech_box.tscn" id="8_pg47d"]
 
 [sub_resource type="Animation" id="Animation_d1idq"]
 length = 0.001
@@ -59,6 +63,10 @@ _data = {
 &"spin": SubResource("Animation_6v034"),
 &"spin_up": SubResource("Animation_pia31")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pg47d"]
+atlas = ExtResource("6_b1eyc")
+region = Rect2(906, 670, 42, 47)
 
 [node name="Control" type="Control"]
 visibility_layer = 13
@@ -176,6 +184,35 @@ visible = false
 [node name="Cube2_copy4" parent="SubViewportContainer/SubViewport/MECHS_NODE/RED_MECH_005" index="0"]
 layers = 8
 surface_material_override/0 = ExtResource("4_pg47d")
+
+[node name="Button" parent="." instance=ExtResource("5_pg47d")]
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 296.0
+offset_top = 504.0
+offset_right = 568.0
+offset_bottom = 553.0
+grow_horizontal = 1
+grow_vertical = 1
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+text = "MECH INFO"
+icon = SubResource("AtlasTexture_pg47d")
+script = ExtResource("7_h87oc")
+
+[node name="MECH_BOX" parent="Button" instance=ExtResource("8_pg47d")]
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 1
+anchors_preset = -1
+offset_left = -312.0
+offset_top = -304.0
+offset_right = 328.0
+offset_bottom = 64.0
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
 
 [editable path="SubViewportContainer/SubViewport/MECHS_NODE/BLUE_MECH_001"]
 [editable path="SubViewportContainer/SubViewport/MECHS_NODE/RED_MECH_001"]

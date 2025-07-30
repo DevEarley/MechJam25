@@ -1,10 +1,22 @@
 class_name DATA_TO_UI
 
-static func build_mech_box(MECH_BOX_PREFAB, mech):
-		var mech_button = MECH_BOX_PREFAB.instantiate()
+static func build_mech_box(mech_button, mech):
 		mech_button.get_node("ID").text = "%s"%mech.ID
 		mech_button.get_node("NAME").text = "%s"%mech.name
 		mech_button.get_node("FLAVOR").text = "%s"%mech.flavor
+		mech_button.get_node("COMPATIBLE_ENVIRONMENT").text = "";
+		for environment in mech.compatible_environments:
+			mech_button.get_node("COMPATIBLE_ENVIRONMENT").text += "[%s] "%environment
+		mech_button.get_node("TYPE").text = "%s"%mech.type
+		mech_button.get_node("BASE_HEALTH").text = "%s"%mech.base_health
+		mech_button.get_node("CURRENT_HEALTH").text = "%s"%mech.current_health
+		mech_button.get_node("STATUS").text = "%s"%mech.status
+		return mech_button
+
+static func build_mech_box_small(MECH_BOX_PREFAB, mech):
+		var mech_button = MECH_BOX_PREFAB.instantiate()
+		mech_button.get_node("ID").text = "%s"%mech.ID
+		mech_button.get_node("NAME").text = "%s"%mech.name
 		mech_button.get_node("COMPATIBLE_ENVIRONMENT").text = "";
 		for environment in mech.compatible_environments:
 			mech_button.get_node("COMPATIBLE_ENVIRONMENT").text += "[%s] "%environment
@@ -18,8 +30,6 @@ static func build_small_part_box(BOX_PREFAB,part:Part):
 		var part_button = BOX_PREFAB.instantiate()
 		part_button.get_node("ID").text = "%s"%part.ID
 		part_button.get_node("NAME").text = "%s"%part.name
-
-
 		match(part.status):
 			ENUMS.PART_STATUS.FOR_SALE:
 				part_button.get_node("STATUS").text ="FOR SALE [%s CREDITS]"%part.cost
@@ -34,8 +44,8 @@ static func build_small_part_box(BOX_PREFAB,part:Part):
 
 		return part_button
 
-static func build_part_box(BOX_PREFAB,part:Part):
-		var part_button = BOX_PREFAB.instantiate()
+static func build_part_box(part_button,part:Part):
+
 		part_button.get_node("ID").text = "%s"%part.ID
 		part_button.get_node("NAME").text = "%s"%part.name
 		part_button.get_node("FLAVOR").text = "%s"%part.flavor

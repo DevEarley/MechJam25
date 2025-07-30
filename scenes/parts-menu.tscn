@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkoa56i1h4muo"]
+[gd_scene load_steps=12 format=3 uid="uid://bkoa56i1h4muo"]
 
 [ext_resource type="Script" uid="uid://bxy3br0irscae" path="res://scripts/add-self-to-scaled-ui.gd" id="1_a7qba"]
 [ext_resource type="PackedScene" uid="uid://c4koj71ge37td" path="res://prefabs/back_button.tscn" id="2_2dqvc"]
@@ -6,6 +6,23 @@
 [ext_resource type="Script" uid="uid://y03b4ogxg8vq" path="res://scene-scripts/parts-menu.gd" id="3_68d0n"]
 [ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="4_6v034"]
 [ext_resource type="PackedScene" uid="uid://bwlhvw7r5jrdg" path="res://prefabs/parts_viewport_container.tscn" id="5_d1idq"]
+[ext_resource type="Texture2D" uid="uid://l6oe44m1j68v" path="res://UI/ui-sheet-1.png" id="6_qppqj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pia31"]
+atlas = ExtResource("6_qppqj")
+region = Rect2(905, 670, 43, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnac2"]
+atlas = ExtResource("6_qppqj")
+region = Rect2(826, 673, 35, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68d0n"]
+atlas = ExtResource("6_qppqj")
+region = Rect2(733, 676, 41, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qppqj"]
+atlas = ExtResource("6_qppqj")
+region = Rect2(735, 675, 38, 41)
 
 [node name="Parts-menu" type="CanvasLayer"]
 script = ExtResource("1_a7qba")
@@ -42,7 +59,20 @@ offset_top = -72.0
 offset_right = 192.0
 offset_bottom = -32.0
 theme = ExtResource("4_6v034")
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 text = "EQUIP"
+icon = SubResource("AtlasTexture_pia31")
+
+[node name="UNEQUIP_BUTTON" type="Button" parent="BUTTONS"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -72.0
+offset_right = 190.0
+offset_bottom = -25.0
+theme = ExtResource("4_6v034")
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+text = "UNEQUIP"
+icon = SubResource("AtlasTexture_pia31")
 
 [node name="RECYCLE_BUTTON" type="Button" parent="BUTTONS"]
 layout_mode = 0
@@ -51,7 +81,9 @@ offset_top = -72.0
 offset_right = 608.0
 offset_bottom = -32.0
 theme = ExtResource("4_6v034")
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 text = "RECYCLE"
+icon = SubResource("AtlasTexture_mnac2")
 
 [node name="SELL_BUTTON" type="Button" parent="BUTTONS"]
 layout_mode = 0
@@ -60,7 +92,9 @@ offset_top = -72.0
 offset_right = 376.0
 offset_bottom = -32.0
 theme = ExtResource("4_6v034")
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 text = "SELL"
+icon = SubResource("AtlasTexture_68d0n")
 
 [node name="BUY_BUTTON" type="Button" parent="BUTTONS"]
 layout_mode = 0
@@ -69,7 +103,9 @@ offset_top = -72.0
 offset_right = 376.0
 offset_bottom = -32.0
 theme = ExtResource("4_6v034")
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 text = "BUY"
+icon = SubResource("AtlasTexture_qppqj")
 
 [node name="BACK_BUTTON" parent="." instance=ExtResource("2_2dqvc")]
 offset_top = -704.0
