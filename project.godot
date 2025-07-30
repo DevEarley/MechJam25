@@ -26,6 +26,7 @@ MISSIONS_MENU="*res://globals/GLOBAL_MENU_MISSIONS.gd"
 PARTS_MENU="*res://globals/GLOBAL_MENU_PARTS.gd"
 PILOTS_MENU="*res://globals/GLOBAL_MENU_PILOTS.gd"
 DATA="*res://globals/GLOBAL_DATA.gd"
+MAP="*res://globals/GLOBAL_MAP.gd"
 
 [display]
 

@@ -1,0 +1,119 @@
+[gd_scene load_steps=7 format=3 uid="uid://dsop6y3ld84ai"]
+
+[ext_resource type="PackedScene" uid="uid://df6x3in6yu7ai" path="res://locations-3D/map-1.glb" id="1_4xfga"]
+[ext_resource type="Environment" uid="uid://c7ssmhiiplyg8" path="res://world_environment.tres" id="2_paxxb"]
+
+[sub_resource type="Animation" id="Animation_paxxb"]
+resource_name = "idl"
+length = 120.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Map/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 12.1, 25.3667, 27.7446, 43.5667, 46.5333, 67, 71.3333, 89.2667, 96.2, 120),
+"transitions": PackedFloat32Array(2.07053, 1, 1, 0.466516, 7.21001, 0.353553, 4.59479, 0.297302, 6.49802, 0.101532, 0.482968),
+"update": 0,
+"values": [Vector3(0.164332, 3.46235, -18.1353), Vector3(19.593, 3.462, 8.931), Vector3(15.987, 3.462, 8.927), Vector3(10.863, 3.462, 11.709), Vector3(2.834, 3.462, 18.851), Vector3(2.833, 3.462, 18.851), Vector3(-4.509, 3.462, 13.452), Vector3(-3.642, 3.462, 11.4), Vector3(0.547, 3.462, -1.433), Vector3(0.551, 3.462, -1.445), Vector3(0.164332, 3.46235, -18.1353)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Map/Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 16.1667, 27.9667, 31, 48.6392, 62.3333, 67, 71.3333, 89.1279, 96.2667, 120),
+"transitions": PackedFloat32Array(2.07053, 3.03143, 1, 0.466516, 7.21001, 0.353553, 4.59479, 1.36604, 6.49802, 0.101532, 0.482968),
+"update": 0,
+"values": [Vector3(-0.927606, 3.06563, 0), Vector3(-0.356009, 1.5341, 0), Vector3(-0.654498, 2.1101, 0), Vector3(-0.734784, 2.28813, 0), Vector3(-0.465091, -0.708646, 0), Vector3(-0.465103, -0.708623, 0), Vector3(-0.547994, -0.547204, 0), Vector3(-0.575959, -0.411898, 0), Vector3(-0.731254, -0.329041, 0), Vector3(-0.731239, -0.326768, 0), Vector3(-0.927606, 3.06563, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gldc4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Map/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.164332, 3.46235, -18.1353)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Map/Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.927606, 3.06563, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0cso3"]
+resource_name = "still"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Map/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.164332, 3.46235, -18.1353)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Map/Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.927606, 3.06563, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0cso3"]
+_data = {
+&"RESET": SubResource("Animation_gldc4"),
+&"idle": SubResource("Animation_paxxb"),
+&"still": SubResource("Animation_0cso3")
+}
+
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = 3
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="map-1" parent="Map" instance=ExtResource("1_4xfga")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.878177, 0)
+
+[node name="grid1_extract18" parent="Map/map-1" index="0"]
+layers = 16
+
+[node name="Camera3D" type="Camera3D" parent="Map"]
+transform = Transform3D(-0.997116, -0.0607241, 0.0455137, 0, 0.599752, 0.800186, -0.0758875, 0.797879, -0.598022, 0.164332, 3.46235, -18.1353)
+cull_mask = 1045488
+environment = ExtResource("2_paxxb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0cso3")
+}
+autoplay = "still"
+blend_times = [&"idle", &"idle", 1.0, &"idle", &"still", 1.0]
+
+[editable path="Map/map-1"]

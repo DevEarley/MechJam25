@@ -1,9 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://fkcd1xnw1b1y"]
+[gd_scene load_steps=10 format=3 uid="uid://fkcd1xnw1b1y"]
 
 [ext_resource type="Script" uid="uid://bxy3br0irscae" path="res://scripts/add-self-to-scaled-ui.gd" id="1_3xs3o"]
 [ext_resource type="Script" uid="uid://b1vfqm6g6si6x" path="res://scene-scripts/start_menu.gd" id="1_xf5ny"]
 [ext_resource type="PackedScene" uid="uid://bunfxp7cx281n" path="res://prefabs/title-bar-wide.tscn" id="2_q21ov"]
 [ext_resource type="PackedScene" uid="uid://jqfcrgtcowf1" path="res://prefabs/left-hand-button.tscn" id="2_ycvuw"]
+[ext_resource type="Texture2D" uid="uid://l6oe44m1j68v" path="res://UI/ui-sheet-1.png" id="5_o1opb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oy7i1"]
+atlas = ExtResource("5_o1opb")
+region = Rect2(863, 676, 38, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1opb"]
+atlas = ExtResource("5_o1opb")
+region = Rect2(950, 670, 45, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ui70f"]
+atlas = ExtResource("5_o1opb")
+region = Rect2(907, 671, 39, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o50yc"]
+atlas = ExtResource("5_o1opb")
+region = Rect2(776, 671, 45, 46)
 
 [node name="START_MENU" type="CanvasLayer"]
 script = ExtResource("1_3xs3o")
@@ -25,10 +42,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -136.0
-offset_top = -224.0
-offset_right = 137.0
-offset_bottom = 276.0
+offset_left = -176.0
+offset_top = -264.0
+offset_right = 174.0
+offset_bottom = 236.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -38,38 +55,33 @@ script = ExtResource("1_xf5ny")
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 size_flags_vertical = 6
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 text = "MISSIONS"
+icon = SubResource("AtlasTexture_oy7i1")
 
 [node name="PILOTS" parent="START_MENU_BUTTONS" instance=ExtResource("2_ycvuw")]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 size_flags_vertical = 6
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 text = "PILOTS"
+icon = SubResource("AtlasTexture_o1opb")
 
 [node name="MECHS" parent="START_MENU_BUTTONS" instance=ExtResource("2_ycvuw")]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 size_flags_vertical = 6
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 text = "MECHS"
+icon = SubResource("AtlasTexture_ui70f")
 
 [node name="PARTS" parent="START_MENU_BUTTONS" instance=ExtResource("2_ycvuw")]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 size_flags_vertical = 6
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 text = "PARTS"
-
-[node name="DEPLOYMENTS" parent="START_MENU_BUTTONS" instance=ExtResource("2_ycvuw")]
-visible = false
-custom_minimum_size = Vector2(350, 0)
-layout_mode = 2
-size_flags_vertical = 6
-text = "DEPLOYMENTS"
-
-[node name="LOCATIONS" parent="START_MENU_BUTTONS" instance=ExtResource("2_ycvuw")]
-custom_minimum_size = Vector2(350, 0)
-layout_mode = 2
-size_flags_vertical = 6
-text = "LOCATIONS"
+icon = SubResource("AtlasTexture_o50yc")
 
 [node name="LOG_OFF" parent="START_MENU_BUTTONS" instance=ExtResource("2_ycvuw")]
 custom_minimum_size = Vector2(350, 0)

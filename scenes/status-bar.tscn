@@ -1,0 +1,174 @@
+[gd_scene load_steps=10 format=3 uid="uid://b6udq8vvo4y28"]
+
+[ext_resource type="Texture2D" uid="uid://x66vokp7xc81" path="res://UI/ui-sheet-1.svg" id="1_7t0a2"]
+[ext_resource type="Texture2D" uid="uid://l6oe44m1j68v" path="res://UI/ui-sheet-1.png" id="2_ujn7t"]
+[ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="2_vmkjb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0ec2"]
+atlas = ExtResource("2_ujn7t")
+region = Rect2(776, 674, 47, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avs4p"]
+atlas = ExtResource("2_ujn7t")
+region = Rect2(906, 671, 44, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpbo8"]
+atlas = ExtResource("2_ujn7t")
+region = Rect2(952, 671, 46, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pum2"]
+atlas = ExtResource("2_ujn7t")
+region = Rect2(865, 675, 38, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uk8sn"]
+atlas = ExtResource("2_ujn7t")
+region = Rect2(734, 675, 38, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfer4"]
+atlas = ExtResource("2_ujn7t")
+region = Rect2(826, 674, 38, 41)
+
+[node name="STATUS_BAR_CANVAS" type="CanvasLayer"]
+
+[node name="StatusBar" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="StatusBar"]
+show_behind_parent = true
+layout_mode = 1
+offset_left = 24.0
+offset_top = 657.0
+offset_right = 1272.0
+offset_bottom = 721.0
+texture = ExtResource("1_7t0a2")
+region_rect = Rect2(8, 310, 287, 55)
+patch_margin_left = 89
+patch_margin_right = 90
+
+[node name="TextureRect" type="TextureRect" parent="StatusBar"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 667.0
+offset_right = 79.0
+offset_bottom = 708.0
+texture = SubResource("AtlasTexture_d0ec2")
+
+[node name="TextureRect2" type="TextureRect" parent="StatusBar"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 665.0
+offset_right = 207.0
+offset_bottom = 711.0
+texture = SubResource("AtlasTexture_avs4p")
+
+[node name="TextureRect3" type="TextureRect" parent="StatusBar"]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 665.0
+offset_right = 335.0
+offset_bottom = 711.0
+texture = SubResource("AtlasTexture_mpbo8")
+
+[node name="PARTS_TEXT" type="RichTextLabel" parent="StatusBar"]
+clip_contents = false
+layout_mode = 1
+offset_left = 88.0
+offset_top = 673.0
+offset_right = 120.0
+offset_bottom = 708.0
+theme = ExtResource("2_vmkjb")
+text = "[0]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="MECH_TEXT" type="RichTextLabel" parent="StatusBar"]
+clip_contents = false
+layout_mode = 1
+offset_left = 216.0
+offset_top = 673.0
+offset_right = 248.0
+offset_bottom = 708.0
+theme = ExtResource("2_vmkjb")
+text = "[0]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="PILOT_TEXT" type="RichTextLabel" parent="StatusBar"]
+clip_contents = false
+layout_mode = 1
+offset_left = 336.0
+offset_top = 673.0
+offset_right = 368.0
+offset_bottom = 708.0
+theme = ExtResource("2_vmkjb")
+text = "[0]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="TextureRect4" type="TextureRect" parent="StatusBar"]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 667.0
+offset_right = 438.0
+offset_bottom = 709.0
+texture = SubResource("AtlasTexture_7pum2")
+
+[node name="TextureRect5" type="TextureRect" parent="StatusBar"]
+layout_mode = 0
+offset_left = 1080.0
+offset_top = 669.0
+offset_right = 1118.0
+offset_bottom = 711.0
+texture = SubResource("AtlasTexture_uk8sn")
+
+[node name="TextureRect6" type="TextureRect" parent="StatusBar"]
+layout_mode = 0
+offset_left = 960.0
+offset_top = 668.0
+offset_right = 998.0
+offset_bottom = 709.0
+texture = SubResource("AtlasTexture_bfer4")
+
+[node name="MISSION_TEXT" type="RichTextLabel" parent="StatusBar"]
+clip_contents = false
+layout_mode = 1
+offset_left = 448.0
+offset_top = 673.0
+offset_right = 550.0
+offset_bottom = 708.0
+theme = ExtResource("2_vmkjb")
+text = "24:00:00"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="TITLE5" type="RichTextLabel" parent="StatusBar"]
+clip_contents = false
+layout_mode = 1
+offset_left = 1000.0
+offset_top = 673.0
+offset_right = 1032.0
+offset_bottom = 708.0
+theme = ExtResource("2_vmkjb")
+text = "[0]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="TITLE6" type="RichTextLabel" parent="StatusBar"]
+clip_contents = false
+layout_mode = 1
+offset_left = 1120.0
+offset_top = 673.0
+offset_right = 1152.0
+offset_bottom = 708.0
+theme = ExtResource("2_vmkjb")
+text = "[0]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0

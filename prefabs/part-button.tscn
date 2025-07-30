@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://u86dkb7ctiay"]
+
+[ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="1_jhpmx"]
+[ext_resource type="Texture2D" uid="uid://l6oe44m1j68v" path="res://UI/ui-sheet-1.png" id="2_jw137"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aepcr"]
+atlas = ExtResource("2_jw137")
+region = Rect2(774, 672, 49, 45)
+
+[node name="Button" type="Button"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_jhpmx")
+icon = SubResource("AtlasTexture_aepcr")

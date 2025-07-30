@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=19 format=3 uid="uid://c013mj5wqs6fo"]
+[gd_resource type="VisualShader" load_steps=29 format=3 uid="uid://b8a1n1xefm1ls"]
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_evsg0"]
 constant = 16.0
@@ -56,13 +56,91 @@ function = 23
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_bphw4"]
 operator = 3
 
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_er7o2"]
+parameter_name = "bend"
+default_value_enabled = true
+default_value = 0.5
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_mpom1"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_rbd40"]
+input_name = "node_position_world"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_2ygoi"]
+input_name = "vertex"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_wug6m"]
+input_name = "camera_position_world"
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_0k057"]
+
+[sub_resource type="VisualShaderNodeVectorDistance" id="VisualShaderNodeVectorDistance_4tc6j"]
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_1h20a"]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_qip1q"]
+operator = 1
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_xx5no"]
+
 [resource]
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
 
+uniform float bend = 0.5;
 uniform sampler2D Texture2DParameter;
 
 
+
+void vertex() {
+// Input:3
+	vec3 n_out3p0 = VERTEX;
+
+
+// VectorDecompose:7
+	float n_out7p0 = n_out3p0.x;
+	float n_out7p1 = n_out3p0.y;
+	float n_out7p2 = n_out3p0.z;
+
+
+// Input:2
+	vec3 n_out2p0 = NODE_POSITION_WORLD;
+
+
+// VectorOp:5
+	vec3 n_out5p0 = n_out2p0 + n_out3p0;
+
+
+// Input:4
+	vec3 n_out4p0 = CAMERA_POSITION_WORLD;
+
+
+// Distance:6
+	float n_out6p0 = distance(n_out5p0, n_out4p0);
+
+
+// FloatParameter:10
+	float n_out10p0 = bend;
+
+
+// FloatOp:11
+	float n_out11p0 = n_out6p0 * n_out10p0;
+
+
+// FloatOp:8
+	float n_out8p0 = n_out7p1 - n_out11p0;
+
+
+// VectorCompose:9
+	vec3 n_out9p0 = vec3(n_out7p0, n_out8p0, n_out7p2);
+
+
+// Output:0
+	VERTEX = n_out9p0;
+
+
+}
 
 void fragment() {
 	vec4 n_out4p0;
@@ -146,7 +224,29 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-463.283, -197.043)
+graph_offset = Vector2(-367.985, -89.2989)
+nodes/vertex/0/position = Vector2(920, 40)
+nodes/vertex/2/node = SubResource("VisualShaderNodeInput_rbd40")
+nodes/vertex/2/position = Vector2(-1867.65, -330.664)
+nodes/vertex/3/node = SubResource("VisualShaderNodeInput_2ygoi")
+nodes/vertex/3/position = Vector2(-1860, -120)
+nodes/vertex/4/node = SubResource("VisualShaderNodeInput_wug6m")
+nodes/vertex/4/position = Vector2(-1840, 300)
+nodes/vertex/5/node = SubResource("VisualShaderNodeVectorOp_0k057")
+nodes/vertex/5/position = Vector2(-1260, -400)
+nodes/vertex/6/node = SubResource("VisualShaderNodeVectorDistance_4tc6j")
+nodes/vertex/6/position = Vector2(-920, 180)
+nodes/vertex/7/node = SubResource("VisualShaderNodeVectorDecompose_1h20a")
+nodes/vertex/7/position = Vector2(-200, -240)
+nodes/vertex/8/node = SubResource("VisualShaderNodeFloatOp_qip1q")
+nodes/vertex/8/position = Vector2(240, 160)
+nodes/vertex/9/node = SubResource("VisualShaderNodeVectorCompose_xx5no")
+nodes/vertex/9/position = Vector2(580, -400)
+nodes/vertex/10/node = SubResource("VisualShaderNodeFloatParameter_er7o2")
+nodes/vertex/10/position = Vector2(-920, 500)
+nodes/vertex/11/node = SubResource("VisualShaderNodeFloatOp_mpom1")
+nodes/vertex/11/position = Vector2(-380, 200)
+nodes/vertex/connections = PackedInt32Array(2, 0, 5, 0, 3, 0, 5, 1, 4, 0, 6, 1, 5, 0, 6, 0, 3, 0, 7, 0, 7, 0, 9, 0, 7, 2, 9, 2, 8, 0, 9, 1, 9, 0, 0, 0, 6, 0, 11, 0, 10, 0, 11, 1, 11, 0, 8, 1, 7, 1, 8, 0)
 nodes/fragment/0/position = Vector2(1060, 240)
 nodes/fragment/2/node = SubResource("VisualShaderNodeInput_72vsg")
 nodes/fragment/2/position = Vector2(-3140, 960)

@@ -8,6 +8,7 @@ layer = 50
 [node name="SCALED_UI" type="SubViewportContainer" parent="."]
 z_index = 999
 z_as_relative = false
+texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

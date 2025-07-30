@@ -9,13 +9,18 @@ func _ready():
 	$OPTIONS.connect("pressed",_on_OPTIONS_pressed)
 
 func on_back_to_main_menu():
+	MAP.ANIMATOR.play("still")
 	STATE.MAIN_MENU_CANVAS.show()
 	STATE.OPTIONS_MENU_CANVAS.hide()
+	STATE.STATUS_BAR_CANVAS.hide()
 
 
 func _on_START_pressed():
+	MAP.ANIMATOR.play("idle")
 	STATE.MAIN_MENU_CANVAS.hide()
 	STATE.START_MENU_CANVAS.show()
+	STATE.STATUS_BAR_CANVAS.show()
+
 
 func _on_EXIT_pressed():
 	get_tree().quit()

@@ -69,3 +69,6 @@ grow_vertical = 1
 text = "[center]OPTIONS"
 
 [node name="BACK_BUTTON" parent="." instance=ExtResource("5_uduq7")]
+offset_top = -704.0
+offset_right = 213.0
+offset_bottom = -664.0

@@ -21,6 +21,12 @@ offset_bottom = 44.0
 grow_vertical = 1
 text = "[center]PARTS"
 
+[node name="SubViewportContainer" parent="." instance=ExtResource("5_d1idq")]
+offset_left = 704.0
+offset_top = 72.0
+offset_right = 704.0
+offset_bottom = 72.0
+
 [node name="BUTTONS" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -32,43 +38,60 @@ script = ExtResource("3_68d0n")
 
 [node name="EQUIP_BUTTON" type="Button" parent="BUTTONS"]
 layout_mode = 0
-offset_top = 16.0
+offset_top = -72.0
 offset_right = 192.0
-offset_bottom = 56.0
+offset_bottom = -32.0
 theme = ExtResource("4_6v034")
 text = "EQUIP"
 
 [node name="RECYCLE_BUTTON" type="Button" parent="BUTTONS"]
 layout_mode = 0
 offset_left = 376.0
-offset_top = 16.0
+offset_top = -72.0
 offset_right = 608.0
-offset_bottom = 56.0
+offset_bottom = -32.0
 theme = ExtResource("4_6v034")
 text = "RECYCLE"
 
 [node name="SELL_BUTTON" type="Button" parent="BUTTONS"]
 layout_mode = 0
 offset_left = 192.0
-offset_top = 16.0
+offset_top = -72.0
 offset_right = 376.0
-offset_bottom = 56.0
+offset_bottom = -32.0
 theme = ExtResource("4_6v034")
 text = "SELL"
 
-[node name="SubViewportContainer" parent="." instance=ExtResource("5_d1idq")]
-offset_left = 744.0
-offset_top = 104.0
-offset_right = 744.0
-offset_bottom = 104.0
+[node name="BUY_BUTTON" type="Button" parent="BUTTONS"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = -72.0
+offset_right = 376.0
+offset_bottom = -32.0
+theme = ExtResource("4_6v034")
+text = "BUY"
 
 [node name="BACK_BUTTON" parent="." instance=ExtResource("2_2dqvc")]
+offset_top = -704.0
+offset_right = 213.0
+offset_bottom = -664.0
 
-[node name="SCROLLABLE" type="ScrollContainer" parent="."]
-offset_top = 64.0
-offset_right = 608.0
-offset_bottom = 632.0
+[node name="Control" type="Control" parent="."]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 72.0
+offset_right = 640.0
+offset_bottom = 648.0
 
-[node name="BUTTONS" type="VBoxContainer" parent="SCROLLABLE"]
+[node name="SCROLLABLE" type="ScrollContainer" parent="Control"]
+clip_contents = false
+layout_mode = 0
+offset_top = 8.0
+offset_right = 592.0
+offset_bottom = 576.0
+
+[node name="BUTTONS" type="VBoxContainer" parent="Control/SCROLLABLE"]
 layout_mode = 2
 theme_override_constants/separation = 33

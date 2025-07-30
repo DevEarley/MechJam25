@@ -49,8 +49,13 @@ func init_children():
 func on_pick_mech(mech:Mech):
 	$CONFIRM_MECH.disabled = false;
 	STATE.CURRENT_MECH_ID = mech.ID
+	DATA_TO_UI.display_node_for_mech(STATE.CURRENT_MECH_ID,$Mech_SubViewportContainer/SubViewportContainer/SubViewport/MECHS_NODE);
 
 func on_confirm_mech():
+	var current_part:Part = LINQ.First(STATE.PARTS, func (part:Part):
+		return part.ID == STATE.CURRENT_PART_ID);
+	current_part.status = ENUMS.PART_STATUS.EQUIPT;
+	current_part.attached_to_mech_id = STATE.CURRENT_MECH_ID
 	$AnimationPlayer.play("step_1")
 	$Part_SubViewportContainer.show()
 	$Mech_SubViewportContainer.show()
@@ -70,6 +75,7 @@ func on_equip_button_pressed():
 		return part.ID == STATE.CURRENT_PART_ID);
 	current_part.attached_to_mech_id = STATE.CURRENT_MECH_ID;
 	DATA.save_parts_to_user_data()
+	PARTS_MENU.show_parts()
 	self.hide();
 
 func on_visibility_changed():

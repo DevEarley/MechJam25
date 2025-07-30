@@ -19,6 +19,9 @@ grow_vertical = 1
 text = "[center]MISSIONS"
 
 [node name="BACK_BUTTON" parent="." instance=ExtResource("3_hbt48")]
+offset_top = -704.0
+offset_right = 213.0
+offset_bottom = -664.0
 
 [node name="SCROLLABLE" type="ScrollContainer" parent="."]
 offset_top = 64.0

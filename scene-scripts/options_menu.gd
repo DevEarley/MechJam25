@@ -25,7 +25,7 @@ func _on_difficulty_instant_button_pressed():
 
 func _on_save_button_pressed():
 	STATE.USER_REAL_TIME = real_time
-	DATA.save_user_data(STATE.USER_REAL_TIME)
+	DATA.save_user_options_to_user_data()
 	print("Saved!")
 	#save to options user file
 	#get_tree().change_scene("res://scenes/main_menu.tscn")
