@@ -1,11 +1,147 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1gap44bgx3de"]
+[gd_scene load_steps=5 format=3 uid="uid://d1gap44bgx3de"]
 
 [ext_resource type="Script" uid="uid://bxy3br0irscae" path="res://scripts/add-self-to-scaled-ui.gd" id="1_ed1ed"]
+[ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="2_1xm5e"]
 [ext_resource type="PackedScene" uid="uid://bunfxp7cx281n" path="res://prefabs/title-bar-wide.tscn" id="2_n2a46"]
 [ext_resource type="PackedScene" uid="uid://c4koj71ge37td" path="res://prefabs/back_button.tscn" id="3_hbt48"]
 
 [node name="Missions-menu" type="CanvasLayer"]
 script = ExtResource("1_ed1ed")
+
+[node name="MISSION_BOX" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ID" type="Label" parent="MISSION_BOX"]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 64.0
+offset_right = 498.0
+offset_bottom = 92.0
+theme = ExtResource("2_1xm5e")
+text = "000"
+
+[node name="ID2" type="Label" parent="MISSION_BOX"]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 64.0
+offset_right = 498.0
+offset_bottom = 92.0
+theme = ExtResource("2_1xm5e")
+text = "000"
+
+[node name="NAME" type="Label" parent="MISSION_BOX"]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 64.0
+offset_right = 664.0
+offset_bottom = 92.0
+theme = ExtResource("2_1xm5e")
+text = "Mission Title"
+
+[node name="FLAVOR" type="Label" parent="MISSION_BOX"]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 136.0
+offset_right = 594.0
+offset_bottom = 164.0
+theme = ExtResource("2_1xm5e")
+text = "Flavor Text"
+
+[node name="ONE_OVER_ODDS_OF_SUCCESS" type="Label" parent="MISSION_BOX"]
+layout_mode = 0
+offset_left = 624.0
+offset_top = 104.0
+offset_right = 686.0
+offset_bottom = 132.0
+theme = ExtResource("2_1xm5e")
+text = "Odds"
+
+[node name="SLASH" type="Label" parent="MISSION_BOX"]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 104.0
+offset_right = 622.0
+offset_bottom = 132.0
+theme = ExtResource("2_1xm5e")
+text = "1/"
+
+[node name="ENVIRONMENT" type="Label" parent="MISSION_BOX"]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 168.0
+offset_right = 602.0
+offset_bottom = 196.0
+theme = ExtResource("2_1xm5e")
+text = "Environment"
+
+[node name="LOCATION_FLAVOR" type="Label" parent="MISSION_BOX"]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 200.0
+offset_right = 566.0
+offset_bottom = 228.0
+theme = ExtResource("2_1xm5e")
+text = "Location"
+
+[node name="LOCATION_POSITION" type="Label" parent="MISSION_BOX"]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 64.0
+offset_right = 444.0
+offset_bottom = 92.0
+theme = ExtResource("2_1xm5e")
+text = "[000,000]"
+
+[node name="MECH_NAME" type="Label" parent="MISSION_BOX"]
+layout_mode = 0
+offset_left = 1224.0
+offset_top = 128.0
+offset_right = 1298.0
+offset_bottom = 156.0
+theme = ExtResource("2_1xm5e")
+text = "Result"
+
+[node name="PILOT_NAME" type="Label" parent="MISSION_BOX"]
+layout_mode = 0
+offset_left = 1224.0
+offset_top = 168.0
+offset_right = 1298.0
+offset_bottom = 196.0
+theme = ExtResource("2_1xm5e")
+text = "Result"
+
+[node name="STATUS" type="Label" parent="MISSION_BOX"]
+layout_mode = 0
+offset_left = 1224.0
+offset_top = 88.0
+offset_right = 1298.0
+offset_bottom = 116.0
+theme = ExtResource("2_1xm5e")
+text = "Result"
+
+[node name="TIME_STARTED" type="Label" parent="MISSION_BOX"]
+layout_mode = 0
+offset_left = 1240.0
+offset_top = 240.0
+offset_right = 1314.0
+offset_bottom = 268.0
+theme = ExtResource("2_1xm5e")
+text = "Result"
+
+[node name="TIME_REMAINING" type="Label" parent="MISSION_BOX"]
+layout_mode = 0
+offset_left = 1232.0
+offset_top = 200.0
+offset_right = 1306.0
+offset_bottom = 228.0
+theme = ExtResource("2_1xm5e")
+text = "Result"
 
 [node name="TITLE" parent="." instance=ExtResource("2_n2a46")]
 anchors_preset = 5

@@ -2,7 +2,7 @@ extends Node
 
 func _ready():
 
-
+	STATE.MAP_BG = $BG2
 
 	STATE.DEPLOYMENTS_MENU_CANVAS = preload("res://scenes/deployments-menu.tscn").instantiate();
 	SCALED_UI.add_canvas_to_viewport(STATE.DEPLOYMENTS_MENU_CANVAS)

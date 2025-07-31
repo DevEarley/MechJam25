@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bfj2u3btthq6a"]
 
-[ext_resource type="Shader" uid="uid://b8a1n1xefm1ls" path="res://shaders/map_shader.tres" id="1_dm6it"]
+[ext_resource type="Shader" uid="uid://d1pi0b0qud8o0" path="res://shaders/map_opaque_shader.tres" id="1_dm6it"]
 [ext_resource type="Texture2D" uid="uid://ch4hii84rx6mi" path="res://textures/gradients.png" id="2_m5aeu"]
 
 [resource]

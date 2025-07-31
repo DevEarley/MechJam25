@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://dnjydsurevcp5"]
+
+[ext_resource type="Shader" uid="uid://d1pi0b0qud8o0" path="res://shaders/map_opaque_shader.tres" id="1_k8ylx"]
+
+[sub_resource type="Gradient" id="Gradient_k8ylx"]
+offsets = PackedFloat32Array(0, 0.482072, 1)
+colors = PackedColorArray(0, 1, 0.623529, 1, 0.231373, 0.121569, 0.784314, 1, 0.192157, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8vnth"]
+gradient = SubResource("Gradient_k8ylx")
+fill_from = Vector2(1, 0.811966)
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_k8ylx")
+shader_parameter/bend = 0.5
+shader_parameter/Texture2DParameter = SubResource("GradientTexture2D_8vnth")

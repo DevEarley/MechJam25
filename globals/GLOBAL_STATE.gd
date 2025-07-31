@@ -20,6 +20,9 @@ var STATUS_BAR_CANVAS:CanvasLayer;
 var EQUIP_PART_TO_MECH_POP_UP:CanvasLayer
 var USE_REAL_TIME : bool
 var DIFFICULTY_ALREADY_CHOSEN : bool = false
+var CREDITS = 0;
+var RECYCLE_POINTS = 0
+
 
 var SPEED = 1.0
 var PILOTS:Array[Pilot]
@@ -42,3 +45,5 @@ var PILOTS_VERSION:float
 var MISSIONS_VERSION:float;
 var LOCATIONS_VERSION:float;
 var USER_OPTIONS_VERSION:float;
+
+var MAP_BG:NinePatchRect

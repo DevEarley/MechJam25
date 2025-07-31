@@ -1,7 +1,36 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsop6y3ld84ai"]
+[gd_scene load_steps=15 format=3 uid="uid://dsop6y3ld84ai"]
 
 [ext_resource type="PackedScene" uid="uid://df6x3in6yu7ai" path="res://locations-3D/map-1.glb" id="1_4xfga"]
 [ext_resource type="Environment" uid="uid://c7ssmhiiplyg8" path="res://world_environment.tres" id="2_paxxb"]
+[ext_resource type="Material" uid="uid://dioy0y3vm4mof" path="res://materials/map_mat_2.tres" id="3_2klcf"]
+[ext_resource type="Material" uid="uid://dnjydsurevcp5" path="res://materials/map_mat_3.tres" id="4_0cso3"]
+
+[sub_resource type="Animation" id="Animation_gldc4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CAMERA:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.164332, 3.46235, -18.1353)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CAMERA:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.927606, 3.06563, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_paxxb"]
 resource_name = "idl"
@@ -10,7 +39,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Map/Camera3D:position")
+tracks/0/path = NodePath("CAMERA:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -22,7 +51,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Map/Camera3D:rotation")
+tracks/1/path = NodePath("CAMERA:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -32,39 +61,12 @@ tracks/1/keys = {
 "values": [Vector3(-0.927606, 3.06563, 0), Vector3(-0.356009, 1.5341, 0), Vector3(-0.654498, 2.1101, 0), Vector3(-0.734784, 2.28813, 0), Vector3(-0.465091, -0.708646, 0), Vector3(-0.465103, -0.708623, 0), Vector3(-0.547994, -0.547204, 0), Vector3(-0.575959, -0.411898, 0), Vector3(-0.731254, -0.329041, 0), Vector3(-0.731239, -0.326768, 0), Vector3(-0.927606, 3.06563, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_gldc4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Map/Camera3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.164332, 3.46235, -18.1353)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Map/Camera3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.927606, 3.06563, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_0cso3"]
 resource_name = "still"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Map/Camera3D:position")
+tracks/0/path = NodePath("CAMERA:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -76,7 +78,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Map/Camera3D:rotation")
+tracks/1/path = NodePath("CAMERA:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -93,10 +95,136 @@ _data = {
 &"still": SubResource("Animation_0cso3")
 }
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[sub_resource type="Animation" id="Animation_2lpho"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.97786, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshInstance3D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_2klcf"]
+resource_name = "idle"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4, 1.46667, 3),
+"transitions": PackedFloat32Array(1, 1.68179, 1, 1.27456),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.987, 0), Vector3(0, -1.987, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.96667),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [Vector3(0, -1.97786, 0), Vector3(0, 1.978, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshInstance3D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.4, 1.5244),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nakos"]
+_data = {
+&"RESET": SubResource("Animation_2lpho"),
+&"idle": SubResource("Animation_2klcf")
+}
+
+[sub_resource type="QuadMesh" id="QuadMesh_2lpho"]
+size = Vector2(25, 25)
+orientation = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_0cso3"]
+size = Vector2(30, 30)
+orientation = 1
+
+[sub_resource type="SphereMesh" id="SphereMesh_2klcf"]
+
+[node name="MAP_CANVAS" type="CanvasLayer"]
 layer = 3
 
+[node name="CAMERA" type="Camera3D" parent="."]
+transform = Transform3D(-0.997116, -0.0607259, 0.0455149, 0, 0.599751, 0.800186, -0.0758896, 0.797879, -0.598022, 0.164332, 3.46235, -18.1353)
+cull_mask = 1045488
+environment = ExtResource("2_paxxb")
+
 [node name="Map" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.54992, 0)
 
 [node name="map-1" parent="Map" instance=ExtResource("1_4xfga")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.878177, 0)
@@ -104,16 +232,47 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.878177, 0)
 [node name="grid1_extract18" parent="Map/map-1" index="0"]
 layers = 16
 
-[node name="Camera3D" type="Camera3D" parent="Map"]
-transform = Transform3D(-0.997116, -0.0607241, 0.0455137, 0, 0.599752, 0.800186, -0.0758875, 0.797879, -0.598022, 0.164332, 3.46235, -18.1353)
-cull_mask = 1045488
-environment = ExtResource("2_paxxb")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="ANIMATOR" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_0cso3")
 }
 autoplay = "still"
 blend_times = [&"idle", &"idle", 1.0, &"idle", &"still", 1.0]
+
+[node name="CURSOR" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.268, 4.412, 74.177)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CURSOR"]
+libraries = {
+&"": SubResource("AnimationLibrary_nakos")
+}
+autoplay = "idle"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CURSOR"]
+layers = 16
+mesh = SubResource("QuadMesh_2lpho")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_2klcf")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CURSOR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.97786, 0)
+layers = 16
+mesh = SubResource("QuadMesh_2lpho")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_2klcf")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="CURSOR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000694275, -0.742016, -0.0189438)
+layers = 16
+mesh = SubResource("QuadMesh_0cso3")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_2klcf")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="CURSOR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.06026, 0)
+layers = 16
+mesh = SubResource("SphereMesh_2klcf")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("4_0cso3")
 
 [editable path="Map/map-1"]

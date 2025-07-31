@@ -51,10 +51,10 @@ static func build_part_box(part_button,part:Part):
 		part_button.get_node("FLAVOR").text = "%s"%part.flavor
 		part_button.get_node("RECYCLE_POINTS").text = "%s"%part.recycle_points
 		part_button.get_node("SELLING_PRICE").text = "%s"%part.selling_price
-		part_button.get_node("BETTER_ODDS").text = "%s"%part.better_odds
-		part_button.get_node("CRITERIA_FOR_BETTER_ODDS").text = "%s"%part.criteria_for_better_odds
-		part_button.get_node("WORSE_ODDS").text = "%s"%part.worse_odds
-		part_button.get_node("CRITERIA_FOR_WORSE_ODDS").text = "%s"%part.criteria_for_worse_odds
+		part_button.get_node("MISSION_ODDS").text = "%s"%part.mission_odds
+		part_button.get_node("CRITERIA_FOR_MISSION_ODDS").text = "%s"%part.criteria_for_mission_odds
+		part_button.get_node("RETURNING_ODDS").text = "%s"%part.returning_odds
+		part_button.get_node("CRITERIA_FOR_RETURNING_ODDS").text = "%s"%part.criteria_for_returning_odds
 		part_button.get_node("MECH").text = "%s"%part.attached_to_mech_id
 		part_button.get_node("STATUS").text = "%s"%part.status
 		part_button.get_node("TYPE").text = "%s"%part.type

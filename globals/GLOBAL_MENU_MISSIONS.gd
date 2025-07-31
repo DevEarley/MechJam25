@@ -1,8 +1,8 @@
 extends Node
 var MISSION_BOX_PREFAB = preload("res://prefabs/mission_box_small.tscn")
-
+var MISSION_BUTTONS
 func show_missions():
-	var MISSION_BUTTONS = STATE.MISSIONS_MENU_CANVAS.get_node("SCROLLABLE/BUTTONS")
+	MISSION_BUTTONS = STATE.MISSIONS_MENU_CANVAS.get_node("SCROLLABLE/BUTTONS")
 
 	for child in MISSION_BUTTONS.get_children():
 		child.queue_free()
@@ -13,16 +13,24 @@ func show_missions():
 		mission_button.get_node("NAME").text = "%s"%mission.name
 		mission_button.get_node("STATUS").text = "%s"%mission.status
 		mission_button.connect("pressed",on_mission_pressed.bind(mission));
-		#mission_button.get_node("FLAVOR").text = "%s"%mission.flavor
-		#mission_button.get_node("ONE_OVER_ODDS_OF_SUCCESS").text = "%s"%mission.one_over_odds_of_success
-		#mission_button.get_node("ENVIRONMENT").text = "%s"%mission.environment
-		#mission_button.get_node("ALLOWED_MECH_TYPES").text = "%s"%mission.allowed_mech_types
-		#mission_button.get_node("LOCATION_ID").text = "%s"%mission.mission
-		#mission_button.get_node("MECH_ID").text = "%s"%mission.selling_price
-		#mission_button.get_node("PILOT_ID").text = "%s"%mission.base_health
-		#mission_button.get_node("TIME_STARTED").text = "%s"%mission.time_started
-		#mission_button.get_node("TIME_REMAINING").text = "%s"%mission.time_remaining
 		MISSION_BUTTONS.add_child(mission_button)
-func on_mission_pressed(mission:Mission):
 
+func on_back_to_start_menu():
+	STATE.START_MENU_CANVAS.show()
+	STATE.MISSIONS_MENU_CANVAS.hide()
+
+func on_back_to_mission_list():
+	MISSION_BUTTONS.show();
+	STATE.MAP_BG.show()
+	STATE.ON_BACK_BUTTON_PRESSED =on_back_to_start_menu
+
+func on_mission_pressed(mission:Mission):
+	STATE.ON_BACK_BUTTON_PRESSED =on_back_to_mission_list
+	MISSION_BUTTONS.hide();
+	STATE.MAP_BG.hide()
+	MAP.ANIMATOR.stop()
+	var location:Location = LINQ.First(STATE.LOCATIONS,func (location:Location): return location.ID==mission.location_id);
+	MAP.CAMERA.global_position = location.map_position
+	MAP.CAMERA.rotation = Vector3(-PI/2,0,0)
+	MAP.CURSOR.global_position = Vector3(location.map_position.x,MAP.CURSOR.global_position.y,location.map_position.z)
 	pass

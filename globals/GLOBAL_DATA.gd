@@ -76,7 +76,7 @@ func create_and_push_mission_to_STATE(section,mission_index,user_data):
 			mission.name = user_data.get_value(section,"MISSION_%s_NAME"%mission_index)
 			mission.flavor = user_data.get_value(section,"MISSION_%s_FLAVOR"%mission_index)
 			mission.flavor_icon = user_data.get_value(section,"MISSION_%s_FLAVOR_ICON"%mission_index)
-			mission.one_over_odds_of_success = user_data.get_value(section,"MISSION_%s_ONE_OVER_ODDS_OF_SUCCESS"%mission_index)
+			mission.one_over_odds_for_mission = user_data.get_value(section,"MISSION_%s_ONE_OVER_ODDS_FOR_MISSION"%mission_index)
 			mission.environment = user_data.get_value(section,"MISSION_%s_ENVIRONMENT"%mission_index)
 			mission.allowed_mech_types = user_data.get_value(section,"MISSION_%s_ALLOWED_MECH_TYPES"%mission_index)
 			mission.mech_id = user_data.get_value(section,"MISSION_%s_MECH_ID"%mission_index)
@@ -94,7 +94,7 @@ func create_and_push_mission_to_STATE_try_from_user(section,mission_index,data,u
 			mission.name = data.get_value("DEFAULT","MISSION_%s_NAME"%mission_index)
 			mission.flavor = data.get_value("DEFAULT","MISSION_%s_FLAVOR"%mission_index)
 			mission.flavor_icon = data.get_value("DEFAULT","MISSION_%s_FLAVOR_ICON"%mission_index)
-			mission.one_over_odds_of_success = data.get_value("DEFAULT","MISSION_%s_ONE_OVER_ODDS_OF_SUCCESS"%mission_index)
+			mission.one_over_odds_for_mission = data.get_value("DEFAULT","MISSION_%s_ONE_OVER_ODDS_FOR_MISSION"%mission_index)
 			mission.environment = data.get_value("DEFAULT","MISSION_%s_ENVIRONMENT"%mission_index)
 			mission.allowed_mech_types = data.get_value("DEFAULT","MISSION_%s_ALLOWED_MECH_TYPES"%mission_index)
 
@@ -143,7 +143,8 @@ func save_missions_to_user_data():
 		user_data.set_value(section,"MISSION_%s_PILOT_ID"%index,mission.pilot_id)
 		user_data.set_value(section,"MISSION_%s_STATUS"%index,mission.status)
 		user_data.set_value(section,"MISSION_%s_TIME_STARTED"%index,mission.time_started)
-		user_data.set_value(section,"MISSION_%s_ONE_OVER_ODDS_OF_SUCCESS"%index,mission.one_over_odds_of_success)
+		user_data.set_value(section,"MISSION_%s_ONE_OVER_ODDS_FOR_MISSION"%index,mission.one_over_odds_for_mission)
+		user_data.set_value(section,"MISSION_%s_ONE_OVER_ODDS_FOR_RETURNING"%index,mission.one_over_odds_for_returning)
 
 		index+=1;
 	var err = user_data.save("user://missions.cfg")
@@ -197,10 +198,10 @@ func create_and_push_part_to_STATE(section,part_index,user_data):
 			part.theme = user_data.get_value(section,"PART_%s_THEME"%part_index)
 			part.recycle_points = user_data.get_value(section,"PART_%s_RECYCLE_POINTS"%part_index)
 			part.selling_price = user_data.get_value(section,"PART_%s_SELLING_PRICE"%part_index)
-			part.better_odds = user_data.get_value(section,"PART_%s_BETTER_ODDS"%part_index)
-			part.criteria_for_better_odds = user_data.get_value(section,"PART_%s_CRITERIA_FOR_BETTER_ODDS"%part_index)
-			part.worse_odds = user_data.get_value(section,"PART_%s_WORSE_ODDS"%part_index)
-			part.criteria_for_worse_odds = user_data.get_value(section,"PART_%s_CRITERIA_FOR_WORSE_ODDS"%part_index)
+			part.mission_odds = user_data.get_value(section,"PART_%s_MISSION_ODDS"%part_index)
+			part.criteria_for_mission_odds = user_data.get_value(section,"PART_%s_CRITERIA_FOR_MISSION_ODDS"%part_index)
+			part.returning_odds = user_data.get_value(section,"PART_%s_RETURNING_ODDS"%part_index)
+			part.criteria_for_returning_odds = user_data.get_value(section,"PART_%s_CRITERIA_FOR_RETURNING_ODDS"%part_index)
 			part.type = user_data.get_value(section,"PART_%s_TYPE"%part_index)
 			part.status = user_data.get_value(section,"PART_%s_STATUS"%part_index)
 			part.attached_to_mech_id = user_data.get_value(section,"PART_%s_ATTACHED_TO_MECH_ID"%part_index)
@@ -216,10 +217,10 @@ func create_and_push_part_to_STATE_try_from_user(section,part_index,data,user_da
 			part.theme = data.get_value("DEFAULT","PART_%s_THEME"%part_index)
 			part.recycle_points = data.get_value("DEFAULT","PART_%s_RECYCLE_POINTS"%part_index)
 			part.selling_price = data.get_value("DEFAULT","PART_%s_SELLING_PRICE"%part_index)
-			part.better_odds = data.get_value("DEFAULT","PART_%s_BETTER_ODDS"%part_index)
-			part.criteria_for_better_odds = data.get_value("DEFAULT","PART_%s_CRITERIA_FOR_BETTER_ODDS"%part_index)
-			part.worse_odds = data.get_value("DEFAULT","PART_%s_WORSE_ODDS"%part_index)
-			part.criteria_for_worse_odds = data.get_value("DEFAULT","PART_%s_CRITERIA_FOR_WORSE_ODDS"%part_index)
+			part.mission_odds = data.get_value("DEFAULT","PART_%s_MISSION_ODDS"%part_index)
+			part.criteria_for_mission_odds = data.get_value("DEFAULT","PART_%s_CRITERIA_FOR_MISSION_ODDS"%part_index)
+			part.returning_odds = data.get_value("DEFAULT","PART_%s_RETURNING_ODDS"%part_index)
+			part.criteria_for_returning_odds = data.get_value("DEFAULT","PART_%s_CRITERIA_FOR_RETURNING_ODDS"%part_index)
 			part.type = data.get_value("DEFAULT","PART_%s_TYPE"%part_index)
 
 			if(user_data.has_section_key(section,"PART_%s_STATUS"%part_index)):
@@ -250,10 +251,10 @@ func save_parts_to_user_data():
 		user_data.set_value(section,"PART_%s_THEME"%index,part.theme)
 		user_data.set_value(section,"PART_%s_RECYCLE_POINTS"%index,part.recycle_points)
 		user_data.set_value(section,"PART_%s_SELLING_PRICE"%index,part.selling_price)
-		user_data.set_value(section,"PART_%s_BETTER_ODDS"%index,part.better_odds)
-		user_data.set_value(section,"PART_%s_CRITERIA_FOR_BETTER_ODDS"%index,part.criteria_for_better_odds)
-		user_data.set_value(section,"PART_%s_WORSE_ODDS"%index,part.worse_odds)
-		user_data.set_value(section,"PART_%s_CRITERIA_FOR_WORSE_ODDS"%index,part.criteria_for_worse_odds)
+		user_data.set_value(section,"PART_%s_MISSION_ODDS"%index,part.mission_odds)
+		user_data.set_value(section,"PART_%s_CRITERIA_FOR_MISSION_ODDS"%index,part.criteria_for_mission_odds)
+		user_data.set_value(section,"PART_%s_RETURNING_ODDS"%index,part.returning_odds)
+		user_data.set_value(section,"PART_%s_CRITERIA_FOR_RETURNING_ODDS"%index,part.criteria_for_returning_odds)
 		user_data.set_value(section,"PART_%s_TYPE"%index,part.type)
 
 		user_data.set_value(section,"PART_%s_STATUS"%index,part.status)
@@ -310,10 +311,10 @@ func create_and_push_pilot_to_STATE(section,pilot_index,user_data):
 			pilot.theme = user_data.get_value(section,"PILOT_%s_THEME"%pilot_index)
 			pilot.status = user_data.get_value(section,"PILOT_%s_STATUS"%pilot_index)
 			pilot.mission_id = user_data.get_value(section,"PILOT_%s_MISSION_ID"%pilot_index)
-			pilot.better_odds = user_data.get_value(section,"PILOT_%s_BETTER_ODDS"%pilot_index)
-			pilot.criteria_for_better_odds = user_data.get_value(section,"PILOT_%s_CRITERIA_FOR_BETTER_ODDS"%pilot_index)
-			pilot.worse_odds = user_data.get_value(section,"PILOT_%s_WORSE_ODDS"%pilot_index)
-			pilot.criteria_for_worse_odds = user_data.get_value(section,"PILOT_%s_CRITERIA_FOR_WORSE_ODDS"%pilot_index)
+			pilot.mission_odds = user_data.get_value(section,"PILOT_%s_MISSION_ODDS"%pilot_index)
+			pilot.criteria_for_mission_odds = user_data.get_value(section,"PILOT_%s_CRITERIA_FOR_MISSION_ODDS"%pilot_index)
+			pilot.returning_odds = user_data.get_value(section,"PILOT_%s_RETURNING_ODDS"%pilot_index)
+			pilot.criteria_for_returning_odds = user_data.get_value(section,"PILOT_%s_CRITERIA_FOR_RETURNING_ODDS"%pilot_index)
 			STATE.PILOTS.push_back(pilot);
 
 func create_and_push_pilot_to_STATE_try_from_user(section,pilot_index,data,user_data:ConfigFile):
@@ -324,10 +325,10 @@ func create_and_push_pilot_to_STATE_try_from_user(section,pilot_index,data,user_
 			pilot.cost = data.get_value("DEFAULT","PILOT_%s_COST"%pilot_index)
 			pilot.flavor = data.get_value("DEFAULT","PILOT_%s_FLAVOR"%pilot_index)
 			pilot.theme = data.get_value("DEFAULT","PILOT_%s_THEME"%pilot_index)
-			pilot.better_odds = data.get_value("DEFAULT","PILOT_%s_BETTER_ODDS"%pilot_index)
-			pilot.criteria_for_better_odds = data.get_value("DEFAULT","PILOT_%s_CRITERIA_FOR_BETTER_ODDS"%pilot_index)
-			pilot.worse_odds = data.get_value("DEFAULT","PILOT_%s_WORSE_ODDS"%pilot_index)
-			pilot.criteria_for_worse_odds = data.get_value("DEFAULT","PILOT_%s_CRITERIA_FOR_WORSE_ODDS"%pilot_index)
+			pilot.mission_odds = data.get_value("DEFAULT","PILOT_%s_MISSION_ODDS"%pilot_index)
+			pilot.criteria_for_mission_odds = data.get_value("DEFAULT","PILOT_%s_CRITERIA_FOR_MISSION_ODDS"%pilot_index)
+			pilot.returning_odds = data.get_value("DEFAULT","PILOT_%s_RETURNING_ODDS"%pilot_index)
+			pilot.criteria_for_returning_odds = data.get_value("DEFAULT","PILOT_%s_CRITERIA_FOR_RETURNING_ODDS"%pilot_index)
 
 			if(user_data.get_value(section,"PILOT_%s_STATUS"%pilot_index)):
 				pilot.status = user_data.get_value(section,"PILOT_%s_STATUS"%pilot_index)
@@ -355,10 +356,10 @@ func save_pilots_to_user_data():
 		user_data.set_value(section,"PILOT_%s_THEME"%index,pilot.theme)
 		user_data.set_value(section,"PILOT_%s_STATUS"%index,pilot.status)
 		user_data.set_value(section,"PILOT_%s_MISSION_ID"%index,pilot.mission_id)
-		user_data.set_value(section,"PILOT_%s_BETTER_ODDS"%index,pilot.better_odds)
-		user_data.set_value(section,"PILOT_%s_CRITERIA_FOR_BETTER_ODDS"%index,pilot.criteria_for_better_odds)
-		user_data.set_value(section,"PILOT_%s_WORSE_ODDS"%index,pilot.worse_odds)
-		user_data.set_value(section,"PILOT_%s_CRITERIA_FOR_WORSE_ODDS"%index,pilot.criteria_for_worse_odds)
+		user_data.set_value(section,"PILOT_%s_MISSION_ODDS"%index,pilot.mission_odds)
+		user_data.set_value(section,"PILOT_%s_CRITERIA_FOR_MISSION_ODDS"%index,pilot.criteria_for_mission_odds)
+		user_data.set_value(section,"PILOT_%s_RETURNING_ODDS"%index,pilot.returning_odds)
+		user_data.set_value(section,"PILOT_%s_CRITERIA_FOR_RETURNING_ODDS"%index,pilot.criteria_for_returning_odds)
 
 		index+=1;
 	var err = user_data.save("user://pilots.cfg")
@@ -555,7 +556,7 @@ func load_or_create_user_user_options():
 
 func create_and_push_user_option_to_STATE(section,data):
 			var user_option = UserOptions.new();
-			user_option.use_real_time = data.get_value(section,"USE_REAL_TIME")
+			#user_option.use_real_time = data.get_value(section,"USE_REAL_TIME")
 			user_option.sfx_volume = data.get_value(section,"SFX_VOLUME")
 			user_option.music_volume = data.get_value(section,"MUSIC_VOLUME")
 			STATE.USER_OPTIONS = user_option;
@@ -566,9 +567,101 @@ func save_user_options_to_user_data():
 	var user_data = ConfigFile.new()
 	var index = 0;
 	user_data.set_value(section,"VERSION",STATE.USER_OPTIONS_VERSION)
-	user_data.set_value(section,"USE_REAL_TIME",STATE.USER_OPTIONS.use_real_time)
+	#user_data.set_value(section,"USE_REAL_TIME",STATE.USER_OPTIONS.use_real_time)
 	user_data.set_value(section,"SFX_VOLUME",STATE.USER_OPTIONS.sfx_volume)
 	user_data.set_value(section,"MUSIC_VOLUME",STATE.USER_OPTIONS.music_volume)
 	var err = user_data.save("user://user_options.cfg")
+	if err != OK:
+		print(err)
+
+func load_or_create_user_game_state():
+	var slot_index = 1
+	var section = "SAVESLOT_%s"%slot_index
+	var user_data = ConfigFile.new()
+	var resource_data = ConfigFile.new()
+	var user_data_err = user_data.load("user://game_state_datas.cfg")
+	var resource_data_err = resource_data.load("res://data/data_game_state_datas.cfg")
+	STATE.GAME_STATES_VERSION = resource_data.get_value("DEFAULT","VERSION")
+	if(user_data_err == 7 ):
+		var number_of_game_state_datas:int = resource_data.get_value("DEFAULT","NUMBER_OF_GAME_STATES")
+		for game_state_data_index in number_of_game_state_datas:
+			create_and_push_game_state_data_to_STATE("DEFAULT",game_state_data_index,resource_data)
+		save_game_state_datas_to_user_data()
+	elif(user_data_err != 7 ):
+		if(user_data.has_section_key(section,"VERSION")==false):
+			user_data.save("user://game_state_datas_backup__no_version.cfg")
+			var number_of_game_state_datas:int = resource_data.get_value("DEFAULT","NUMBER_OF_GAME_STATES")
+			for game_state_data_index in number_of_game_state_datas:
+				create_and_push_game_state_data_to_STATE_try_from_user(section,game_state_data_index,resource_data,user_data)
+			return
+		var user_version:float = user_data.get_value(section,"VERSION")
+		if(user_version==STATE.GAME_STATES_VERSION):
+			var number_of_game_state_datas:int = user_data.get_value(section,"NUMBER_OF_GAME_STATES")
+			for game_state_data_index in number_of_game_state_datas:
+				create_and_push_game_state_data_to_STATE(section,game_state_data_index,user_data)
+		elif(user_version<STATE.GAME_STATES_VERSION):
+			user_data.save("user://game_state_datas_backup_%s.cfg"%user_version)
+			var number_of_game_state_datas:int = resource_data.get_value("DEFAULT","NUMBER_OF_GAME_STATES")
+			for game_state_data_index in number_of_game_state_datas:
+				create_and_push_game_state_data_to_STATE_try_from_user(section,game_state_data_index,resource_data,user_data)
+			save_game_state_datas_to_user_data()
+		elif(user_version>STATE.GAME_STATES_VERSION):
+			var number_of_game_state_datas:int = resource_data.get_value("DEFAULT","NUMBER_OF_GAME_STATES")
+			user_data.save("user://game_state_datas_backup_%s.cfg"%user_version)
+			for game_state_data_index in number_of_game_state_datas:
+				create_and_push_game_state_data_to_STATE("DEFAULT",game_state_data_index,resource_data)
+
+func create_and_push_game_state_data_to_STATE(section,game_state_data_index,user_data):
+			var game_state_data = GameState.new();
+			#todo - add checks to this- so the game doesn't crash if the user messes something up.
+			game_state_data.ID = user_data.get_value(section,"GAME_STATE_%s_ID"%game_state_data_index)
+			game_state_data.name = user_data.get_value(section,"GAME_STATE_%s_NAME"%game_state_data_index)
+			game_state_data.cost = user_data.get_value(section,"GAME_STATE_%s_COST"%game_state_data_index)
+			game_state_data.flavor = user_data.get_value(section,"GAME_STATE_%s_FLAVOR"%game_state_data_index)
+			game_state_data.theme = user_data.get_value(section,"GAME_STATE_%s_THEME"%game_state_data_index)
+			game_state_data.status = user_data.get_value(section,"GAME_STATE_%s_STATUS"%game_state_data_index)
+			game_state_data.mission_id = user_data.get_value(section,"GAME_STATE_%s_MISSION_ID"%game_state_data_index)
+			game_state_data.mission_odds = user_data.get_value(section,"GAME_STATE_%s_MISSION_ODDS"%game_state_data_index)
+			game_state_data.criteria_for_mission_odds = user_data.get_value(section,"GAME_STATE_%s_CRITERIA_FOR_MISSION_ODDS"%game_state_data_index)
+			game_state_data.returning_odds = user_data.get_value(section,"GAME_STATE_%s_RETURNING_ODDS"%game_state_data_index)
+			game_state_data.criteria_for_returning_odds = user_data.get_value(section,"GAME_STATE_%s_CRITERIA_FOR_RETURNING_ODDS"%game_state_data_index)
+			STATE.GAME_STATES.push_back(game_state_data);
+
+func create_and_push_game_state_data_to_STATE_try_from_user(section,game_state_data_index,data,user_data:ConfigFile):
+			var game_state_data = GameState.new();
+			#todo - add checks to this- so the game doesn't crash if the user messes something up.
+			game_state_data.ID = data.get_value("DEFAULT","GAME_STATE_%s_ID"%game_state_data_index)
+			game_state_data.name = data.get_value("DEFAULT","GAME_STATE_%s_NAME"%game_state_data_index)
+			game_state_data.cost = data.get_value("DEFAULT","GAME_STATE_%s_COST"%game_state_data_index)
+			game_state_data.flavor = data.get_value("DEFAULT","GAME_STATE_%s_FLAVOR"%game_state_data_index)
+			game_state_data.theme = data.get_value("DEFAULT","GAME_STATE_%s_THEME"%game_state_data_index)
+			game_state_data.mission_odds = data.get_value("DEFAULT","GAME_STATE_%s_MISSION_ODDS"%game_state_data_index)
+			game_state_data.criteria_for_mission_odds = data.get_value("DEFAULT","GAME_STATE_%s_CRITERIA_FOR_MISSION_ODDS"%game_state_data_index)
+			game_state_data.returning_odds = data.get_value("DEFAULT","GAME_STATE_%s_RETURNING_ODDS"%game_state_data_index)
+			game_state_data.criteria_for_returning_odds = data.get_value("DEFAULT","GAME_STATE_%s_CRITERIA_FOR_RETURNING_ODDS"%game_state_data_index)
+
+			if(user_data.get_value(section,"GAME_STATE_%s_STATUS"%game_state_data_index)):
+				game_state_data.status = user_data.get_value(section,"GAME_STATE_%s_STATUS"%game_state_data_index)
+			else:
+				game_state_data.status = data.get_value(section,"GAME_STATE_%s_STATUS"%game_state_data_index)
+			if(user_data.get_value(section,"GAME_STATE_%s_MISSION_ID"%game_state_data_index)):
+				game_state_data.mission_id = user_data.get_value(section,"GAME_STATE_%s_MISSION_ID"%game_state_data_index)
+			else:
+				game_state_data.mission_id = data.get_value(section,"GAME_STATE_%s_MISSION_ID"%game_state_data_index)
+
+			STATE.GAME_STATES.push_back(game_state_data);
+
+func save_game_state_datas_to_user_data():
+	var slot_index = 1
+	var section = "SAVESLOT_%s"%slot_index
+	var user_data = ConfigFile.new()
+
+	user_data.set_value(section,"VERSION",STATE.GAME_STATES_VERSION)
+
+	user_data.set_value(section,"CREDITS",STATE.CREDITS)
+	user_data.set_value(section,"RECYCLE_POINTS",STATE.RECYCLE_POINTS)
+	user_data.set_value(section,"USE_REAL_TIME",STATE.USE_REAL_TIME)
+
+	var err = user_data.save("user://game_state_datas.cfg")
 	if err != OK:
 		print(err)

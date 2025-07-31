@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dioy0y3vm4mof"]
+
+[ext_resource type="Shader" uid="uid://b8a1n1xefm1ls" path="res://shaders/map_shader.tres" id="1_m2trp"]
+[ext_resource type="Texture2D" uid="uid://bqma2pylxtmqv" path="res://textures/cursor-1.png" id="2_m2trp"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_m2trp")
+shader_parameter/bend = 0.5
+shader_parameter/Texture2DParameter = ExtResource("2_m2trp")

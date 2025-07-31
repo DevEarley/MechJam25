@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=27 format=3 uid="uid://c013mj5wqs6fo"]
+[gd_resource type="VisualShader" load_steps=28 format=3 uid="uid://c013mj5wqs6fo"]
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_evsg0"]
 constant = 16.0
@@ -56,6 +56,7 @@ constant = 0.5
 
 [sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_o0ysy"]
 parameter_name = "Texture2DParameter"
+texture_filter = 1
 
 [sub_resource type="VisualShaderNodeMultiplyAdd" id="VisualShaderNodeMultiplyAdd_evsg0"]
 default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(0.2, 0.2, 0.2), 2, Vector3(0, 0, 0)]
@@ -64,6 +65,8 @@ op_type = 2
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_olu53"]
 default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(0.8, 0.8, 0.8)]
 operator = 2
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_evsg0"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_x67dm"]
 expanded_output_ports = [0]
@@ -89,7 +92,7 @@ operator = 3
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
 
-uniform sampler2D Texture2DParameter;
+uniform sampler2D Texture2DParameter : filter_nearest;
 
 
 
@@ -207,7 +210,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-194.293, -168.563)
 nodes/fragment/0/position = Vector2(860, 260)
 nodes/fragment/2/node = SubResource("VisualShaderNodeInput_72vsg")
 nodes/fragment/2/position = Vector2(-3340, 980)
@@ -261,4 +263,6 @@ nodes/fragment/30/node = SubResource("VisualShaderNodeMultiplyAdd_evsg0")
 nodes/fragment/30/position = Vector2(1320, -360)
 nodes/fragment/31/node = SubResource("VisualShaderNodeVectorOp_olu53")
 nodes/fragment/31/position = Vector2(600, -200)
+nodes/fragment/32/node = SubResource("VisualShaderNodeInput_evsg0")
+nodes/fragment/32/position = Vector2(-1639.72, -205.546)
 nodes/fragment/connections = PackedInt32Array(3, 0, 4, 2, 7, 0, 6, 1, 6, 0, 8, 0, 8, 0, 9, 0, 7, 0, 9, 1, 10, 0, 7, 0, 10, 0, 7, 1, 10, 0, 7, 2, 2, 0, 6, 0, 15, 0, 0, 5, 17, 0, 16, 1, 16, 0, 18, 0, 18, 0, 19, 0, 17, 0, 19, 1, 20, 0, 17, 0, 20, 0, 17, 1, 20, 0, 17, 2, 4, 0, 16, 0, 4, 0, 5, 0, 9, 0, 22, 1, 21, 0, 22, 0, 22, 0, 5, 1, 4, 4, 0, 1, 23, 0, 0, 19, 5, 0, 24, 0, 24, 0, 15, 0, 5, 0, 25, 0, 26, 0, 27, 0, 28, 0, 26, 1, 29, 0, 28, 0, 29, 0, 28, 1, 29, 0, 28, 2, 30, 0, 0, 0, 27, 0, 30, 0, 19, 0, 31, 0, 31, 0, 30, 2, 5, 0, 26, 0)

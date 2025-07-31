@@ -15,9 +15,9 @@ func show_pilots():
 		pilot_button.get_node("STATUS").text = "%s"%pilot.status
 		pilot_button.get_node("THEME").text = "%s"%pilot.theme
 		#pilot_button.get_node("MISSION").text = "%s"%pilot.mission
-		pilot_button.get_node("BETTER_ODDS").text = "%s"%pilot.better_odds
-		pilot_button.get_node("CRITERIA_FOR_BETTER_ODDS").text = "%s"%pilot.criteria_for_better_odds
-		pilot_button.get_node("WORSE_ODDS").text = "%s"%pilot.worse_odds
-		pilot_button.get_node("CRITERIA_FOR_WORSE_ODDS").text = "%s"%pilot.criteria_for_worse_odds
+		pilot_button.get_node("MISSION_ODDS").text = "%s"%pilot.mission_odds
+		pilot_button.get_node("CRITERIA_FOR_MISSION_ODDS").text = "%s"%pilot.criteria_for_mission_odds
+		pilot_button.get_node("RETURNING_ODDS").text = "%s"%pilot.returning_odds
+		pilot_button.get_node("CRITERIA_FOR_RETURNING_ODDS").text = "%s"%pilot.criteria_for_returning_odds
 
 		PILOT_BUTTONS.add_child(pilot_button)
