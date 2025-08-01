@@ -6,15 +6,11 @@ var flavor : String
 var flavor_icon : ENUMS.MISSION_FLAVOR_TYPE
 var one_over_odds_for_mission : int
 var one_over_odds_for_returning : int
-var environment : int
 var location_id : int
-var mech_id : int
-var pilot_id : int
 var allowed_mech_types : Array[ENUMS.MECH_TYPE]
 var status : ENUMS.MISSION_STATUS
 
-var time_started #UTC string
-var time_remaining #UTC string
+var time_started = 0 #seconds
 
 var reward_type_1;
 var reward_value_1;

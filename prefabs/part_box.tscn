@@ -57,7 +57,7 @@ offset_bottom = 324.0
 theme = ExtResource("1_w8og1")
 text = "PRICE"
 
-[node name="BETTER_ODDS" type="Label" parent="."]
+[node name="MISSION_ODDS" type="Label" parent="."]
 layout_mode = 2
 offset_left = 32.0
 offset_top = 64.0
@@ -67,7 +67,7 @@ theme = ExtResource("1_w8og1")
 text = "+1"
 horizontal_alignment = 2
 
-[node name="CRITERIA_FOR_BETTER_ODDS" type="Label" parent="."]
+[node name="CRITERIA_FOR_MISSION_ODDS" type="Label" parent="."]
 layout_mode = 2
 offset_left = 88.0
 offset_top = 64.0
@@ -76,7 +76,7 @@ offset_bottom = 92.0
 theme = ExtResource("1_w8og1")
 text = "CRITERIA"
 
-[node name="WORSE_ODDS" type="Label" parent="."]
+[node name="RETURNING_ODDS" type="Label" parent="."]
 layout_mode = 2
 offset_left = 32.0
 offset_top = 96.0
@@ -86,7 +86,7 @@ theme = ExtResource("1_w8og1")
 text = "-1"
 horizontal_alignment = 2
 
-[node name="CRITERIA_FOR_WORSE_ODDS" type="Label" parent="."]
+[node name="CRITERIA_FOR_RETURNING_ODDS" type="Label" parent="."]
 layout_mode = 2
 offset_left = 88.0
 offset_top = 96.0

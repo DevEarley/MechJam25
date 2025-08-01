@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://m4l7lv6i86px"]
+[gd_scene load_steps=8 format=3 uid="uid://m4l7lv6i86px"]
 
 [ext_resource type="Script" uid="uid://bxy3br0irscae" path="res://scripts/add-self-to-scaled-ui.gd" id="1_o2cxd"]
 [ext_resource type="PackedScene" uid="uid://jqfcrgtcowf1" path="res://prefabs/left-hand-button.tscn" id="2_jpuuo"]
 [ext_resource type="Script" uid="uid://caeasyqsrh612" path="res://scene-scripts/difficulty_settings.gd" id="2_wcim5"]
+[ext_resource type="Script" uid="uid://ceigxcvb02rmy" path="res://scripts/scale_node_on_hover.gd" id="4_1ycri"]
 [ext_resource type="PackedScene" uid="uid://bunfxp7cx281n" path="res://prefabs/title-bar-wide.tscn" id="4_21p3x"]
 [ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="5_21p3x"]
+[ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="5_kenhj"]
 
 [node name="difficulty_setting_canvas" type="CanvasLayer"]
 script = ExtResource("1_o2cxd")
@@ -18,23 +20,27 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_wcim5")
 
-[node name="difficulty_24_hours_button" parent="difficulty_settings" instance=ExtResource("2_jpuuo")]
+[node name="difficulty_24_hours_button" parent="difficulty_settings" node_paths=PackedStringArray("NODE_TO_SCALE") instance=ExtResource("2_jpuuo")]
 layout_mode = 1
 offset_left = -88.0
-offset_top = -56.0
+offset_top = -53.0
 offset_right = 368.0
-offset_bottom = 0.0
+offset_bottom = 15.0
 text = "TURN RESETS AFTER
 ONE DAY IN REAL TIME"
+script = ExtResource("4_1ycri")
+NODE_TO_SCALE = NodePath("../../BG2")
 
-[node name="difficulty_instant_button" parent="difficulty_settings" instance=ExtResource("2_jpuuo")]
+[node name="difficulty_instant_button" parent="difficulty_settings" node_paths=PackedStringArray("NODE_TO_SCALE") instance=ExtResource("2_jpuuo")]
 layout_mode = 1
 offset_left = -88.0
-offset_top = 40.0
+offset_top = 51.0
 offset_right = 280.0
-offset_bottom = 96.0
+offset_bottom = 119.0
 text = "TURN RESETS
 AT YOUR WILL"
+script = ExtResource("4_1ycri")
+NODE_TO_SCALE = NodePath("../../BG3")
 
 [node name="TITLE" parent="." instance=ExtResource("4_21p3x")]
 offset_left = -360.0
@@ -42,18 +48,44 @@ offset_top = -128.0
 offset_right = 368.0
 offset_bottom = -90.0
 
-[node name="Label" type="Label" parent="."]
-offset_left = 336.0
-offset_top = 320.0
-offset_right = 540.0
-offset_bottom = 348.0
-theme = ExtResource("5_21p3x")
-text = "24 HOUR MODE"
+[node name="BG2" parent="." instance=ExtResource("5_kenhj")]
+offset_left = 328.0
+offset_top = 296.0
+offset_right = 528.0
+offset_bottom = 384.0
 
-[node name="Label2" type="Label" parent="."]
-offset_left = 336.0
-offset_top = 416.0
-offset_right = 540.0
-offset_bottom = 444.0
+[node name="Label" type="Label" parent="BG2"]
+offset_left = 40.0
+offset_top = 16.0
+offset_right = 154.0
+offset_bottom = 75.0
 theme = ExtResource("5_21p3x")
-text = "INSTANT MODE"
+theme_override_colors/font_color = Color(1, 0, 0.364706, 1)
+text = "24 HOUR
+MODE"
+horizontal_alignment = 2
+
+[node name="BG3" parent="." instance=ExtResource("5_kenhj")]
+offset_left = 328.0
+offset_top = 400.0
+offset_right = 528.0
+offset_bottom = 488.0
+
+[node name="Label2" type="Label" parent="BG3"]
+offset_left = 40.0
+offset_top = 16.0
+offset_right = 154.0
+offset_bottom = 75.0
+theme = ExtResource("5_21p3x")
+text = "INSTANT
+MODE"
+horizontal_alignment = 2
+
+[connection signal="focus_entered" from="difficulty_settings/difficulty_24_hours_button" to="difficulty_settings/difficulty_24_hours_button" method="_on_focus_entered"]
+[connection signal="focus_exited" from="difficulty_settings/difficulty_24_hours_button" to="difficulty_settings/difficulty_24_hours_button" method="_on_focus_exited"]
+[connection signal="mouse_entered" from="difficulty_settings/difficulty_24_hours_button" to="difficulty_settings/difficulty_24_hours_button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="difficulty_settings/difficulty_24_hours_button" to="difficulty_settings/difficulty_24_hours_button" method="_on_mouse_exited"]
+[connection signal="focus_entered" from="difficulty_settings/difficulty_instant_button" to="difficulty_settings/difficulty_instant_button" method="_on_focus_entered"]
+[connection signal="focus_exited" from="difficulty_settings/difficulty_instant_button" to="difficulty_settings/difficulty_instant_button" method="_on_focus_exited"]
+[connection signal="mouse_entered" from="difficulty_settings/difficulty_instant_button" to="difficulty_settings/difficulty_instant_button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="difficulty_settings/difficulty_instant_button" to="difficulty_settings/difficulty_instant_button" method="_on_mouse_exited"]

@@ -177,8 +177,9 @@ func process_choices_or_actions(rest_of_line, show_speaker_for_choices):
 				first_choice+=choice;
 			index+=1;
 		run_script__choices_4_or_actions(first_choice, choices[last_index-2], choices[last_index-1], choices[last_index], show_speaker_for_choices)
+
 func run_script__process_line():
-	if(CURRENT_SCRIPT.size()<=CURRENT_LINE):
+	if(CURRENT_LINE > CURRENT_SCRIPT.size()-1):
 		on_script_finished()
 		return
 	var line = CURRENT_SCRIPT[CURRENT_LINE];
@@ -340,4 +341,7 @@ func on_action_4_pressed():
 
 
 func on_script_finished():
-	STATE.ON_QUEST_SCRIPT_DONE.call()
+	if(STATE.ON_QUEST_SCRIPT_DONE!=null):
+		STATE.CONVERSATION_SCREEN_CANVAS.hide()
+		STATE.CONVERSATION_CONTROL_NODE.hide()
+		STATE.ON_QUEST_SCRIPT_DONE.call()

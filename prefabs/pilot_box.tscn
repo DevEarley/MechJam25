@@ -1,52 +1,104 @@
-[gd_scene format=3 uid="uid://dx4i0u2phohdh"]
+[gd_scene load_steps=3 format=3 uid="uid://dx4i0u2phohdh"]
 
-[node name="PILOT_BOX" type="VBoxContainer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="1_eve0h"]
+[ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="2_k80up"]
+
+[node name="PILOT_BOX" type="Control"]
+custom_minimum_size = Vector2(464, 312)
+layout_mode = 3
+anchors_preset = 0
+size_flags_vertical = 3
+
+[node name="BG2" parent="." instance=ExtResource("1_eve0h")]
+custom_minimum_size = Vector2(464, 312)
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 464.0
+offset_bottom = 312.0
 
 [node name="ID" type="Label" parent="."]
 layout_mode = 2
-text = "Mission ID"
+offset_left = 24.0
+offset_top = 40.0
+offset_right = 66.0
+offset_bottom = 68.0
+theme = ExtResource("2_k80up")
+text = "000"
+
+[node name="MISSION_ODDS_LABEL2" type="Label" parent="."]
+layout_mode = 2
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 122.0
+offset_bottom = 38.0
+theme = ExtResource("2_k80up")
+theme_override_font_sizes/font_size = 16
+text = "PILOT"
 
 [node name="NAME" type="Label" parent="."]
 layout_mode = 2
-text = "Mission Title"
+offset_left = 80.0
+offset_top = 40.0
+offset_right = 156.0
+offset_bottom = 68.0
+theme = ExtResource("2_k80up")
+text = "NAME"
 
-[node name="COST" type="Label" parent="."]
+[node name="CRITERIA_FOR_MISSION_ODDS" type="RichTextLabel" parent="."]
 layout_mode = 2
-text = "Mission Title"
+offset_left = 112.0
+offset_top = 96.0
+offset_right = 440.0
+offset_bottom = 184.0
+theme = ExtResource("2_k80up")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+text = "MISSION CRITERIA MISSION CRITERIA MISSION CRITERIA"
 
-[node name="FLAVOR" type="Label" parent="."]
+[node name="CRITERIA_FOR_RETURNING_ODDS" type="RichTextLabel" parent="."]
 layout_mode = 2
-text = "Flavor Text"
+offset_left = 112.0
+offset_top = 200.0
+offset_right = 440.0
+offset_bottom = 288.0
+theme = ExtResource("2_k80up")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+text = "CRITERIA DETAILS CRITERIA DETAILS  CRITERIA DETAILS "
 
-[node name="MISSION" type="Label" parent="."]
+[node name="MISSION_ODDS" type="Label" parent="."]
 layout_mode = 2
-text = "Flavor Text"
+offset_left = 24.0
+offset_top = 96.0
+offset_right = 88.0
+offset_bottom = 124.0
+theme = ExtResource("2_k80up")
+text = "1/???"
 
-[node name="STATUS" type="Label" parent="."]
+[node name="RETURNING_ODDS" type="Label" parent="."]
 layout_mode = 2
-text = "Odds"
+offset_left = 24.0
+offset_top = 200.0
+offset_right = 88.0
+offset_bottom = 228.0
+theme = ExtResource("2_k80up")
+text = "1/???"
 
-[node name="THEME" type="Label" parent="."]
+[node name="MISSION_ODDS_LABEL" type="Label" parent="."]
 layout_mode = 2
-text = "Environment"
+offset_left = 24.0
+offset_top = 80.0
+offset_right = 122.0
+offset_bottom = 94.0
+theme = ExtResource("2_k80up")
+theme_override_font_sizes/font_size = 16
+text = "MISSION ODDS"
 
-[node name="CRITERIA_FOR_BETTER_ODDS" type="Label" parent="."]
+[node name="RETURNING_ODDS_LABEL" type="Label" parent="."]
 layout_mode = 2
-text = "Allowed Mechs"
-
-[node name="CRITERIA_FOR_WORSE_ODDS" type="Label" parent="."]
-layout_mode = 2
-text = "Location"
-
-[node name="WORSE_ODDS" type="Label" parent="."]
-layout_mode = 2
-text = "Location"
-
-[node name="BETTER_ODDS" type="Label" parent="."]
-layout_mode = 2
-text = "Location"
+offset_left = 24.0
+offset_top = 184.0
+offset_right = 144.0
+offset_bottom = 198.0
+theme = ExtResource("2_k80up")
+theme_override_font_sizes/font_size = 16
+text = "RETURNING ODDS"

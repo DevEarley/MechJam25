@@ -1,8 +1,8 @@
 extends Node
-
+var CURRENT_MISSION:Mission
 var ON_QUEST_SCRIPT_DONE:Callable
 var ON_BACK_BUTTON_PRESSED:Callable
-
+var HAS_MISSION_IN_PROGRESS:bool = false
 var DIFFICULTY_SETTTING_MENU_CANVAS: CanvasLayer;
 var OPTIONS_MENU_CANVAS:CanvasLayer;
 var MAIN_MENU_CANVAS:CanvasLayer;
@@ -14,6 +14,7 @@ var MISSIONS_MENU_CANVAS:CanvasLayer;
 var DEPLOYMENTS_MENU_CANVAS:CanvasLayer;
 var MECH_MENU_CANVAS:CanvasLayer;
 var CONVERSATION_SCREEN_CANVAS:CanvasLayer;
+var CONVERSATION_CONTROL_NODE
 var START_MENU_CANVAS:CanvasLayer
 
 var STATUS_BAR_CANVAS:CanvasLayer;
@@ -31,7 +32,6 @@ var MECHS:Array[Mech]
 var MISSIONS:Array[Mission]
 var LOCATIONS:Array[Location]
 
-var USER_OPTIONS:UserOptions
 
 var CURRENT_PART_ID:int;
 var CURRENT_MECH_ID:int;
@@ -45,5 +45,9 @@ var PILOTS_VERSION:float
 var MISSIONS_VERSION:float;
 var LOCATIONS_VERSION:float;
 var USER_OPTIONS_VERSION:float;
+var GAME_STATE_VERSION:float;
 
 var MAP_BG:NinePatchRect
+
+var SFX_VOLUME
+var MUSIC_VOLUME

@@ -10,13 +10,13 @@ func _ready():
 
 func _on_difficulty_24_hours_button_pressed():
 	STATE.USE_REAL_TIME = true
-	DATA.save_user_options_to_user_data()
+	DATA.save_game_state_to_user_data()
 	STATE.DIFFICULTY_SETTTING_MENU_CANVAS.hide()
 	STATE.MAIN_MENU_CANVAS.show()
 
 func _on_difficulty_instant_button_pressed():
 	STATE.USE_REAL_TIME = false
-	DATA.save_user_options_to_user_data()
+	DATA.save_game_state_to_user_data()
 
 	STATE.DIFFICULTY_SETTTING_MENU_CANVAS.hide()
 	STATE.MAIN_MENU_CANVAS.show()

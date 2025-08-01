@@ -22,8 +22,33 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 		function_name = func_name_and_value
 	var pattern:String = function_name.to_lower()
 	match(pattern):
-		"":
-			return
+		"quit":
+			get_tree().quit()
+		"unlock mission":
+			var id:int = int(values[0])
+			var mission:Mission = LINQ.First(STATE.MISSIONS,func (mission:Mission): return mission.ID==id);
+			mission.status = ENUMS.MISSION_STATUS.UNLOCKED
+			DATA.save_missions_to_user_data()
+			QS.CURRENT_LINE+=1;
+			QS.run_script__process_line();
+		"fail mission":
+			var id:int = int(values[0])
+
+			var mission:Mission = LINQ.First(STATE.MISSIONS,func (mission:Mission): return mission.ID==id);
+			mission.status = ENUMS.MISSION_STATUS.FAILED
+			DATA.save_missions_to_user_data()
+			QS.CURRENT_LINE+=1;
+			QS.run_script__process_line();
+
+		"complete mission":
+			var id:int = int(values[0])
+			var mission:Mission = LINQ.First(STATE.MISSIONS,func (mission:Mission): return mission.ID==id);
+
+			mission.status = ENUMS.MISSION_STATUS.SUCCESS
+			DATA.save_missions_to_user_data()
+			QS.CURRENT_LINE+=1;
+			QS.run_script__process_line();
+
 		#"start multiplayer":
 			#QS.call_back_on_finished.call()
 			#STATE.CURRENT_PLAYER.hide()

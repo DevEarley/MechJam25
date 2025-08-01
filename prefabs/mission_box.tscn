@@ -24,7 +24,12 @@ layout_mode = 2
 theme = ExtResource("1_hw3iu")
 text = "Flavor Text"
 
-[node name="ONE_OVER_ODDS_OF_SUCCESS" type="Label" parent="."]
+[node name="ONE_OVER_ODDS_FOR_MISSION" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_hw3iu")
+text = "Odds"
+
+[node name="ONE_OVER_ODDS_FOR_RETURNING" type="Label" parent="."]
 layout_mode = 2
 theme = ExtResource("1_hw3iu")
 text = "Odds"

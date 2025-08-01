@@ -1,51 +1,174 @@
-[gd_scene load_steps=4 format=3 uid="uid://byho8dl1u73va"]
+[gd_scene load_steps=10 format=3 uid="uid://byho8dl1u73va"]
 
 [ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="1_ighwi"]
 [ext_resource type="Texture2D" uid="uid://l6oe44m1j68v" path="res://UI/ui-sheet-1.png" id="2_46qc3"]
+[ext_resource type="Texture2D" uid="uid://86yf6tf46r08" path="res://UI/crosshairs64.png" id="3_46qc3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_doabv"]
 atlas = ExtResource("2_46qc3")
 region = Rect2(863, 674, 38, 41)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_otvo8"]
+atlas = ExtResource("3_46qc3")
+region = Rect2(71, 71, 52, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imng8"]
+atlas = ExtResource("2_46qc3")
+region = Rect2(256, 389, 40, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnk28"]
+atlas = ExtResource("2_46qc3")
+region = Rect2(130, 388, 33, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2u8y"]
+atlas = ExtResource("2_46qc3")
+region = Rect2(87, 385, 32, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmtj8"]
+atlas = ExtResource("2_46qc3")
+region = Rect2(28, 387, 44, 43)
+
 [node name="MISSION_BOX_SMALL" type="Button"]
-custom_minimum_size = Vector2(576, 96)
-offset_right = 576.0
+custom_minimum_size = Vector2(539, 96)
+offset_right = 539.0
 offset_bottom = 96.0
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_ighwi")
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 icon = SubResource("AtlasTexture_doabv")
-vertical_icon_alignment = 0
+metadata/_edit_horizontal_guides_ = [88.0, 40.0, 47.0, 53.0]
+metadata/_edit_vertical_guides_ = [76.0, 125.0, 132.0, 68.0, 60.0, 530.0, 536.0]
 
 [node name="ID" type="Label" parent="."]
 layout_mode = 2
-offset_left = 80.0
-offset_top = 8.0
-offset_right = 128.0
-offset_bottom = 36.0
+offset_left = 83.0
+offset_top = 16.0
+offset_right = 131.0
+offset_bottom = 44.0
 theme = ExtResource("1_ighwi")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
-text = "ID"
+text = "000"
 
 [node name="NAME" type="Label" parent="."]
 layout_mode = 2
-offset_left = 136.0
-offset_top = 8.0
-offset_right = 236.0
-offset_bottom = 36.0
+offset_left = 132.0
+offset_top = 16.0
+offset_right = 477.0
+offset_bottom = 44.0
 theme = ExtResource("1_ighwi")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
 text = "NAME"
+text_overrun_behavior = 3
 
 [node name="STATUS" type="Label" parent="."]
 layout_mode = 2
-offset_left = 24.0
-offset_top = 56.0
-offset_right = 132.0
-offset_bottom = 84.0
+offset_left = 133.0
+offset_top = 59.0
+offset_right = 241.0
+offset_bottom = 87.0
 theme = ExtResource("1_ighwi")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
 text = "STATUS"
+
+[node name="ONE_OVER_ODDS_FOR_MISSION" type="Label" parent="."]
+layout_mode = 2
+offset_left = 468.0
+offset_top = 16.0
+offset_right = 540.0
+offset_bottom = 44.0
+theme = ExtResource("1_ighwi")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
+text = "1/100"
+
+[node name="ONE_OVER_ODDS_FOR_RETURNING" type="Label" parent="."]
+layout_mode = 2
+offset_left = 468.0
+offset_top = 64.0
+offset_right = 540.0
+offset_bottom = 92.0
+theme = ExtResource("1_ighwi")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
+text = "1/100"
+
+[node name="ONE_OVER_ODDS_FOR_MISSION_LABEL" type="Label" parent="."]
+layout_mode = 2
+offset_left = 457.0
+offset_top = 6.0
+offset_right = 529.0
+offset_bottom = 34.0
+theme = ExtResource("1_ighwi")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 16
+text = "MISSION"
+
+[node name="ONE_OVER_ODDS_FOR_RETURNING_LABEL" type="Label" parent="."]
+layout_mode = 2
+offset_left = 457.0
+offset_top = 54.0
+offset_right = 529.0
+offset_bottom = 82.0
+theme = ExtResource("1_ighwi")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 16
+text = "RETURN"
+
+[node name="STATUS_FAILED_ICON" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 0, 0.364706, 1)
+layout_mode = 0
+offset_left = 92.0
+offset_top = 53.0
+offset_right = 124.0
+offset_bottom = 85.0
+texture = SubResource("AtlasTexture_otvo8")
+expand_mode = 1
+
+[node name="STATUS_SUCCESS_ICON" type="TextureRect" parent="."]
+visible = false
+modulate = Color(0.956863, 0.780392, 0, 1)
+layout_mode = 0
+offset_left = 92.0
+offset_top = 53.0
+offset_right = 124.0
+offset_bottom = 85.0
+texture = SubResource("AtlasTexture_imng8")
+expand_mode = 1
+
+[node name="STATUS_LOCKED_ICON" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 0, 0.364706, 1)
+layout_mode = 0
+offset_left = 95.0
+offset_top = 54.0
+offset_right = 120.0
+offset_bottom = 87.0
+texture = SubResource("AtlasTexture_wnk28")
+expand_mode = 1
+
+[node name="STATUS_UNLOCKED_ICON" type="TextureRect" parent="."]
+visible = false
+modulate = Color(0, 1, 0.666667, 1)
+layout_mode = 0
+offset_left = 96.0
+offset_top = 51.0
+offset_right = 120.0
+offset_bottom = 87.0
+texture = SubResource("AtlasTexture_u2u8y")
+expand_mode = 1
+
+[node name="STATUS_IN_PROGRESS_ICON" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 92.0
+offset_top = 53.0
+offset_right = 124.0
+offset_bottom = 85.0
+texture = SubResource("AtlasTexture_nmtj8")
+expand_mode = 1

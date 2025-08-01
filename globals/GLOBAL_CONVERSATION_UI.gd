@@ -1,10 +1,10 @@
 extends Node
 
-var CONVERSATION_CONTROL_NODE
-var CONVERSATION_CANVAS
+
 var ANIMATOR
 var TEXT
 var NAME
+var CONTINUE_LABEL
 var CHOICE_1:Button
 var CHOICE_2:Button
 var CHOICE_3:Button
@@ -14,23 +14,25 @@ var ACTION_2:Button
 var ACTION_3:Button
 var ACTION_4:Button
 
-func _ready():
-	CONVERSATION_CONTROL_NODE = preload("res://scenes/conversation-ui.tscn").instantiate()
-	CONVERSATION_CANVAS = preload("res://scenes/conversation-canvas.tscn").instantiate()
-	SCALED_UI.add_canvas_to_viewport(CONVERSATION_CANVAS)
-	add_child(CONVERSATION_CONTROL_NODE);
+var SHOWING_CHOICES:bool = false
 
-	ANIMATOR = CONVERSATION_CONTROL_NODE.get_node("AnimationPlayer")
-	TEXT = CONVERSATION_CANVAS.get_node("TEXT")
-	NAME = CONVERSATION_CANVAS.get_node("NAME")
-	CHOICE_1 = CONVERSATION_CANVAS.get_node("CHOICE_1")
-	CHOICE_2 = CONVERSATION_CANVAS.get_node("CHOICE_2")
-	CHOICE_3 = CONVERSATION_CANVAS.get_node("CHOICE_3")
-	CHOICE_4 = CONVERSATION_CANVAS.get_node("CHOICE_4")
-	ACTION_1 = CONVERSATION_CANVAS.get_node("ACTION_1")
-	ACTION_2 = CONVERSATION_CANVAS.get_node("ACTION_2")
-	ACTION_3 = CONVERSATION_CANVAS.get_node("ACTION_3")
-	ACTION_4 = CONVERSATION_CANVAS.get_node("ACTION_4")
+func _ready():
+	STATE.CONVERSATION_CONTROL_NODE = preload("res://scenes/conversation-ui.tscn").instantiate()
+	STATE.CONVERSATION_SCREEN_CANVAS = preload("res://scenes/conversation-canvas.tscn").instantiate()
+	SCALED_UI.add_canvas_to_viewport(STATE.CONVERSATION_SCREEN_CANVAS)
+	add_child(STATE.CONVERSATION_CONTROL_NODE);
+	ANIMATOR = STATE.CONVERSATION_CONTROL_NODE.get_node("AnimationPlayer")
+	TEXT = STATE.CONVERSATION_SCREEN_CANVAS.get_node("TEXT")
+	CONTINUE_LABEL = STATE.CONVERSATION_SCREEN_CANVAS.get_node("CONTINUE_LABEL")
+	NAME = STATE.CONVERSATION_SCREEN_CANVAS.get_node("NAME")
+	CHOICE_1 = STATE.CONVERSATION_SCREEN_CANVAS.get_node("CHOICE_1")
+	CHOICE_2 = STATE.CONVERSATION_SCREEN_CANVAS.get_node("CHOICE_2")
+	CHOICE_3 = STATE.CONVERSATION_SCREEN_CANVAS.get_node("CHOICE_3")
+	CHOICE_4 = STATE.CONVERSATION_SCREEN_CANVAS.get_node("CHOICE_4")
+	ACTION_1 = STATE.CONVERSATION_SCREEN_CANVAS.get_node("ACTION_1")
+	ACTION_2 = STATE.CONVERSATION_SCREEN_CANVAS.get_node("ACTION_2")
+	ACTION_3 = STATE.CONVERSATION_SCREEN_CANVAS.get_node("ACTION_3")
+	ACTION_4 = STATE.CONVERSATION_SCREEN_CANVAS.get_node("ACTION_4")
 	CHOICE_1.hide()
 	CHOICE_2.hide()
 	CHOICE_3.hide()
@@ -47,8 +49,8 @@ func _ready():
 	ACTION_2.connect("pressed",QS.on_action_2_pressed)
 	ACTION_3.connect("pressed",QS.on_action_3_pressed)
 	ACTION_4.connect("pressed",QS.on_action_4_pressed)
-	CONVERSATION_CONTROL_NODE.hide()
-	CONVERSATION_CANVAS.hide()
+	STATE.CONVERSATION_CONTROL_NODE.hide()
+	STATE.CONVERSATION_SCREEN_CANVAS.hide()
 
 #QS.start();
 
@@ -75,30 +77,33 @@ func _ready():
 	#3:
 		#QS.on_action_4_pressed()
 func start_conversation():
-	CONVERSATION_CONTROL_NODE.show()
-	CONVERSATION_CANVAS.show()
+	STATE.CONVERSATION_CONTROL_NODE.show()
+	STATE.CONVERSATION_SCREEN_CANVAS.show()
 
 func hide_ui():
-	CONVERSATION_CONTROL_NODE.hide()
-	CONVERSATION_CANVAS.hide()
+	STATE.CONVERSATION_CONTROL_NODE.hide()
+	STATE.CONVERSATION_SCREEN_CANVAS.hide()
 
 func show_ui():
-	CONVERSATION_CANVAS.show()
-	CONVERSATION_CONTROL_NODE.show()
+	STATE.CONVERSATION_SCREEN_CANVAS.show()
+	STATE.CONVERSATION_CONTROL_NODE.show()
 
 func done_with_choices():
+	SHOWING_CHOICES = false
 	CHOICE_1.hide()
 	CHOICE_2.hide()
 	CHOICE_3.hide()
 	CHOICE_4.hide()
 
 func done_with_actions():
+	SHOWING_CHOICES = false
 	ACTION_1.hide()
 	ACTION_2.hide()
 	ACTION_3.hide()
 	ACTION_4.hide()
 
 func setup_choices(arr:Array):
+	SHOWING_CHOICES = true
 	CHOICE_1.show()
 	CHOICE_2.show()
 	CHOICE_1.text = arr[0]
@@ -116,6 +121,7 @@ func setup_choices(arr:Array):
 		CHOICE_4.text = arr[3]
 
 func setup_actions(arr:Array):
+	SHOWING_CHOICES = true
 	ACTION_1.show()
 	ACTION_2.show()
 	ACTION_1.text = arr[0]
@@ -136,12 +142,14 @@ func show_info(message:String):
 	pass
 
 func continue_conversation(message,character_name):
-	CONVERSATION_CANVAS.show()
-	CONVERSATION_CONTROL_NODE.show()
+	STATE.CONVERSATION_SCREEN_CANVAS.show()
+	STATE.CONVERSATION_CONTROL_NODE.show()
 	TEXT.text = message;
 	NAME.text = character_name
-
+	await WAIT.for_seconds(0.2)
+	CONTINUE_LABEL.show()
 
 func _input(event: InputEvent) -> void:
-	if(event.is_action_released("ui_accept")):
+	if(event.is_action_released("ui_accept") && SHOWING_CHOICES == false):
 		QS.continue_script()
+		CONTINUE_LABEL.hide();

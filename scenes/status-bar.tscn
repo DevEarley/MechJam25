@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6udq8vvo4y28"]
+[gd_scene load_steps=11 format=3 uid="uid://b6udq8vvo4y28"]
 
 [ext_resource type="Texture2D" uid="uid://x66vokp7xc81" path="res://UI/ui-sheet-1.svg" id="1_7t0a2"]
+[ext_resource type="Script" uid="uid://dnxelvv2iqrt4" path="res://scene-scripts/status-bar.gd" id="1_ujn7t"]
 [ext_resource type="Texture2D" uid="uid://l6oe44m1j68v" path="res://UI/ui-sheet-1.png" id="2_ujn7t"]
 [ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="2_vmkjb"]
 
@@ -18,7 +19,7 @@ region = Rect2(952, 671, 46, 46)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7pum2"]
 atlas = ExtResource("2_ujn7t")
-region = Rect2(865, 675, 38, 42)
+region = Rect2(521, 672, 63, 55)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uk8sn"]
 atlas = ExtResource("2_ujn7t")
@@ -29,6 +30,8 @@ atlas = ExtResource("2_ujn7t")
 region = Rect2(826, 674, 38, 41)
 
 [node name="STATUS_BAR_CANVAS" type="CanvasLayer"]
+script = ExtResource("1_ujn7t")
+metadata/_edit_horizontal_guides_ = [697.0]
 
 [node name="StatusBar" type="Control" parent="."]
 layout_mode = 3
@@ -75,9 +78,9 @@ texture = SubResource("AtlasTexture_mpbo8")
 clip_contents = false
 layout_mode = 1
 offset_left = 88.0
-offset_top = 673.0
+offset_top = 675.0
 offset_right = 120.0
-offset_bottom = 708.0
+offset_bottom = 710.0
 theme = ExtResource("2_vmkjb")
 text = "[0]"
 fit_content = true
@@ -88,9 +91,9 @@ autowrap_mode = 0
 clip_contents = false
 layout_mode = 1
 offset_left = 216.0
-offset_top = 673.0
+offset_top = 675.0
 offset_right = 248.0
-offset_bottom = 708.0
+offset_bottom = 710.0
 theme = ExtResource("2_vmkjb")
 text = "[0]"
 fit_content = true
@@ -101,9 +104,9 @@ autowrap_mode = 0
 clip_contents = false
 layout_mode = 1
 offset_left = 336.0
-offset_top = 673.0
+offset_top = 675.0
 offset_right = 368.0
-offset_bottom = 708.0
+offset_bottom = 710.0
 theme = ExtResource("2_vmkjb")
 text = "[0]"
 fit_content = true
@@ -112,11 +115,12 @@ autowrap_mode = 0
 
 [node name="TextureRect4" type="TextureRect" parent="StatusBar"]
 layout_mode = 0
-offset_left = 400.0
+offset_left = 398.0
 offset_top = 667.0
-offset_right = 438.0
-offset_bottom = 709.0
+offset_right = 445.0
+offset_bottom = 708.0
 texture = SubResource("AtlasTexture_7pum2")
+expand_mode = 1
 
 [node name="TextureRect5" type="TextureRect" parent="StatusBar"]
 layout_mode = 0
@@ -134,13 +138,13 @@ offset_right = 998.0
 offset_bottom = 709.0
 texture = SubResource("AtlasTexture_bfer4")
 
-[node name="MISSION_TEXT" type="RichTextLabel" parent="StatusBar"]
+[node name="MISSION_TIME" type="RichTextLabel" parent="StatusBar"]
 clip_contents = false
 layout_mode = 1
-offset_left = 448.0
-offset_top = 673.0
-offset_right = 550.0
-offset_bottom = 708.0
+offset_left = 454.0
+offset_top = 675.0
+offset_right = 556.0
+offset_bottom = 710.0
 theme = ExtResource("2_vmkjb")
 text = "24:00:00"
 fit_content = true
@@ -151,9 +155,9 @@ autowrap_mode = 0
 clip_contents = false
 layout_mode = 1
 offset_left = 1000.0
-offset_top = 673.0
+offset_top = 675.0
 offset_right = 1032.0
-offset_bottom = 708.0
+offset_bottom = 710.0
 theme = ExtResource("2_vmkjb")
 text = "[0]"
 fit_content = true
@@ -164,9 +168,9 @@ autowrap_mode = 0
 clip_contents = false
 layout_mode = 1
 offset_left = 1120.0
-offset_top = 673.0
+offset_top = 675.0
 offset_right = 1152.0
-offset_bottom = 708.0
+offset_bottom = 710.0
 theme = ExtResource("2_vmkjb")
 text = "[0]"
 fit_content = true
