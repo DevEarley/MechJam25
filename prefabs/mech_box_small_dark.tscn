@@ -1,0 +1,126 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk2kxj5v3qsgh"]
+
+[ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="1_s8txx"]
+[ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="2_aj13e"]
+
+[node name="MECH_BOX" type="Control"]
+custom_minimum_size = Vector2(580, 60)
+layout_mode = 3
+anchors_preset = 0
+offset_top = 16.0
+offset_right = 580.0
+offset_bottom = 76.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_s8txx")
+
+[node name="BG2" parent="." instance=ExtResource("2_aj13e")]
+layout_mode = 0
+offset_left = 8.0
+offset_top = -8.0
+offset_right = 600.0
+offset_bottom = 72.0
+
+[node name="ID" type="Label" parent="."]
+layout_mode = 2
+offset_left = 72.0
+offset_top = 24.0
+offset_right = 120.0
+offset_bottom = 52.0
+theme = ExtResource("1_s8txx")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "001"
+
+[node name="NAME" type="Label" parent="."]
+layout_mode = 2
+offset_left = 128.0
+offset_top = 24.0
+offset_right = 204.0
+offset_bottom = 52.0
+theme = ExtResource("1_s8txx")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "NAME"
+
+[node name="STATUS" type="Label" parent="."]
+layout_mode = 2
+offset_left = 128.0
+offset_top = 8.0
+offset_right = 182.0
+offset_bottom = 22.0
+theme = ExtResource("1_s8txx")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "STATUS"
+
+[node name="STATUS2" type="Label" parent="."]
+layout_mode = 2
+offset_left = 448.0
+offset_top = 8.0
+offset_right = 501.0
+offset_bottom = 22.0
+theme = ExtResource("1_s8txx")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "POWER"
+
+[node name="STATUS3" type="Label" parent="."]
+layout_mode = 2
+offset_left = 512.0
+offset_top = 8.0
+offset_right = 565.0
+offset_bottom = 22.0
+theme = ExtResource("1_s8txx")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "BASE P."
+
+[node name="STATUS4" type="Label" parent="."]
+layout_mode = 2
+offset_left = 72.0
+offset_top = 8.0
+offset_right = 125.0
+offset_bottom = 22.0
+theme = ExtResource("1_s8txx")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "MECH"
+
+[node name="BASE_HEALTH" type="Label" parent="."]
+layout_mode = 2
+offset_left = 512.0
+offset_top = 24.0
+offset_right = 548.0
+offset_bottom = 52.0
+theme = ExtResource("1_s8txx")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "BH"
+horizontal_alignment = 2
+
+[node name="CURRENT_HEALTH" type="Label" parent="."]
+layout_mode = 2
+offset_left = 448.0
+offset_top = 24.0
+offset_right = 484.0
+offset_bottom = 52.0
+theme = ExtResource("1_s8txx")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "CH"
+
+[node name="SLASH" type="Label" parent="."]
+layout_mode = 2
+offset_left = 496.0
+offset_top = 24.0
+offset_right = 506.0
+offset_bottom = 52.0
+theme = ExtResource("1_s8txx")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "/"

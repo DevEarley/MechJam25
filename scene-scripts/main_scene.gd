@@ -51,3 +51,5 @@ func _ready():
 	STATE.STATUS_BAR_CANVAS = preload("res://scenes/status-bar.tscn").instantiate();
 	SCALED_UI.add_canvas_to_viewport(STATE.STATUS_BAR_CANVAS)
 	STATE.STATUS_BAR_CANVAS.hide()
+
+	DATA.load_data()

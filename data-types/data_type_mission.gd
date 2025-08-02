@@ -12,10 +12,6 @@ var status : ENUMS.MISSION_STATUS
 
 var time_started = 0 #seconds
 
-var reward_type_1;
-var reward_value_1;
-var reward_type_2;
-var reward_value_2;
 
 var start_script:String;
 var success_script:String;

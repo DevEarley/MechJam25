@@ -1,63 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://bo8kdbsr15ptf"]
+[gd_scene load_steps=9 format=3 uid="uid://bo8kdbsr15ptf"]
 
-[ext_resource type="Script" uid="uid://bxy3br0irscae" path="res://scripts/add-self-to-scaled-ui.gd" id="1_86hdi"]
-[ext_resource type="Script" uid="uid://24v83hvf5tg2" path="res://scene-scripts/options_menu.gd" id="2_cyjlj"]
-[ext_resource type="PackedScene" uid="uid://jqfcrgtcowf1" path="res://prefabs/left-hand-button.tscn" id="3_8jhlc"]
-[ext_resource type="PackedScene" uid="uid://bunfxp7cx281n" path="res://prefabs/title-bar-wide.tscn" id="4_uduq7"]
-[ext_resource type="PackedScene" uid="uid://c4koj71ge37td" path="res://prefabs/back_button.tscn" id="5_uduq7"]
+[ext_resource type="Script" uid="uid://bxy3br0irscae" path="res://scripts/add-self-to-scaled-ui.gd" id="1_vjkv6"]
+[ext_resource type="PackedScene" uid="uid://jqfcrgtcowf1" path="res://prefabs/left-hand-button.tscn" id="2_tm0v0"]
+[ext_resource type="Script" uid="uid://bjyrsimh7r721" path="res://scripts/save_options_button.gd" id="3_d6dia"]
+[ext_resource type="PackedScene" uid="uid://bunfxp7cx281n" path="res://prefabs/title-bar-wide.tscn" id="3_giamy"]
+[ext_resource type="PackedScene" uid="uid://c4koj71ge37td" path="res://prefabs/back_button.tscn" id="4_qukfs"]
+[ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="5_rk5b5"]
+[ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="6_fgfsr"]
+[ext_resource type="Script" uid="uid://24v83hvf5tg2" path="res://scene-scripts/options_menu.gd" id="7_qrwdr"]
 
 [node name="OPTIONS_MENU" type="CanvasLayer"]
-script = ExtResource("1_86hdi")
+script = ExtResource("1_vjkv6")
+metadata/_edit_vertical_guides_ = [640.0, 336.0, 944.0, 784.0, 800.0, 360.0]
 
-[node name="options_menu_buttons" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("2_cyjlj")
-
-[node name="difficulty_24_hours_button" parent="options_menu_buttons" instance=ExtResource("3_8jhlc")]
-layout_mode = 1
-offset_left = -240.0
-offset_top = -56.0
-offset_right = 216.0
-offset_bottom = 0.0
-text = "TURN RESETS AFTER
-ONE DAY IN REAL TIME"
-
-[node name="difficulty_instant_button" parent="options_menu_buttons" instance=ExtResource("3_8jhlc")]
-layout_mode = 1
-offset_left = -240.0
-offset_top = 40.0
-offset_right = 216.0
-offset_bottom = 96.0
-text = "TURN RESETS
-AT YOUR WILL"
-
-[node name="save_button" parent="options_menu_buttons" instance=ExtResource("3_8jhlc")]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
+[node name="save_button" parent="." instance=ExtResource("2_tm0v0")]
+anchors_preset = 7
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -298.0
-offset_top = -82.0
-offset_right = -42.0
-offset_bottom = -26.0
-grow_horizontal = 0
+offset_left = -128.0
+offset_top = -72.0
+offset_right = 128.0
+offset_bottom = -16.0
 grow_vertical = 0
 text = "SAVE"
+script = ExtResource("3_d6dia")
 
-[node name="TITLE" parent="." instance=ExtResource("4_uduq7")]
-offset_left = -360.0
-offset_top = -128.0
-offset_right = 368.0
-offset_bottom = -90.0
-
-[node name="TITLE2" parent="." instance=ExtResource("4_uduq7")]
+[node name="TITLE2" parent="." instance=ExtResource("3_giamy")]
 anchors_preset = 5
 anchor_top = 0.0
 anchor_bottom = 0.0
@@ -68,7 +36,108 @@ offset_bottom = 44.0
 grow_vertical = 1
 text = "[center]OPTIONS"
 
-[node name="BACK_BUTTON" parent="." instance=ExtResource("5_uduq7")]
+[node name="BACK_BUTTON" parent="." instance=ExtResource("4_qukfs")]
 offset_top = -704.0
 offset_right = 213.0
 offset_bottom = -664.0
+
+[node name="Control" type="Control" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(600, 564)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 300.0
+offset_bottom = 264.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control"]
+clip_contents = false
+custom_minimum_size = Vector2(600, 564)
+layout_mode = 0
+offset_right = 600.0
+offset_bottom = 564.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ScrollContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+
+[node name="BG2" parent="Control/ScrollContainer/VBoxContainer" instance=ExtResource("5_rk5b5")]
+custom_minimum_size = Vector2(496, 224)
+layout_mode = 2
+
+[node name="TITLE" type="Label" parent="Control/ScrollContainer/VBoxContainer/BG2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -272.0
+offset_top = -96.0
+offset_right = -130.0
+offset_bottom = -82.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_fgfsr")
+theme_override_font_sizes/font_size = 16
+text = "SELECT GAME MODE"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Control/ScrollContainer/VBoxContainer/BG2"]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 44.0
+offset_right = 574.0
+offset_bottom = 103.0
+theme = ExtResource("6_fgfsr")
+theme_override_colors/font_color = Color(1, 0, 0.364706, 1)
+text = "24 HOUR
+MODE"
+
+[node name="Label2" type="Label" parent="Control/ScrollContainer/VBoxContainer/BG2"]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 140.0
+offset_right = 574.0
+offset_bottom = 199.0
+theme = ExtResource("6_fgfsr")
+text = "INSTANT
+MODE"
+
+[node name="options_menu_buttons" type="Control" parent="Control/ScrollContainer/VBoxContainer/BG2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -600.0
+offset_bottom = -224.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_qrwdr")
+
+[node name="difficulty_24_hours_button" parent="Control/ScrollContainer/VBoxContainer/BG2/options_menu_buttons" instance=ExtResource("2_tm0v0")]
+layout_mode = 1
+offset_left = 28.0
+offset_top = 44.0
+offset_right = 444.0
+offset_bottom = 100.0
+text = "TURN RESETS AFTER
+ONE DAY IN REAL TIME"
+
+[node name="difficulty_instant_button" parent="Control/ScrollContainer/VBoxContainer/BG2/options_menu_buttons" instance=ExtResource("2_tm0v0")]
+layout_mode = 1
+offset_left = 28.0
+offset_top = 140.0
+offset_right = 444.0
+offset_bottom = 196.0
+text = "TURN RESETS
+AT YOUR WILL"
+
+[connection signal="pressed" from="save_button" to="save_button" method="_on_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://d1gap44bgx3de"]
+[gd_scene load_steps=30 format=3 uid="uid://d1gap44bgx3de"]
 
 [ext_resource type="Script" uid="uid://bxy3br0irscae" path="res://scripts/add-self-to-scaled-ui.gd" id="1_ed1ed"]
 [ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="2_1xm5e"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://jqfcrgtcowf1" path="res://prefabs/left-hand-button.tscn" id="5_wo4en"]
 [ext_resource type="PackedScene" uid="uid://ddu11pa0q3uk0" path="res://prefabs/mech_viewport_container_small.tscn" id="6_5pnbf"]
 [ext_resource type="Texture2D" uid="uid://l6oe44m1j68v" path="res://UI/ui-sheet-1.png" id="6_kx32r"]
+[ext_resource type="Script" uid="uid://d34qt6cr5rbsh" path="res://scripts/debrief_button.gd" id="7_657ku"]
 [ext_resource type="Script" uid="uid://c54sr8yv6jh1t" path="res://prefabs/show_mech_info_button.gd" id="7_n8kpc"]
 [ext_resource type="Texture2D" uid="uid://86yf6tf46r08" path="res://UI/crosshairs64.png" id="9_m6yi0"]
 [ext_resource type="Script" uid="uid://bet7mthx566bj" path="res://scripts/show_parts_list_button.gd" id="10_7ogva"]
@@ -54,6 +55,14 @@ region = Rect2(28, 387, 44, 43)
 atlas = ExtResource("6_kx32r")
 region = Rect2(906, 671, 42, 46)
 
+[sub_resource type="Gradient" id="Gradient_g60p8"]
+offsets = PackedFloat32Array(0, 0.128755, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.901961, 0, 0, 0, 0.447059)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_alhsh"]
+gradient = SubResource("Gradient_g60p8")
+fill_from = Vector2(1, 0.621795)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_v8y5p"]
 atlas = ExtResource("6_kx32r")
 region = Rect2(952, 670, 43, 46)
@@ -79,6 +88,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="Line2D2" type="Line2D" parent="MISSION_BOX"]
 position = Vector2(709.225, 347.225)
@@ -152,7 +162,7 @@ offset_bottom = 626.0
 grow_horizontal = 1
 grow_vertical = 1
 text = "NEEDS DEBRIEF"
-script = ExtResource("4_kx32r")
+script = ExtResource("7_657ku")
 
 [node name="_FLAVOR_BG" parent="MISSION_BOX" instance=ExtResource("3_fdjc2")]
 layout_mode = 0
@@ -190,7 +200,7 @@ offset_top = 450.225
 offset_right = 1274.22
 offset_bottom = 634.225
 
-[node name="PARTS_BUTTON" parent="MISSION_BOX" node_paths=PackedStringArray("VBOX") instance=ExtResource("5_wo4en")]
+[node name="PARTS_BUTTON" parent="MISSION_BOX" instance=ExtResource("5_wo4en")]
 layout_mode = 1
 offset_left = -265.0
 offset_top = -22.0
@@ -198,7 +208,6 @@ offset_right = -185.0
 offset_bottom = 37.0
 icon = SubResource("AtlasTexture_4qu0g")
 script = ExtResource("10_7ogva")
-VBOX = NodePath("../Control/ScrollContainer/VBoxContainer")
 
 [node name="ID" type="Label" parent="MISSION_BOX"]
 layout_mode = 0
@@ -473,6 +482,62 @@ icon = SubResource("AtlasTexture_ap0kh")
 text_overrun_behavior = 3
 script = ExtResource("7_n8kpc")
 
+[node name="MECH_LIST" type="NinePatchRect" parent="MISSION_BOX/MECH"]
+clip_contents = true
+layout_mode = 0
+offset_left = -25.0
+offset_top = -187.0
+offset_right = 1247.0
+offset_bottom = 301.0
+mouse_filter = 0
+texture = ExtResource("9_m6yi0")
+region_rect = Rect2(456, 264, 51, 49)
+patch_margin_left = 26
+patch_margin_top = 26
+patch_margin_right = 27
+patch_margin_bottom = 25
+
+[node name="BG" type="TextureRect" parent="MISSION_BOX/MECH/MECH_LIST"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+texture = SubResource("GradientTexture2D_alhsh")
+
+[node name="Label" type="Label" parent="MISSION_BOX/MECH/MECH_LIST"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 8.0
+offset_right = 125.0
+offset_bottom = 22.0
+theme_override_font_sizes/font_size = 16
+text = "ASSIGN MECH
+"
+
+[node name="Control" type="Control" parent="MISSION_BOX/MECH/MECH_LIST"]
+clip_contents = true
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 2
+anchors_preset = 0
+offset_left = 32.0
+offset_top = 40.0
+offset_right = 32.0
+offset_bottom = 40.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MISSION_BOX/MECH/MECH_LIST/Control"]
+clip_contents = false
+layout_mode = 0
+offset_top = 24.0
+offset_right = 400.0
+offset_bottom = 424.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MISSION_BOX/MECH/MECH_LIST/Control/ScrollContainer"]
+layout_mode = 2
+
 [node name="MECH_BOX" parent="MISSION_BOX/MECH" instance=ExtResource("6_5pnbf")]
 visible = false
 offset_left = 1065.0
@@ -484,7 +549,7 @@ offset_bottom = -156.0
 layout_mode = 1
 offset_left = -613.0
 offset_top = 190.0
-offset_right = -229.0
+offset_right = -208.0
 offset_bottom = 249.0
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 text = "PILOT NAME NAME NAME"
@@ -500,26 +565,40 @@ offset_top = -305.0
 offset_right = 485.0
 offset_bottom = -305.0
 
-[node name="Control" type="Control" parent="MISSION_BOX"]
+[node name="PILOT_LIST" parent="MISSION_BOX/PILOT_BUTTON" instance=ExtResource("3_fdjc2")]
+layout_mode = 0
+offset_left = 445.0
+offset_top = -390.0
+offset_right = 901.0
+offset_bottom = 90.0
+
+[node name="Label" type="Label" parent="MISSION_BOX/PILOT_BUTTON/PILOT_LIST"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 8.0
+offset_right = 125.0
+offset_bottom = 22.0
+theme_override_font_sizes/font_size = 16
+text = "ASSIGN PILOT"
+
+[node name="Control" type="Control" parent="MISSION_BOX/PILOT_BUTTON/PILOT_LIST"]
 clip_contents = true
+custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 anchors_preset = 0
-offset_left = 458.0
-offset_top = 158.0
-offset_right = 1250.0
-offset_bottom = 578.0
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 432.0
+offset_bottom = 448.0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MISSION_BOX/Control"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MISSION_BOX/PILOT_BUTTON/PILOT_LIST/Control"]
 clip_contents = false
-layout_mode = 2
-offset_top = 19.0
-offset_right = 446.0
-offset_bottom = 288.0
+layout_mode = 0
+offset_right = 392.0
+offset_bottom = 432.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MISSION_BOX/Control/ScrollContainer"]
-visible = false
+[node name="VBoxContainer" type="VBoxContainer" parent="MISSION_BOX/PILOT_BUTTON/PILOT_LIST/Control/ScrollContainer"]
 layout_mode = 2
-theme_override_constants/separation = 24
 
 [node name="BACK_BUTTON" parent="." instance=ExtResource("3_hbt48")]
 offset_top = -704.0
@@ -530,7 +609,7 @@ offset_bottom = -664.0
 custom_minimum_size = Vector2(570, 0)
 offset_left = 357.0
 offset_top = 66.0
-offset_right = 909.0
+offset_right = 927.0
 offset_bottom = 634.0
 
 [node name="BUTTONS" type="VBoxContainer" parent="SCROLLABLE"]

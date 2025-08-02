@@ -1,6 +1,12 @@
 extends Node
+func save_everything():
+	save_game_state_to_user_data()
+	save_mechs_to_user_data()
+	save_missions_to_user_data()
+	save_parts_to_user_data()
+	save_pilots_to_user_data()
 
-func _ready() -> void:
+func load_data() -> void:
 
 
 	load_or_create_user_user_options()
@@ -12,21 +18,20 @@ func _ready() -> void:
 	load_or_create_user_game_state()
 	STATE.CURRENT_MISSION = LINQ.First(STATE.MISSIONS,func (mission:Mission):return mission.status == ENUMS.MISSION_STATUS.IN_PROGRESS)
 	STATE.HAS_MISSION_IN_PROGRESS = STATE.CURRENT_MISSION !=null;
-
-	await WAIT.for_seconds(3.0) #waiting for the view to resize.
+	STATUS_BAR.update_status()
+	await WAIT.for_seconds(1.0) #waiting for the view to resize.
 	show_difficulty_select_or_main_menu()
 
 func show_difficulty_select_or_main_menu():
+
 	if STATE.DIFFICULTY_ALREADY_CHOSEN == true:
 		STATE.DIFFICULTY_SETTTING_MENU_CANVAS.hide()
 		CONVERSATION_UI.hide_ui()
 		STATE.MAIN_MENU_CANVAS.show()
-	else:
+
+	elif STATE.DIFFICULTY_ALREADY_CHOSEN == false:
 		STATE.DIFFICULTY_SETTTING_MENU_CANVAS.hide()
-		#intro script
-		var intro_script = FileAccess.open("res://quest_scripts/intro.qs.txt", FileAccess.READ)
-		var content = intro_script.get_as_text()
-		QS.run_script(content)
+		QS.run_script_from_file("intro")
 		STATE.ON_QUEST_SCRIPT_DONE = on_initial_script_done
 
 func on_initial_script_done():
@@ -86,10 +91,6 @@ func create_and_push_mission_to_STATE(section,mission_index,user_data):
 			mission.allowed_mech_types = user_data.get_value(section,"MISSION_%s_ALLOWED_MECH_TYPES"%mission_index)
 
 			mission.location_id = user_data.get_value(section,"MISSION_%s_LOCATION_ID"%mission_index)
-			mission.reward_type_1 = user_data.get_value(section,"MISSION_%s_REWARD_TYPE_1"%mission_index)
-			mission.reward_type_2 = user_data.get_value(section,"MISSION_%s_REWARD_TYPE_2"%mission_index)
-			mission.reward_value_1 = user_data.get_value(section,"MISSION_%s_REWARD_VALUE_1"%mission_index)
-			mission.reward_value_2 = user_data.get_value(section,"MISSION_%s_REWARD_VALUE_2"%mission_index)
 			mission.start_script = user_data.get_value(section,"MISSION_%s_START_SCRIPT"%mission_index)
 			mission.success_script = user_data.get_value(section,"MISSION_%s_SUCCESS_SCRIPT"%mission_index)
 			mission.fail_script = user_data.get_value(section,"MISSION_%s_FAIL_SCRIPT"%mission_index)
@@ -106,10 +107,7 @@ func create_and_push_mission_to_STATE(section,mission_index,user_data):
 #MISSION_0_LOCATION_ID=0
 #MISSION_0_STATUS=1
 #MISSION_0_TIME_STARTED=""
-#MISSION_0_REWARD_TYPE_1=0
-#MISSION_0_REWARD_TYPE_2=0
-#MISSION_0_REWARD_VALUE_1=1
-#MISSION_0_REWARD_VALUE_2=1
+
 
 
 			STATE.MISSIONS.push_back(mission);
@@ -125,10 +123,6 @@ func create_and_push_mission_to_STATE_try_from_user(section,mission_index,data,u
 			mission.one_over_odds_for_mission = data.get_value("DEFAULT","MISSION_%s_ONE_OVER_ODDS_FOR_MISSION"%mission_index)
 			mission.one_over_odds_for_returning= user_data.get_value(section,"MISSION_%s_ONE_OVER_ODDS_FOR_RETURNING"%mission_index)
 			mission.allowed_mech_types = data.get_value("DEFAULT","MISSION_%s_ALLOWED_MECH_TYPES"%mission_index)
-			mission.reward_type_1 = user_data.get_value(section,"MISSION_%s_REWARD_TYPE_1"%mission_index)
-			mission.reward_type_2 = user_data.get_value(section,"MISSION_%s_REWARD_TYPE_2"%mission_index)
-			mission.reward_value_1 = user_data.get_value(section,"MISSION_%s_REWARD_VALUE_1"%mission_index)
-			mission.reward_value_2 = user_data.get_value(section,"MISSION_%s_REWARD_VALUE_2"%mission_index)
 			mission.location_id = user_data.get_value(section,"MISSION_%s_LOCATION_ID"%mission_index)
 
 			mission.start_script = user_data.get_value(section,"MISSION_%s_START_SCRIPT"%mission_index)
@@ -498,6 +492,7 @@ func create_and_push_mech_to_STATE(section,mech_index,user_data):
 			mech.name = user_data.get_value(section,"MECH_%s_NAME"%mech_index)
 			mech.flavor = user_data.get_value(section,"MECH_%s_FLAVOR"%mech_index)
 			mech.cost = user_data.get_value(section,"MECH_%s_COST"%mech_index)
+			mech.selling_price = user_data.get_value(section,"MECH_%s_SELLING_PRICE"%mech_index)
 			mech.theme = user_data.get_value(section,"MECH_%s_THEME"%mech_index)
 			mech.base_health = user_data.get_value(section,"MECH_%s_BASE_HEALTH"%mech_index)
 			mech.mission_id = user_data.get_value(section,"MECH_%s_MISSION_ID"%mech_index)
@@ -514,6 +509,7 @@ func create_and_push_mech_to_STATE_try_from_user(section,mech_index,data,user_da
 			mech.name = data.get_value("DEFAULT","MECH_%s_NAME"%mech_index)
 			mech.flavor = data.get_value("DEFAULT","MECH_%s_FLAVOR"%mech_index)
 			mech.cost = data.get_value("DEFAULT","MECH_%s_COST"%mech_index)
+			mech.selling_price = user_data.get_value(section,"MECH_%s_SELLING_PRICE"%mech_index)
 			mech.theme = data.get_value("DEFAULT","MECH_%s_THEME"%mech_index)
 			mech.base_health = data.get_value("DEFAULT","MECH_%s_BASE_HEALTH"%mech_index)
 			mech.mission_id = data.get_value("DEFAULT","MECH_%s_MISSION_ID"%mech_index)
@@ -542,6 +538,7 @@ func save_mechs_to_user_data():
 		user_data.set_value(section,"MECH_%s_NAME"%index,mech.name)
 		user_data.set_value(section,"MECH_%s_THEME"%index,mech.theme)
 		user_data.set_value(section,"MECH_%s_COST"%index,mech.cost)
+		user_data.set_value(section,"MECH_%s_SELLING_PRICE"%index,mech.selling_price)
 		user_data.set_value(section,"MECH_%s_BASE_HEALTH"%index,mech.base_health)
 		user_data.set_value(section,"MECH_%s_CURRENT_HEALTH"%index,mech.current_health)
 		user_data.set_value(section,"MECH_%s_MISSION_ID"%index,mech.mission_id)
@@ -567,11 +564,12 @@ func load_or_create_user_user_options():
 		create_and_push_user_option_to_STATE("DEFAULT",resource_data)
 		save_user_options_to_user_data()
 	elif(user_data_err != 7 ):
-		STATE.DIFFICULTY_ALREADY_CHOSEN  = true;
+
 		if(user_data.has_section_key(section,"VERSION")==false):
 			create_and_push_user_option_to_STATE("DEFAULT",resource_data)
 			return
 		var user_version:float = user_data.get_value(section,"VERSION")
+
 		if(user_version==STATE.USER_OPTIONS_VERSION):
 			create_and_push_user_option_to_STATE(section,user_data)
 		else:
@@ -610,6 +608,7 @@ func load_or_create_user_game_state():
 			user_data.save("user://game_state_backup__no_version.cfg")
 			create_and_push_game_state_data_to_STATE_try_from_user(section,resource_data,user_data)
 			return
+
 		var user_version:float = user_data.get_value(section,"VERSION")
 		if(user_version==STATE.GAME_STATE_VERSION):
 			create_and_push_game_state_data_to_STATE(section,user_data)
@@ -627,6 +626,7 @@ func create_and_push_game_state_data_to_STATE(section,user_data):
 			STATE.USE_REAL_TIME = user_data.get_value(section,"USE_REAL_TIME")
 			STATE.CREDITS = user_data.get_value(section,"CREDITS")
 			STATE.RECYCLE_POINTS= user_data.get_value(section,"RECYCLE_POINTS")
+			STATE.DIFFICULTY_ALREADY_CHOSEN  = user_data.get_value(section,"DIFFICULTY_ALREADY_CHOSEN")
 
 func create_and_push_game_state_data_to_STATE_try_from_user(section,data,user_data:ConfigFile):
 
@@ -647,6 +647,11 @@ func create_and_push_game_state_data_to_STATE_try_from_user(section,data,user_da
 			else:
 				STATE.RECYCLE_POINTS = data.get_value(section,"RECYCLE_POINTS")
 
+			if(user_data.get_value(section,"DIFFICULTY_ALREADY_CHOSEN")):
+				STATE.DIFFICULTY_ALREADY_CHOSEN = user_data.get_value(section,"DIFFICULTY_ALREADY_CHOSEN")
+			else:
+				STATE.DIFFICULTY_ALREADY_CHOSEN = data.get_value(section,"DIFFICULTY_ALREADY_CHOSEN")
+
 			STATE.CREDITS
 func save_game_state_to_user_data():
 	var slot_index = 1
@@ -658,6 +663,7 @@ func save_game_state_to_user_data():
 	user_data.set_value(section,"CREDITS",STATE.CREDITS)
 	user_data.set_value(section,"RECYCLE_POINTS",STATE.RECYCLE_POINTS)
 	user_data.set_value(section,"USE_REAL_TIME",STATE.USE_REAL_TIME)
+	user_data.set_value(section,"DIFFICULTY_ALREADY_CHOSEN",STATE.DIFFICULTY_ALREADY_CHOSEN)
 
 	var err = user_data.save("user://game_state.cfg")
 	if err != OK:

@@ -13,111 +13,119 @@ theme = ExtResource("1_w8og1")
 
 [node name="ID" type="Label" parent="."]
 layout_mode = 2
-offset_left = 16.0
-offset_top = 32.0
-offset_right = 64.0
-offset_bottom = 60.0
+offset_left = 21.0
+offset_top = 48.0
+offset_right = 69.0
+offset_bottom = 76.0
 theme = ExtResource("1_w8og1")
 text = "ID"
 
+[node name="TYPE" type="Label" parent="."]
+layout_mode = 2
+offset_left = 78.0
+offset_top = 34.0
+offset_right = 114.0
+offset_bottom = 48.0
+theme = ExtResource("1_w8og1")
+theme_override_font_sizes/font_size = 16
+text = "TYPE"
+
+[node name="TYPE2" type="Label" parent="."]
+layout_mode = 2
+offset_left = 21.0
+offset_top = 33.0
+offset_right = 57.0
+offset_bottom = 47.0
+theme = ExtResource("1_w8og1")
+theme_override_font_sizes/font_size = 16
+text = "PART"
+
+[node name="TYPE3" type="Label" parent="."]
+layout_mode = 2
+offset_left = 21.0
+offset_top = 172.0
+offset_right = 119.0
+offset_bottom = 186.0
+theme = ExtResource("1_w8og1")
+theme_override_font_sizes/font_size = 16
+text = "MISSION ODDS"
+
+[node name="TYPE4" type="Label" parent="."]
+layout_mode = 2
+offset_left = 22.0
+offset_top = 295.0
+offset_right = 120.0
+offset_bottom = 309.0
+theme = ExtResource("1_w8og1")
+theme_override_font_sizes/font_size = 16
+text = "RETURN ODDS"
+
+[node name="TYPE5" type="Label" parent="."]
+layout_mode = 2
+offset_left = 19.0
+offset_top = 99.0
+offset_right = 124.0
+offset_bottom = 113.0
+theme = ExtResource("1_w8og1")
+theme_override_font_sizes/font_size = 16
+text = "ENVIRONMENTS"
+
 [node name="NAME" type="Label" parent="."]
 layout_mode = 2
-offset_left = 72.0
-offset_top = 32.0
-offset_right = 172.0
-offset_bottom = 60.0
+offset_left = 77.0
+offset_top = 48.0
+offset_right = 177.0
+offset_bottom = 76.0
 theme = ExtResource("1_w8og1")
 text = "NAME"
 
-[node name="FLAVOR" type="Label" parent="."]
-layout_mode = 2
-offset_left = 40.0
-offset_top = 192.0
-offset_right = 480.0
-offset_bottom = 320.0
-theme = ExtResource("1_w8og1")
-text = "FLAVOR Text. Flavor Text, Flavor Text, Flavor Text, Flavor Text, Flavor Text."
-autowrap_mode = 2
-
-[node name="RECYCLE_POINTS" type="Label" parent="."]
-layout_mode = 2
-offset_left = 320.0
-offset_top = 136.0
-offset_right = 420.0
-offset_bottom = 164.0
-theme = ExtResource("1_w8og1")
-text = "POINTS"
-
-[node name="SELLING_PRICE" type="Label" parent="."]
-layout_mode = 2
-offset_left = 16.0
-offset_top = 296.0
-offset_right = 116.0
-offset_bottom = 324.0
-theme = ExtResource("1_w8og1")
-text = "PRICE"
-
 [node name="MISSION_ODDS" type="Label" parent="."]
 layout_mode = 2
-offset_left = 32.0
-offset_top = 64.0
-offset_right = 80.0
-offset_bottom = 92.0
+offset_left = 27.0
+offset_top = 187.0
+offset_right = 75.0
+offset_bottom = 215.0
 theme = ExtResource("1_w8og1")
 text = "+1"
 horizontal_alignment = 2
 
 [node name="CRITERIA_FOR_MISSION_ODDS" type="Label" parent="."]
 layout_mode = 2
-offset_left = 88.0
-offset_top = 64.0
-offset_right = 456.0
-offset_bottom = 92.0
+offset_left = 112.0
+offset_top = 189.0
+offset_right = 472.0
+offset_bottom = 294.0
 theme = ExtResource("1_w8og1")
 text = "CRITERIA"
+autowrap_mode = 2
+text_overrun_behavior = 3
 
 [node name="RETURNING_ODDS" type="Label" parent="."]
 layout_mode = 2
-offset_left = 32.0
-offset_top = 96.0
-offset_right = 80.0
-offset_bottom = 124.0
+offset_left = 29.0
+offset_top = 312.0
+offset_right = 76.0
+offset_bottom = 340.0
 theme = ExtResource("1_w8og1")
 text = "-1"
 horizontal_alignment = 2
 
 [node name="CRITERIA_FOR_RETURNING_ODDS" type="Label" parent="."]
 layout_mode = 2
-offset_left = 88.0
-offset_top = 96.0
-offset_right = 448.0
-offset_bottom = 124.0
+offset_left = 112.0
+offset_top = 315.0
+offset_right = 398.0
+offset_bottom = 426.0
 theme = ExtResource("1_w8og1")
-text = "CRITERIA II"
+text = "CRITERIA II CRITERIA II CRITERIA II CRITERIA II CRITERIA II CRITERIA II "
+autowrap_mode = 2
+text_overrun_behavior = 3
 
-[node name="STATUS" type="Label" parent="."]
+[node name="ENVIRONMENT" type="Label" parent="."]
 layout_mode = 2
 offset_left = 24.0
-offset_top = 128.0
-offset_right = 132.0
-offset_bottom = 156.0
-theme = ExtResource("1_w8og1")
-text = "STATUS"
-
-[node name="MECH" type="Label" parent="."]
-layout_mode = 2
-offset_left = 24.0
-offset_top = 160.0
+offset_top = 112.0
 offset_right = 124.0
-offset_bottom = 188.0
+offset_bottom = 140.0
 theme = ExtResource("1_w8og1")
-text = "MECH"
-
-[node name="TYPE" type="Label" parent="."]
-layout_mode = 2
-offset_left = 384.0
-offset_top = 32.0
-offset_right = 484.0
-offset_bottom = 60.0
-theme = ExtResource("1_w8og1")
-text = "TYPE"
+text = "ENV"

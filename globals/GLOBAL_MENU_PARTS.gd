@@ -59,6 +59,10 @@ func on_buy_button_pressed():
 	var current_part:Part = LINQ.First(STATE.PARTS, func (part:Part):
 		return part.ID == STATE.CURRENT_PART_ID);
 	current_part.status= ENUMS.PART_STATUS.PURCHASED
+	STATE.CREDITS-= current_part.cost;
+	STATUS_BAR.update_status()
+	DATA.save_game_state_to_user_data()
+
 	DATA.save_parts_to_user_data()
 	show_parts()
 
@@ -70,6 +74,7 @@ func on_unequip_pressed():
 	current_part.attached_to_mech_id=0
 	current_part.status= ENUMS.PART_STATUS.PURCHASED
 	show_parts()
+
 	DATA.save_parts_to_user_data()
 
 func on_equip_pressed():
@@ -85,7 +90,10 @@ func on_sell_button_pressed():
 	var current_part:Part = LINQ.First(STATE.PARTS, func (part:Part):
 		return part.ID == STATE.CURRENT_PART_ID);
 	current_part.status= ENUMS.PART_STATUS.NOT_AVAILABLE
+	STATE.CREDITS+=current_part.selling_price;
+	STATUS_BAR.update_status()
 	show_parts()
+	DATA.save_game_state_to_user_data()
 	DATA.save_parts_to_user_data()
 
 func on_part_pressed(id:int):
@@ -104,10 +112,14 @@ func on_part_pressed(id:int):
 		UNEQUIP_BUTTON.visible = false
 		UNEQUIP_BUTTON.disabled = true
 	elif(current_part.status == ENUMS.PART_STATUS.FOR_SALE):
+		if(STATE.CREDITS >= current_part.cost):
+			BUY_BUTTON.disabled = false
+		else:
+			BUY_BUTTON.disabled = true
+
+		BUY_BUTTON.visible = true
 		SELL_BUTTON.disabled = true
 		SELL_BUTTON.visible = false
-		BUY_BUTTON.disabled = false
-		BUY_BUTTON.visible = true
 		RECYCLE_BUTTON.disabled = true
 		EQUIP_BUTTON.visible = true
 		EQUIP_BUTTON.disabled = true

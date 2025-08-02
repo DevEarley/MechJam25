@@ -1,12 +1,15 @@
-Game concept, UI design, programming, & concept art by Dev Earley
+Dev Earley
+Game concept, UI design, programming, & concept art
 
+Mr. Minimal Camera Shake Add-On
+https://github.com/MrMinimal
 
 Font by Alex Sheyn
 https://www.pentacom.jp/pentacom/bitfontmaker2/gallery/?id=179
 
-W40k_Rocks
+W40k_Rocks - UI programming help & Data MGMT help
 	https://github.com/w40krocks
 	https://wrocks.itch.io
+
 Some cc0 assets:
 https://opengameart.org/content/64-crosshairs-pack
-

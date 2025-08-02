@@ -79,6 +79,7 @@ func _ready():
 func start_conversation():
 	STATE.CONVERSATION_CONTROL_NODE.show()
 	STATE.CONVERSATION_SCREEN_CANVAS.show()
+	STATE.STATUS_BAR_CANVAS.hide()
 
 func hide_ui():
 	STATE.CONVERSATION_CONTROL_NODE.hide()

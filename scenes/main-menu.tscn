@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://q3apfh65koxm"]
+[gd_scene load_steps=14 format=3 uid="uid://q3apfh65koxm"]
 
 [ext_resource type="Script" uid="uid://bxy3br0irscae" path="res://scripts/add-self-to-scaled-ui.gd" id="1_xg1py"]
 [ext_resource type="PackedScene" uid="uid://bunfxp7cx281n" path="res://prefabs/title-bar-wide.tscn" id="2_0u6b5"]
@@ -6,88 +6,125 @@
 [ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="3_nbft7"]
 [ext_resource type="PackedScene" uid="uid://jqfcrgtcowf1" path="res://prefabs/left-hand-button.tscn" id="4_nbft7"]
 [ext_resource type="PackedScene" uid="uid://dimmt4xbgqqdb" path="res://mechs-3D/mech-001.glb" id="6_5ucbf"]
+[ext_resource type="PackedScene" uid="uid://daumxjq7jnjp8" path="res://addons/mrminimal_camera_shake/shaky_camera.tscn" id="6_cgepm"]
 
 [sub_resource type="Animation" id="Animation_nbft7"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
+tracks/0/path = NodePath("CameraRig:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.605994, 1.71284, 1.37122)]
+"values": [Vector3(-0.203294, 0.338557, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/path = NodePath("CameraRig:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.203294, 0.338557, 0)]
+"values": [Vector3(0.605994, 1.71284, 1.37122)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CameraRig/ShakyCamera:speed_multiplier")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
 }
 
 [sub_resource type="Animation" id="Animation_5ucbf"]
 resource_name = "loop_part_2"
-length = 5.8
+length = 16.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 2
+tracks/0/path = NodePath("CameraRig:rotation")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 5.18261),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.2, 5.36667, 10.9667, 15.2333),
+"transitions": PackedFloat32Array(5.65686, 1.36604, 1.51572, 4.92458),
 "update": 0,
-"values": [Vector3(0.00741589, 2.97027, 1.66671), Vector3(-0.0087715, 0.0965557, 1.78955)]
+"values": [Vector3(-0.0519921, 0.00259095, 0), Vector3(-0.39968, 0.00523599, 0), Vector3(-0.39968, 0.00523599, 0), Vector3(-0.240004, 0.00402126, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:rotation")
-tracks/1/interp = 1
+tracks/1/path = NodePath("CameraRig:position")
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 5.18261),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.3, 5.56667, 11, 15.3),
+"transitions": PackedFloat32Array(2.37841, 1.36604, 1.51572, 4.92458),
 "update": 0,
-"values": [Vector3(0.21737, 0.0156715, 0), Vector3(0.522803, -0.0017818, 0)]
+"values": [Vector3(-0.0052768, 1.22912, 1.76136), Vector3(-0.003, 1.967, 1.743), Vector3(-0.003, 1.967, 1.743), Vector3(-0.00300002, 1.967, 1.743)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CameraRig/ShakyCamera:speed_multiplier")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.6, 5.23333, 5.56667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.5, 0.1, 0.6]
 }
 
 [sub_resource type="Animation" id="Animation_ismwm"]
 resource_name = "start_loop"
-length = 5.8
+length = 10.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 2
+tracks/0/path = NodePath("CameraRig:rotation")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.67, 4.93, 5.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0.0333333, 0.9, 4.6, 9.76667),
+"transitions": PackedFloat32Array(2.54912, 2.54912, 7.46426, 0.125),
 "update": 0,
-"values": [Vector3(0.605994, 1.71284, 1.37122), Vector3(0.605994, 1.71284, 1.37122), Vector3(-0.849474, 2.0056, 1.66488), Vector3(-0.849474, 2.0056, 1.66488)]
+"values": [Vector3(-0.203294, 0.338557, 0), Vector3(-0.203294, 0.338557, 0), Vector3(-0.418086, -0.339733, 0), Vector3(-0.418086, -0.339733, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:rotation")
-tracks/1/interp = 1
+tracks/1/path = NodePath("CameraRig:position")
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.67, 4.93, 5.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0.0666666, 0.933333, 4.63333),
+"transitions": PackedFloat32Array(1.8025, 1.8025, 0.125),
 "update": 0,
-"values": [Vector3(-0.203294, 0.338557, 0), Vector3(-0.203294, 0.338557, 0), Vector3(-0.452003, -0.446841, 0), Vector3(-0.452003, -0.446841, 0)]
+"values": [Vector3(0.605994, 1.71284, 1.37122), Vector3(0.605994, 1.71284, 1.37122), Vector3(-0.607223, 1.95696, 1.61609)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CameraRig/ShakyCamera:speed_multiplier")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.4, 4.6, 4.83333, 9.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.4, 0.6, 0.2, 0.2, 0.2, 0.4]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cgepm"]
@@ -97,6 +134,15 @@ _data = {
 &"start_loop": SubResource("Animation_ismwm")
 }
 
+[sub_resource type="Gradient" id="Gradient_ismwm"]
+offsets = PackedFloat32Array(0, 0.128755, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.901961, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nbft7"]
+gradient = SubResource("Gradient_ismwm")
+fill_from = Vector2(1, 0.891026)
+fill_to = Vector2(0.99359, 0.254274)
+
 [node name="MAIN_MENU" type="CanvasLayer"]
 script = ExtResource("1_xg1py")
 
@@ -104,52 +150,23 @@ script = ExtResource("1_xg1py")
 anchors_preset = 5
 anchor_top = 0.0
 anchor_bottom = 0.0
-offset_left = -208.0
+offset_left = -634.0
 offset_top = 16.0
-offset_right = 206.0
+offset_right = 632.0
 offset_bottom = 51.0
 grow_vertical = 1
 text = "[center]MECH JAM 25"
 
 [node name="BG2" parent="." instance=ExtResource("3_nbft7")]
-offset_left = 56.0
+offset_left = 265.0
 offset_top = 56.0
-offset_right = 656.0
+offset_right = 1017.0
 offset_bottom = 656.0
 
-[node name="Main_Menu_Buttons" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-script = ExtResource("3_ismwm")
-
-[node name="START" parent="Main_Menu_Buttons" instance=ExtResource("4_nbft7")]
-layout_mode = 1
-offset_left = 665.0
-offset_top = 256.0
-offset_right = 849.0
-offset_bottom = 296.0
-text = "START"
-
-[node name="EXIT" parent="Main_Menu_Buttons" instance=ExtResource("4_nbft7")]
-layout_mode = 1
-offset_left = 665.0
-offset_top = 418.0
-offset_right = 849.0
-offset_bottom = 458.0
-text = "EXIT"
-
-[node name="OPTIONS" parent="Main_Menu_Buttons" instance=ExtResource("4_nbft7")]
-layout_mode = 1
-offset_left = 664.0
-offset_top = 336.0
-offset_right = 890.0
-offset_bottom = 376.0
-text = "OPTIONS"
-
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-offset_left = 56.0
+offset_left = 394.0
 offset_top = 56.0
-offset_right = 656.0
+offset_right = 994.0
 offset_bottom = 656.0
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
@@ -164,9 +181,13 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 [node name="Cube2_copy4" parent="SubViewportContainer/SubViewport/mech-001" index="0"]
 layers = 1024
 
-[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+[node name="CameraRig" type="Node3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(0.943235, -0.0670552, 0.325287, 0, 0.979407, 0.201896, -0.332126, -0.190436, 0.92381, 0.605994, 1.71284, 1.37122)
-cull_mask = 1017824
+
+[node name="ShakyCamera" parent="SubViewportContainer/SubViewport/CameraRig" instance=ExtResource("6_cgepm")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+position_multiplier = 0.8
+rotation_multiplier = 0.4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport"]
 libraries = {
@@ -175,5 +196,50 @@ libraries = {
 autoplay = "start_loop"
 next/loop_part_2 = &"start_loop"
 next/start_loop = &"loop_part_2"
+
+[node name="BG" type="TextureRect" parent="."]
+show_behind_parent = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 394.0
+offset_top = 56.0
+offset_right = -286.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+texture = SubResource("GradientTexture2D_nbft7")
+
+[node name="Main_Menu_Buttons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 361.0
+offset_right = 361.0
+script = ExtResource("3_ismwm")
+
+[node name="START" parent="Main_Menu_Buttons" instance=ExtResource("4_nbft7")]
+layout_mode = 1
+offset_left = -136.0
+offset_top = 279.0
+offset_right = 70.0
+offset_bottom = 319.0
+text = "START  "
+
+[node name="EXIT" parent="Main_Menu_Buttons" instance=ExtResource("4_nbft7")]
+layout_mode = 1
+offset_left = -136.0
+offset_top = 407.0
+offset_right = 70.0
+offset_bottom = 447.0
+text = "EXIT"
+
+[node name="OPTIONS" parent="Main_Menu_Buttons" instance=ExtResource("4_nbft7")]
+layout_mode = 1
+offset_left = -136.0
+offset_top = 343.0
+offset_right = 69.0
+offset_bottom = 383.0
+text = "OPTIONS"
 
 [editable path="SubViewportContainer/SubViewport/mech-001"]

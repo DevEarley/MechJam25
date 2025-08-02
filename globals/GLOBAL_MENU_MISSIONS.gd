@@ -14,6 +14,8 @@ func show_missions():
 	MISSION_BOX.hide()
 	BACK_BUTTON = STATE.MISSIONS_MENU_CANVAS.get_node("BACK_BUTTON")
 	BACK_BUTTON.text="BACK"
+
+	check_for_completed_missions()
 	for child in MISSION_BUTTONS.get_children():
 		child.queue_free()
 
@@ -34,25 +36,45 @@ func show_missions():
 		mission_button.connect("pressed",on_mission_pressed.bind(mission));
 		MISSION_BUTTONS.add_child(mission_button)
 
+func check_for_completed_missions():
+		var something_changed = false
+		if(STATE.USE_REAL_TIME == true):
+			for mission:Mission in STATE.MISSIONS:
+				if(mission.status == ENUMS.MISSION_STATUS.IN_PROGRESS):
+					var time_24_hours = 60.0*60.0*24.0
+					var time_now = Time.get_unix_time_from_system()
+					var seconds_left = (int)(time_now - (mission.time_started + time_24_hours) )
+					if(seconds_left<=0):
+						something_changed =true
+						mission.status = ENUMS.MISSION_STATUS.NEEDS_DEBRIEF
+		if(something_changed):
+			DATA.save_everything()
+
+func on_instant_player_result_script_finished():
+	QS.run_script_from_file("daily") #for instant user
+	STATE.ON_QUEST_SCRIPT_DONE = on_back_to_mission_list
+
 func on_start_mission_script_finished():
 	var mission:Mission = LINQ.First(STATE.MISSIONS,func (mission:Mission): return mission.ID==STATE.CURRENT_MISSION_ID);
 	if(STATE.USE_REAL_TIME == false):
-		STATE.ON_QUEST_SCRIPT_DONE = on_back_to_mission_list
+		STATE.ON_QUEST_SCRIPT_DONE = on_instant_player_result_script_finished
 		if(CALCULATOR.has_passed_current_mission()):
 			QS.run_script(mission.success_script)
 		else:
 			QS.run_script(mission.fail_script)
 	else:
-		mission.status = ENUMS.MISSION_STATUS.IN_PROGRESS
-		DATA.save_missions_to_user_data()
+		DATA.save_everything()
 		on_back_to_mission_list()
 
 
 func start_mission_pressed():
+
 	hide_all_menus()
 	var mission:Mission = LINQ.First(STATE.MISSIONS,func (mission:Mission): return mission.ID==STATE.CURRENT_MISSION_ID);
 	STATE.HAS_MISSION_IN_PROGRESS = true
 	STATE.CURRENT_MISSION = mission
+	mission.status = ENUMS.MISSION_STATUS.IN_PROGRESS
+	DATA.save_everything()
 	mission.time_started = Time.get_unix_time_from_system()
 	STATE.ON_QUEST_SCRIPT_DONE = on_start_mission_script_finished;
 	QS.run_script(mission.start_script);
@@ -71,7 +93,6 @@ func on_back_to_mission_list():
 	MISSION_BUTTONS_CONTAINER.show();
 	MISSION_BUTTONS.show()
 	STATE.STATUS_BAR_CANVAS.show()
-
 	STATE.MISSIONS_MENU_CANVAS.show()
 	MISSION_BOX.hide()
 	STATE.MAP_BG.show()
@@ -90,6 +111,7 @@ func on_mission_pressed(mission:Mission):
 	MAP.ANIMATOR.stop()
 	BACK_BUTTON.text="MISSION LIST"
 
+
 	var time_24_hours = 60.0*60.0*24.0
 	var time_now = Time.get_unix_time_from_system()
 
@@ -97,8 +119,9 @@ func on_mission_pressed(mission:Mission):
 		if(mission.time_started + time_24_hours <= time_now):
 			mission.status = ENUMS.MISSION_STATUS.NEEDS_DEBRIEF;
 			DATA.save_missions_to_user_data()
-
-
+	else:
+		STATE.CURRENT_MECH_ID=-1
+		STATE.CURRENT_PILOT_ID=-1
 	var mission_bonus = CALCULATOR.get_mission_bonus(mission);
 	var return_bonus = CALCULATOR.get_return_bonus(mission);
 	for child in MISSION_BOX.get_children():
@@ -108,13 +131,25 @@ func on_mission_pressed(mission:Mission):
 		if(child.name =="START_MISSION"):continue
 		if(child.name =="MECH"):continue
 		child.hide()
-	var parts = STATE.PARTS.filter(func (part:Part): return part.attached_to_mech_id==mission.ID && part.status == ENUMS.PART_STATUS.EQUIPT);
 	var mech:Mech = LINQ.First(STATE.MECHS,func (mech:Mech): return mech.mission_id==mission.ID);
-	var pilot:Pilot = LINQ.First(STATE.PILOTS,func (pilot:Pilot): return pilot.mech_id==mech.ID);
+	var parts;
+	var pilot
+	if(mech!= null):
+		pilot = LINQ.First(STATE.PILOTS,func (pilot:Pilot): return pilot.mech_id==mech.ID);
+		parts = STATE.PARTS.filter(func (part:Part): return part.attached_to_mech_id==mech.ID && part.status == ENUMS.PART_STATUS.EQUIPT);
+		STATE.CURRENT_MECH_ID = mech.ID;
+	else:
+		STATE.CURRENT_MECH_ID = -1
+		pilot = null
+		parts = []
+
+	if(pilot!=null):
+		STATE.CURRENT_PILOT_ID = pilot.ID;
+	else:
+		STATE.CURRENT_PILOT_ID = -1
+
 	var location:Location = LINQ.First(STATE.LOCATIONS,func (location:Location): return location.ID==mission.location_id);
 	STATE.CURRENT_MISSION_ID = mission.ID;
-	STATE.CURRENT_MECH_ID = mech.ID;
-	STATE.CURRENT_PILOT_ID = pilot.ID;
 	STATE.CURRENT_LOCATION_ID = location.ID;
 	MISSION_BOX.show()
 	var environment_text = "UNKNOWN ENV"
@@ -128,6 +163,7 @@ func on_mission_pressed(mission:Mission):
 	MISSION_BOX.get_node("STATUS_FAILED_ICON").hide()
 	MISSION_BOX.get_node("START_MISSION").show()
 	hide_all_menus()
+
 
 	if(mission.status == ENUMS.MISSION_STATUS.LOCKED):
 		build_status_for_mission(mission, MISSION_BOX)
@@ -163,10 +199,7 @@ func on_mission_pressed(mission:Mission):
 		MISSION_BOX.get_node("START_MISSION").visible = false
 		MISSION_BOX.get_node("NEEDS_DEBRIEF").disabled = true
 		MISSION_BOX.get_node("START_MISSION").disabled = true
-		MISSION_BOX.get_node("PILOT_BUTTON").text =pilot.name
-		MISSION_BOX.get_node("MECH").text = mech.name
-		MISSION_BOX.get_node("MECH").disabled = false
-		MISSION_BOX.get_node("PILOT_BUTTON").disabled = false
+
 		MISSION_BOX.get_node("MECH/MECH_BOX").hide()
 		MISSION_BOX.get_node("ID").text = "%03d"%mission.ID
 		MISSION_BOX.get_node("NAME").text = mission.name
@@ -179,41 +212,9 @@ func on_mission_pressed(mission:Mission):
 
 		MISSION_BOX.get_node("LOCATION_POSITION").text = "[%03d,%03d]"%[location.map_position.x,location.map_position.z]
 		MISSION_BOX.get_node("LOCATION_FLAVOR").text = location.flavor
-		match(location.environment):
-			ENUMS.ENVIRONMENT.DESERT:
-				environment_text = "DESERT"
-				environment_tint = Vector3(194,114,44);
-			ENUMS.ENVIRONMENT.SWAMP:
-				environment_text = "SWAMP"
-				environment_tint = Vector3(25,157,102);
-			ENUMS.ENVIRONMENT.URBAN:
-				environment_text = "URBAN"
-				environment_tint = Vector3(157,0,100);
-			ENUMS.ENVIRONMENT.JUNGLE:
-				environment_text = "JUNGLE"
-				environment_tint = Vector3(82,176,53);
-			ENUMS.ENVIRONMENT.SPACE:
-				environment_text = "SPACE"
-				environment_tint = Vector3(30,29,196);
-			ENUMS.ENVIRONMENT.UNDERWATER_FROZEN:
-				environment_text = "FROZEN WATER"
-				environment_tint = Vector3(179,255,229);
-			ENUMS.ENVIRONMENT.UNDERWATER:
-				environment_text = "SALT WATER"
-				environment_tint = Vector3(21,99,188);
-			ENUMS.ENVIRONMENT.UNDERWATER_BOILING:
-				environment_text = "BOILING WATER"
-				environment_tint = Vector3(255,0,93);
-			ENUMS.ENVIRONMENT.ICY:
-				environment_text = "ICY"
-				environment_tint = Vector3(255,255,255);
-			ENUMS.ENVIRONMENT.UNDERGROUND:
-				environment_text = "SUBTERRANEAN"
-				environment_tint = Vector3(71,0,106);
-			ENUMS.ENVIRONMENT.ACID_LAKE:
-				environment_text = "ACID LAKE"
-				environment_tint = Vector3(120,227,86);
-
+		var results = DATA_TO_UI.get_environment_text_and_tint(location.environment)
+		environment_text= results[0]
+		environment_tint= results[1]
 		color = environment_tint/Vector3(255.0,255.0,255.0)
 		MISSION_BOX.get_node("ENVIRONMENT").text = environment_text
 
@@ -239,6 +240,27 @@ func on_mission_pressed(mission:Mission):
 
 	build_status_for_mission(mission, MISSION_BOX)
 
+	if(mission.status != ENUMS.MISSION_STATUS.LOCKED):
+		if(mech == null):
+			MISSION_BOX.get_node("NEEDS_DEBRIEF").disabled = true
+			MISSION_BOX.get_node("START_MISSION").disabled = true
+			MISSION_BOX.get_node("PILOT_BUTTON").disabled = true
+			MISSION_BOX.get_node("PILOT_BUTTON").text = "UNASSIGNED"
+			MISSION_BOX.get_node("MECH").text = "ASSIGN MECH"
+			MISSION_BOX.get_node("MECH").disabled = false
+		elif(pilot == null && mech != null):
+			MISSION_BOX.get_node("NEEDS_DEBRIEF").disabled = true
+			MISSION_BOX.get_node("START_MISSION").disabled = true
+			MISSION_BOX.get_node("PILOT_BUTTON").text = "ASSIGN PILOT"
+			MISSION_BOX.get_node("PILOT_BUTTON").disabled = false
+			MISSION_BOX.get_node("MECH").disabled = false
+			MISSION_BOX.get_node("MECH").text = mech.name
+		elif(pilot != null && mech != null):
+			MISSION_BOX.get_node("MECH").disabled = false
+			MISSION_BOX.get_node("MECH").text = mech.name
+			MISSION_BOX.get_node("PILOT_BUTTON").disabled = false
+			MISSION_BOX.get_node("PILOT_BUTTON").text =pilot.name
+
 func on_next_mission_pressed():
 	var index = STATE.CURRENT_MISSION_ID+1;
 	if( index > STATE.MISSIONS.size()-1):
@@ -257,9 +279,10 @@ func on_previous_mission_pressed():
 	on_mission_pressed(STATE.MISSIONS[STATE.CURRENT_MISSION_ID])
 
 func hide_all_menus():
-	MISSION_BOX.get_node("Control/ScrollContainer/VBoxContainer").hide()
 	MISSION_BOX.get_node("PILOT_BUTTON/PILOT_BOX").hide()
+	MISSION_BOX.get_node("PILOT_BUTTON/PILOT_LIST").hide()
 	MISSION_BOX.get_node("MECH/MECH_BOX").hide()
+	MISSION_BOX.get_node("MECH/MECH_LIST").hide()
 
 func build_status_for_mission(mission:Mission, BOX):
 	BOX.get_node("STATUS_LOCKED_ICON").hide()

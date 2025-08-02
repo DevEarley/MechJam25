@@ -15,11 +15,33 @@ func on_back_to_main_menu():
 	STATE.STATUS_BAR_CANVAS.hide()
 
 
+func go_to_start_menu():
+		STATUS_BAR.update_status()
+		MAP.ANIMATOR.play("idle")
+		STATE.MAIN_MENU_CANVAS.hide()
+		STATE.START_MENU_CANVAS.show()
+		STATE.STATUS_BAR_CANVAS.show()
+
 func _on_START_pressed():
-	MAP.ANIMATOR.play("idle")
-	STATE.MAIN_MENU_CANVAS.hide()
-	STATE.START_MENU_CANVAS.show()
-	STATE.STATUS_BAR_CANVAS.show()
+
+
+	#if(STATE.USE_REAL_TIME == true &&
+		#STATE.HAS_MISSION_IN_PROGRESS == true &&
+		#STATE.CURRENT_MISSION != null ):
+				#var time_24_hours = 60.0*60.0*24.0
+				#var time_now = Time.get_unix_time_from_system()
+				#var seconds_left = (int)(time_now-(STATE.CURRENT_MISSION.time_started + time_24_hours))
+				#if(seconds_left <= 0):
+					#STATE.DID_DAILY_FOR_MISSION = true;
+					#QS.run_script_from_file("daily")
+					#STATE.ON_QUEST_SCRIPT_DONE = go_to_start_menu
+					#STATE.MAIN_MENU_CANVAS.hide()
+#
+				#else:
+					#go_to_start_menu()
+	#else:
+		go_to_start_menu()
+
 
 
 func _on_EXIT_pressed():

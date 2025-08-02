@@ -13,6 +13,7 @@ func _ready():
 	$LOG_OFF.connect("pressed",_on_LOG_OFF_pressed)
 
 func _on_back_to_start_menu():
+	STATUS_BAR.update_status()
 	MAP.ANIMATOR.play("idle")
 	STATE.START_MENU_CANVAS.show()
 	STATE.STATUS_BAR_CANVAS.show()
@@ -59,8 +60,9 @@ func _on_PARTS_pressed():
 	#STATE.ON_BACK_BUTTON_PRESSED = _on_back_to_start_menu
 
 func _on_LOG_OFF_pressed():
-
+	#STATE.DID_DAILY_FOR_MISSION = false;
 	MAP.ANIMATOR.play("still")
 	STATE.MAIN_MENU_CANVAS.show()
 	STATE.START_MENU_CANVAS.hide()
+	STATE.STATUS_BAR_CANVAS.hide()
 	STATE.ON_BACK_BUTTON_PRESSED = _on_back_to_start_menu

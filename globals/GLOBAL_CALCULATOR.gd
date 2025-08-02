@@ -1,9 +1,13 @@
 extends Node
 
 func get_mission_bonus(mission:Mission)->int:
-	var parts = STATE.PARTS.filter(func (part:Part): return part.attached_to_mech_id==mission.ID && part.status == ENUMS.PART_STATUS.EQUIPT);
+
 	var mech:Mech = LINQ.First(STATE.MECHS,func (mech:Mech): return mech.mission_id==mission.ID);
+	if(mech== null):return 0;
 	var pilot:Pilot = LINQ.First(STATE.PILOTS,func (pilot:Pilot): return pilot.mech_id==mech.ID);
+	if(pilot== null):return 0;
+	var parts = STATE.PARTS.filter(func (part:Part): return part.attached_to_mech_id==mech.ID && part.status == ENUMS.PART_STATUS.EQUIPT);
+
 	var location:Location = LINQ.First(STATE.LOCATIONS,func (location:Location): return location.ID==mission.location_id);
 	var bonus = 0;
 	for part in parts:
@@ -12,10 +16,13 @@ func get_mission_bonus(mission:Mission)->int:
 	return bonus;
 
 func get_return_bonus(mission:Mission)->int:
-	var parts = STATE.PARTS.filter(func (part:Part): return part.attached_to_mech_id==mission.ID && part.status == ENUMS.PART_STATUS.EQUIPT);
 	var mech:Mech = LINQ.First(STATE.MECHS,func (mech:Mech): return mech.mission_id==mission.ID);
+	if(mech == null):return 0
 	var pilot:Pilot = LINQ.First(STATE.PILOTS,func (pilot:Pilot): return pilot.mech_id==mech.ID);
+	if(pilot == null):return 0
+
 	var location:Location = LINQ.First(STATE.LOCATIONS,func (location:Location): return location.ID==mission.location_id);
+	var parts = STATE.PARTS.filter(func (part:Part): return part.attached_to_mech_id==mech.ID && part.status == ENUMS.PART_STATUS.EQUIPT);
 	var bonus = 0;
 	for part in parts:
 		bonus += calculate_return_bonus_for_part(part,mission,pilot,location,mech);

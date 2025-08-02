@@ -1,5 +1,5 @@
-say[*RING!! RING!!*]
 say[Game by AsFunAsFun]
+say[*RING!! RING!!*]
 [Let it ring]
 say[*RING!! RING!! RING!!*]
 choice[Answer the phone,Let it ring]
@@ -25,4 +25,6 @@ say[I assigned the mission to you. You can find it on the missions menu.]Benefat
 say[Also, I am giving you an allowance of ten thousand credits per day.]Benefator
 say[If you let me down, I am cutting you off. So don't screw with me.]Benefactor
 say[*CLICK*]
+say[YOU RECIEVE 10000 CREDITS]
+do[get credits(10000)]
 [end]

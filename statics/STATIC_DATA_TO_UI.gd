@@ -1,29 +1,46 @@
 class_name DATA_TO_UI
 
 static func build_mech_box(mech_button, mech):
-		mech_button.get_node("ID").text = "%s"%mech.ID
+		if(mech_button.has_node("ID")):
+			mech_button.get_node("ID").text = "%03d"%mech.ID
 		mech_button.get_node("NAME").text = "%s"%mech.name
-		mech_button.get_node("FLAVOR").text = "%s"%mech.flavor
-		mech_button.get_node("COMPATIBLE_ENVIRONMENT").text = "";
-		for environment in mech.compatible_environments:
-			mech_button.get_node("COMPATIBLE_ENVIRONMENT").text += "[%s] "%environment
-		mech_button.get_node("TYPE").text = "%s"%mech.type
-		mech_button.get_node("BASE_HEALTH").text = "%s"%mech.base_health
-		mech_button.get_node("CURRENT_HEALTH").text = "%s"%mech.current_health
-		mech_button.get_node("STATUS").text = "%s"%mech.status
+
+		if(mech_button.has_node("COMPATIBLE_ENVIRONMENT")):
+			mech_button.get_node("COMPATIBLE_ENVIRONMENT").text = "";
+			for environment in mech.compatible_environments:
+				var results = get_environment_text_and_tint(environment)
+				var environment_text= results[0]
+				var environment_tint= results[1]
+				mech_button.get_node("COMPATIBLE_ENVIRONMENT").text += "[%s] "%environment_text
+
+		if(mech_button.has_node("TYPE")):
+			mech_button.get_node("TYPE").text  = get_mech_type(mech)
+		if(mech_button.has_node("BASE_HEALTH")):
+			mech_button.get_node("BASE_HEALTH").text = "%03d"%mech.base_health
+
+		if(mech_button.has_node("CURRENT_HEALTH")):
+			mech_button.get_node("CURRENT_HEALTH").text = "%03d"%mech.current_health
+
+		if(mech_button.has_node("FLAVOR")):
+			mech_button.get_node("FLAVOR").text = mech.flavor
+		if(mech_button.has_node("STATUS")):
+			mech_button.get_node("STATUS").text = get_status_text_for_mech(mech)
 		return mech_button
 
 static func build_mech_box_small(MECH_BOX_PREFAB, mech):
 		var mech_button = MECH_BOX_PREFAB.instantiate()
-		mech_button.get_node("ID").text = "%s"%mech.ID
+		mech_button.get_node("ID").text = "%03d"%mech.ID
 		mech_button.get_node("NAME").text = "%s"%mech.name
 		mech_button.get_node("COMPATIBLE_ENVIRONMENT").text = "";
 		for environment in mech.compatible_environments:
-			mech_button.get_node("COMPATIBLE_ENVIRONMENT").text += "[%s] "%environment
-		mech_button.get_node("TYPE").text = "%s"%mech.type
-		mech_button.get_node("BASE_HEALTH").text = "%s"%mech.base_health
-		mech_button.get_node("CURRENT_HEALTH").text = "%s"%mech.current_health
-		mech_button.get_node("STATUS").text = "%s"%mech.status
+			var results = get_environment_text_and_tint(environment)
+			var environment_text= results[0]
+			var environment_tint= results[1]
+			mech_button.get_node("COMPATIBLE_ENVIRONMENT").text += "[%s] "%environment_text
+		mech_button.get_node("TYPE").text  = get_mech_type(mech)
+		mech_button.get_node("BASE_HEALTH").text = "%03d"%mech.base_health
+		mech_button.get_node("CURRENT_HEALTH").text = "%03d"%mech.current_health
+		mech_button.get_node("STATUS").text = get_status_text_for_mech(mech)
 		return mech_button
 
 static func build_small_part_box(BOX_PREFAB,part:Part):
@@ -62,7 +79,7 @@ static func build_part_box(part_button,part:Part):
 		part_button.get_node("RETURNING_ODDS").text = "+/%03d"%part.returning_odds
 		part_button.get_node("CRITERIA_FOR_RETURNING_ODDS").text = get_criteria_for_return_odds(part.criteria_for_returning_odds)
 		if(part_button.has_node("MECH")):
-			var mech = LINQ.First(STATE.MECHS, func (mech:Mech):return mech.ID == part.attached_to_mech_id && part.status == ENUMS.PART_STATUS.EQUIPT)
+			var mech = LINQ.First(STATE.MECHS, func (mech:Mech):return mech.ID == part.attached_to_mech_id )
 
 			part_button.get_node("MECH").text = "EQUIPT TO %s"%mech.name
 		if(part_button.has_node("STATUS")):
@@ -203,3 +220,92 @@ static func display_node_for_mech(id,mech_nodes_parent):
 				mech_nodes_parent.get_node("BLUE_MECH_005").show();
 			9:
 				mech_nodes_parent.get_node("RED_MECH_005").show();
+
+static func get_environment_text_and_tint(environment):
+	var environment_text = "DESERT"
+	var environment_tint = Vector3.ZERO;
+	match(environment):
+			ENUMS.ENVIRONMENT.DESERT:
+				environment_text = "DESERT"
+				environment_tint = Vector3(194,114,44);
+			ENUMS.ENVIRONMENT.SWAMP:
+				environment_text = "SWAMP"
+				environment_tint = Vector3(25,157,102);
+			ENUMS.ENVIRONMENT.URBAN:
+				environment_text = "URBAN"
+				environment_tint = Vector3(157,0,100);
+			ENUMS.ENVIRONMENT.JUNGLE:
+				environment_text = "JUNGLE"
+				environment_tint = Vector3(82,176,53);
+			ENUMS.ENVIRONMENT.SPACE:
+				environment_text = "SPACE"
+				environment_tint = Vector3(30,29,196);
+			ENUMS.ENVIRONMENT.UNDERWATER_FROZEN:
+				environment_text = "FROZEN WATER"
+				environment_tint = Vector3(179,255,229);
+			ENUMS.ENVIRONMENT.UNDERWATER:
+				environment_text = "SALT WATER"
+				environment_tint = Vector3(21,99,188);
+			ENUMS.ENVIRONMENT.UNDERWATER_BOILING:
+				environment_text = "BOILING WATER"
+				environment_tint = Vector3(255,0,93);
+			ENUMS.ENVIRONMENT.ICY:
+				environment_text = "ICY"
+				environment_tint = Vector3(255,255,255);
+			ENUMS.ENVIRONMENT.UNDERGROUND:
+				environment_text = "SUBTERRANEAN"
+				environment_tint = Vector3(71,0,106);
+			ENUMS.ENVIRONMENT.ACID_LAKE:
+				environment_text = "ACID LAKE"
+				environment_tint = Vector3(120,227,86);
+	return [environment_text,environment_tint]
+
+static func get_mech_type(mech):
+	var type_text
+	match(mech.type):
+			ENUMS.MECH_TYPE.DESERT:
+				type_text = "DESERT"
+				#environment_tint = Vector3(194,114,44);
+			ENUMS.MECH_TYPE.SWAMP:
+				type_text = "SWAMP"
+				#environment_tint = Vector3(25,157,102);
+			ENUMS.MECH_TYPE.URBAN:
+				type_text = "URBAN"
+				#environment_tint = Vector3(157,0,100);
+			ENUMS.MECH_TYPE.JUNGLE:
+				type_text = "JUNGLE"
+				#environment_tint = Vector3(82,176,53);
+			ENUMS.MECH_TYPE.SPACE:
+				type_text = "SPACE"
+				#environment_tint = Vector3(30,29,196);
+			ENUMS.MECH_TYPE.UNDERWATER_FROZEN:
+				type_text = "FROZEN WATER"
+				#environment_tint = Vector3(179,255,229);
+			ENUMS.MECH_TYPE.UNDERWATER:
+				type_text = "SALT WATER"
+				#environment_tint = Vector3(21,99,188);
+			ENUMS.MECH_TYPE.UNDERWATER_BOILING:
+				type_text = "BOILING WATER"
+				#environment_tint = Vector3(255,0,93);
+			ENUMS.MECH_TYPE.ICY:
+				type_text = "ICY"
+				#environment_tint = Vector3(255,255,255);
+			ENUMS.MECH_TYPE.UNDERGROUND:
+				type_text = "SUBTERRANEAN"
+				#environment_tint = Vector3(71,0,106);
+			ENUMS.MECH_TYPE.ACID_LAKE:
+				type_text = "ACID LAKE"
+				#environment_tint = Vector3(120,227,86);
+	return type_text;
+static func get_status_text_for_mech(mech):
+	var status=""
+	match(mech.status):
+			ENUMS.MECH_STATUS.IN_GARAGE:
+				status="IN GARAGE"
+			ENUMS.MECH_STATUS.FOR_SALE:
+				status ="FOR SALE [%s]"%mech.cost
+			ENUMS.MECH_STATUS.ON_MISSION:
+				status ="ON MISSION"
+			ENUMS.MECH_STATUS.NOT_AVAILABLE:
+				status ="NOT AVAILABLE"
+	return status;

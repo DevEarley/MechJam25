@@ -52,7 +52,10 @@ func init_script(_script:String,callback:Callable):
 	var lines:PackedStringArray = _script.split("\n",false)
 	CURRENT_SCRIPT = lines
 	CURRENT_LINE = 0;
-
+func run_script_from_file(filename):
+		var intro_script = FileAccess.open("res://quest_scripts/%s.qs.txt"%filename, FileAccess.READ)
+		var content = intro_script.get_as_text()
+		QS.run_script(content)
 func run_script(_script:String):
 	CONVERSATION_UI.start_conversation()
 	_script = process_script_for_quotes(_script)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b6udq8vvo4y28"]
+[gd_scene load_steps=12 format=3 uid="uid://b6udq8vvo4y28"]
 
 [ext_resource type="Texture2D" uid="uid://x66vokp7xc81" path="res://UI/ui-sheet-1.svg" id="1_7t0a2"]
 [ext_resource type="Script" uid="uid://dnxelvv2iqrt4" path="res://scene-scripts/status-bar.gd" id="1_ujn7t"]
@@ -20,6 +20,10 @@ region = Rect2(952, 671, 46, 46)
 [sub_resource type="AtlasTexture" id="AtlasTexture_7pum2"]
 atlas = ExtResource("2_ujn7t")
 region = Rect2(521, 672, 63, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujn7t"]
+atlas = ExtResource("2_ujn7t")
+region = Rect2(864, 674, 36, 42)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uk8sn"]
 atlas = ExtResource("2_ujn7t")
@@ -113,13 +117,34 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="TextureRect4" type="TextureRect" parent="StatusBar"]
+[node name="MISSION_TIME" type="Label" parent="StatusBar"]
+layout_mode = 1
+offset_left = 403.0
+offset_top = 675.0
+offset_right = 889.0
+offset_bottom = 710.0
+theme = ExtResource("2_vmkjb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+text = "24:00:00"
+horizontal_alignment = 2
+
+[node name="MISSION_TIME_ICON" type="TextureRect" parent="StatusBar"]
 layout_mode = 0
 offset_left = 398.0
 offset_top = 667.0
 offset_right = 445.0
 offset_bottom = 708.0
 texture = SubResource("AtlasTexture_7pum2")
+expand_mode = 1
+
+[node name="MISSION_STAR_ICON" type="TextureRect" parent="StatusBar"]
+layout_mode = 0
+offset_left = 398.0
+offset_top = 667.0
+offset_right = 434.0
+offset_bottom = 709.0
+texture = SubResource("AtlasTexture_ujn7t")
 expand_mode = 1
 
 [node name="TextureRect5" type="TextureRect" parent="StatusBar"]
@@ -138,20 +163,7 @@ offset_right = 998.0
 offset_bottom = 709.0
 texture = SubResource("AtlasTexture_bfer4")
 
-[node name="MISSION_TIME" type="RichTextLabel" parent="StatusBar"]
-clip_contents = false
-layout_mode = 1
-offset_left = 454.0
-offset_top = 675.0
-offset_right = 556.0
-offset_bottom = 710.0
-theme = ExtResource("2_vmkjb")
-text = "24:00:00"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="TITLE5" type="RichTextLabel" parent="StatusBar"]
+[node name="RECYCLE_POINTS" type="RichTextLabel" parent="StatusBar"]
 clip_contents = false
 layout_mode = 1
 offset_left = 1000.0
@@ -164,7 +176,7 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="TITLE6" type="RichTextLabel" parent="StatusBar"]
+[node name="CREDITS" type="RichTextLabel" parent="StatusBar"]
 clip_contents = false
 layout_mode = 1
 offset_left = 1120.0

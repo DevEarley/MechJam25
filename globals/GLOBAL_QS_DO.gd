@@ -31,9 +31,9 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 			DATA.save_missions_to_user_data()
 			QS.CURRENT_LINE+=1;
 			QS.run_script__process_line();
+
 		"fail mission":
 			var id:int = int(values[0])
-
 			var mission:Mission = LINQ.First(STATE.MISSIONS,func (mission:Mission): return mission.ID==id);
 			mission.status = ENUMS.MISSION_STATUS.FAILED
 			DATA.save_missions_to_user_data()
@@ -43,111 +43,47 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 		"complete mission":
 			var id:int = int(values[0])
 			var mission:Mission = LINQ.First(STATE.MISSIONS,func (mission:Mission): return mission.ID==id);
-
 			mission.status = ENUMS.MISSION_STATUS.SUCCESS
 			DATA.save_missions_to_user_data()
 			QS.CURRENT_LINE+=1;
 			QS.run_script__process_line();
 
-		#"start multiplayer":
-			#QS.call_back_on_finished.call()
-			#STATE.CURRENT_PLAYER.hide()
-			#CONVERSATION_UI.leave_conversation()
-			#STATE.PLAYER_IS_LOCKED = true
-			#var field_name = values[0]
-			#var deck_number = values[1]
-			#var player_id = values[2]
-			#CARD_GAME_CONTROLLER.start_singleplayer_game(field_name, deck_number,player_id,func ():
-				#print("GAME OVER!")
-				#TRANSITIONS.star_in(Vector2(640,360))
-				#await WAIT.for_seconds(2)
-				#CAMERA_CONTROLLER.look_behind_player()
-				#TRANSITIONS.star_out(Vector2(640,360))
-				#)
-		#"give overhead camera gift":
-			#GIFTS.give_gift(GIFTS.GIFT_TYPE.OVERHEAD_CAMERA)
-			#JOYSTICK.reset_and_hide_buttons()
-			## actually interrupt the conversation and do a "gift git" animation
-			#CONVERSATION_UI.hide_ui();
-			#STATE.CURRENT_PLAYER_ANIMATOR.speed_scale = 1;
-			#STATE.CURRENT_PLAYER_ANIMATOR.play("get_gift")
-			#await WAIT.for_seconds(3)
-			#STATE.CURRENT_PLAYER_ANIMATOR.play("idle")
-#
-			#CONVERSATION_UI.show_ui();
-#
-			#QS.CURRENT_LINE+=1;
-			#QS.run_script__process_line();
-		#"give normal jump gift":
-			#GIFTS.give_gift(GIFTS.GIFT_TYPE.NORMAL_JUMP)
-			#JOYSTICK.reset_and_hide_buttons()
-#
-			## actually interrupt the conversation and do a "gift git" animation
-			#CONVERSATION_UI.hide_ui();
-			#STATE.CURRENT_PLAYER_ANIMATOR.speed_scale = 1;
-			#STATE.CURRENT_PLAYER_ANIMATOR.play("get_gift")
-			#await WAIT.for_seconds(3)
-			#STATE.CURRENT_PLAYER_ANIMATOR.play("idle")
-#
-			#CONVERSATION_UI.show_ui();
-#
-			#QS.CURRENT_LINE+=1;
-			#QS.run_script__process_line();
-		#"give rotation camera gift":
-			#JOYSTICK.reset_and_hide_buttons()
-			#GIFTS.give_gift(GIFTS.GIFT_TYPE.ROTATE_CAMERA)
-			## actually interrupt the conversation and do a "gift git" animation
-			#CONVERSATION_UI.hide_ui();
-			#STATE.CURRENT_PLAYER_ANIMATOR.speed_scale = 1;
-			#STATE.CURRENT_PLAYER_ANIMATOR.play("get_gift")
-			#await WAIT.for_seconds(3)
-			#STATE.CURRENT_PLAYER_ANIMATOR.play("idle")
-#
-			#CONVERSATION_UI.show_ui();
-#
-			#QS.CURRENT_LINE+=1;
-			#QS.run_script__process_line();
-			#pass;
-		#"play card game":
-			#CONVERSATION_UI.hide_ui();
-#
-			#CONVERSATION_UI.leave_conversation()
-			#STATE.PLAYER_IS_LOCKED = true
-			##CARD_GAME_CONTROLLER.start_game(npc);
-		#"go to title screen":
-			#CONVERSATION_UI.hide_ui();
-			#CONVERSATION_UI.leave_conversation()
-#
-			#get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
-		#"talk to strawbro 1":
-			#SAVE_SLOTS.CURRENT.TALKED_TO_STRAWBRO_1 = true;
-			#QS.CURRENT_LINE+=1;
-			#QS.run_script__process_line();
-		#"quit":
-			#get_tree().quit()
-		#"save game":
-			#SAVE_SLOTS.save_game()
-			#QS.CURRENT_LINE+=1;
-			#QS.run_script__process_line();
-		#"reset game":
-			#SAVE_SLOTS.CURRENT = SaveState.new()
-			#SAVE_SLOTS.save_game()
-			#get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
-			#QS.CURRENT_LINE+=1;
-			#QS.run_script__process_line();
-		#"load game":
-			#SAVE_SLOTS.load_game()
-			#QS.CURRENT_LINE+=1;
-			#QS.run_script__process_line();
-		#var variable_pattern:
-			#if(variable_pattern.begins_with("get card")):
-				#var split = variable_pattern.split("get card ")
-				#var number = int(split[0])
-				#SAVE_SLOTS.CURRENT.COLLECTED_CARD_INDEXES.push_back(number)
-				#JOYSTICK.reset_and_hide_buttons()
-				## actually interrupt the conversation and do a "gift git" animation
-				#CONVERSATION_UI.hide_ui();
-#
-				#QS.CURRENT_LINE+=1;
-				#QS.run_script__process_line();
+		"get credits":
+			STATE.CREDITS+=int(values[0])
+			STATUS_BAR.update_status()
+			DATA.save_game_state_to_user_data()
+			QS.CURRENT_LINE+=1;
+			QS.run_script__process_line();
+
+		"get pilot":
+			var pilot_id = int(values[0])
+			var pilot:Pilot = LINQ.First(STATE.PILOTS,func (pilot:Pilot): return pilot.ID == pilot_id);
+			pilot.status = ENUMS.PILOT_STATUS.HIRED
+			STATUS_BAR.update_status()
+
+			DATA.save_pilots_to_user_data()
+			QS.CURRENT_LINE+=1;
+			QS.run_script__process_line();
+
+		"get mech":
+			var mech_id = int(values[0])
+			var mech:Mech = LINQ.First(STATE.MECHS,func (mech:Mech): return mech.ID == mech_id);
+			mech.status = ENUMS.MECH_STATUS.IN_GARAGE
+			STATUS_BAR.update_status()
+
+			DATA.save_mechs_to_user_data()
+			QS.CURRENT_LINE+=1;
+			QS.run_script__process_line();
+
+		"get part":
+			var part_id = int(values[0])
+			var part:Part = LINQ.First(STATE.PARTS,func (part:Part): return part.ID == part_id);
+			part.status = ENUMS.PART_STATUS.PURCHASED
+			STATUS_BAR.update_status()
+
+			DATA.save_parts_to_user_data()
+			QS.CURRENT_LINE+=1;
+			QS.run_script__process_line();
+
+
 	pass;
