@@ -131,7 +131,7 @@ render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 0.972986, 0.230865, 0, -0.230865, 0.972986, 0, 1.93177, 3.94815)
-cull_mask = 1016804
+cull_mask = 4
 environment = ExtResource("1_2e7hn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport"]

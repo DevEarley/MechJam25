@@ -188,7 +188,7 @@ speed_scale = 24.0
 
 [node name="Camera" type="Camera3D" parent="SubViewportContainer/SubViewport/Camera3D/ShakyCamera"]
 transform = Transform3D(-100, 0, -8.74229e-06, 0, 99.9999, 0, 8.74228e-06, 0, -100, 0, -0.688, -93.086)
-cull_mask = 1016808
+cull_mask = 8
 environment = ExtResource("1_ph5yv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport"]

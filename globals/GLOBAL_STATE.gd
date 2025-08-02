@@ -1,4 +1,5 @@
 extends Node
+var LAST_CAMERA
 var CURRENT_MISSION:Mission
 var ON_QUEST_SCRIPT_DONE:Callable
 var ON_BACK_BUTTON_PRESSED:Callable

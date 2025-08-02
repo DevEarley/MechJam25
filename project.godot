@@ -33,6 +33,7 @@ QS_IF="*res://globals/GLOBAL_QS_IF.gd"
 QS_DO="*res://globals/GLOBAL_QS_DO.gd"
 CALCULATOR="*res://globals/GLOBAL_CALCULATOR.gd"
 STATUS_BAR="*res://globals/GLOBAL_STATUS_BAR.gd"
+RNG="*res://globals/GLOBAL_RNG.gd"
 
 [display]
 

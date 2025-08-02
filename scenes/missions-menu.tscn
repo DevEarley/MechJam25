@@ -483,6 +483,7 @@ text_overrun_behavior = 3
 script = ExtResource("7_n8kpc")
 
 [node name="MECH_LIST" type="NinePatchRect" parent="MISSION_BOX/MECH"]
+visible = false
 clip_contents = true
 layout_mode = 0
 offset_left = -25.0
@@ -539,13 +540,13 @@ offset_bottom = 424.0
 layout_mode = 2
 
 [node name="MECH_BOX" parent="MISSION_BOX/MECH" instance=ExtResource("6_5pnbf")]
-visible = false
-offset_left = 1065.0
-offset_top = -156.0
-offset_right = 1065.0
-offset_bottom = -156.0
+offset_left = 1071.0
+offset_top = -155.0
+offset_right = 1071.0
+offset_bottom = -155.0
 
 [node name="PILOT_BUTTON" parent="MISSION_BOX" instance=ExtResource("5_wo4en")]
+visible = false
 layout_mode = 1
 offset_left = -613.0
 offset_top = 190.0

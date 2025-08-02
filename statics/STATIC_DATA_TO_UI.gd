@@ -197,6 +197,7 @@ static func display_node_for_part(id,part_nodes_parent):
 				part_nodes_parent.get_node("RED_NUT").show();
 
 static func display_node_for_mech(id,mech_nodes_parent):
+
 	for _node in mech_nodes_parent.get_children():
 		_node.hide()
 	match(id):

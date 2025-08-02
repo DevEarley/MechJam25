@@ -126,4 +126,33 @@ func calculate_return_bonus_for_pilot(parts:Array[Part],mission:Mission,pilot:Pi
 	return 3;
 
 func has_passed_current_mission():
+	#do mission odds
+	var mission_odds = STATE.CURRENT_MISSION.one_over_odds_for_mission;
+
+	var rng_number = RNG.Next()
+	var rng_value = rng_number/ RNG.RNG_COUNT
+	var completed_mission = (1.0/mission_odds) > rng_value
+	#do return odds
+	var return_odds = STATE.CURRENT_MISSION.one_over_odds_for_return;
+
+	var rng_number_2 = RNG.Next()
+	var rng_value_2 = rng_number_2/ RNG.RNG_COUNT
+	var returned = (1.0/return_odds) > rng_value
+
+	var mech:Mech = LINQ.First(STATE.MECHS,func (mech:Mech):return mech.mission_id == STATE.CURRENT_MISSION_ID)
+
+	var pilot:Pilot = LINQ.First(STATE.PILOTS,func ( pilot:Pilot ):return pilot.mech_id == mech.ID)
+
+	#apply damage
+	if(completed_mission==false):
+		mech.current_health -=1
+	if(returned==false):
+		mech.current_health -=1
+	#destroy mechs / kill pilots
+	if(mech.current_health<=0):
+		mech.status = ENUMS.MECH_STATUS.NOT_AVAILABLE
+		pilot.status = ENUMS.PILOT_STATUS.DEAD
+		DATA.save_everything()
+		return false;
+	DATA.save_everything()
 	return true;

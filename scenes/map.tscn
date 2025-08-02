@@ -220,7 +220,7 @@ layer = 3
 
 [node name="CAMERA" type="Camera3D" parent="."]
 transform = Transform3D(-0.997116, -0.0607259, 0.0455149, 0, 0.599751, 0.800186, -0.0758896, 0.797879, -0.598022, 0.164332, 3.46235, -18.1353)
-cull_mask = 1045488
+cull_mask = 16
 environment = ExtResource("2_paxxb")
 
 [node name="Map" type="Node3D" parent="."]
