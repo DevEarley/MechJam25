@@ -52,11 +52,16 @@ func init_script(_script:String,callback:Callable):
 	var lines:PackedStringArray = _script.split("\n",false)
 	CURRENT_SCRIPT = lines
 	CURRENT_LINE = 0;
+
 func run_script_from_file(filename):
 		var intro_script = FileAccess.open("res://quest_scripts/%s.qs.txt"%filename, FileAccess.READ)
 		var content = intro_script.get_as_text()
 		QS.run_script(content)
+
 func run_script(_script:String):
+	if(_script == ""):
+		on_script_finished();
+		return
 	CONVERSATION_UI.start_conversation()
 	_script = process_script_for_quotes(_script)
 	var lines:PackedStringArray = _script.split("\n",false)
@@ -79,9 +84,7 @@ func get_line_index_for_marker(marker:String):
 func process_info(rest_of_line):
 	var message:String;
 	var options:String = "";
-
 	var split_on_commas:PackedStringArray = rest_of_line.split(",",false);
-
 	if(split_on_commas.size()==1):
 		message = split_on_commas[0];
 	if(split_on_commas.size()==2):
@@ -142,15 +145,11 @@ func process_say(rest_of_line):
 		speaker= rest_of_line.split("]")[1]
 	else:
 		message= rest_of_line
-
 	speaker = speaker.trim_prefix(" ")
 	speaker = speaker.trim_prefix("[")
 	speaker = speaker.trim_suffix(" ")
 	speaker = speaker.trim_suffix("]")
-
 	run_script__say(message,speaker,options);
-
-
 
 func process_choices_or_actions(rest_of_line, show_speaker_for_choices):
 	var choices = []
@@ -218,7 +217,6 @@ func run_script__process_line():
 				process_choices_or_actions(rest_of_line, false)
 			"actions":
 				process_choices_or_actions(rest_of_line, false)
-
 			"if":
 				var predicate:String;
 				var marker:String;

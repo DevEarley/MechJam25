@@ -9,6 +9,7 @@ func _on_pressed() -> void:
 	STATE.MISSIONS_MENU_CANVAS.hide()
 
 	if(CALCULATOR.has_passed_current_mission()):
+
 		QS.run_script(mission.success_script)
 	else:
 		QS.run_script(mission.fail_script)

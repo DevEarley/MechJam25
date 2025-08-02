@@ -132,9 +132,9 @@ _data = {
 &"spin_up": SubResource("Animation_pia31")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pg47d"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_h87oc"]
 atlas = ExtResource("6_b1eyc")
-region = Rect2(906, 670, 42, 47)
+region = Rect2(731, 674, 43, 44)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b1eyc"]
 atlas = ExtResource("6_b1eyc")
@@ -342,15 +342,15 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 320.0
-offset_top = 352.0
-offset_right = 592.0
-offset_bottom = 401.0
+offset_left = 232.0
+offset_top = 32.0
+offset_right = 576.0
+offset_bottom = 81.0
 grow_horizontal = 1
 grow_vertical = 1
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 text = "BUY MECH"
-icon = SubResource("AtlasTexture_pg47d")
+icon = SubResource("AtlasTexture_h87oc")
 
 [node name="SELL_MECH_BUTTON" parent="." instance=ExtResource("5_pg47d")]
 layout_mode = 1
@@ -359,10 +359,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 320.0
-offset_top = 352.0
-offset_right = 592.0
-offset_bottom = 401.0
+offset_left = 232.0
+offset_top = 32.0
+offset_right = 576.0
+offset_bottom = 81.0
 grow_horizontal = 1
 grow_vertical = 1
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)

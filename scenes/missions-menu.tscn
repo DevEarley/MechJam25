@@ -27,10 +27,6 @@ region = Rect2(389, 408, 22, 19)
 atlas = ExtResource("9_m6yi0")
 region = Rect2(423, 408, 22, 19)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4qu0g"]
-atlas = ExtResource("6_kx32r")
-region = Rect2(776, 672, 44, 44)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_m6yi0"]
 atlas = ExtResource("9_m6yi0")
 region = Rect2(71, 71, 52, 52)
@@ -50,6 +46,10 @@ region = Rect2(87, 385, 32, 47)
 [sub_resource type="AtlasTexture" id="AtlasTexture_hknlx"]
 atlas = ExtResource("6_kx32r")
 region = Rect2(28, 387, 44, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qu0g"]
+atlas = ExtResource("6_kx32r")
+region = Rect2(776, 672, 44, 44)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ap0kh"]
 atlas = ExtResource("6_kx32r")
@@ -199,15 +199,6 @@ offset_left = 858.225
 offset_top = 450.225
 offset_right = 1274.22
 offset_bottom = 634.225
-
-[node name="PARTS_BUTTON" parent="MISSION_BOX" instance=ExtResource("5_wo4en")]
-layout_mode = 1
-offset_left = -265.0
-offset_top = -22.0
-offset_right = -185.0
-offset_bottom = 37.0
-icon = SubResource("AtlasTexture_4qu0g")
-script = ExtResource("10_7ogva")
 
 [node name="ID" type="Label" parent="MISSION_BOX"]
 layout_mode = 0
@@ -393,31 +384,41 @@ theme = ExtResource("2_1xm5e")
 theme_override_font_sizes/font_size = 16
 text = "LOCATION DATA"
 
+[node name="LOCATION_NAME" type="Label" parent="MISSION_BOX"]
+layout_mode = 0
+offset_left = 872.0
+offset_top = 520.0
+offset_right = 981.0
+offset_bottom = 534.0
+theme = ExtResource("2_1xm5e")
+theme_override_font_sizes/font_size = 16
+text = "LOCATION DATA"
+
 [node name="ENVIRONMENT" type="Label" parent="MISSION_BOX"]
 layout_mode = 0
-offset_left = 992.0
-offset_top = 490.0
-offset_right = 1138.0
-offset_bottom = 518.0
+offset_left = 989.775
+offset_top = 480.0
+offset_right = 1135.78
+offset_bottom = 508.0
 theme = ExtResource("2_1xm5e")
 text = "Environment"
 
 [node name="LOCATION_FLAVOR" type="RichTextLabel" parent="MISSION_BOX"]
 layout_mode = 0
 offset_left = 874.0
-offset_top = 528.0
+offset_top = 536.0
 offset_right = 1256.0
-offset_bottom = 608.0
+offset_bottom = 616.0
 theme = ExtResource("2_1xm5e")
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 text = "Location"
 
 [node name="LOCATION_POSITION" type="Label" parent="MISSION_BOX"]
 layout_mode = 0
-offset_left = 874.225
-offset_top = 490.225
-offset_right = 982.225
-offset_bottom = 518.225
+offset_left = 872.0
+offset_top = 480.225
+offset_right = 980.0
+offset_bottom = 508.225
 theme = ExtResource("2_1xm5e")
 text = "[000,000]"
 
@@ -470,6 +471,42 @@ offset_bottom = 130.0
 texture = SubResource("AtlasTexture_hknlx")
 expand_mode = 1
 
+[node name="PARTS_BUTTON" parent="MISSION_BOX" node_paths=PackedStringArray("VBOX") instance=ExtResource("5_wo4en")]
+layout_mode = 1
+offset_left = -265.0
+offset_top = -22.0
+offset_right = -185.0
+offset_bottom = 37.0
+icon = SubResource("AtlasTexture_4qu0g")
+script = ExtResource("10_7ogva")
+VBOX = NodePath("PART_LIST/ScrollContainer/VBoxContainer")
+
+[node name="PART_LIST" type="Control" parent="MISSION_BOX/PARTS_BUTTON"]
+clip_contents = true
+anchors_preset = 0
+offset_left = 89.0
+offset_top = -178.0
+offset_right = 905.0
+offset_bottom = 230.0
+
+[node name="BG2" parent="MISSION_BOX/PARTS_BUTTON/PART_LIST" instance=ExtResource("3_fdjc2")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 384.0
+offset_bottom = 416.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MISSION_BOX/PARTS_BUTTON/PART_LIST"]
+clip_contents = false
+layout_mode = 0
+offset_top = 8.0
+offset_right = 416.0
+offset_bottom = 408.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MISSION_BOX/PARTS_BUTTON/PART_LIST/ScrollContainer"]
+visible = false
+layout_mode = 2
+
 [node name="MECH" parent="MISSION_BOX" instance=ExtResource("5_wo4en")]
 layout_mode = 1
 offset_left = -615.0
@@ -477,7 +514,8 @@ offset_top = -21.0
 offset_right = -273.0
 offset_bottom = 38.0
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-text = "MECH NAMELONG"
+disabled = true
+text = "???"
 icon = SubResource("AtlasTexture_ap0kh")
 text_overrun_behavior = 3
 script = ExtResource("7_n8kpc")
@@ -553,7 +591,8 @@ offset_top = 190.0
 offset_right = -208.0
 offset_bottom = 249.0
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-text = "PILOT NAME NAME NAME"
+disabled = true
+text = "???"
 icon = SubResource("AtlasTexture_v8y5p")
 text_overrun_behavior = 3
 script = ExtResource("11_7ogva")

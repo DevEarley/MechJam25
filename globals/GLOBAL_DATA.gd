@@ -426,6 +426,7 @@ func create_and_push_location_to_STATE(section,location_index,user_data):
 			var location = Location.new();
 			location.ID = user_data.get_value(section,"LOCATION_%s_ID"%location_index)
 			location.flavor = user_data.get_value(section,"LOCATION_%s_FLAVOR"%location_index)
+			location.name = user_data.get_value(section,"LOCATION_%s_NAME"%location_index)
 			location.environment = user_data.get_value(section,"LOCATION_%s_ENVIRONMENT"%location_index)
 			location.map_position = user_data.get_value(section,"LOCATION_%s_POSITION"%location_index)
 			STATE.LOCATIONS.push_back(location);
@@ -440,6 +441,7 @@ func save_locations_to_user_data():
 	for location:Location in STATE.LOCATIONS:
 		user_data.set_value(section,"LOCATION_%s_ID"%index,location.ID)
 		user_data.set_value(section,"LOCATION_%s_FLAVOR"%index,location.flavor)
+		user_data.set_value(section,"LOCATION_%s_NAME"%index,location.name)
 		user_data.set_value(section,"LOCATION_%s_ENVIRONMENT"%index,location.environment)
 		user_data.set_value(section,"LOCATION_%s_POSITION"%index,location.map_position)
 

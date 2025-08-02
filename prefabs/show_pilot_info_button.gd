@@ -53,3 +53,4 @@ func on_pick_pilot(pilot:Pilot):
 			MISSIONS_MENU.MISSION_BOX.get_node("START_MISSION").disabled = false
 			var mech:Mech = LINQ.First(STATE.MECHS,func (mech:Mech): return mech.ID==STATE.CURRENT_MECH_ID);
 			pilot.mech_id = mech.ID
+		MISSIONS_MENU.on_mission_pressed(STATE.CURRENT_MISSION)

@@ -30,17 +30,20 @@ func on_mech_pressed(id):
 	var sell_button =STATE.MECH_MENU_CANVAS.get_node("MECH_VIEW/SELL_MECH_BUTTON");
 	var mech_box =STATE.MECH_MENU_CANVAS.get_node("MECH_VIEW/MECH_BOX");
 	if(buy_button.has_connections("pressed") == false):
-		buy_button.connect("pressed",on_buy_mech.bind(current_mech));
+		buy_button.connect("pressed",on_buy_mech);
 	if(sell_button.has_connections("pressed") == false):
-		sell_button.connect("pressed",on_sell_mech.bind(current_mech));
+		sell_button.connect("pressed",on_sell_mech);
 	mech_box.show()
 	DATA_TO_UI.build_mech_box(mech_box,current_mech)
 	if(current_mech.status == ENUMS.MECH_STATUS.IN_GARAGE):
 		sell_button.show()
 		buy_button.hide()
+
+		sell_button.text = "SELL MECH [%s]"%current_mech.selling_price
 	elif(current_mech.status == ENUMS.MECH_STATUS.FOR_SALE):
 		sell_button.hide()
 		buy_button.show()
+		buy_button.text = "BUY MECH [%s]"%current_mech.cost
 	else:
 		sell_button.hide()
 		buy_button.hide()
@@ -52,7 +55,9 @@ func on_mech_pressed(id):
 	animator.play("look_up_at_mech")
 	DATA_TO_UI.display_node_for_mech(id,mech_nodes)
 
-func on_buy_mech(mech:Mech):
+func on_buy_mech():
+	var mech:Mech = LINQ.First(STATE.MECHS, func (mech:Mech):
+		return mech.ID == STATE.CURRENT_MECH_ID);
 	STATE.CREDITS-=mech.cost
 	mech.status = ENUMS.MECH_STATUS.IN_GARAGE
 	DATA.save_game_state_to_user_data()
@@ -61,7 +66,9 @@ func on_buy_mech(mech:Mech):
 
 	show_mechs()
 
-func on_sell_mech(mech:Mech):
+func on_sell_mech():
+	var mech:Mech = LINQ.First(STATE.MECHS, func (mech:Mech):
+		return mech.ID == STATE.CURRENT_MECH_ID);
 	STATE.CREDITS+=mech.selling_price
 	mech.status = ENUMS.MECH_STATUS.NOT_AVAILABLE
 	DATA.save_mechs_to_user_data()

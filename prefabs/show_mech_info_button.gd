@@ -70,3 +70,4 @@ func on_pick_mech(mech:Mech):
 			pilot.mech_id=mech.ID;
 		MISSIONS_MENU.MISSION_BOX.get_node("PILOT_BUTTON").show()
 		MISSIONS_MENU.hide_all_menus()
+		MISSIONS_MENU.on_mission_pressed(STATE.CURRENT_MISSION)

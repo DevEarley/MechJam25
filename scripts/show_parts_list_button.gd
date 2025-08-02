@@ -2,11 +2,13 @@ extends "res://scripts/generic_button.gd"
 var part_button_scene = preload("res://prefabs/part-button.tscn")
 @export var VBOX:VBoxContainer
 func _on_pressed() -> void:
-	if(VBOX.visible):
-		VBOX.hide()
+	if($PART_LIST.visible):
+		$PART_LIST.hide()
 	else:
 
 		MISSIONS_MENU.hide_all_menus()
+
+		$PART_LIST.show()
 		VBOX.show()
 
 		for child in VBOX.get_children():

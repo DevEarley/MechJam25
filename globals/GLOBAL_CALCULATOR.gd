@@ -4,28 +4,28 @@ func get_mission_bonus(mission:Mission)->int:
 
 	var mech:Mech = LINQ.First(STATE.MECHS,func (mech:Mech): return mech.mission_id==mission.ID);
 	if(mech== null):return 0;
-	var pilot:Pilot = LINQ.First(STATE.PILOTS,func (pilot:Pilot): return pilot.mech_id==mech.ID);
-	if(pilot== null):return 0;
 	var parts = STATE.PARTS.filter(func (part:Part): return part.attached_to_mech_id==mech.ID && part.status == ENUMS.PART_STATUS.EQUIPT);
 
+	var pilot:Pilot = LINQ.First(STATE.PILOTS,func (pilot:Pilot): return pilot.mech_id==mech.ID);
 	var location:Location = LINQ.First(STATE.LOCATIONS,func (location:Location): return location.ID==mission.location_id);
 	var bonus = 0;
 	for part in parts:
 		bonus += calculate_mission_bonus_for_part(part,mission,pilot,location,mech);
+	if(pilot== null):return bonus;
 	bonus += calculate_mission_bonus_for_pilot(parts,mission,pilot,location,mech);
 	return bonus;
 
 func get_return_bonus(mission:Mission)->int:
 	var mech:Mech = LINQ.First(STATE.MECHS,func (mech:Mech): return mech.mission_id==mission.ID);
 	if(mech == null):return 0
-	var pilot:Pilot = LINQ.First(STATE.PILOTS,func (pilot:Pilot): return pilot.mech_id==mech.ID);
-	if(pilot == null):return 0
 
 	var location:Location = LINQ.First(STATE.LOCATIONS,func (location:Location): return location.ID==mission.location_id);
+	var pilot:Pilot = LINQ.First(STATE.PILOTS,func (pilot:Pilot): return pilot.mech_id==mech.ID);
 	var parts = STATE.PARTS.filter(func (part:Part): return part.attached_to_mech_id==mech.ID && part.status == ENUMS.PART_STATUS.EQUIPT);
-	var bonus = 0;
+	var bonus:int = 0;
 	for part in parts:
 		bonus += calculate_return_bonus_for_part(part,mission,pilot,location,mech);
+	if(pilot == null):return bonus
 	bonus += calculate_return_bonus_for_pilot(parts,mission,pilot,location,mech);
 	return bonus;
 
@@ -124,35 +124,39 @@ func calculate_return_bonus_for_pilot(parts:Array[Part],mission:Mission,pilot:Pi
 		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_9:
 			return pilot.returning_odds;
 	return 3;
+func print_rng_and_odds(rng_number,odds):
+	print("RNG: %s | out of %s | ODS: %s | 1/RNG: %s | 1/ODDS: %s" % [rng_number,RNG.RNG_COUNT,odds,rng_number/ RNG.RNG_COUNT,1.0/odds] )
 
 func has_passed_current_mission():
-	#do mission odds
 	var mission_odds = STATE.CURRENT_MISSION.one_over_odds_for_mission;
-
+	mission_odds+= get_mission_bonus(STATE.CURRENT_MISSION)
 	var rng_number = RNG.Next()
 	var rng_value = rng_number/ RNG.RNG_COUNT
-	var completed_mission = (1.0/mission_odds) > rng_value
-	#do return odds
-	var return_odds = STATE.CURRENT_MISSION.one_over_odds_for_return;
+	var completed_mission = (1.0/mission_odds) < rng_value
+	print_rng_and_odds(rng_number,mission_odds)
 
+	var return_odds = STATE.CURRENT_MISSION.one_over_odds_for_returning;
+	return_odds+= get_return_bonus(STATE.CURRENT_MISSION)
 	var rng_number_2 = RNG.Next()
 	var rng_value_2 = rng_number_2/ RNG.RNG_COUNT
-	var returned = (1.0/return_odds) > rng_value
+	var returned = (1.0/return_odds) < rng_value_2
+	print_rng_and_odds(rng_number_2,return_odds)
 
 	var mech:Mech = LINQ.First(STATE.MECHS,func (mech:Mech):return mech.mission_id == STATE.CURRENT_MISSION_ID)
-
 	var pilot:Pilot = LINQ.First(STATE.PILOTS,func ( pilot:Pilot ):return pilot.mech_id == mech.ID)
 
-	#apply damage
 	if(completed_mission==false):
 		mech.current_health -=1
 	if(returned==false):
 		mech.current_health -=1
-	#destroy mechs / kill pilots
+
 	if(mech.current_health<=0):
 		mech.status = ENUMS.MECH_STATUS.NOT_AVAILABLE
 		pilot.status = ENUMS.PILOT_STATUS.DEAD
 		DATA.save_everything()
 		return false;
-	DATA.save_everything()
-	return true;
+	else:
+		mech.status = ENUMS.MECH_STATUS.IN_GARAGE
+		pilot.status = ENUMS.PILOT_STATUS.HIRED
+		DATA.save_everything()
+		return true;

@@ -43,7 +43,7 @@ func check_for_completed_missions():
 				if(mission.status == ENUMS.MISSION_STATUS.IN_PROGRESS):
 					var time_24_hours = 60.0*60.0*24.0
 					var time_now = Time.get_unix_time_from_system()
-					var seconds_left = (int)(time_now - (mission.time_started + time_24_hours) )
+					var seconds_left = (int)((mission.time_started + time_24_hours) - time_now)
 					if(seconds_left<=0):
 						something_changed =true
 						mission.status = ENUMS.MISSION_STATUS.NEEDS_DEBRIEF
@@ -58,6 +58,7 @@ func on_start_mission_script_finished():
 	var mission:Mission = LINQ.First(STATE.MISSIONS,func (mission:Mission): return mission.ID==STATE.CURRENT_MISSION_ID);
 	if(STATE.USE_REAL_TIME == false):
 		STATE.ON_QUEST_SCRIPT_DONE = on_instant_player_result_script_finished
+		STATE.MISSIONS_MENU_CANVAS.hide()
 		if(CALCULATOR.has_passed_current_mission()):
 			QS.run_script(mission.success_script)
 		else:
@@ -90,6 +91,8 @@ func on_back_to_start_menu():
 	MAP.CURSOR.hide()
 
 func on_back_to_mission_list():
+	STATE.CURRENT_MECH_ID = -1
+	STATE.CURRENT_PILOT_ID = -1
 	MISSION_BUTTONS_CONTAINER.show();
 	MISSION_BUTTONS.show()
 	STATE.STATUS_BAR_CANVAS.show()
@@ -150,6 +153,7 @@ func on_mission_pressed(mission:Mission):
 
 	var location:Location = LINQ.First(STATE.LOCATIONS,func (location:Location): return location.ID==mission.location_id);
 	STATE.CURRENT_MISSION_ID = mission.ID;
+	STATE.CURRENT_MISSION = mission
 	STATE.CURRENT_LOCATION_ID = location.ID;
 	MISSION_BOX.show()
 	var environment_text = "UNKNOWN ENV"
@@ -188,6 +192,7 @@ func on_mission_pressed(mission:Mission):
 		MISSION_BOX.get_node("ENVIRONMENT").text = "???"
 		MISSION_BOX.get_node("LOCATION_POSITION").text = "[???,???]"
 		MISSION_BOX.get_node("LOCATION_FLAVOR").text = "???"
+		MISSION_BOX.get_node("LOCATION_NAME").text = "???"
 
 	else:
 		if(parts.size() ==0):
@@ -211,7 +216,11 @@ func on_mission_pressed(mission:Mission):
 		MISSION_BOX.get_node("RETURN_BONUS").text = "1/%03d"%return_bonus
 
 		MISSION_BOX.get_node("LOCATION_POSITION").text = "[%03d,%03d]"%[location.map_position.x,location.map_position.z]
+
 		MISSION_BOX.get_node("LOCATION_FLAVOR").text = location.flavor
+
+		MISSION_BOX.get_node("LOCATION_NAME").text = location.name
+
 		var results = DATA_TO_UI.get_environment_text_and_tint(location.environment)
 		environment_text= results[0]
 		environment_tint= results[1]
@@ -283,6 +292,7 @@ func hide_all_menus():
 	MISSION_BOX.get_node("PILOT_BUTTON/PILOT_LIST").hide()
 	MISSION_BOX.get_node("MECH/MECH_BOX").hide()
 	MISSION_BOX.get_node("MECH/MECH_LIST").hide()
+	MISSION_BOX.get_node("PARTS_BUTTON/PART_LIST").hide()
 
 func build_status_for_mission(mission:Mission, BOX):
 	BOX.get_node("STATUS_LOCKED_ICON").hide()

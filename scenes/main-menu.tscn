@@ -1,12 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://q3apfh65koxm"]
+[gd_scene load_steps=17 format=3 uid="uid://q3apfh65koxm"]
 
 [ext_resource type="Script" uid="uid://bxy3br0irscae" path="res://scripts/add-self-to-scaled-ui.gd" id="1_xg1py"]
 [ext_resource type="PackedScene" uid="uid://bunfxp7cx281n" path="res://prefabs/title-bar-wide.tscn" id="2_0u6b5"]
 [ext_resource type="Script" uid="uid://dv6573lowt7bf" path="res://scene-scripts/main_menu.gd" id="3_ismwm"]
 [ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="3_nbft7"]
 [ext_resource type="PackedScene" uid="uid://jqfcrgtcowf1" path="res://prefabs/left-hand-button.tscn" id="4_nbft7"]
+[ext_resource type="Script" uid="uid://cpjutl2vxvyra" path="res://addons/mrminimal_camera_shake/scripts/shaky_camera.gd" id="5_cgepm"]
 [ext_resource type="PackedScene" uid="uid://dimmt4xbgqqdb" path="res://mechs-3D/mech-001.glb" id="6_5ucbf"]
-[ext_resource type="PackedScene" uid="uid://daumxjq7jnjp8" path="res://addons/mrminimal_camera_shake/shaky_camera.tscn" id="6_cgepm"]
+[ext_resource type="AnimationLibrary" uid="uid://n8a7jdk5h04r" path="res://addons/mrminimal_camera_shake/animations/shaky_camera_lib.tres" id="6_15bby"]
+[ext_resource type="Environment" uid="uid://c7ssmhiiplyg8" path="res://world_environment.tres" id="7_jg0gq"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wkale"]
 
 [sub_resource type="Animation" id="Animation_nbft7"]
 length = 0.001
@@ -184,10 +188,24 @@ layers = 1024
 [node name="CameraRig" type="Node3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(0.943235, -0.0670552, 0.325287, 0, 0.979407, 0.201896, -0.332126, -0.190436, 0.92381, 0.605994, 1.71284, 1.37122)
 
-[node name="ShakyCamera" parent="SubViewportContainer/SubViewport/CameraRig" instance=ExtResource("6_cgepm")]
+[node name="ShakyCamera" type="Node3D" parent="SubViewportContainer/SubViewport/CameraRig"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+script = ExtResource("5_cgepm")
+animation = "Investigation"
 position_multiplier = 0.8
 rotation_multiplier = 0.4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport/CameraRig/ShakyCamera"]
+libraries = {
+&"": SubResource("AnimationLibrary_wkale"),
+&"shaky_cam_lib": ExtResource("6_15bby")
+}
+speed_scale = 24.0
+
+[node name="Camera" type="Camera3D" parent="SubViewportContainer/SubViewport/CameraRig/ShakyCamera"]
+transform = Transform3D(0.999623, 0.00833389, -0.0261456, -0.00661269, 0.997848, 0.0652406, 0.026633, -0.0650432, 0.997527, 0.021819, 0.004563, -0.003604)
+cull_mask = 1024
+environment = ExtResource("7_jg0gq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport"]
 libraries = {

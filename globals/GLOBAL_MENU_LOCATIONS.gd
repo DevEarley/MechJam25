@@ -12,6 +12,7 @@ func show_locations():
 		location_button.get_node("ID").text = "%s"%location.ID
 		location_button.get_node("ENVIRONMENT").text = "%s"%location.environment
 		location_button.get_node("FLAVOR").text = "%s"%location.flavor
+		location_button.get_node("NAME").text = "%s"%location.name
 		location_button.get_node("POSITION").text = "%s"%location.position
 		location_button.get_node("MISSION").text = "%s"%location.mission
 		location_button.get_node("MECH").text = "%s"%location.mech

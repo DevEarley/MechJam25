@@ -5,36 +5,36 @@
 [ext_resource type="PackedScene" uid="uid://jqfcrgtcowf1" path="res://prefabs/left-hand-button.tscn" id="3_vcc51"]
 
 [node name="PILOT_BOX" type="Control"]
-custom_minimum_size = Vector2(464, 200)
+custom_minimum_size = Vector2(464, 290)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1024.0
-offset_bottom = 200.0
+offset_bottom = 280.0
 size_flags_vertical = 3
 
 [node name="BG2" parent="." instance=ExtResource("1_cq0ps")]
 custom_minimum_size = Vector2(464, 0)
 layout_mode = 0
 offset_left = 0.0
-offset_top = 0.0
+offset_top = 8.0
 offset_right = 1024.0
-offset_bottom = 192.0
+offset_bottom = 280.0
 
 [node name="ID" type="Label" parent="."]
 layout_mode = 2
 offset_left = 24.0
-offset_top = 40.0
+offset_top = 48.0
 offset_right = 66.0
-offset_bottom = 68.0
+offset_bottom = 76.0
 theme = ExtResource("2_vcc51")
 text = "000"
 
 [node name="MISSION_ODDS_LABEL2" type="Label" parent="."]
 layout_mode = 2
 offset_left = 24.0
-offset_top = 24.0
+offset_top = 32.0
 offset_right = 122.0
-offset_bottom = 38.0
+offset_bottom = 46.0
 theme = ExtResource("2_vcc51")
 theme_override_font_sizes/font_size = 16
 text = "PILOT"
@@ -42,18 +42,18 @@ text = "PILOT"
 [node name="NAME" type="Label" parent="."]
 layout_mode = 2
 offset_left = 80.0
-offset_top = 40.0
+offset_top = 48.0
 offset_right = 156.0
-offset_bottom = 68.0
+offset_bottom = 76.0
 theme = ExtResource("2_vcc51")
 text = "NAME"
 
 [node name="CRITERIA_FOR_MISSION_ODDS" type="RichTextLabel" parent="."]
 layout_mode = 2
 offset_left = 112.0
-offset_top = 96.0
+offset_top = 104.0
 offset_right = 440.0
-offset_bottom = 184.0
+offset_bottom = 192.0
 theme = ExtResource("2_vcc51")
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 text = "MISSION CRITERIA MISSION CRITERIA MISSION CRITERIA"
@@ -61,18 +61,18 @@ text = "MISSION CRITERIA MISSION CRITERIA MISSION CRITERIA"
 [node name="MISSION_ODDS" type="Label" parent="."]
 layout_mode = 2
 offset_left = 24.0
-offset_top = 96.0
+offset_top = 104.0
 offset_right = 88.0
-offset_bottom = 124.0
+offset_bottom = 132.0
 theme = ExtResource("2_vcc51")
 text = "1/???"
 
 [node name="MISSION_ODDS_LABEL" type="Label" parent="."]
 layout_mode = 2
 offset_left = 24.0
-offset_top = 80.0
+offset_top = 88.0
 offset_right = 122.0
-offset_bottom = 94.0
+offset_bottom = 102.0
 theme = ExtResource("2_vcc51")
 theme_override_font_sizes/font_size = 16
 text = "MISSION ODDS"
@@ -80,9 +80,9 @@ text = "MISSION ODDS"
 [node name="CRITERIA_FOR_RETURNING_ODDS" type="RichTextLabel" parent="."]
 layout_mode = 2
 offset_left = 528.0
-offset_top = 96.0
+offset_top = 104.0
 offset_right = 856.0
-offset_bottom = 184.0
+offset_bottom = 192.0
 theme = ExtResource("2_vcc51")
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 text = "CRITERIA DETAILS CRITERIA DETAILS  CRITERIA DETAILS "
@@ -90,9 +90,9 @@ text = "CRITERIA DETAILS CRITERIA DETAILS  CRITERIA DETAILS "
 [node name="RETURNING_ODDS_LABEL" type="Label" parent="."]
 layout_mode = 2
 offset_left = 440.0
-offset_top = 80.0
+offset_top = 88.0
 offset_right = 560.0
-offset_bottom = 94.0
+offset_bottom = 102.0
 theme = ExtResource("2_vcc51")
 theme_override_font_sizes/font_size = 16
 text = "RETURNING ODDS"
@@ -100,9 +100,9 @@ text = "RETURNING ODDS"
 [node name="RETURNING_ODDS" type="Label" parent="."]
 layout_mode = 2
 offset_left = 440.0
-offset_top = 96.0
+offset_top = 104.0
 offset_right = 504.0
-offset_bottom = 124.0
+offset_bottom = 132.0
 theme = ExtResource("2_vcc51")
 text = "1/???"
 
@@ -114,9 +114,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 640.0
-offset_top = 32.0
+offset_top = 208.0
 offset_right = 1000.0
-offset_bottom = 72.0
+offset_bottom = 248.0
 grow_horizontal = 1
 grow_vertical = 1
 text = "HIRE PILOT"

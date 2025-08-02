@@ -32,6 +32,7 @@ offset_right = 1280.0
 offset_bottom = 632.0
 
 [node name="SCROLLABLE" type="ScrollContainer" parent="Control"]
+layout_mode = 0
 offset_left = 104.0
 offset_right = 1176.0
 offset_bottom = 568.0

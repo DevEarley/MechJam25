@@ -264,38 +264,38 @@ static func get_environment_text_and_tint(environment):
 static func get_mech_type(mech):
 	var type_text
 	match(mech.type):
-			ENUMS.MECH_TYPE.DESERT:
-				type_text = "DESERT"
+			ENUMS.MECH_TYPE.DEFENSIVE:
+				type_text = "DEFENSIVE"
 				#environment_tint = Vector3(194,114,44);
-			ENUMS.MECH_TYPE.SWAMP:
-				type_text = "SWAMP"
+			ENUMS.MECH_TYPE.AERIAL:
+				type_text = "AERIAL"
 				#environment_tint = Vector3(25,157,102);
-			ENUMS.MECH_TYPE.URBAN:
-				type_text = "URBAN"
+			ENUMS.MECH_TYPE.SPECIAL_OPS:
+				type_text = "SPECIAL OPS"
 				#environment_tint = Vector3(157,0,100);
-			ENUMS.MECH_TYPE.JUNGLE:
-				type_text = "JUNGLE"
+			ENUMS.MECH_TYPE.UNDERWATER:
+				type_text = "UNDERWATER"
 				#environment_tint = Vector3(82,176,53);
 			ENUMS.MECH_TYPE.SPACE:
 				type_text = "SPACE"
 				#environment_tint = Vector3(30,29,196);
-			ENUMS.MECH_TYPE.UNDERWATER_FROZEN:
-				type_text = "FROZEN WATER"
+			ENUMS.MECH_TYPE.EXTREME_TEMP:
+				type_text = "EXTREME TEMP"
 				#environment_tint = Vector3(179,255,229);
-			ENUMS.MECH_TYPE.UNDERWATER:
-				type_text = "SALT WATER"
+			ENUMS.MECH_TYPE.LONG_HAUL:
+				type_text = "LONG HAUL"
 				#environment_tint = Vector3(21,99,188);
-			ENUMS.MECH_TYPE.UNDERWATER_BOILING:
-				type_text = "BOILING WATER"
+			ENUMS.MECH_TYPE.HAND_TO_HAND:
+				type_text = "HAND TO HAND"
 				#environment_tint = Vector3(255,0,93);
-			ENUMS.MECH_TYPE.ICY:
-				type_text = "ICY"
+			ENUMS.MECH_TYPE.HIGH_GRAVITY:
+				type_text = "HIGH GRAVITY"
 				#environment_tint = Vector3(255,255,255);
-			ENUMS.MECH_TYPE.UNDERGROUND:
-				type_text = "SUBTERRANEAN"
+			ENUMS.MECH_TYPE.ANTI_CORROSIVE:
+				type_text = "ANTI CORROSIVE"
 				#environment_tint = Vector3(71,0,106);
-			ENUMS.MECH_TYPE.ACID_LAKE:
-				type_text = "ACID LAKE"
+			ENUMS.MECH_TYPE.RACING:
+				type_text = "RACING"
 				#environment_tint = Vector3(120,227,86);
 	return type_text;
 static func get_status_text_for_mech(mech):
