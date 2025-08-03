@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bwlhvw7r5jrdg"]
+[gd_scene load_steps=19 format=4 uid="uid://bwlhvw7r5jrdg"]
 
 [ext_resource type="Environment" uid="uid://c7ssmhiiplyg8" path="res://world_environment.tres" id="1_2e7hn"]
 [ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="1_eucbt"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://c5y2ylmr1vdhh" path="res://prefabs/show_part_info_button.gd" id="4_e4vel"]
 [ext_resource type="Material" uid="uid://dj2chdusgvktn" path="res://materials/world_mat_alt.tres" id="4_nfuy1"]
 [ext_resource type="PackedScene" uid="uid://dpgf5w3yji5il" path="res://parts-3D/heat-blade.glb" id="5_jh33o"]
+[ext_resource type="PackedScene" uid="uid://dflvmt0mqd0pf" path="res://parts-3D/CLIPMesh.glb" id="7_rhp2j"]
 
 [sub_resource type="Animation" id="Animation_d1idq"]
 length = 0.001
@@ -178,6 +179,8 @@ material_override = ExtResource("4_nfuy1")
 mesh = SubResource("ArrayMesh_04fvn")
 skeleton = NodePath("")
 
+[node name="CLIPMesh" parent="SubViewportContainer/SubViewport/PARTS_NODE" instance=ExtResource("7_rhp2j")]
+
 [node name="Button" parent="." instance=ExtResource("2_jh33o")]
 layout_mode = 1
 anchors_preset = 0
@@ -212,3 +215,4 @@ mouse_filter = 2
 
 [editable path="SubViewportContainer/SubViewport/PARTS_NODE/BLUE_NUT"]
 [editable path="SubViewportContainer/SubViewport/PARTS_NODE/HEAT_BLADE"]
+[editable path="SubViewportContainer/SubViewport/PARTS_NODE/CLIPMesh"]
