@@ -34,6 +34,8 @@ QS_DO="*res://globals/GLOBAL_QS_DO.gd"
 CALCULATOR="*res://globals/GLOBAL_CALCULATOR.gd"
 STATUS_BAR="*res://globals/GLOBAL_STATUS_BAR.gd"
 RNG="*res://globals/GLOBAL_RNG.gd"
+START_MENU="*res://globals/GLOBAL_START_MENU.gd"
+VOICEMAIL="*res://globals/GLOBAL_VOICEMAIL.gd"
 
 [display]
 

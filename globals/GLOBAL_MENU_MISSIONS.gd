@@ -83,12 +83,9 @@ func start_mission_pressed():
 	STATE.STATUS_BAR_CANVAS.hide()
 
 func on_back_to_start_menu():
-	STATE.START_MENU_CANVAS.show()
+	START_MENU.show_start_menu()
 	STATE.MISSIONS_MENU_CANVAS.hide()
-	var color = Vector3(0.0,1.0,170.0/255.0)
-	MAP_MATERIAL.set_shader_parameter("ENVIRONMENT_TINT",color);
-	MAP.ANIMATOR.play("idle")
-	MAP.CURSOR.hide()
+
 
 func on_back_to_mission_list():
 	STATE.CURRENT_MECH_ID = -1

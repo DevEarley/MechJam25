@@ -1,10 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://fkcd1xnw1b1y"]
+[gd_scene load_steps=13 format=3 uid="uid://fkcd1xnw1b1y"]
 
 [ext_resource type="Script" uid="uid://bxy3br0irscae" path="res://scripts/add-self-to-scaled-ui.gd" id="1_3xs3o"]
 [ext_resource type="Script" uid="uid://b1vfqm6g6si6x" path="res://scene-scripts/start_menu.gd" id="1_xf5ny"]
 [ext_resource type="PackedScene" uid="uid://bunfxp7cx281n" path="res://prefabs/title-bar-wide.tscn" id="2_q21ov"]
 [ext_resource type="PackedScene" uid="uid://jqfcrgtcowf1" path="res://prefabs/left-hand-button.tscn" id="2_ycvuw"]
 [ext_resource type="Texture2D" uid="uid://l6oe44m1j68v" path="res://UI/ui-sheet-1.png" id="5_o1opb"]
+[ext_resource type="Script" uid="uid://cnwpw6r1wpoyn" path="res://scripts/generic_button.gd" id="5_ui70f"]
+[ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="6_o50yc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3k7h"]
+atlas = ExtResource("5_o1opb")
+region = Rect2(597, 676, 46, 45)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oy7i1"]
 atlas = ExtResource("5_o1opb")
@@ -35,6 +41,50 @@ offset_right = 480.0
 offset_bottom = 44.0
 grow_vertical = 1
 text = "[center]MECH JAM 25"
+
+[node name="VOICEMAIL" parent="." instance=ExtResource("2_ycvuw")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 840.0
+offset_top = 584.0
+offset_right = 1273.0
+offset_bottom = 629.0
+grow_horizontal = 1
+grow_vertical = 1
+size_flags_vertical = 6
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+text = "VOICEMAIL [0]"
+icon = SubResource("AtlasTexture_w3k7h")
+script = ExtResource("5_ui70f")
+
+[node name="BOX" type="Control" parent="VOICEMAIL"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_top = -456.0
+offset_right = 432.0
+offset_bottom = -16.0
+
+[node name="BG2" parent="VOICEMAIL/BOX" instance=ExtResource("6_o50yc")]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 432.0
+offset_bottom = 440.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VOICEMAIL/BOX"]
+clip_contents = false
+layout_mode = 0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 432.0
+offset_bottom = 448.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VOICEMAIL/BOX/ScrollContainer"]
+layout_mode = 2
 
 [node name="START_MENU_BUTTONS" type="VBoxContainer" parent="."]
 anchors_preset = 8
@@ -88,3 +138,5 @@ custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 size_flags_vertical = 6
 text = "LOG OFF"
+
+[connection signal="pressed" from="VOICEMAIL" to="VOICEMAIL" method="_on_pressed"]

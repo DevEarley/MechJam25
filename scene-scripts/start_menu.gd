@@ -13,10 +13,7 @@ func _ready():
 	$LOG_OFF.connect("pressed",_on_LOG_OFF_pressed)
 
 func _on_back_to_start_menu():
-	STATUS_BAR.update_status()
-	MAP.ANIMATOR.play("idle")
-	STATE.START_MENU_CANVAS.show()
-	STATE.STATUS_BAR_CANVAS.show()
+	START_MENU.show_start_menu()
 	STATE.MISSIONS_MENU_CANVAS.hide()
 	STATE.PILOT_MENU_CANVAS.hide()
 	STATE.MECH_MENU_CANVAS.hide()

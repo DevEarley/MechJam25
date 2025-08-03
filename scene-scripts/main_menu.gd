@@ -19,8 +19,7 @@ func go_to_start_menu():
 		STATUS_BAR.update_status()
 		MAP.ANIMATOR.play("idle")
 		STATE.MAIN_MENU_CANVAS.hide()
-		STATE.START_MENU_CANVAS.show()
-		STATE.STATUS_BAR_CANVAS.show()
+		START_MENU.show_start_menu()
 
 func _on_START_pressed():
 

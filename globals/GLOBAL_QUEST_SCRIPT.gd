@@ -16,7 +16,6 @@ var CURRENT_NPC:NPC;
 
 var call_back_on_finished:Callable;
 
-
 func process_signal(signal_string:String):
 	for REGISTERED_SIGNAL in REGISTERED_SIGNALS:
 		if(REGISTERED_SIGNAL.contains(signal_string)):
@@ -42,7 +41,6 @@ func continue_script():
 	else:
 		on_script_finished();
 
-
 func process_script_for_quotes(_script:String):
 	return _script.replace("“","\"").replace("”","\"");
 
@@ -65,8 +63,12 @@ func run_script(_script:String):
 	CONVERSATION_UI.start_conversation()
 	_script = process_script_for_quotes(_script)
 	var lines:PackedStringArray = _script.split("\n",false)
-	CURRENT_SCRIPT = lines
+
+	for line in lines.size():
+		lines.set(line,lines[line].trim_prefix("\t"))
+		lines.set(line,(lines[line]).strip_edges(true,true))
 	CURRENT_LINE = 0;
+	CURRENT_SCRIPT = lines
 	run_script__process_line();
 
 func get_line_index_for_marker(marker:String):
@@ -342,7 +344,8 @@ func on_action_4_pressed():
 
 
 func on_script_finished():
-	if(STATE.ON_QUEST_SCRIPT_DONE!=null):
+	if(STATE.ON_QUEST_SCRIPT_DONE.get_method()!=""):
+		print("method %s" % STATE.ON_QUEST_SCRIPT_DONE.get_method())
 		STATE.CONVERSATION_SCREEN_CANVAS.hide()
 		STATE.CONVERSATION_CONTROL_NODE.hide()
 		STATE.ON_QUEST_SCRIPT_DONE.call()

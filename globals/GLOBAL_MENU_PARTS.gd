@@ -48,8 +48,7 @@ func show_parts():
 	button.grab_focus()
 
 func on_cancel_parts_menu():
-	STATE.START_MENU_CANVAS.show()
-	STATE.STATUS_BAR_CANVAS.show()
+	START_MENU.show_start_menu()
 	STATE.PARTS_MENU_CANVAS.hide()
 
 func on_cancel_equip_part_pop_up():

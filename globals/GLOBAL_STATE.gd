@@ -32,6 +32,7 @@ var PARTS:Array[Part]
 var MECHS:Array[Mech]
 var MISSIONS:Array[Mission]
 var LOCATIONS:Array[Location]
+var VOICEMAILS:Array[Voicemail]
 
 
 var CURRENT_PART_ID:int;
@@ -47,11 +48,13 @@ var MISSIONS_VERSION:float;
 var LOCATIONS_VERSION:float;
 var USER_OPTIONS_VERSION:float;
 var GAME_STATE_VERSION:float;
+var VOICEMAILS_VERSION:float;
 
 var MAP_BG:NinePatchRect
 
 var SFX_VOLUME
 var MUSIC_VOLUME
+
 
 #var DID_DAILY_FOR_MISSION = false
 

@@ -5,6 +5,7 @@ func save_everything():
 	save_missions_to_user_data()
 	save_parts_to_user_data()
 	save_pilots_to_user_data()
+	save_voicemails_to_user_data()
 
 func load_data() -> void:
 
@@ -15,6 +16,7 @@ func load_data() -> void:
 	load_or_create_user_parts()
 	load_or_create_user_mechs()
 	load_or_create_user_pilots()
+	load_or_create_user_voicemails()
 	load_or_create_user_game_state()
 	STATE.CURRENT_MISSION = LINQ.First(STATE.MISSIONS,func (mission:Mission):return mission.status == ENUMS.MISSION_STATUS.IN_PROGRESS)
 	STATE.HAS_MISSION_IN_PROGRESS = STATE.CURRENT_MISSION !=null;
@@ -668,5 +670,95 @@ func save_game_state_to_user_data():
 	user_data.set_value(section,"DIFFICULTY_ALREADY_CHOSEN",STATE.DIFFICULTY_ALREADY_CHOSEN)
 
 	var err = user_data.save("user://game_state.cfg")
+	if err != OK:
+		print(err)
+
+
+func load_or_create_user_voicemails():
+	var slot_index = 1
+	var section = "SAVESLOT_%s"%slot_index
+	var user_data = ConfigFile.new()
+	var resource_data = ConfigFile.new()
+	var user_data_err = user_data.load("user://voicemails.cfg")
+	var resource_data_err = resource_data.load("res://data/data_voicemails.cfg")
+	STATE.VOICEMAILS_VERSION = resource_data.get_value("DEFAULT","VERSION")
+	if(user_data_err == 7 ):
+		var number_of_voicemails:int = resource_data.get_value("DEFAULT","NUMBER_OF_VOICEMAILS")
+		for voicemail_index in number_of_voicemails:
+			create_and_push_voicemail_to_STATE("DEFAULT",voicemail_index,resource_data)
+		save_voicemails_to_user_data()
+	elif(user_data_err != 7):
+		if(user_data.has_section_key(section,"VERSION")==false):
+			user_data.save("user://voicemails_backup__no_version.cfg")
+			var number_of_voicemails:int = resource_data.get_value("DEFAULT","NUMBER_OF_VOICEMAILS")
+			for voicemail_index in number_of_voicemails:
+				create_and_push_voicemail_to_STATE_try_from_user(section,voicemail_index,resource_data,user_data)
+			return
+		var user_version:float = user_data.get_value(section,"VERSION")
+		if(user_version==STATE.VOICEMAILS_VERSION):
+			var number_of_voicemails:int = user_data.get_value(section,"NUMBER_OF_VOICEMAILS")
+			for voicemail_index in number_of_voicemails:
+				create_and_push_voicemail_to_STATE(section,voicemail_index,user_data)
+		elif(user_version<STATE.VOICEMAILS_VERSION):
+			user_data.save("user://voicemails_backup_%s.cfg"%user_version)
+			var number_of_voicemails:int = resource_data.get_value("DEFAULT","NUMBER_OF_VOICEMAILS")
+			for voicemail_index in number_of_voicemails:
+				create_and_push_voicemail_to_STATE_try_from_user(section,voicemail_index,resource_data,user_data)
+			save_voicemails_to_user_data()
+		elif(user_version>STATE.VOICEMAILS_VERSION):
+			var number_of_voicemails:int = resource_data.get_value("DEFAULT","NUMBER_OF_VOICEMAILS")
+			user_data.save("user://voicemails_backup_%s.cfg"%user_version)
+			for voicemail_index in number_of_voicemails:
+				create_and_push_voicemail_to_STATE("DEFAULT",voicemail_index,resource_data)
+
+func create_and_push_voicemail_to_STATE(section,voicemail_index,user_data):
+			var voicemail = Voicemail.new();
+			#todo - add checks to this- so the game doesn't crash if the user messes something up.
+
+			voicemail.ID = user_data.get_value(section,"VOICEMAIL_%s_ID"%voicemail_index)
+			voicemail.from = user_data.get_value(section,"VOICEMAIL_%s_FROM"%voicemail_index)
+			voicemail.voicemail_script = user_data.get_value(section,"VOICEMAIL_%s_SCRIPT"%voicemail_index)
+			voicemail.callback_script = user_data.get_value(section,"VOICEMAIL_%s_CALLBACK"%voicemail_index)
+			voicemail.status = user_data.get_value(section,"VOICEMAIL_%s_STATUS"%voicemail_index)
+
+
+
+			STATE.VOICEMAILS.push_back(voicemail);
+
+func create_and_push_voicemail_to_STATE_try_from_user(section,voicemail_index,data,user_data:ConfigFile):
+			var voicemail = Voicemail.new();
+
+			#todo - add checks to this- so the game doesn't crash if the user messes something up.
+			voicemail.ID = data.get_value("DEFAULT","VOICEMAIL_%s_ID"%voicemail_index)
+			voicemail.name = data.get_value("DEFAULT","VOICEMAIL_%s_NAME"%voicemail_index)
+
+
+			voicemail.voicemail_script = user_data.get_value(section,"VOICEMAIL_%s_SCRIPT"%voicemail_index)
+			voicemail.callback_script = user_data.get_value(section,"VOICEMAIL_%s_CALLBACK"%voicemail_index)
+
+			if(user_data.has_section_key(section,"VOICEMAIL_%s_STATUS"%voicemail_index)):
+				voicemail.status = user_data.get_value(section,"VOICEMAIL_%s_STATUS"%voicemail_index)
+			else:
+				voicemail.status = data.get_value("DEFAULT","VOICEMAIL_%s_STATUS"%voicemail_index)
+
+
+			STATE.VOICEMAILS.push_back(voicemail);
+
+func save_voicemails_to_user_data():
+	var slot_index = 1
+	var section = "SAVESLOT_%s"%slot_index
+	var user_data = ConfigFile.new()
+	var index = 0;
+	user_data.set_value(section,"VERSION",STATE.VOICEMAILS_VERSION)
+	user_data.set_value(section,"NUMBER_OF_VOICEMAILS",STATE.VOICEMAILS.size())
+	for voicemail:Voicemail in STATE.VOICEMAILS:
+		user_data.set_value(section,"VOICEMAIL_%s_ID"%index,voicemail.ID)
+		user_data.set_value(section,"VOICEMAIL_%s_FROM"%index,voicemail.from)
+		user_data.set_value(section,"VOICEMAIL_%s_STATUS"%index,voicemail.status)
+		user_data.set_value(section,"VOICEMAIL_%s_SCRIPT"%index,voicemail.voicemail_script)
+		user_data.set_value(section,"VOICEMAIL_%s_CALLBACK"%index,voicemail.callback_script)
+
+		index+=1;
+	var err = user_data.save("user://voicemails.cfg")
 	if err != OK:
 		print(err)
