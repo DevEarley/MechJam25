@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddu11pa0q3uk0"]
+[gd_scene load_steps=13 format=3 uid="uid://ddu11pa0q3uk0"]
 
 [ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="1_vwrtx"]
 [ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="2_7rhkb"]
 [ext_resource type="Environment" uid="uid://c7ssmhiiplyg8" path="res://world_environment.tres" id="2_ilxod"]
+[ext_resource type="PackedScene" uid="uid://cv054k41vsqhf" path="res://prefabs/RichText_with_dim_zeros.tscn" id="2_jlplf"]
 [ext_resource type="PackedScene" uid="uid://dimmt4xbgqqdb" path="res://mechs-3D/mech-001.glb" id="3_umgmh"]
 [ext_resource type="Material" uid="uid://dj2chdusgvktn" path="res://materials/world_mat_alt.tres" id="4_qne6b"]
 [ext_resource type="PackedScene" uid="uid://buc3pa7ovo81q" path="res://prefabs/long-press-button.tscn" id="6_4fkpd"]
@@ -39,6 +40,23 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_4fkpd"]
+resource_name = "spin_2"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MECHS_NODE:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.91957),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_pia31"]
 resource_name = "spin_up"
 length = 4.0
@@ -59,6 +77,7 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_d1idq"),
 &"spin": SubResource("Animation_6v034"),
+&"spin_2": SubResource("Animation_4fkpd"),
 &"spin_up": SubResource("Animation_pia31")
 }
 
@@ -78,59 +97,50 @@ offset_top = -24.0
 offset_right = 152.0
 offset_bottom = 232.0
 
-[node name="ID" type="Label" parent="."]
-layout_mode = 2
-offset_left = -352.0
-offset_right = -304.0
-offset_bottom = 28.0
-theme = ExtResource("2_7rhkb")
-text = "001"
+[node name="ID" parent="." instance=ExtResource("2_jlplf")]
+layout_mode = 0
+offset_left = -336.0
+offset_top = -8.0
+offset_right = -274.0
+offset_bottom = 20.0
+theme_override_font_sizes/normal_font_size = 16
 
 [node name="NAME" type="Label" parent="."]
 layout_mode = 2
-offset_left = -296.0
-offset_right = -220.0
-offset_bottom = 28.0
+offset_left = -344.0
+offset_top = 8.0
+offset_right = -268.0
+offset_bottom = 36.0
 theme = ExtResource("2_7rhkb")
 text = "NAME"
 
 [node name="FLAVOR" type="Label" parent="."]
 layout_mode = 2
-offset_left = -336.0
-offset_top = 64.0
-offset_right = 136.0
-offset_bottom = 154.0
+offset_left = -344.0
+offset_top = 104.0
+offset_right = 128.0
+offset_bottom = 163.0
 theme = ExtResource("2_7rhkb")
-text = "Flavor Text Flavor Text Flavor Text Flavor Text Flavor Text Flavor Text Flavor Text Flavor."
+text = "Flavor Text Flavor Text Flavor Text Flavor Text Flavor Text"
 autowrap_mode = 2
 
 [node name="COMPATIBLE_ENVIRONMENT" type="Label" parent="."]
 layout_mode = 2
-offset_left = -240.0
-offset_top = 32.0
-offset_right = -168.0
-offset_bottom = 60.0
+offset_left = -344.0
+offset_top = 72.0
+offset_right = -272.0
+offset_bottom = 100.0
 theme = ExtResource("2_7rhkb")
 text = "ENVS"
 
 [node name="TYPE" type="Label" parent="."]
 layout_mode = 2
-offset_left = -352.0
-offset_top = 32.0
-offset_right = -280.0
-offset_bottom = 60.0
+offset_left = -344.0
+offset_top = 40.0
+offset_right = -272.0
+offset_bottom = 68.0
 theme = ExtResource("2_7rhkb")
 text = "TYPE"
-
-[node name="BASE_HEALTH" type="Label" parent="."]
-layout_mode = 2
-offset_left = 48.0
-offset_top = -8.0
-offset_right = 84.0
-offset_bottom = 20.0
-theme = ExtResource("2_7rhkb")
-text = "BH"
-horizontal_alignment = 2
 
 [node name="STATUS" type="Label" parent="."]
 layout_mode = 2
@@ -140,24 +150,6 @@ offset_right = -236.0
 offset_bottom = 204.0
 theme = ExtResource("2_7rhkb")
 text = "STATUS"
-
-[node name="CURRENT_HEALTH" type="Label" parent="."]
-layout_mode = 2
-offset_left = 96.0
-offset_top = 8.0
-offset_right = 132.0
-offset_bottom = 36.0
-theme = ExtResource("2_7rhkb")
-text = "CH"
-
-[node name="SLASH" type="Label" parent="."]
-layout_mode = 2
-offset_left = 80.0
-offset_top = 8.0
-offset_right = 90.0
-offset_bottom = 36.0
-theme = ExtResource("2_7rhkb")
-text = "/"
 
 [node name="BG2" parent="." instance=ExtResource("1_vwrtx")]
 layout_mode = 0
@@ -193,7 +185,7 @@ environment = ExtResource("2_ilxod")
 libraries = {
 &"": SubResource("AnimationLibrary_qppqj")
 }
-autoplay = "spin"
+autoplay = "spin_2"
 next/spin_up = &"spin"
 blend_times = [&"spin", &"spin_up", 0.25, &"spin_up", &"spin", 0.25]
 
@@ -279,8 +271,50 @@ layout_mode = 1
 offset_left = -632.0
 offset_top = 248.0
 offset_right = -147.0
-offset_bottom = 288.0
+offset_bottom = 304.0
 text = "DISMISS MECH FROM MISSION"
+
+[node name="STATUS3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 39.0
+offset_right = 126.0
+offset_bottom = 53.0
+theme = ExtResource("2_7rhkb")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "BASE P."
+
+[node name="BASE_HEALTH" parent="." instance=ExtResource("2_jlplf")]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 48.0
+offset_right = 126.0
+offset_bottom = 76.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "[right][dim]00[/dim]1"
+
+[node name="STATUS2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 73.0
+offset_top = -8.0
+offset_right = 126.0
+offset_bottom = 6.0
+theme = ExtResource("2_7rhkb")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "POWER"
+
+[node name="CURRENT_HEALTH" parent="." instance=ExtResource("2_jlplf")]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 1.0
+offset_right = 126.0
+offset_bottom = 29.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "[right][dim]00[/dim]1"
 
 [editable path="SubViewportContainer/SubViewport/MECHS_NODE/BLUE_MECH_001"]
 [editable path="SubViewportContainer/SubViewport/MECHS_NODE/RED_MECH_001"]

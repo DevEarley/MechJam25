@@ -129,18 +129,33 @@ func print_rng_and_odds(rng_number,odds):
 
 func has_passed_current_mission():
 	var mission_odds = STATE.CURRENT_MISSION.one_over_odds_for_mission;
-	mission_odds+= get_mission_bonus(STATE.CURRENT_MISSION)
+	var return_odds = STATE.CURRENT_MISSION.one_over_odds_for_returning;
+	var mission_bonus = get_mission_bonus(STATE.CURRENT_MISSION)
+	var return_bonus= get_return_bonus(STATE.CURRENT_MISSION)
+	var completed_mission = false
+	var returned = false
+
 	var rng_number = RNG.Next()
 	var rng_value = rng_number/ RNG.RNG_COUNT
-	var completed_mission = (1.0/mission_odds) < rng_value
-	print_rng_and_odds(rng_number,mission_odds)
+	if(mission_odds + mission_bonus>0.0):
+		mission_odds += mission_bonus
+		completed_mission =abs (1.0/mission_odds) < rng_value
+		print_rng_and_odds(rng_number,mission_odds)
+	else:
+		var calculated_odds =1.0-abs ((1.0+mission_bonus)/mission_odds)
+		completed_mission =calculated_odds < rng_value
+		print("RNG: %s | out of %s | ODS: %s | 1/RNG: %s | 1/ODDS: %s" % [rng_number,RNG.RNG_COUNT,mission_odds,rng_value,calculated_odds] )
 
-	var return_odds = STATE.CURRENT_MISSION.one_over_odds_for_returning;
-	return_odds+= get_return_bonus(STATE.CURRENT_MISSION)
 	var rng_number_2 = RNG.Next()
 	var rng_value_2 = rng_number_2/ RNG.RNG_COUNT
-	var returned = (1.0/return_odds) < rng_value_2
-	print_rng_and_odds(rng_number_2,return_odds)
+	if(return_odds+return_bonus>0.0):
+		return_odds+= return_bonus
+		returned = abs(1.0/return_odds) < rng_value_2
+		print_rng_and_odds(rng_number_2,return_odds)
+	else:
+		var calculated_odds = 1.0-abs ((1.0+return_bonus)/return_odds)
+		returned = calculated_odds< rng_value_2
+		print("RNG: %s | out of %s | ODS: %s | 1/RNG: %s | 1/ODDS: %s" % [rng_number,RNG.RNG_COUNT,return_odds,rng_number/ RNG.RNG_COUNT,calculated_odds] )
 
 	var mech:Mech = LINQ.First(STATE.MECHS,func (mech:Mech):return mech.mission_id == STATE.CURRENT_MISSION_ID)
 	var pilot:Pilot = LINQ.First(STATE.PILOTS,func ( pilot:Pilot ):return pilot.mech_id == mech.ID)
@@ -150,13 +165,19 @@ func has_passed_current_mission():
 	if(returned==false):
 		mech.current_health -=1
 
-	if(mech.current_health<=0):
+	if(mech.current_health<=0 ):
 		mech.status = ENUMS.MECH_STATUS.NOT_AVAILABLE
 		pilot.status = ENUMS.PILOT_STATUS.DEAD
 		DATA.save_everything()
 		return false;
-	else:
+	elif(completed_mission== true):
 		mech.status = ENUMS.MECH_STATUS.IN_GARAGE
 		pilot.status = ENUMS.PILOT_STATUS.HIRED
 		DATA.save_everything()
 		return true;
+
+	else:
+		mech.status = ENUMS.MECH_STATUS.IN_GARAGE
+		pilot.status = ENUMS.PILOT_STATUS.HIRED
+		DATA.save_everything()
+		return false;

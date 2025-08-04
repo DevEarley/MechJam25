@@ -21,8 +21,8 @@ func _on_pressed() -> void:
 					new_button.disabled = true;
 				else:
 					new_button.connect("pressed",on_pick_mech.bind(mech))
-					new_button.connect("focus_entered",show_mech_info.bind(mech))
-					new_button.connect("mouse_entered",show_mech_info.bind(mech))
+					new_button.connect("focus_entered",show_mech_info.bind(mech,false))
+					new_button.connect("mouse_entered",show_mech_info.bind(mech,false))
 					new_button.connect("focus_exited",hide_mech_info)
 					new_button.connect("mouse_exited",hide_mech_info)
 				$MECH_LIST/Control/ScrollContainer/VBoxContainer.add_child(new_button);
@@ -30,7 +30,7 @@ func _on_pressed() -> void:
 		else:
 			var current_mech:Mech = LINQ.First(STATE.MECHS, func (mech:Mech):
 				return mech.ID == STATE.CURRENT_MECH_ID);
-			show_mech_info(current_mech);
+			show_mech_info(current_mech,true);
 
 func hide_mech_info():
 
@@ -44,12 +44,17 @@ func dismiss_mech():
 		DATA.save_mechs_to_user_data()
 		MISSIONS_MENU.on_mission_pressed(STATE.CURRENT_MISSION)
 
-func show_mech_info(mech):
+func show_mech_info(mech,show_dismiss):
 		$MECH_BOX.show()
 		DATA_TO_UI.build_mech_box($MECH_BOX,mech)
 		if($MECH_BOX.has_node("SubViewportContainer")):
 			DATA_TO_UI.display_node_for_mech(mech.ID,$MECH_BOX/SubViewportContainer/SubViewport/MECHS_NODE)
-			$MECH_BOX/DISMISS_BUTTON.ON_TIMER_DONE = dismiss_mech
+			if(show_dismiss):
+				$MECH_BOX/DISMISS_BUTTON.show()
+				$MECH_BOX/DISMISS_BUTTON.ON_TIMER_DONE = dismiss_mech
+			else:
+				$MECH_BOX/DISMISS_BUTTON.hide()
+
 
 static func get_status_text_for_mech(mech:Mech):
 	match(mech.status):

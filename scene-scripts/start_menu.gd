@@ -38,7 +38,7 @@ func _on_MECHS_pressed():
 	STATE.MECH_MENU_CANVAS.show()
 	STATE.START_MENU_CANVAS.hide()
 	STATE.ON_BACK_BUTTON_PRESSED = _on_back_to_start_menu
-
+	STATE.MECH_MENU_CANVAS.get_node("Control/SCROLLABLE/BUTTONS").get_child(0).grab_focus()
 #func _on_DEPLOYMENTS_pressed():
 #
 	#STATE.DEPLOYMENTS_MENU_CANVAS.show()

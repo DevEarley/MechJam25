@@ -2,7 +2,7 @@ class_name DATA_TO_UI
 
 static func build_mech_box(mech_button, mech):
 		if(mech_button.has_node("ID")):
-			mech_button.get_node("ID").text = "%03d"%mech.ID
+			mech_button.get_node("ID").text =  DATA_TO_UI.insert_leading_zeros(mech.ID)
 		mech_button.get_node("NAME").text = "%s"%mech.name
 
 		if(mech_button.has_node("COMPATIBLE_ENVIRONMENT")):
@@ -16,10 +16,10 @@ static func build_mech_box(mech_button, mech):
 		if(mech_button.has_node("TYPE")):
 			mech_button.get_node("TYPE").text  = get_mech_type(mech)
 		if(mech_button.has_node("BASE_HEALTH")):
-			mech_button.get_node("BASE_HEALTH").text = "%03d"%mech.base_health
+			mech_button.get_node("BASE_HEALTH").text =  DATA_TO_UI.insert_leading_zeros(mech.base_health)
 
 		if(mech_button.has_node("CURRENT_HEALTH")):
-			mech_button.get_node("CURRENT_HEALTH").text = "%03d"%mech.current_health
+			mech_button.get_node("CURRENT_HEALTH").text = DATA_TO_UI.insert_leading_zeros(mech.current_health)
 
 		if(mech_button.has_node("FLAVOR")):
 			mech_button.get_node("FLAVOR").text = mech.flavor
@@ -29,7 +29,7 @@ static func build_mech_box(mech_button, mech):
 
 static func build_mech_box_small(MECH_BOX_PREFAB, mech):
 		var mech_button = MECH_BOX_PREFAB.instantiate()
-		mech_button.get_node("ID").text = "%03d"%mech.ID
+		mech_button.get_node("ID").text =DATA_TO_UI.insert_leading_zeros(mech.ID)
 		mech_button.get_node("NAME").text = "%s"%mech.name
 		mech_button.get_node("COMPATIBLE_ENVIRONMENT").text = "";
 		for environment in mech.compatible_environments:
@@ -38,14 +38,16 @@ static func build_mech_box_small(MECH_BOX_PREFAB, mech):
 			var environment_tint= results[1]
 			mech_button.get_node("COMPATIBLE_ENVIRONMENT").text += "[%s] "%environment_text
 		mech_button.get_node("TYPE").text  = get_mech_type(mech)
-		mech_button.get_node("BASE_HEALTH").text = "%03d"%mech.base_health
-		mech_button.get_node("CURRENT_HEALTH").text = "%03d"%mech.current_health
+		if(mech_button.has_node("BASE_HEALTH")):
+			mech_button.get_node("BASE_HEALTH").text = DATA_TO_UI.insert_leading_zeros(mech.base_health)
+		if(mech_button.has_node("CURRENT_HEALTH")):
+			mech_button.get_node("CURRENT_HEALTH").text = DATA_TO_UI.insert_leading_zeros(mech.current_health)
 		mech_button.get_node("STATUS").text = get_status_text_for_mech(mech)
 		return mech_button
 
 static func build_small_part_box(BOX_PREFAB,part:Part):
 		var part_button = BOX_PREFAB.instantiate()
-		part_button.get_node("ID").text = "%s"%part.ID
+		part_button.get_node("ID").text = DATA_TO_UI.insert_leading_zeros(part.ID)
 		part_button.get_node("NAME").text = "%s"%part.name
 		match(part.status):
 			ENUMS.PART_STATUS.FOR_SALE:
@@ -66,38 +68,40 @@ static func build_part_button(part_button,part:Part):
 
 static func build_part_box(part_button,part:Part):
 
-		part_button.get_node("ID").text = "%s"%part.ID
+		part_button.get_node("ID").text =DATA_TO_UI.insert_leading_zeros(part.ID)
 		part_button.get_node("NAME").text = "%s"%part.name
 		if(part_button.has_node("FLAVOR")):
 			part_button.get_node("FLAVOR").text = "%s"%part.flavor
 		if(part_button.has_node("RECYCLE_POINTS")):
-			part_button.get_node("RECYCLE_POINTS").text = "%s"%part.recycle_points
+			part_button.get_node("RECYCLE_POINTS").text = DATA_TO_UI.insert_leading_zeros(part.recycle_points)
 		if(part_button.has_node("SELLING_PRICE")):
 			part_button.get_node("SELLING_PRICE").text = "%s"%part.selling_price
-		part_button.get_node("MISSION_ODDS").text = "+/%03d"%part.mission_odds
+		if(part_button.has_node("MISSION_ODDS")):
+			part_button.get_node("MISSION_ODDS").text = "+%s"%DATA_TO_UI.insert_leading_zeros(part.mission_odds)
 		part_button.get_node("CRITERIA_FOR_MISSION_ODDS").text =  get_criteria_for_mission_odds(part.criteria_for_mission_odds)
-		part_button.get_node("RETURNING_ODDS").text = "+/%03d"%part.returning_odds
+		if(part_button.has_node("RETURNING_ODDS")):
+			part_button.get_node("RETURNING_ODDS").text =  "+%s"%DATA_TO_UI.insert_leading_zeros(part.returning_odds)
 		part_button.get_node("CRITERIA_FOR_RETURNING_ODDS").text = get_criteria_for_return_odds(part.criteria_for_returning_odds)
 		if(part_button.has_node("MECH")):
 			var mech = LINQ.First(STATE.MECHS, func (mech:Mech):return mech.ID == part.attached_to_mech_id )
 
 			part_button.get_node("MECH").text = "EQUIPT TO %s"%mech.name
-		if(part_button.has_node("STATUS")):
-			part_button.get_node("STATUS").text = "%s"%part.status
-		if(part_button.has_node("TYPE")):
-			part_button.get_node("TYPE").text = "%s"%part.type
+		#if(part_button.has_node("STATUS")):
+			#part_button.get_node("STATUS").text = "%s"%part.status
+		#if(part_button.has_node("TYPE")):
+			#part_button.get_node("TYPE").text = "%s"%part.type
 		return part_button
 
 static func build_pilot_box(pilot_button,pilot:Pilot):
 
-		pilot_button.get_node("ID").text = "%s"%pilot.ID
+		pilot_button.get_node("ID").text = DATA_TO_UI.insert_leading_zeros(pilot.ID)
 		pilot_button.get_node("NAME").text = "%s"%pilot.name
 		#pilot_button.get_node("COST").text = "%s"%pilot.cost
 		#pilot_button.get_node("FLAVOR").text = "%s"%pilot.flavor
 		#pilot_button.get_node("THEME").text = "%s"%pilot.theme
-		pilot_button.get_node("MISSION_ODDS").text = "+/%03d"%pilot.mission_odds
+		pilot_button.get_node("MISSION_ODDS").text = "+%s/%s"%[pilot.mission_odds,pilot.mission_odds]
 		pilot_button.get_node("CRITERIA_FOR_MISSION_ODDS").text = get_criteria_for_mission_odds(pilot.criteria_for_mission_odds)
-		pilot_button.get_node("RETURNING_ODDS").text = "+/%03d"%pilot.returning_odds
+		pilot_button.get_node("RETURNING_ODDS").text = "+%s/%s"%[pilot.returning_odds,pilot.returning_odds]
 
 		pilot_button.get_node("CRITERIA_FOR_RETURNING_ODDS").text =get_criteria_for_return_odds(pilot.criteria_for_returning_odds)
 		#pilot_button.get_node("STATUS").text = "%s"%pilot.status
@@ -310,3 +314,19 @@ static func get_status_text_for_mech(mech):
 			ENUMS.MECH_STATUS.NOT_AVAILABLE:
 				status ="NOT AVAILABLE"
 	return status;
+
+static func insert_leading_zeros(value:int):
+	var string_value = "%s" % value
+	if(string_value.length() == 0):
+		string_value = "[dim]000[/dim]"
+	elif(string_value.length() == 1):
+		string_value = "[dim]00[/dim]%s" %value
+	elif(string_value.length() == 2):
+		string_value = "[dim]0[/dim]%s" %value
+	return string_value
+
+static func one_over_dim_zeros(value:int):
+	if(value < 0):
+		return "[right][dim]1/[/dim]%s"%(value*-1)
+	else:
+		return "[right][dim]%s/[/dim]%s"%[value-1,(value)]

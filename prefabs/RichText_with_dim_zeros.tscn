@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv054k41vsqhf"]
+
+[ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="1_5m5qo"]
+[ext_resource type="RichTextEffect" uid="uid://cnvbgn55pb5hs" path="res://text-FX/new_rich_text_effect.tres" id="2_hqj63"]
+
+[node name="RICH_DIM_ZEROS" type="RichTextLabel"]
+offset_left = 931.0
+offset_top = 98.0
+offset_right = 993.0
+offset_bottom = 126.0
+theme = ExtResource("1_5m5qo")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+bbcode_enabled = true
+text = "1/[dim]00[/dim]5"
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [ExtResource("2_hqj63")]

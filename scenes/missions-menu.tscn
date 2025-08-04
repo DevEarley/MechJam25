@@ -1,21 +1,21 @@
 [gd_scene load_steps=30 format=3 uid="uid://d1gap44bgx3de"]
 
-[ext_resource type="Script" uid="uid://bxy3br0irscae" path="res://scripts/add-self-to-scaled-ui.gd" id="1_ed1ed"]
+[ext_resource type="Script" uid="uid://bspmcdh6ljc4d" path="res://scene-scripts/mission-menu.gd" id="1_657ku"]
 [ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="2_1xm5e"]
-[ext_resource type="PackedScene" uid="uid://bunfxp7cx281n" path="res://prefabs/title-bar-wide.tscn" id="2_n2a46"]
+[ext_resource type="Texture2D" uid="uid://x66vokp7xc81" path="res://UI/ui-sheet-1.svg" id="3_8q0lm"]
 [ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="3_fdjc2"]
 [ext_resource type="PackedScene" uid="uid://c4koj71ge37td" path="res://prefabs/back_button.tscn" id="3_hbt48"]
-[ext_resource type="Script" uid="uid://bs3tsxpoc57p3" path="res://prefabs/start_mission_button.gd" id="4_kx32r"]
 [ext_resource type="PackedScene" uid="uid://jqfcrgtcowf1" path="res://prefabs/left-hand-button.tscn" id="5_wo4en"]
 [ext_resource type="PackedScene" uid="uid://ddu11pa0q3uk0" path="res://prefabs/mech_viewport_container_small.tscn" id="6_5pnbf"]
 [ext_resource type="Texture2D" uid="uid://l6oe44m1j68v" path="res://UI/ui-sheet-1.png" id="6_kx32r"]
-[ext_resource type="Script" uid="uid://d34qt6cr5rbsh" path="res://scripts/debrief_button.gd" id="7_657ku"]
 [ext_resource type="Script" uid="uid://c54sr8yv6jh1t" path="res://prefabs/show_mech_info_button.gd" id="7_n8kpc"]
 [ext_resource type="Texture2D" uid="uid://86yf6tf46r08" path="res://UI/crosshairs64.png" id="9_m6yi0"]
 [ext_resource type="Script" uid="uid://bet7mthx566bj" path="res://scripts/show_parts_list_button.gd" id="10_7ogva"]
+[ext_resource type="PackedScene" uid="uid://cv054k41vsqhf" path="res://prefabs/RichText_with_dim_zeros.tscn" id="10_hknlx"]
 [ext_resource type="Script" uid="uid://cbg5wq3uoilli" path="res://prefabs/show_pilot_info_button.gd" id="11_7ogva"]
 [ext_resource type="Script" uid="uid://bvxygaf81ebbl" path="res://scripts/change_mission.gd" id="12_n8kpc"]
 [ext_resource type="PackedScene" uid="uid://dx4i0u2phohdh" path="res://prefabs/pilot_box.tscn" id="13_8q0lm"]
+[ext_resource type="PackedScene" uid="uid://buc3pa7ovo81q" path="res://prefabs/long-press-button.tscn" id="16_8q0lm"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n8kpc"]
 
@@ -68,18 +68,40 @@ atlas = ExtResource("6_kx32r")
 region = Rect2(952, 670, 43, 46)
 
 [node name="Missions-menu" type="CanvasLayer"]
-script = ExtResource("1_ed1ed")
+script = ExtResource("1_657ku")
 
-[node name="TITLE" parent="." instance=ExtResource("2_n2a46")]
+[node name="TITLE" type="RichTextLabel" parent="."]
+clip_contents = false
+custom_minimum_size = Vector2(120, 35)
 anchors_preset = 5
-anchor_top = 0.0
-anchor_bottom = 0.0
-offset_left = -208.0
-offset_top = 20.0
-offset_right = 206.0
-offset_bottom = 55.0
-grow_vertical = 1
-text = "[center]MISSIONS"
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -232.0
+offset_top = 24.0
+offset_right = 208.0
+offset_bottom = 59.0
+grow_horizontal = 2
+theme = ExtResource("2_1xm5e")
+bbcode_enabled = true
+text = "[center]      MISSIONS"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TITLE"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -10.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_8q0lm")
+region_rect = Rect2(4, 243, 293, 60)
+patch_margin_left = 89
+patch_margin_right = 29
 
 [node name="MISSION_BOX" type="Control" parent="."]
 layout_mode = 3
@@ -132,37 +154,13 @@ icon = SubResource("AtlasTexture_n8kpc")
 flat = true
 script = ExtResource("12_n8kpc")
 
-[node name="START_MISSION" parent="MISSION_BOX" instance=ExtResource("5_wo4en")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 487.0
-offset_top = 586.0
-offset_right = 800.0
-offset_bottom = 626.0
-grow_horizontal = 1
-grow_vertical = 1
-text = "START MISSION  "
-script = ExtResource("4_kx32r")
-
-[node name="NEEDS_DEBRIEF" parent="MISSION_BOX" instance=ExtResource("5_wo4en")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 487.0
-offset_top = 586.0
-offset_right = 800.0
-offset_bottom = 626.0
-grow_horizontal = 1
-grow_vertical = 1
+[node name="NEEDS_DEBRIEF" parent="MISSION_BOX" instance=ExtResource("16_8q0lm")]
+layout_mode = 1
+offset_left = -144.0
+offset_top = 216.0
+offset_right = 208.0
+offset_bottom = 268.0
 text = "NEEDS DEBRIEF"
-script = ExtResource("7_657ku")
 
 [node name="_FLAVOR_BG" parent="MISSION_BOX" instance=ExtResource("3_fdjc2")]
 layout_mode = 0
@@ -183,113 +181,128 @@ offset_bottom = 152.0
 layout_mode = 0
 offset_left = 512.0
 offset_top = 72.0
-offset_right = 896.0
-offset_bottom = 152.0
-
-[node name="ODDS_BG" parent="MISSION_BOX" instance=ExtResource("3_fdjc2")]
-layout_mode = 0
-offset_left = 904.0
-offset_top = 72.0
-offset_right = 1271.0
+offset_right = 832.0
 offset_bottom = 152.0
 
 [node name="LOCATION_BG" parent="MISSION_BOX" instance=ExtResource("3_fdjc2")]
 layout_mode = 0
-offset_left = 858.225
-offset_top = 450.225
-offset_right = 1274.22
-offset_bottom = 634.225
+offset_left = 858.0
+offset_top = 432.0
+offset_right = 1274.0
+offset_bottom = 634.0
 
-[node name="ID" type="Label" parent="MISSION_BOX"]
+[node name="ID" parent="MISSION_BOX" instance=ExtResource("10_hknlx")]
+clip_contents = false
 layout_mode = 0
-offset_left = 31.0
-offset_top = 98.0
-offset_right = 73.0
-offset_bottom = 126.0
-theme = ExtResource("2_1xm5e")
-text = "000"
+offset_left = 32.0
+offset_top = 80.0
+offset_right = 56.0
+offset_bottom = 96.0
+theme_override_font_sizes/normal_font_size = 16
+text = "[dim]00[/dim]0"
 
 [node name="NAME" type="Label" parent="MISSION_BOX"]
 layout_mode = 0
-offset_left = 80.0
-offset_top = 99.0
-offset_right = 488.0
-offset_bottom = 127.0
+offset_left = 32.0
+offset_top = 96.0
+offset_right = 440.0
+offset_bottom = 124.0
 theme = ExtResource("2_1xm5e")
 text = "Long Long Mission Title too long"
 text_overrun_behavior = 3
 
 [node name="FLAVOR" type="Label" parent="MISSION_BOX"]
 layout_mode = 0
-offset_left = 15.0
-offset_top = 435.0
-offset_right = 428.0
-offset_bottom = 518.0
+offset_left = 32.0
+offset_top = 328.0
+offset_right = 437.0
+offset_bottom = 411.0
 theme = ExtResource("2_1xm5e")
 text = "Flavor Text"
 
-[node name="ONE_OVER_ODDS_FOR_MISSION" type="Label" parent="MISSION_BOX"]
+[node name="ODDS_BG" parent="MISSION_BOX" instance=ExtResource("3_fdjc2")]
 layout_mode = 0
-offset_left = 931.0
-offset_top = 98.0
-offset_right = 993.0
-offset_bottom = 126.0
-theme = ExtResource("2_1xm5e")
-text = "1/100"
+offset_left = 856.0
+offset_top = 8.0
+offset_right = 1271.0
+offset_bottom = 80.0
+
+[node name="ODDS_BG2" parent="MISSION_BOX" instance=ExtResource("3_fdjc2")]
+layout_mode = 0
+offset_left = 840.0
+offset_top = 88.0
+offset_right = 1048.0
+offset_bottom = 152.0
+
+[node name="ODDS_BG3" parent="MISSION_BOX" instance=ExtResource("3_fdjc2")]
+layout_mode = 0
+offset_left = 1064.0
+offset_top = 88.0
+offset_right = 1272.0
+offset_bottom = 152.0
+
+[node name="ONE_OVER_ODDS_FOR_MISSION" parent="MISSION_BOX" instance=ExtResource("10_hknlx")]
+clip_contents = false
+layout_mode = 0
+offset_left = 888.0
+offset_top = 40.0
+offset_right = 950.0
+offset_bottom = 68.0
+text = "5/[dim]00[/dim]6"
+
+[node name="MISSION_BONUS" parent="MISSION_BOX" instance=ExtResource("10_hknlx")]
+clip_contents = false
+layout_mode = 0
+offset_left = 984.0
+offset_top = 40.0
+offset_right = 1046.0
+offset_bottom = 68.0
+text = "+5/5"
+
+[node name="ONE_OVER_ODDS_FOR_RETURNING" parent="MISSION_BOX" instance=ExtResource("10_hknlx")]
+clip_contents = false
+layout_mode = 0
+offset_left = 1080.0
+offset_top = 41.0
+offset_right = 1142.0
+offset_bottom = 68.0
+text = "8/[dim]00[/dim]9"
+
+[node name="RETURN_BONUS" parent="MISSION_BOX" instance=ExtResource("10_hknlx")]
+clip_contents = false
+layout_mode = 0
+offset_left = 1176.0
+offset_top = 40.0
+offset_right = 1238.0
+offset_bottom = 68.0
+text = "+3/3"
 
 [node name="ODDS_LABEL" type="Label" parent="MISSION_BOX"]
 layout_mode = 0
-offset_left = 936.0
-offset_top = 80.0
-offset_right = 990.0
-offset_bottom = 94.0
+offset_left = 896.0
+offset_top = 24.0
+offset_right = 950.0
+offset_bottom = 38.0
 theme = ExtResource("2_1xm5e")
 theme_override_font_sizes/font_size = 16
 text = "MISSION"
 
-[node name="MISSION_BONUS" type="Label" parent="MISSION_BOX"]
-layout_mode = 0
-offset_left = 1008.0
-offset_top = 98.0
-offset_right = 1070.0
-offset_bottom = 126.0
-theme = ExtResource("2_1xm5e")
-text = "1/100"
-
-[node name="ONE_OVER_ODDS_FOR_RETURNING" type="Label" parent="MISSION_BOX"]
-layout_mode = 0
-offset_left = 1086.0
-offset_top = 98.0
-offset_right = 1148.0
-offset_bottom = 126.0
-theme = ExtResource("2_1xm5e")
-text = "1/100"
-
-[node name="RETURN_BONUS" type="Label" parent="MISSION_BOX"]
-layout_mode = 0
-offset_left = 1174.0
-offset_top = 98.0
-offset_right = 1236.0
-offset_bottom = 126.0
-theme = ExtResource("2_1xm5e")
-text = "1/100"
-
 [node name="M_BONUS_LABEL" type="Label" parent="MISSION_BOX"]
 layout_mode = 0
-offset_left = 1013.0
-offset_top = 80.0
-offset_right = 1078.0
-offset_bottom = 94.0
+offset_left = 989.0
+offset_top = 24.0
+offset_right = 1054.0
+offset_bottom = 38.0
 theme = ExtResource("2_1xm5e")
 theme_override_font_sizes/font_size = 16
 text = "M. BONUS"
 
 [node name="RETURN_LABEL" type="Label" parent="MISSION_BOX"]
 layout_mode = 0
-offset_left = 1091.0
-offset_top = 80.0
-offset_right = 1156.0
-offset_bottom = 94.0
+offset_left = 1083.0
+offset_top = 24.0
+offset_right = 1148.0
+offset_bottom = 38.0
 theme = ExtResource("2_1xm5e")
 theme_override_font_sizes/font_size = 16
 text = "RETURN"
@@ -297,21 +310,100 @@ text = "RETURN"
 [node name="R_BONUS_LABEL" type="Label" parent="MISSION_BOX"]
 layout_mode = 0
 offset_left = 1179.0
-offset_top = 80.0
+offset_top = 24.0
 offset_right = 1242.0
-offset_bottom = 94.0
+offset_bottom = 38.0
 theme = ExtResource("2_1xm5e")
 theme_override_font_sizes/font_size = 16
 text = "R. BONUS"
 
+[node name="MISSION_TOTAL_LABEL" type="Label" parent="MISSION_BOX"]
+layout_mode = 0
+offset_left = 864.0
+offset_top = 96.0
+offset_right = 1017.0
+offset_bottom = 110.0
+theme = ExtResource("2_1xm5e")
+theme_override_font_sizes/font_size = 16
+text = "MISSION  TOTAL ODDS"
+
+[node name="MISSION_TOTAL_ODDS" parent="MISSION_BOX" instance=ExtResource("10_hknlx")]
+clip_contents = false
+layout_mode = 0
+offset_left = 856.0
+offset_top = 112.0
+offset_right = 944.0
+offset_bottom = 140.0
+text = "100/110"
+
+[node name="MISSION_TOTAL_PERCENTAGE" type="Label" parent="MISSION_BOX"]
+modulate = Color(0, 1, 0.666667, 1)
+layout_mode = 0
+offset_left = 952.0
+offset_top = 112.0
+offset_right = 1004.0
+offset_bottom = 140.0
+theme = ExtResource("2_1xm5e")
+theme_override_font_sizes/font_size = 32
+text = "%99"
+
+[node name="RETURN_TOTAL_LABEL" type="Label" parent="MISSION_BOX"]
+layout_mode = 0
+offset_left = 1088.0
+offset_top = 96.0
+offset_right = 1241.0
+offset_bottom = 110.0
+theme = ExtResource("2_1xm5e")
+theme_override_font_sizes/font_size = 16
+text = "RETURN  TOTAL ODDS"
+
+[node name="RETURN_TOTAL_ODDS" parent="MISSION_BOX" instance=ExtResource("10_hknlx")]
+clip_contents = false
+layout_mode = 0
+offset_left = 1080.0
+offset_top = 112.0
+offset_right = 1168.0
+offset_bottom = 140.0
+text = "100/100"
+
+[node name="RETURN_TOTAL_PERCENTAGE" type="Label" parent="MISSION_BOX"]
+modulate = Color(0, 1, 0.666667, 1)
+layout_mode = 0
+offset_left = 1176.0
+offset_top = 112.0
+offset_right = 1228.0
+offset_bottom = 140.0
+theme = ExtResource("2_1xm5e")
+theme_override_font_sizes/font_size = 32
+text = "%90"
+
+[node name="NEXT_LABEL" type="Label" parent="MISSION_BOX"]
+layout_mode = 0
+offset_left = 1240.0
+offset_top = 235.0
+offset_right = 1275.0
+offset_bottom = 249.0
+theme = ExtResource("2_1xm5e")
+theme_override_font_sizes/font_size = 16
+text = "NEXT"
+
+[node name="PREV_LABEL" type="Label" parent="MISSION_BOX"]
+layout_mode = 0
+offset_top = 235.0
+offset_right = 36.0
+offset_bottom = 249.0
+theme = ExtResource("2_1xm5e")
+theme_override_font_sizes/font_size = 16
+text = "PREV"
+
 [node name="STATUS" type="Label" parent="MISSION_BOX"]
 layout_mode = 0
-offset_left = 570.0
+offset_left = 576.0
 offset_top = 102.0
-offset_right = 885.0
+offset_right = 816.0
 offset_bottom = 130.0
 theme = ExtResource("2_1xm5e")
-text = "LONG STATUS MESSAGE"
+text = "???"
 text_overrun_behavior = 3
 
 [node name="STATUS_LABEL" type="Label" parent="MISSION_BOX"]
@@ -326,40 +418,30 @@ text = "STATUS"
 
 [node name="MECH_LABEL" type="Label" parent="MISSION_BOX"]
 layout_mode = 0
-offset_left = 36.0
-offset_top = 306.0
-offset_right = 90.0
-offset_bottom = 320.0
+offset_left = 35.0
+offset_top = 424.0
+offset_right = 89.0
+offset_bottom = 438.0
 theme = ExtResource("2_1xm5e")
 theme_override_font_sizes/font_size = 16
 text = "MECH"
 
 [node name="PARTS_LABEL" type="Label" parent="MISSION_BOX"]
 layout_mode = 0
-offset_left = 384.0
-offset_top = 306.0
-offset_right = 438.0
-offset_bottom = 320.0
+offset_left = 383.0
+offset_top = 424.0
+offset_right = 437.0
+offset_bottom = 438.0
 theme = ExtResource("2_1xm5e")
 theme_override_font_sizes/font_size = 16
 text = "PARTS"
 
-[node name="MISSION_LABEL" type="Label" parent="MISSION_BOX"]
-layout_mode = 0
-offset_left = 39.0
-offset_top = 80.0
-offset_right = 111.0
-offset_bottom = 94.0
-theme = ExtResource("2_1xm5e")
-theme_override_font_sizes/font_size = 16
-text = "MISSION ID"
-
 [node name="FLAVOR_LABEL" type="Label" parent="MISSION_BOX"]
 layout_mode = 0
-offset_left = 22.0
-offset_top = 419.0
-offset_right = 94.0
-offset_bottom = 433.0
+offset_left = 32.0
+offset_top = 304.0
+offset_right = 104.0
+offset_bottom = 318.0
 theme = ExtResource("2_1xm5e")
 theme_override_font_sizes/font_size = 16
 text = "DETAILS"
@@ -374,52 +456,42 @@ theme = ExtResource("2_1xm5e")
 theme_override_font_sizes/font_size = 16
 text = "PILOT"
 
-[node name="LOCATION_LABEL" type="Label" parent="MISSION_BOX"]
-layout_mode = 0
-offset_left = 888.0
-offset_top = 459.0
-offset_right = 997.0
-offset_bottom = 473.0
-theme = ExtResource("2_1xm5e")
-theme_override_font_sizes/font_size = 16
-text = "LOCATION DATA"
-
 [node name="LOCATION_NAME" type="Label" parent="MISSION_BOX"]
 layout_mode = 0
-offset_left = 872.0
-offset_top = 520.0
-offset_right = 981.0
-offset_bottom = 534.0
+offset_left = 880.0
+offset_top = 464.0
+offset_right = 1098.0
+offset_bottom = 492.0
 theme = ExtResource("2_1xm5e")
-theme_override_font_sizes/font_size = 16
 text = "LOCATION DATA"
 
 [node name="ENVIRONMENT" type="Label" parent="MISSION_BOX"]
 layout_mode = 0
-offset_left = 989.775
-offset_top = 480.0
-offset_right = 1135.78
-offset_bottom = 508.0
+offset_left = 880.0
+offset_top = 496.0
+offset_right = 1026.01
+offset_bottom = 524.0
 theme = ExtResource("2_1xm5e")
 text = "Environment"
 
 [node name="LOCATION_FLAVOR" type="RichTextLabel" parent="MISSION_BOX"]
 layout_mode = 0
-offset_left = 874.0
-offset_top = 536.0
-offset_right = 1256.0
-offset_bottom = 616.0
+offset_left = 880.0
+offset_top = 528.0
+offset_right = 1262.0
+offset_bottom = 608.0
 theme = ExtResource("2_1xm5e")
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 text = "Location"
 
 [node name="LOCATION_POSITION" type="Label" parent="MISSION_BOX"]
 layout_mode = 0
-offset_left = 872.0
-offset_top = 480.225
-offset_right = 980.0
-offset_bottom = 508.225
+offset_left = 888.0
+offset_top = 440.0
+offset_right = 942.0
+offset_bottom = 454.0
 theme = ExtResource("2_1xm5e")
+theme_override_font_sizes/font_size = 16
 text = "[000,000]"
 
 [node name="STATUS_FAILED_ICON" type="TextureRect" parent="MISSION_BOX"]
@@ -473,28 +545,29 @@ expand_mode = 1
 
 [node name="PARTS_BUTTON" parent="MISSION_BOX" node_paths=PackedStringArray("VBOX") instance=ExtResource("5_wo4en")]
 layout_mode = 1
-offset_left = -265.0
-offset_top = -22.0
-offset_right = -185.0
-offset_bottom = 37.0
+offset_left = -266.0
+offset_top = 96.0
+offset_right = -186.0
+offset_bottom = 155.0
 icon = SubResource("AtlasTexture_4qu0g")
 script = ExtResource("10_7ogva")
 VBOX = NodePath("PART_LIST/ScrollContainer/VBoxContainer")
 
 [node name="PART_LIST" type="Control" parent="MISSION_BOX/PARTS_BUTTON"]
+visible = false
 clip_contents = true
 anchors_preset = 0
-offset_left = 89.0
-offset_top = -178.0
-offset_right = 905.0
-offset_bottom = 230.0
+offset_left = 90.0
+offset_top = -296.0
+offset_right = 906.0
+offset_bottom = 112.0
 
 [node name="BG2" parent="MISSION_BOX/PARTS_BUTTON/PART_LIST" instance=ExtResource("3_fdjc2")]
 layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 384.0
-offset_bottom = 416.0
+offset_left = -7.0
+offset_top = -118.0
+offset_right = 377.0
+offset_bottom = 298.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MISSION_BOX/PARTS_BUTTON/PART_LIST"]
 clip_contents = false
@@ -509,10 +582,10 @@ layout_mode = 2
 
 [node name="MECH" parent="MISSION_BOX" instance=ExtResource("5_wo4en")]
 layout_mode = 1
-offset_left = -615.0
-offset_top = -21.0
-offset_right = -273.0
-offset_bottom = 38.0
+offset_left = -616.0
+offset_top = 97.0
+offset_right = -274.0
+offset_bottom = 156.0
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 disabled = true
 text = "???"
@@ -524,10 +597,10 @@ script = ExtResource("7_n8kpc")
 visible = false
 clip_contents = true
 layout_mode = 0
-offset_left = -25.0
-offset_top = -187.0
-offset_right = 1247.0
-offset_bottom = 301.0
+offset_left = -16.0
+offset_top = -297.0
+offset_right = 1256.0
+offset_bottom = 191.0
 mouse_filter = 0
 texture = ExtResource("9_m6yi0")
 region_rect = Rect2(456, 264, 51, 49)
@@ -570,21 +643,20 @@ offset_bottom = 40.0
 [node name="ScrollContainer" type="ScrollContainer" parent="MISSION_BOX/MECH/MECH_LIST/Control"]
 clip_contents = false
 layout_mode = 0
-offset_top = 24.0
 offset_right = 400.0
-offset_bottom = 424.0
+offset_bottom = 400.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MISSION_BOX/MECH/MECH_LIST/Control/ScrollContainer"]
 layout_mode = 2
 
 [node name="MECH_BOX" parent="MISSION_BOX/MECH" instance=ExtResource("6_5pnbf")]
-offset_left = 1071.0
-offset_top = -155.0
-offset_right = 1071.0
-offset_bottom = -155.0
+visible = false
+offset_left = 1072.0
+offset_top = -241.0
+offset_right = 1072.0
+offset_bottom = -241.0
 
 [node name="PILOT_BUTTON" parent="MISSION_BOX" instance=ExtResource("5_wo4en")]
-visible = false
 layout_mode = 1
 offset_left = -613.0
 offset_top = 190.0
@@ -606,6 +678,7 @@ offset_right = 485.0
 offset_bottom = -305.0
 
 [node name="PILOT_LIST" parent="MISSION_BOX/PILOT_BUTTON" instance=ExtResource("3_fdjc2")]
+visible = false
 layout_mode = 0
 offset_left = 445.0
 offset_top = -390.0
@@ -640,12 +713,28 @@ offset_bottom = 432.0
 [node name="VBoxContainer" type="VBoxContainer" parent="MISSION_BOX/PILOT_BUTTON/PILOT_LIST/Control/ScrollContainer"]
 layout_mode = 2
 
+[node name="START_MISSION" parent="MISSION_BOX" instance=ExtResource("16_8q0lm")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 496.0
+offset_top = 576.0
+offset_right = 840.0
+offset_bottom = 628.0
+grow_horizontal = 1
+grow_vertical = 1
+text = "START MISSION"
+
 [node name="BACK_BUTTON" parent="." instance=ExtResource("3_hbt48")]
 offset_top = -704.0
 offset_right = 213.0
 offset_bottom = -664.0
 
 [node name="SCROLLABLE" type="ScrollContainer" parent="."]
+visible = false
 custom_minimum_size = Vector2(570, 0)
 offset_left = 357.0
 offset_top = 66.0
@@ -667,8 +756,6 @@ theme_override_constants/separation = 20
 [connection signal="mouse_entered" from="MISSION_BOX/PREVIOUS_MISSION" to="MISSION_BOX/PREVIOUS_MISSION" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MISSION_BOX/PREVIOUS_MISSION" to="MISSION_BOX/PREVIOUS_MISSION" method="_on_mouse_exited"]
 [connection signal="pressed" from="MISSION_BOX/PREVIOUS_MISSION" to="MISSION_BOX/PREVIOUS_MISSION" method="_on_pressed"]
-[connection signal="pressed" from="MISSION_BOX/START_MISSION" to="MISSION_BOX/START_MISSION" method="_on_pressed"]
-[connection signal="pressed" from="MISSION_BOX/NEEDS_DEBRIEF" to="MISSION_BOX/NEEDS_DEBRIEF" method="_on_pressed"]
 [connection signal="pressed" from="MISSION_BOX/PARTS_BUTTON" to="MISSION_BOX/PARTS_BUTTON" method="_on_pressed"]
 [connection signal="pressed" from="MISSION_BOX/MECH" to="MISSION_BOX/MECH" method="_on_pressed"]
 [connection signal="pressed" from="MISSION_BOX/PILOT_BUTTON" to="MISSION_BOX/PILOT_BUTTON" method="_on_pressed"]

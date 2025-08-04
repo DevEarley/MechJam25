@@ -161,5 +161,5 @@ func on_part_pressed(id:int):
 	var part_box =STATE.PARTS_MENU_CANVAS.get_node("SubViewportContainer/Button/PART_BOX");
 	button.show()
 	part_box.hide();
-	animator.play("spin")
+	animator.play("look_up_at_mech")
 	DATA_TO_UI.display_node_for_part(id,part_nodes)

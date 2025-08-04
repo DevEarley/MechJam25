@@ -1,43 +1,45 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1jiwn2rdpt6o"]
+[gd_scene load_steps=5 format=3 uid="uid://c1jiwn2rdpt6o"]
 
 [ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="1_oev27"]
 [ext_resource type="Texture2D" uid="uid://l6oe44m1j68v" path="res://UI/ui-sheet-1.png" id="2_la0j6"]
+[ext_resource type="PackedScene" uid="uid://cv054k41vsqhf" path="res://prefabs/RichText_with_dim_zeros.tscn" id="3_0u7ju"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0u7ju"]
 atlas = ExtResource("2_la0j6")
-region = Rect2(906, 670, 42, 47)
+region = Rect2(686, 836, 158, 180)
 
 [node name="MECH_BOX" type="Button"]
-custom_minimum_size = Vector2(580, 60)
+custom_minimum_size = Vector2(580, 90)
 offset_top = 16.0
 offset_right = 580.0
-offset_bottom = 76.0
+offset_bottom = 96.0
 mouse_filter = 1
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_oev27")
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 icon = SubResource("AtlasTexture_0u7ju")
+expand_icon = true
 
-[node name="ID" type="Label" parent="."]
-layout_mode = 2
-offset_left = 72.0
-offset_top = 24.0
-offset_right = 120.0
-offset_bottom = 52.0
-theme = ExtResource("1_oev27")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
-text = "001"
+[node name="ID" parent="." instance=ExtResource("3_0u7ju")]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 2.0
+offset_right = 134.0
+offset_bottom = 18.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 16
+text = "[right][dim]00[/dim]1"
 
 [node name="NAME" type="Label" parent="."]
 layout_mode = 2
-offset_left = 128.0
-offset_top = 24.0
-offset_right = 204.0
-offset_bottom = 52.0
+offset_left = 112.0
+offset_top = 18.0
+offset_right = 188.0
+offset_bottom = 46.0
 theme = ExtResource("1_oev27")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 text = "NAME"
 
 [node name="COMPATIBLE_ENVIRONMENT" type="Label" parent="."]
@@ -49,7 +51,7 @@ offset_right = 568.0
 offset_bottom = 76.0
 theme = ExtResource("1_oev27")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 16
 text = "ENVS"
 horizontal_alignment = 2
@@ -63,87 +65,17 @@ offset_right = 232.0
 offset_bottom = 76.0
 theme = ExtResource("1_oev27")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 text = "TYPE"
 
 [node name="STATUS" type="Label" parent="."]
 layout_mode = 2
-offset_left = 128.0
-offset_top = 8.0
-offset_right = 182.0
-offset_bottom = 22.0
+offset_left = 113.0
+offset_top = 51.0
+offset_right = 560.0
+offset_bottom = 79.0
 theme = ExtResource("1_oev27")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
-theme_override_font_sizes/font_size = 16
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 text = "STATUS"
-
-[node name="STATUS2" type="Label" parent="."]
-layout_mode = 2
-offset_left = 448.0
-offset_top = 8.0
-offset_right = 501.0
-offset_bottom = 22.0
-theme = ExtResource("1_oev27")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
-theme_override_font_sizes/font_size = 16
-text = "POWER"
-
-[node name="STATUS3" type="Label" parent="."]
-layout_mode = 2
-offset_left = 512.0
-offset_top = 8.0
-offset_right = 565.0
-offset_bottom = 22.0
-theme = ExtResource("1_oev27")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
-theme_override_font_sizes/font_size = 16
-text = "BASE P."
-
-[node name="STATUS4" type="Label" parent="."]
-layout_mode = 2
-offset_left = 72.0
-offset_top = 8.0
-offset_right = 125.0
-offset_bottom = 22.0
-theme = ExtResource("1_oev27")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
-theme_override_font_sizes/font_size = 16
-text = "MECH"
-
-[node name="BASE_HEALTH" type="Label" parent="."]
-layout_mode = 2
-offset_left = 512.0
-offset_top = 24.0
-offset_right = 548.0
-offset_bottom = 52.0
-theme = ExtResource("1_oev27")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
-text = "BH"
 horizontal_alignment = 2
-
-[node name="CURRENT_HEALTH" type="Label" parent="."]
-layout_mode = 2
-offset_left = 448.0
-offset_top = 24.0
-offset_right = 484.0
-offset_bottom = 52.0
-theme = ExtResource("1_oev27")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
-text = "CH"
-
-[node name="SLASH" type="Label" parent="."]
-layout_mode = 2
-offset_left = 496.0
-offset_top = 24.0
-offset_right = 506.0
-offset_bottom = 52.0
-theme = ExtResource("1_oev27")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.38, 0.38, 0.38, 1)
-text = "/"

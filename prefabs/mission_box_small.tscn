@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://byho8dl1u73va"]
+[gd_scene load_steps=11 format=3 uid="uid://byho8dl1u73va"]
 
 [ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="1_ighwi"]
 [ext_resource type="Texture2D" uid="uid://l6oe44m1j68v" path="res://UI/ui-sheet-1.png" id="2_46qc3"]
 [ext_resource type="Texture2D" uid="uid://86yf6tf46r08" path="res://UI/crosshairs64.png" id="3_46qc3"]
+[ext_resource type="PackedScene" uid="uid://cv054k41vsqhf" path="res://prefabs/RichText_with_dim_zeros.tscn" id="3_otvo8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_doabv"]
 atlas = ExtResource("2_46qc3")
@@ -39,20 +40,9 @@ icon = SubResource("AtlasTexture_doabv")
 metadata/_edit_horizontal_guides_ = [88.0, 40.0, 47.0, 53.0]
 metadata/_edit_vertical_guides_ = [76.0, 125.0, 132.0, 68.0, 60.0, 530.0, 536.0]
 
-[node name="ID" type="Label" parent="."]
-layout_mode = 2
-offset_left = 83.0
-offset_top = 16.0
-offset_right = 131.0
-offset_bottom = 44.0
-theme = ExtResource("1_ighwi")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
-text = "000"
-
 [node name="NAME" type="Label" parent="."]
 layout_mode = 2
-offset_left = 132.0
+offset_left = 72.0
 offset_top = 16.0
 offset_right = 477.0
 offset_bottom = 44.0
@@ -73,27 +63,31 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
 text = "STATUS"
 
-[node name="ONE_OVER_ODDS_FOR_MISSION" type="Label" parent="."]
-layout_mode = 2
-offset_left = 468.0
-offset_top = 16.0
-offset_right = 540.0
-offset_bottom = 44.0
-theme = ExtResource("1_ighwi")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
-text = "1/100"
+[node name="ID" parent="." instance=ExtResource("3_otvo8")]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 2.0
+offset_right = 94.0
+offset_bottom = 16.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 16
+text = "[dim]00[/dim]5"
 
-[node name="ONE_OVER_ODDS_FOR_RETURNING" type="Label" parent="."]
-layout_mode = 2
+[node name="ONE_OVER_ODDS_FOR_MISSION" parent="." instance=ExtResource("3_otvo8")]
+layout_mode = 0
 offset_left = 468.0
-offset_top = 64.0
-offset_right = 540.0
-offset_bottom = 92.0
-theme = ExtResource("1_ighwi")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
-text = "1/100"
+offset_top = 18.0
+offset_right = 530.0
+offset_bottom = 46.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+
+[node name="ONE_OVER_ODDS_FOR_RETURNING" parent="." instance=ExtResource("3_otvo8")]
+layout_mode = 0
+offset_left = 467.0
+offset_top = 66.0
+offset_right = 529.0
+offset_bottom = 94.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 
 [node name="ONE_OVER_ODDS_FOR_MISSION_LABEL" type="Label" parent="."]
 layout_mode = 2

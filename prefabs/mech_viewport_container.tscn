@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b046x8i5jrnqw"]
+[gd_scene load_steps=20 format=3 uid="uid://b046x8i5jrnqw"]
 
 [ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="1_jiv2m"]
 [ext_resource type="Environment" uid="uid://c7ssmhiiplyg8" path="res://world_environment.tres" id="1_ph5yv"]
@@ -6,9 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://dimmt4xbgqqdb" path="res://mechs-3D/mech-001.glb" id="3_jiv2m"]
 [ext_resource type="AnimationLibrary" uid="uid://n8a7jdk5h04r" path="res://addons/mrminimal_camera_shake/animations/shaky_camera_lib.tres" id="3_sgwqr"]
 [ext_resource type="Material" uid="uid://dj2chdusgvktn" path="res://materials/world_mat_alt.tres" id="4_pg47d"]
-[ext_resource type="PackedScene" uid="uid://jqfcrgtcowf1" path="res://prefabs/left-hand-button.tscn" id="5_pg47d"]
-[ext_resource type="Texture2D" uid="uid://l6oe44m1j68v" path="res://UI/ui-sheet-1.png" id="6_b1eyc"]
 [ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="7_b1eyc"]
+[ext_resource type="PackedScene" uid="uid://buc3pa7ovo81q" path="res://prefabs/long-press-button.tscn" id="8_26s2w"]
+[ext_resource type="Texture2D" uid="uid://bng8j8q10k6yt" path="res://prefabs/recycle-icon.tres" id="9_jcufk"]
+[ext_resource type="Texture2D" uid="uid://d1exujn7egkcm" path="res://prefabs/credits-icon.tres" id="9_sgwqr"]
+[ext_resource type="PackedScene" uid="uid://cv054k41vsqhf" path="res://prefabs/RichText_with_dim_zeros.tscn" id="10_h87oc"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wkale"]
 
@@ -53,7 +55,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_b1eyc"]
 resource_name = "look_up_at_mech"
-loop_mode = 1
+length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -76,7 +78,19 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.485202, 0, 0)]
+"values": [Vector3(-0.528835, -0.0872665, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.85556, 1.7297)]
 }
 
 [sub_resource type="Animation" id="Animation_6v034"]
@@ -124,21 +138,95 @@ tracks/2/keys = {
 resource_name = "spin_up"
 length = 4.0
 
+[sub_resource type="Animation" id="Animation_h87oc"]
+resource_name = "look_up_at_mech_2"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/ShakyCamera:speed_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.275762, -0.282831, 1.92842e-09)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.85556, 1.7297)]
+}
+
+[sub_resource type="Animation" id="Animation_sgwqr"]
+resource_name = "look_up_at_mech_3"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/ShakyCamera:speed_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.328122, 0.431096, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.356, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qppqj"]
 _data = {
 &"RESET": SubResource("Animation_d1idq"),
 &"look_up_at_mech": SubResource("Animation_b1eyc"),
+&"look_up_at_mech_2": SubResource("Animation_h87oc"),
+&"look_up_at_mech_3": SubResource("Animation_sgwqr"),
 &"spin": SubResource("Animation_6v034"),
 &"spin_up": SubResource("Animation_pia31")
 }
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h87oc"]
-atlas = ExtResource("6_b1eyc")
-region = Rect2(731, 674, 43, 44)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b1eyc"]
-atlas = ExtResource("6_b1eyc")
-region = Rect2(735, 676, 39, 42)
 
 [node name="Control" type="Control"]
 visibility_layer = 13
@@ -147,7 +235,7 @@ anchors_preset = 0
 
 [node name="BG2" parent="." instance=ExtResource("1_jiv2m")]
 layout_mode = 0
-offset_left = 0.0
+offset_left = -56.0
 offset_top = 0.0
 offset_right = 608.0
 offset_bottom = 600.0
@@ -156,16 +244,17 @@ offset_bottom = 600.0
 light_mask = 0
 visibility_layer = 13
 layout_mode = 0
-offset_left = 40.0
-offset_right = 560.0
-offset_bottom = 520.0
+offset_left = 88.0
+offset_top = 80.0
+offset_right = 588.0
+offset_bottom = 480.0
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
 canvas_cull_mask = 4293918728
-size = Vector2i(520, 520)
+size = Vector2i(500, 400)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Node3D" parent="SubViewportContainer/SubViewport"]
@@ -190,13 +279,17 @@ speed_scale = 24.0
 transform = Transform3D(-100, 0, -8.74229e-06, 0, 99.9999, 0, 8.74228e-06, 0, -100, 0, -0.688, -93.086)
 cull_mask = 8
 environment = ExtResource("1_ph5yv")
+fov = 35.5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport"]
 libraries = {
 &"": SubResource("AnimationLibrary_qppqj")
 }
-autoplay = "spin"
+autoplay = "look_up_at_mech"
+next/look_up_at_mech = &"look_up_at_mech_2"
 next/spin_up = &"spin"
+next/look_up_at_mech_2 = &"look_up_at_mech_3"
+next/look_up_at_mech_3 = &"look_up_at_mech"
 blend_times = [&"spin", &"spin_up", 0.25, &"spin_up", &"spin", 0.25]
 
 [node name="MECHS_NODE" type="Node3D" parent="SubViewportContainer/SubViewport"]
@@ -287,29 +380,39 @@ mouse_filter = 2
 
 [node name="BG2" parent="MECH_BOX" instance=ExtResource("1_jiv2m")]
 layout_mode = 0
-offset_left = 32.0
-offset_top = 24.0
-offset_right = 608.0
-offset_bottom = 192.0
+offset_left = -16.0
+offset_top = 23.0
+offset_right = 560.0
+offset_bottom = 120.0
 
 [node name="NAME" type="Label" parent="MECH_BOX"]
 layout_mode = 2
-offset_left = 48.0
-offset_top = -376.0
-offset_right = 86.0
-offset_bottom = -362.0
+offset_left = -8.0
+offset_top = -368.0
+offset_right = 30.0
+offset_bottom = -354.0
 theme = ExtResource("7_b1eyc")
 theme_override_font_sizes/font_size = 16
 text = "NAME"
 
+[node name="NAME2" type="Label" parent="MECH_BOX"]
+layout_mode = 2
+offset_left = 400.0
+offset_top = -368.0
+offset_right = 596.0
+offset_bottom = -354.0
+theme = ExtResource("7_b1eyc")
+theme_override_font_sizes/font_size = 16
+text = "COMPATIBLE ENVIRONMENTS"
+
 [node name="FLAVOR" type="Label" parent="MECH_BOX"]
 layout_mode = 2
-offset_left = 56.0
-offset_top = 88.0
-offset_right = 592.0
-offset_bottom = 178.0
+offset_left = 13.0
+offset_top = 43.0
+offset_right = 549.0
+offset_bottom = 102.0
 theme = ExtResource("7_b1eyc")
-text = "Flavor Text Flavor Text Flavor Text Flavor Text Flavor Text Flavor Text Flavor Text Flavor."
+text = "Flavor Text Flavor Text Flavor Text Flavor Text Flavor Text Flavor Text Flavor Text"
 autowrap_mode = 2
 
 [node name="COMPATIBLE_ENVIRONMENT" type="Label" parent="MECH_BOX"]
@@ -318,56 +421,89 @@ anchor_left = 0.05
 anchor_top = 0.318
 anchor_right = 0.925
 anchor_bottom = 0.455
-offset_left = 8.0
-offset_top = 0.0319977
-offset_right = -6.10352e-05
-offset_bottom = 3.92
+offset_left = 16.0
+offset_top = -407.968
+offset_right = 7.99994
+offset_bottom = -404.08
 theme = ExtResource("7_b1eyc")
 text = "ENVS"
 horizontal_alignment = 2
 
 [node name="TYPE" type="Label" parent="MECH_BOX"]
 layout_mode = 2
-offset_left = 56.0
-offset_top = 56.0
-offset_right = 128.0
-offset_bottom = 84.0
+offset_left = -8.0
+offset_top = -352.0
+offset_right = 64.0
+offset_bottom = -324.0
 theme = ExtResource("7_b1eyc")
 text = "TYPE"
 
-[node name="BUY_MECH_BUTTON" parent="." instance=ExtResource("5_pg47d")]
+[node name="BUY_MECH_BUTTON" parent="." instance=ExtResource("8_26s2w")]
 layout_mode = 1
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 232.0
-offset_top = 32.0
+offset_left = 248.0
+offset_top = 520.0
 offset_right = 576.0
-offset_bottom = 81.0
-grow_horizontal = 1
-grow_vertical = 1
-theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-text = "BUY MECH"
-icon = SubResource("AtlasTexture_h87oc")
+offset_bottom = 572.0
+icon = ExtResource("9_sgwqr")
 
-[node name="SELL_MECH_BUTTON" parent="." instance=ExtResource("5_pg47d")]
+[node name="REPAIR_MECH_BUTTON" parent="." instance=ExtResource("8_26s2w")]
 layout_mode = 1
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 232.0
-offset_top = 32.0
+offset_left = -24.0
+offset_top = 520.0
+offset_right = 235.0
+offset_bottom = 572.0
+text = "REPAIR [-1RP]"
+icon = ExtResource("9_jcufk")
+
+[node name="SELL_MECH_BUTTON" parent="." instance=ExtResource("8_26s2w")]
+layout_mode = 1
+offset_left = 248.0
+offset_top = 520.0
 offset_right = 576.0
-offset_bottom = 81.0
-grow_horizontal = 1
-grow_vertical = 1
-theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-text = "SELL MECH"
-icon = SubResource("AtlasTexture_b1eyc")
+offset_bottom = 572.0
+icon = ExtResource("9_sgwqr")
+
+[node name="STATUS3" type="Label" parent="."]
+layout_mode = 0
+offset_left = -31.0
+offset_top = 127.0
+offset_right = 22.0
+offset_bottom = 141.0
+theme = ExtResource("7_b1eyc")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "BASE P."
+
+[node name="BASE_HEALTH" parent="." instance=ExtResource("10_h87oc")]
+layout_mode = 0
+offset_left = -40.0
+offset_top = 136.0
+offset_right = 22.0
+offset_bottom = 164.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "[right][dim]00[/dim]1"
+
+[node name="STATUS2" type="Label" parent="."]
+layout_mode = 0
+offset_left = -31.0
+offset_top = 80.0
+offset_right = 22.0
+offset_bottom = 94.0
+theme = ExtResource("7_b1eyc")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "POWER"
+
+[node name="CURRENT_HEALTH" parent="." instance=ExtResource("10_h87oc")]
+layout_mode = 0
+offset_left = -40.0
+offset_top = 89.0
+offset_right = 22.0
+offset_bottom = 117.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "[right][dim]00[/dim]1"
 
 [editable path="SubViewportContainer/SubViewport/MECHS_NODE/BLUE_MECH_001"]
 [editable path="SubViewportContainer/SubViewport/MECHS_NODE/RED_MECH_001"]

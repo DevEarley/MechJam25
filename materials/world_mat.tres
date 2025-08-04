@@ -7,4 +7,4 @@
 render_priority = 0
 shader = ExtResource("1_7ayl2")
 shader_parameter/Texture2DParameter = ExtResource("2_tkgga")
-shader_parameter/COLOR_BOTTOM_LIGHT = Color(0, 0.515894, 0.335517, 1)
+shader_parameter/COLOR_BOTTOM_LIGHT = Color(0.369, 0, 0.82, 1)

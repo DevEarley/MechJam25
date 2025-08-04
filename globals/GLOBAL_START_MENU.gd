@@ -32,7 +32,7 @@ func show_start_menu():
 		button.custom_minimum_size = Vector2(400,0)
 		button.connect("pressed",on_play_voicemail.bind(voicemail))
 		STATE.START_MENU_CANVAS.get_node("VOICEMAIL/BOX/ScrollContainer/VBoxContainer").add_child(button)
-	STATE.START_MENU_CANVAS.get_node("VOICEMAIL").text = "VOICEMAILS [%03d]" % count
+	STATE.START_MENU_CANVAS.get_node("VOICEMAIL").text = "VOICEMAILS [%s]" % count
 func on_callback_done():
 	DATA.save_everything()
 	show_start_menu()

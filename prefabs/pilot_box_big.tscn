@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3v8yefvkrhr7"]
+[gd_scene load_steps=5 format=3 uid="uid://d3v8yefvkrhr7"]
 
 [ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="1_cq0ps"]
+[ext_resource type="PackedScene" uid="uid://cv054k41vsqhf" path="res://prefabs/RichText_with_dim_zeros.tscn" id="2_4xwkp"]
 [ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="2_vcc51"]
 [ext_resource type="PackedScene" uid="uid://jqfcrgtcowf1" path="res://prefabs/left-hand-button.tscn" id="3_vcc51"]
 
@@ -20,31 +21,21 @@ offset_top = 8.0
 offset_right = 1024.0
 offset_bottom = 280.0
 
-[node name="ID" type="Label" parent="."]
-layout_mode = 2
+[node name="ID" parent="." instance=ExtResource("2_4xwkp")]
+layout_mode = 0
 offset_left = 24.0
-offset_top = 48.0
-offset_right = 66.0
-offset_bottom = 76.0
-theme = ExtResource("2_vcc51")
-text = "000"
-
-[node name="MISSION_ODDS_LABEL2" type="Label" parent="."]
-layout_mode = 2
-offset_left = 24.0
-offset_top = 32.0
-offset_right = 122.0
-offset_bottom = 46.0
-theme = ExtResource("2_vcc51")
-theme_override_font_sizes/font_size = 16
-text = "PILOT"
+offset_top = 24.0
+offset_right = 56.0
+offset_bottom = 40.0
+theme_override_font_sizes/normal_font_size = 16
+text = "[dim]00[/dim]0"
 
 [node name="NAME" type="Label" parent="."]
 layout_mode = 2
-offset_left = 80.0
-offset_top = 48.0
-offset_right = 156.0
-offset_bottom = 76.0
+offset_left = 24.0
+offset_top = 40.0
+offset_right = 100.0
+offset_bottom = 68.0
 theme = ExtResource("2_vcc51")
 text = "NAME"
 
@@ -57,15 +48,6 @@ offset_bottom = 192.0
 theme = ExtResource("2_vcc51")
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 text = "MISSION CRITERIA MISSION CRITERIA MISSION CRITERIA"
-
-[node name="MISSION_ODDS" type="Label" parent="."]
-layout_mode = 2
-offset_left = 24.0
-offset_top = 104.0
-offset_right = 88.0
-offset_bottom = 132.0
-theme = ExtResource("2_vcc51")
-text = "1/???"
 
 [node name="MISSION_ODDS_LABEL" type="Label" parent="."]
 layout_mode = 2
@@ -97,15 +79,6 @@ theme = ExtResource("2_vcc51")
 theme_override_font_sizes/font_size = 16
 text = "RETURNING ODDS"
 
-[node name="RETURNING_ODDS" type="Label" parent="."]
-layout_mode = 2
-offset_left = 440.0
-offset_top = 104.0
-offset_right = 504.0
-offset_bottom = 132.0
-theme = ExtResource("2_vcc51")
-text = "1/???"
-
 [node name="HIRE_PILOT" parent="." instance=ExtResource("3_vcc51")]
 layout_mode = 1
 anchors_preset = 0
@@ -120,3 +93,19 @@ offset_bottom = 248.0
 grow_horizontal = 1
 grow_vertical = 1
 text = "HIRE PILOT"
+
+[node name="MISSION_ODDS" parent="." instance=ExtResource("2_4xwkp")]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 104.0
+offset_right = 86.0
+offset_bottom = 132.0
+text = "+[dim]00[/dim]5"
+
+[node name="RETURNING_ODDS" parent="." instance=ExtResource("2_4xwkp")]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 104.0
+offset_right = 510.0
+offset_bottom = 132.0
+text = "+[dim]00[/dim]5"

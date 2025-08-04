@@ -23,18 +23,29 @@ func show_missions():
 		var mission_button = MISSION_BOX_PREFAB.instantiate()
 		if(mission.status == ENUMS.MISSION_STATUS.LOCKED):
 			mission_button.get_node("NAME").text = "???"
-			mission_button.get_node("ONE_OVER_ODDS_FOR_MISSION").text = "1/???"
-			mission_button.get_node("ONE_OVER_ODDS_FOR_RETURNING").text = "1/???"
+
+			#mission_button.get_node("ONE_OVER_ODDS_FOR_MISSION").text = "1/[dim]???[/dim]"
+			#mission_button.get_node("MISSION_BONUS").text = "+?/?"
+			#mission_button.get_node("MISSION_TOTAL_ODDS").text = "1/][dim]???[/dim]"
+			#mission_button.get_node("MISSION_TOTAL_PERCENTAGE").text = "??%"
+#
+			#mission_button.get_node("ONE_OVER_ODDS_FOR_RETURNING").text = "1/][dim]???[/dim]"
+			#mission_button.get_node("RETURN_BONUS").text = "+?/?"
+			#mission_button.get_node("RETURN_TOTAL_ODDS").text = "1/][dim]???[/dim]"
+			#mission_button.get_node("RETURN_TOTAL_PERCENTAGE").text = "??%"
 		else:
 			mission_button.get_node("NAME").text = "%s"%mission.name
-			mission_button.get_node("ONE_OVER_ODDS_FOR_MISSION").text = "1/%03d"%mission.one_over_odds_for_mission
-			mission_button.get_node("ONE_OVER_ODDS_FOR_RETURNING").text = "1/%03d"%mission.one_over_odds_for_returning
+			mission_button.get_node("ONE_OVER_ODDS_FOR_MISSION").text =DATA_TO_UI.one_over_dim_zeros(mission.one_over_odds_for_mission)
 
-		mission_button.get_node("ID").text = "%03d"%mission.ID
+
+			mission_button.get_node("ONE_OVER_ODDS_FOR_RETURNING").text			=DATA_TO_UI.one_over_dim_zeros(mission.one_over_odds_for_returning)
+
+		mission_button.get_node("ID").text = DATA_TO_UI.insert_leading_zeros(mission.ID)
 		mission_button.get_node("STATUS").text = "%s"%mission.status
 		build_status_for_mission(mission, mission_button)
 		mission_button.connect("pressed",on_mission_pressed.bind(mission));
 		MISSION_BUTTONS.add_child(mission_button)
+
 
 func check_for_completed_missions():
 		var something_changed = false
@@ -115,6 +126,10 @@ func on_mission_pressed(mission:Mission):
 	STATE.MAP_BG.hide()
 	MAP.ANIMATOR.stop()
 	BACK_BUTTON.text="MISSION LIST"
+	MISSION_BOX.get_node("MECH").text ="???"
+	MISSION_BOX.get_node("MECH").disabled = true
+	MISSION_BOX.get_node("PILOT_BUTTON").disabled = true
+	MISSION_BOX.get_node("PILOT_BUTTON").text ="???"
 	var time_24_hours
 	if(STATE.USE_REAL_TIME == true):
 		time_24_hours = 60.0*60.0*24.0
@@ -177,6 +192,7 @@ func on_mission_pressed(mission:Mission):
 		build_status_for_mission(mission, MISSION_BOX)
 
 		MISSION_BOX.get_node("MECH").text ="???"
+		MISSION_BOX.get_node("PILOT_BUTTON").text ="???"
 		MISSION_BOX.get_node("NEEDS_DEBRIEF").visible = false
 		MISSION_BOX.get_node("START_MISSION").visible = false
 		MISSION_BOX.get_node("NEEDS_DEBRIEF").disabled = true
@@ -184,9 +200,8 @@ func on_mission_pressed(mission:Mission):
 		MISSION_BOX.get_node("MECH").disabled = true
 		MISSION_BOX.get_node("PILOT_BUTTON").disabled = true
 		MISSION_BOX.get_node("PARTS_BUTTON").disabled = true
-		MISSION_BOX.get_node("PILOT_BUTTON").text ="???"
 		MISSION_BOX.get_node("MECH/MECH_BOX").hide()
-		MISSION_BOX.get_node("ID").text = "%03d"%mission.ID
+		MISSION_BOX.get_node("ID").text = DATA_TO_UI.insert_leading_zeros(mission.ID)
 		MISSION_BOX.get_node("NAME").text ="???"
 		MISSION_BOX.get_node("FLAVOR").text = "???"
 		MISSION_BOX.get_node("ONE_OVER_ODDS_FOR_MISSION").text ="1/???"
@@ -198,7 +213,10 @@ func on_mission_pressed(mission:Mission):
 		MISSION_BOX.get_node("LOCATION_FLAVOR").text = "???"
 		MISSION_BOX.get_node("LOCATION_NAME").text = "???"
 
+
+
 	else:
+
 		if(parts.size() ==0):
 			MISSION_BOX.get_node("PARTS_BUTTON").disabled = true
 		else:
@@ -210,20 +228,57 @@ func on_mission_pressed(mission:Mission):
 		MISSION_BOX.get_node("START_MISSION").disabled = true
 
 		MISSION_BOX.get_node("MECH/MECH_BOX").hide()
-		MISSION_BOX.get_node("ID").text = "%03d"%mission.ID
+		MISSION_BOX.get_node("ID").text = DATA_TO_UI.insert_leading_zeros(mission.ID)
 		MISSION_BOX.get_node("NAME").text = mission.name
 		MISSION_BOX.get_node("FLAVOR").text = mission.flavor
-		MISSION_BOX.get_node("ONE_OVER_ODDS_FOR_MISSION").text = "1/%03d"%mission.one_over_odds_for_mission
-		MISSION_BOX.get_node("ONE_OVER_ODDS_FOR_RETURNING").text = "1/%03d"%mission.one_over_odds_for_returning
+		MISSION_BOX.get_node("ONE_OVER_ODDS_FOR_MISSION").text =DATA_TO_UI.one_over_dim_zeros(mission.one_over_odds_for_mission)
+		MISSION_BOX.get_node("ONE_OVER_ODDS_FOR_RETURNING").text =DATA_TO_UI.one_over_dim_zeros(mission.one_over_odds_for_returning)
 
-		MISSION_BOX.get_node("MISSION_BONUS").text ="1/%03d"%mission_bonus
-		MISSION_BOX.get_node("RETURN_BONUS").text = "1/%03d"%return_bonus
+		MISSION_BOX.get_node("MISSION_BONUS").text ="+%s" % mission_bonus
+		MISSION_BOX.get_node("RETURN_BONUS").text = "+%s" % return_bonus
 
-		MISSION_BOX.get_node("LOCATION_POSITION").text = "[%03d,%03d]"%[location.map_position.x,location.map_position.z]
+		var total_odds = mission.one_over_odds_for_mission + mission_bonus
+
+		var total_return_odds = mission.one_over_odds_for_returning + return_bonus
+
+
+		var total_mission_percentage
+		var total_return_percentage
+
+		if( mission.one_over_odds_for_mission >0):
+			MISSION_BOX.get_node("MISSION_TOTAL_ODDS").text ="[right]%s"%DATA_TO_UI.one_over_dim_zeros(total_odds)
+			total_mission_percentage = int((1.0 - (1.0/total_odds) )* 100.0)
+			MISSION_BOX.get_node("MISSION_TOTAL_PERCENTAGE").text = "%%%2d" % total_mission_percentage
+			MISSION_BOX.get_node("MISSION_TOTAL_PERCENTAGE").modulate = Color(0,1,170.0/255.0)
+
+		else:
+			MISSION_BOX.get_node("MISSION_TOTAL_ODDS").text = "[right][dim]%s/[/dim]%s" % [(1+mission_bonus),(mission.one_over_odds_for_mission*-1)]
+			total_mission_percentage = ((float(1.0+mission_bonus)/float(mission.one_over_odds_for_mission)) * -100.0)
+			MISSION_BOX.get_node("MISSION_TOTAL_PERCENTAGE").text = "%%%2.1f" % total_mission_percentage
+			MISSION_BOX.get_node("MISSION_TOTAL_PERCENTAGE").modulate = Color(338.0/255.0,0,93.0/255.0)
+
+		if( mission.one_over_odds_for_returning >0):
+
+			MISSION_BOX.get_node("RETURN_TOTAL_ODDS").text ="[right]%s"%DATA_TO_UI.one_over_dim_zeros(total_return_odds)
+			total_return_percentage = int((1.0 - (1.0/total_return_odds) )* 100.0)
+			MISSION_BOX.get_node("RETURN_TOTAL_PERCENTAGE").text = "%%%2d" % total_return_percentage
+			MISSION_BOX.get_node("RETURN_TOTAL_PERCENTAGE").modulate = Color(0,1,170.0/255.0)
+		else:
+
+			MISSION_BOX.get_node("RETURN_TOTAL_ODDS").text = "[right][dim]%s/[/dim]%s" % [(1+return_bonus),(mission.one_over_odds_for_returning*-1)]
+			total_return_percentage = ((float(1.0+return_bonus)/float(mission.one_over_odds_for_returning)) * -100.0)
+			MISSION_BOX.get_node("RETURN_TOTAL_PERCENTAGE").text = "%%%2.1f" % total_return_percentage
+			MISSION_BOX.get_node("RETURN_TOTAL_PERCENTAGE").modulate = Color(338.0/255,0,93.0/255.0)
+
+
+
+
+		MISSION_BOX.get_node("LOCATION_POSITION").text = "[%3s,%3s]"%[location.map_position.x,location.map_position.z]
 
 		MISSION_BOX.get_node("LOCATION_FLAVOR").text = location.flavor
 
 		MISSION_BOX.get_node("LOCATION_NAME").text = location.name
+
 
 		var results = DATA_TO_UI.get_environment_text_and_tint(location.environment)
 		environment_text= results[0]
@@ -253,16 +308,20 @@ func on_mission_pressed(mission:Mission):
 
 	build_status_for_mission(mission, MISSION_BOX)
 
-	if(mission.status != ENUMS.MISSION_STATUS.LOCKED):
+	if(mission.status == ENUMS.MISSION_STATUS.SUCCESS):
+			MISSION_BOX.get_node("NEEDS_DEBRIEF").disabled = true;
+			MISSION_BOX.get_node("START_MISSION").disabled = true;
+			MISSION_BOX.get_node("MECH").disabled = true;
+			MISSION_BOX.get_node("PILOT_BUTTON").disabled = true;
+			MISSION_BOX.get_node("PARTS_BUTTON").disabled = true;
+	elif(mission.status != ENUMS.MISSION_STATUS.LOCKED):
 		if(mech == null):
-			MISSION_BOX.get_node("NEEDS_DEBRIEF").disabled = true
 			MISSION_BOX.get_node("START_MISSION").disabled = true
 			MISSION_BOX.get_node("PILOT_BUTTON").disabled = true
 			MISSION_BOX.get_node("PILOT_BUTTON").text = "UNASSIGNED"
 			MISSION_BOX.get_node("MECH").text = "ASSIGN MECH"
 			MISSION_BOX.get_node("MECH").disabled = false
 		elif(pilot == null && mech != null):
-			MISSION_BOX.get_node("NEEDS_DEBRIEF").disabled = true
 			MISSION_BOX.get_node("START_MISSION").disabled = true
 			MISSION_BOX.get_node("PILOT_BUTTON").text = "ASSIGN PILOT"
 			MISSION_BOX.get_node("PILOT_BUTTON").disabled = false
@@ -273,6 +332,7 @@ func on_mission_pressed(mission:Mission):
 			MISSION_BOX.get_node("MECH").text = mech.name
 			MISSION_BOX.get_node("PILOT_BUTTON").disabled = false
 			MISSION_BOX.get_node("PILOT_BUTTON").text =pilot.name
+
 
 func on_next_mission_pressed():
 	var index = STATE.CURRENT_MISSION_ID+1;

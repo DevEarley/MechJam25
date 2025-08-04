@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://q3apfh65koxm"]
+[gd_scene load_steps=23 format=3 uid="uid://q3apfh65koxm"]
 
 [ext_resource type="Script" uid="uid://bxy3br0irscae" path="res://scripts/add-self-to-scaled-ui.gd" id="1_xg1py"]
 [ext_resource type="PackedScene" uid="uid://bunfxp7cx281n" path="res://prefabs/title-bar-wide.tscn" id="2_0u6b5"]
@@ -11,6 +11,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://n8a7jdk5h04r" path="res://addons/mrminimal_camera_shake/animations/shaky_camera_lib.tres" id="6_15bby"]
 [ext_resource type="Environment" uid="uid://c7ssmhiiplyg8" path="res://world_environment.tres" id="7_jg0gq"]
 [ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="9_jg0gq"]
+[ext_resource type="FontFile" uid="uid://bctd8hc7xxt4f" path="res://fonts/VCRFont.ttf" id="10_7g1db"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wkale"]
 
@@ -237,16 +238,16 @@ grow_vertical = 1
 text = "[center]MECH JAM 25"
 
 [node name="BG2" parent="." instance=ExtResource("3_nbft7")]
-offset_left = 265.0
-offset_top = 58.0
-offset_right = 1023.0
-offset_bottom = 707.0
+offset_left = 402.0
+offset_top = 59.0
+offset_right = 1269.0
+offset_bottom = 708.0
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-offset_left = 394.0
-offset_top = 80.0
-offset_right = 994.0
-offset_bottom = 680.0
+offset_left = 640.0
+offset_top = 81.0
+offset_right = 1240.0
+offset_bottom = 681.0
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 transparent_bg = true
@@ -261,12 +262,13 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 layers = 1024
 
 [node name="garage-1" parent="SubViewportContainer/SubViewport" instance=ExtResource("5_15bby")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -2.43374, -1.39491)
 
 [node name="GARAGE" parent="SubViewportContainer/SubViewport/garage-1" index="0"]
-layers = 1024
+layers = 1288
 
 [node name="WINDOWS" parent="SubViewportContainer/SubViewport/garage-1" index="1"]
-layers = 1024
+layers = 1288
 
 [node name="CameraRig" type="Node3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(0.943235, -0.0670552, 0.325287, 0, 0.979407, 0.201896, -0.332126, -0.190436, 0.92381, 0.605994, 1.71284, 1.37122)
@@ -299,6 +301,7 @@ next/loop_part_2 = &"start_loop"
 next/start_loop = &"loop_part_2"
 
 [node name="BG" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+visible = false
 show_behind_parent = true
 anchors_preset = 15
 anchor_right = 1.0
@@ -312,11 +315,12 @@ mouse_filter = 0
 texture = SubResource("GradientTexture2D_cgepm")
 
 [node name="Label" type="Label" parent="SubViewportContainer/SubViewport"]
-offset_left = 17.0
-offset_top = 563.0
-offset_right = 211.0
+offset_left = 9.0
+offset_top = 561.0
+offset_right = 265.0
 offset_bottom = 591.0
 theme = ExtResource("9_jg0gq")
+theme_override_fonts/font = ExtResource("10_7g1db")
 text = "MECH CAM 001"
 
 [node name="BLINK" type="AnimationPlayer" parent="SubViewportContainer/SubViewport"]
@@ -327,12 +331,13 @@ libraries = {
 autoplay = "blink"
 
 [node name="Label2" type="Label" parent="SubViewportContainer/SubViewport"]
-offset_left = 515.0
-offset_top = 563.0
-offset_right = 589.0
-offset_bottom = 591.0
+offset_left = 465.0
+offset_top = 6.0
+offset_right = 593.0
+offset_bottom = 36.0
 theme = ExtResource("9_jg0gq")
 theme_override_colors/font_color = Color(1, 0, 0.364706, 1)
+theme_override_fonts/font = ExtResource("10_7g1db")
 text = "[LIVE]"
 
 [node name="Main_Menu_Buttons" type="Control" parent="."]
@@ -344,26 +349,26 @@ script = ExtResource("3_ismwm")
 
 [node name="START" parent="Main_Menu_Buttons" instance=ExtResource("4_nbft7")]
 layout_mode = 1
-offset_left = -136.0
-offset_top = 279.0
-offset_right = 70.0
-offset_bottom = 319.0
+offset_left = 58.0
+offset_top = 314.0
+offset_right = 264.0
+offset_bottom = 354.0
 text = "START  "
 
 [node name="EXIT" parent="Main_Menu_Buttons" instance=ExtResource("4_nbft7")]
 layout_mode = 1
-offset_left = -136.0
-offset_top = 407.0
-offset_right = 70.0
-offset_bottom = 447.0
+offset_left = 58.0
+offset_top = 442.0
+offset_right = 264.0
+offset_bottom = 482.0
 text = "EXIT"
 
 [node name="OPTIONS" parent="Main_Menu_Buttons" instance=ExtResource("4_nbft7")]
 layout_mode = 1
-offset_left = -136.0
-offset_top = 343.0
-offset_right = 69.0
-offset_bottom = 383.0
+offset_left = 58.0
+offset_top = 378.0
+offset_right = 263.0
+offset_bottom = 418.0
 text = "OPTIONS"
 
 [editable path="SubViewportContainer/SubViewport/mech-001"]

@@ -17,7 +17,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.164332, 3.46235, -18.1353)]
+"values": [Vector3(-8.461, 6.027, -13.38)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -43,10 +43,10 @@ tracks/0/path = NodePath("CAMERA:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 12.1, 27.7446, 43.5667, 120),
-"transitions": PackedFloat32Array(2.07053, 0.659754, 0.784583, 7.21001, 0.482968),
+"times": PackedFloat32Array(1.06667, 27.7446, 32.7625, 43.5667, 119.813),
+"transitions": PackedFloat32Array(2.07053, 0.784583, 1.27456, 7.21001, 2.07053),
 "update": 0,
-"values": [Vector3(0.164332, 3.46235, -18.1353), Vector3(19.593, 3.462, 8.931), Vector3(-17.487, 3.462, 62.944), Vector3(2.834, 3.462, 18.851), Vector3(0.164332, 3.46235, -18.1353)]
+"values": [Vector3(-8.606, 5.977, -14.915), Vector3(-17.487, 3.462, 62.944), Vector3(-17.487, 3.462, 62.944), Vector3(2.834, 3.462, 18.851), Vector3(-8.606, 5.977, -14.915)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -55,10 +55,10 @@ tracks/1/path = NodePath("CAMERA:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 12.7, 34.1667, 48.6392, 120),
-"transitions": PackedFloat32Array(2.07053, 0.378929, 0.812252, 7.21001, 0.482968),
+"times": PackedFloat32Array(0, 34.1667, 55.5333, 113.967),
+"transitions": PackedFloat32Array(2.07053, 1.27456, 3.86374, 0.482968),
 "update": 0,
-"values": [Vector3(-0.927606, 3.06563, 0), Vector3(-0.60798, 2.20923, 0), Vector3(-0.654498, 2.1101, 0), Vector3(-0.465091, -0.708646, 0), Vector3(-0.927606, 3.06563, 0)]
+"values": [Vector3(-0.927606, 3.06563, 0), Vector3(-0.654498, 2.1101, 0), Vector3(-0.722566, 7.10524, 0), Vector3(-0.927606, 3.06563, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_0cso3"]
@@ -73,7 +73,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.164332, 3.46235, -18.1353)]
+"values": [Vector3(-14.791, 6.962, -15.595)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -219,7 +219,7 @@ orientation = 1
 layer = 3
 
 [node name="CAMERA" type="Camera3D" parent="."]
-transform = Transform3D(-0.997116, -0.0607259, 0.0455149, 0, 0.599751, 0.800186, -0.0758896, 0.797879, -0.598022, 0.164332, 3.46235, -18.1353)
+transform = Transform3D(-0.997116, -0.0607259, 0.0455149, 0, 0.599751, 0.800186, -0.0758896, 0.797879, -0.598022, -8.461, 6.027, -13.38)
 cull_mask = 16
 environment = ExtResource("2_paxxb")
 

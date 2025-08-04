@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7cbf5rya0nt0"]
+[gd_scene load_steps=5 format=3 uid="uid://b7cbf5rya0nt0"]
 
 [ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="1_7b2su"]
 [ext_resource type="Texture2D" uid="uid://l6oe44m1j68v" path="res://UI/ui-sheet-1.png" id="2_ypapv"]
+[ext_resource type="PackedScene" uid="uid://cv054k41vsqhf" path="res://prefabs/RichText_with_dim_zeros.tscn" id="3_doabv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_doabv"]
 atlas = ExtResource("2_ypapv")
@@ -15,37 +16,35 @@ mouse_default_cursor_shape = 2
 theme = ExtResource("1_7b2su")
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 icon = SubResource("AtlasTexture_doabv")
-vertical_icon_alignment = 0
 
-[node name="ID" type="Label" parent="."]
-layout_mode = 2
+[node name="ID" parent="." instance=ExtResource("3_doabv")]
+layout_mode = 0
 offset_left = 80.0
 offset_top = 8.0
-offset_right = 128.0
+offset_right = 142.0
 offset_bottom = 36.0
-theme = ExtResource("1_7b2su")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
-text = "ID"
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 16
 
 [node name="NAME" type="Label" parent="."]
 layout_mode = 2
-offset_left = 136.0
-offset_top = 8.0
-offset_right = 236.0
-offset_bottom = 36.0
+offset_left = 80.0
+offset_top = 24.0
+offset_right = 180.0
+offset_bottom = 52.0
 theme = ExtResource("1_7b2su")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 text = "NAME"
 
 [node name="STATUS" type="Label" parent="."]
 layout_mode = 2
-offset_left = 24.0
+offset_left = 80.0
 offset_top = 56.0
-offset_right = 132.0
+offset_right = 552.0
 offset_bottom = 84.0
 theme = ExtResource("1_7b2su")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 text = "STATUS"
+horizontal_alignment = 2
