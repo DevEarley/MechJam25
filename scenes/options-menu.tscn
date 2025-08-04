@@ -140,4 +140,5 @@ offset_bottom = 196.0
 text = "TURN RESETS
 AT YOUR WILL"
 
+[connection signal="visibility_changed" from="." to="Control/ScrollContainer/VBoxContainer/BG2/options_menu_buttons" method="_on_options_menu_visibility_changed"]
 [connection signal="pressed" from="save_button" to="save_button" method="_on_pressed"]

@@ -229,7 +229,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.54992, 0)
 [node name="map-1" parent="Map" instance=ExtResource("1_4xfga")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.878177, 0)
 
-[node name="grid1_extract18" parent="Map/map-1" index="0"]
+[node name="Cube2" parent="Map/map-1" index="0"]
+layers = 16
+
+[node name="grid1_extract18" parent="Map/map-1" index="1"]
 layers = 16
 
 [node name="ANIMATOR" type="AnimationPlayer" parent="."]

@@ -38,15 +38,19 @@ func show_missions():
 
 func check_for_completed_missions():
 		var something_changed = false
-		if(STATE.USE_REAL_TIME == true):
-			for mission:Mission in STATE.MISSIONS:
-				if(mission.status == ENUMS.MISSION_STATUS.IN_PROGRESS):
-					var time_24_hours = 60.0*60.0*24.0
-					var time_now = Time.get_unix_time_from_system()
-					var seconds_left = (int)((mission.time_started + time_24_hours) - time_now)
-					if(seconds_left<=0):
-						something_changed =true
-						mission.status = ENUMS.MISSION_STATUS.NEEDS_DEBRIEF
+
+		for mission:Mission in STATE.MISSIONS:
+			if(mission.status == ENUMS.MISSION_STATUS.IN_PROGRESS):
+				var time_24_hours
+				if(STATE.USE_REAL_TIME == true):
+					time_24_hours = 60.0*60.0*24.0
+				else:
+					time_24_hours = 8.0
+				var time_now = Time.get_unix_time_from_system()
+				var seconds_left = (int)((mission.time_started + time_24_hours) - time_now)
+				if(seconds_left<=0):
+					something_changed =true
+					mission.status = ENUMS.MISSION_STATUS.NEEDS_DEBRIEF
 		if(something_changed):
 			DATA.save_everything()
 
@@ -55,17 +59,17 @@ func on_instant_player_result_script_finished():
 	STATE.ON_QUEST_SCRIPT_DONE = on_back_to_mission_list
 
 func on_start_mission_script_finished():
-	var mission:Mission = LINQ.First(STATE.MISSIONS,func (mission:Mission): return mission.ID==STATE.CURRENT_MISSION_ID);
-	if(STATE.USE_REAL_TIME == false):
-		STATE.ON_QUEST_SCRIPT_DONE = on_instant_player_result_script_finished
-		STATE.MISSIONS_MENU_CANVAS.hide()
-		if(CALCULATOR.has_passed_current_mission()):
-			QS.run_script(mission.success_script)
-		else:
-			QS.run_script(mission.fail_script)
-	else:
-		DATA.save_everything()
-		on_back_to_mission_list()
+	#var mission:Mission = LINQ.First(STATE.MISSIONS,func (mission:Mission): return mission.ID==STATE.CURRENT_MISSION_ID);
+	#if(STATE.USE_REAL_TIME == false):
+		#STATE.ON_QUEST_SCRIPT_DONE = on_instant_player_result_script_finished
+		#STATE.MISSIONS_MENU_CANVAS.hide()
+		#if(CALCULATOR.has_passed_current_mission()):
+			#QS.run_script(mission.success_script)
+		#else:
+			#QS.run_script(mission.fail_script)
+	#else:
+	DATA.save_everything()
+	on_back_to_mission_list()
 
 
 func start_mission_pressed():
@@ -73,6 +77,7 @@ func start_mission_pressed():
 	hide_all_menus()
 	var mission:Mission = LINQ.First(STATE.MISSIONS,func (mission:Mission): return mission.ID==STATE.CURRENT_MISSION_ID);
 	STATE.HAS_MISSION_IN_PROGRESS = true
+	STATE.MISSION_COMPLETE_NOTIFICATION_SENT = false
 	STATE.CURRENT_MISSION = mission
 	mission.status = ENUMS.MISSION_STATUS.IN_PROGRESS
 	DATA.save_everything()
@@ -110,9 +115,11 @@ func on_mission_pressed(mission:Mission):
 	STATE.MAP_BG.hide()
 	MAP.ANIMATOR.stop()
 	BACK_BUTTON.text="MISSION LIST"
-
-
-	var time_24_hours = 60.0*60.0*24.0
+	var time_24_hours
+	if(STATE.USE_REAL_TIME == true):
+		time_24_hours = 60.0*60.0*24.0
+	else:
+		time_24_hours = 8.0
 	var time_now = Time.get_unix_time_from_system()
 
 	if(mission.status == ENUMS.MISSION_STATUS.IN_PROGRESS):

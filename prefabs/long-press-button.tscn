@@ -1,0 +1,96 @@
+[gd_scene load_steps=8 format=3 uid="uid://buc3pa7ovo81q"]
+
+[ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="1_dv6r2"]
+[ext_resource type="Script" uid="uid://bqvmb8jp7gq63" path="res://prefabs/long_press_button.gd" id="2_d3c4o"]
+[ext_resource type="Texture2D" uid="uid://86yf6tf46r08" path="res://UI/crosshairs64.png" id="3_jf402"]
+
+[sub_resource type="Animation" id="Animation_dp3ge"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(64, 108)]
+}
+
+[sub_resource type="Animation" id="Animation_j3eit"]
+resource_name = "fill"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.217638, 2.2974),
+"update": 0,
+"values": [Vector2(64, 100), Vector2(495, 100)]
+}
+
+[sub_resource type="Animation" id="Animation_m3iat"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(64, 100)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_05awy"]
+_data = {
+&"RESET": SubResource("Animation_dp3ge"),
+&"fill": SubResource("Animation_j3eit"),
+&"idle": SubResource("Animation_m3iat")
+}
+
+[node name="Button" type="Button"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -32.0
+offset_right = 440.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_dv6r2")
+script = ExtResource("2_d3c4o")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+offset_left = -16.0
+offset_top = -28.0
+offset_right = 48.0
+offset_bottom = 80.0
+texture = ExtResource("3_jf402")
+region_rect = Rect2(69, 130, 35, 56)
+patch_margin_left = 22
+patch_margin_top = 25
+patch_margin_right = 13
+patch_margin_bottom = 31
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_05awy")
+}
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]

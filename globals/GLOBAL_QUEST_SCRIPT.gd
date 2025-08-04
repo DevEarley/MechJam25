@@ -15,7 +15,7 @@ var ACTION_4_MARKER;
 var CURRENT_NPC:NPC;
 
 var call_back_on_finished:Callable;
-
+var RUNNING_SCRIPT = false
 func process_signal(signal_string:String):
 	for REGISTERED_SIGNAL in REGISTERED_SIGNALS:
 		if(REGISTERED_SIGNAL.contains(signal_string)):
@@ -60,6 +60,7 @@ func run_script(_script:String):
 	if(_script == ""):
 		on_script_finished();
 		return
+	RUNNING_SCRIPT = true;
 	CONVERSATION_UI.start_conversation()
 	_script = process_script_for_quotes(_script)
 	var lines:PackedStringArray = _script.split("\n",false)
@@ -344,6 +345,7 @@ func on_action_4_pressed():
 
 
 func on_script_finished():
+	RUNNING_SCRIPT = false
 	if(STATE.ON_QUEST_SCRIPT_DONE.get_method()!=""):
 		print("method %s" % STATE.ON_QUEST_SCRIPT_DONE.get_method())
 		STATE.CONVERSATION_SCREEN_CANVAS.hide()

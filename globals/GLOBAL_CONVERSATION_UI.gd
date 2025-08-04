@@ -151,6 +151,6 @@ func continue_conversation(message,character_name):
 	CONTINUE_LABEL.show()
 
 func _input(event: InputEvent) -> void:
-	if(event.is_action_released("ui_accept") && SHOWING_CHOICES == false):
+	if(event.is_action_released("ui_accept") && SHOWING_CHOICES == false && QS.RUNNING_SCRIPT== true):
 		QS.continue_script()
 		CONTINUE_LABEL.hide();

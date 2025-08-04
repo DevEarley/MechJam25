@@ -1,14 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://q3apfh65koxm"]
+[gd_scene load_steps=22 format=3 uid="uid://q3apfh65koxm"]
 
 [ext_resource type="Script" uid="uid://bxy3br0irscae" path="res://scripts/add-self-to-scaled-ui.gd" id="1_xg1py"]
 [ext_resource type="PackedScene" uid="uid://bunfxp7cx281n" path="res://prefabs/title-bar-wide.tscn" id="2_0u6b5"]
 [ext_resource type="Script" uid="uid://dv6573lowt7bf" path="res://scene-scripts/main_menu.gd" id="3_ismwm"]
 [ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="3_nbft7"]
 [ext_resource type="PackedScene" uid="uid://jqfcrgtcowf1" path="res://prefabs/left-hand-button.tscn" id="4_nbft7"]
+[ext_resource type="PackedScene" uid="uid://dlqeqxng28n22" path="res://locations-3D/garage-1.glb" id="5_15bby"]
 [ext_resource type="Script" uid="uid://cpjutl2vxvyra" path="res://addons/mrminimal_camera_shake/scripts/shaky_camera.gd" id="5_cgepm"]
 [ext_resource type="PackedScene" uid="uid://dimmt4xbgqqdb" path="res://mechs-3D/mech-001.glb" id="6_5ucbf"]
 [ext_resource type="AnimationLibrary" uid="uid://n8a7jdk5h04r" path="res://addons/mrminimal_camera_shake/animations/shaky_camera_lib.tres" id="6_15bby"]
 [ext_resource type="Environment" uid="uid://c7ssmhiiplyg8" path="res://world_environment.tres" id="7_jg0gq"]
+[ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="9_jg0gq"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wkale"]
 
@@ -50,6 +52,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [1.0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["MECH CAM 001"]
+}
 
 [sub_resource type="Animation" id="Animation_5ucbf"]
 resource_name = "loop_part_2"
@@ -61,10 +75,10 @@ tracks/0/path = NodePath("CameraRig:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.2, 5.36667, 10.9667, 15.2333),
-"transitions": PackedFloat32Array(5.65686, 1.36604, 1.51572, 4.92458),
+"times": PackedFloat32Array(0.566667, 13.4333, 15.2333),
+"transitions": PackedFloat32Array(1, 0.203063, 4.92458),
 "update": 0,
-"values": [Vector3(-0.0519921, 0.00259095, 0), Vector3(-0.39968, 0.00523599, 0), Vector3(-0.39968, 0.00523599, 0), Vector3(-0.240004, 0.00402126, 0)]
+"values": [Vector3(-0.340228, 0.00478372, 0), Vector3(-0.308059, 0.00453898, 0), Vector3(-0.240004, 0.00402126, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -73,10 +87,10 @@ tracks/1/path = NodePath("CameraRig:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.3, 5.56667, 11, 15.3),
-"transitions": PackedFloat32Array(2.37841, 1.36604, 1.51572, 4.92458),
+"times": PackedFloat32Array(0.599999, 13.5, 15.3),
+"transitions": PackedFloat32Array(1, 0.203063, 4.92458),
 "update": 0,
-"values": [Vector3(-0.0052768, 1.22912, 1.76136), Vector3(-0.003, 1.967, 1.743), Vector3(-0.003, 1.967, 1.743), Vector3(-0.00300002, 1.967, 1.743)]
+"values": [Vector3(-0.00300002, 1.967, 1.743), Vector3(-0.00300002, 1.967, 1.743), Vector3(-0.00300002, 1.967, 1.743)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -85,10 +99,22 @@ tracks/2/path = NodePath("CameraRig/ShakyCamera:speed_multiplier")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.6, 5.23333, 5.56667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0.166667, 0.500007),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [1.0, 0.5, 0.1, 0.6]
+"values": [0.1, 0.6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["MECH CAM 002"]
 }
 
 [sub_resource type="Animation" id="Animation_ismwm"]
@@ -101,10 +127,10 @@ tracks/0/path = NodePath("CameraRig:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.0333333, 0.9, 4.6, 9.76667),
-"transitions": PackedFloat32Array(2.54912, 2.54912, 7.46426, 0.125),
+"times": PackedFloat32Array(0.0333333, 0.933333, 4.8, 9.76667),
+"transitions": PackedFloat32Array(2.54912, 0.482968, 2.14355, 0.125),
 "update": 0,
-"values": [Vector3(-0.203294, 0.338557, 0), Vector3(-0.203294, 0.338557, 0), Vector3(-0.418086, -0.339733, 0), Vector3(-0.418086, -0.339733, 0)]
+"values": [Vector3(-0.203294, 0.338557, 0), Vector3(-0.203294, 0.338557, 0), Vector3(-0.340339, -0.340339, 0), Vector3(-0.366519, -0.340339, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -114,9 +140,9 @@ tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0.0666666, 0.933333, 4.63333),
-"transitions": PackedFloat32Array(1.8025, 1.8025, 0.125),
+"transitions": PackedFloat32Array(1.8025, 0.535887, 4.28709),
 "update": 0,
-"values": [Vector3(0.605994, 1.71284, 1.37122), Vector3(0.605994, 1.71284, 1.37122), Vector3(-0.607223, 1.95696, 1.61609)]
+"values": [Vector3(0.605994, 1.71284, 1.37122), Vector3(0.606, 1.713, 1.536), Vector3(-0.607223, 1.95696, 1.61609)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -130,6 +156,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.4, 0.6, 0.2, 0.2, 0.2, 0.4]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["MECH CAM 001"]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cgepm"]
 _data = {
@@ -139,13 +177,50 @@ _data = {
 }
 
 [sub_resource type="Gradient" id="Gradient_ismwm"]
-offsets = PackedFloat32Array(0, 0.128755, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.901961, 0, 0, 0, 0)
+offsets = PackedFloat32Array(0, 0.0255682, 1)
+colors = PackedColorArray(0, 1, 0.666667, 1, 0, 1, 0.666667, 0.65098, 0, 1, 0.666667, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_nbft7"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cgepm"]
 gradient = SubResource("Gradient_ismwm")
-fill_from = Vector2(1, 0.891026)
+fill_from = Vector2(1, 1)
 fill_to = Vector2(0.99359, 0.254274)
+
+[sub_resource type="Animation" id="Animation_1000w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_7g1db"]
+resource_name = "blink"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.633333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fkao5"]
+_data = {
+&"RESET": SubResource("Animation_1000w"),
+&"blink": SubResource("Animation_7g1db")
+}
 
 [node name="MAIN_MENU" type="CanvasLayer"]
 script = ExtResource("1_xg1py")
@@ -163,15 +238,15 @@ text = "[center]MECH JAM 25"
 
 [node name="BG2" parent="." instance=ExtResource("3_nbft7")]
 offset_left = 265.0
-offset_top = 56.0
-offset_right = 1017.0
-offset_bottom = 656.0
+offset_top = 58.0
+offset_right = 1023.0
+offset_bottom = 707.0
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 offset_left = 394.0
-offset_top = 56.0
+offset_top = 80.0
 offset_right = 994.0
-offset_bottom = 656.0
+offset_bottom = 680.0
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 transparent_bg = true
@@ -183,6 +258,14 @@ render_target_update_mode = 4
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 
 [node name="Cube2_copy4" parent="SubViewportContainer/SubViewport/mech-001" index="0"]
+layers = 1024
+
+[node name="garage-1" parent="SubViewportContainer/SubViewport" instance=ExtResource("5_15bby")]
+
+[node name="GARAGE" parent="SubViewportContainer/SubViewport/garage-1" index="0"]
+layers = 1024
+
+[node name="WINDOWS" parent="SubViewportContainer/SubViewport/garage-1" index="1"]
 layers = 1024
 
 [node name="CameraRig" type="Node3D" parent="SubViewportContainer/SubViewport"]
@@ -215,19 +298,42 @@ autoplay = "start_loop"
 next/loop_part_2 = &"start_loop"
 next/start_loop = &"loop_part_2"
 
-[node name="BG" type="TextureRect" parent="."]
+[node name="BG" type="TextureRect" parent="SubViewportContainer/SubViewport"]
 show_behind_parent = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 394.0
-offset_top = 56.0
-offset_right = -286.0
-offset_bottom = -64.0
+offset_left = -1.0
+offset_top = 1.0
+offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 0
-texture = SubResource("GradientTexture2D_nbft7")
+texture = SubResource("GradientTexture2D_cgepm")
+
+[node name="Label" type="Label" parent="SubViewportContainer/SubViewport"]
+offset_left = 17.0
+offset_top = 563.0
+offset_right = 211.0
+offset_bottom = 591.0
+theme = ExtResource("9_jg0gq")
+text = "MECH CAM 001"
+
+[node name="BLINK" type="AnimationPlayer" parent="SubViewportContainer/SubViewport"]
+root_node = NodePath("../Label2")
+libraries = {
+&"": SubResource("AnimationLibrary_fkao5")
+}
+autoplay = "blink"
+
+[node name="Label2" type="Label" parent="SubViewportContainer/SubViewport"]
+offset_left = 515.0
+offset_top = 563.0
+offset_right = 589.0
+offset_bottom = 591.0
+theme = ExtResource("9_jg0gq")
+theme_override_colors/font_color = Color(1, 0, 0.364706, 1)
+text = "[LIVE]"
 
 [node name="Main_Menu_Buttons" type="Control" parent="."]
 layout_mode = 3
@@ -261,3 +367,4 @@ offset_bottom = 383.0
 text = "OPTIONS"
 
 [editable path="SubViewportContainer/SubViewport/mech-001"]
+[editable path="SubViewportContainer/SubViewport/garage-1"]

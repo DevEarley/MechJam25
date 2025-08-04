@@ -33,13 +33,23 @@ func _on_pressed() -> void:
 			show_mech_info(current_mech);
 
 func hide_mech_info():
+
 	$MECH_BOX.hide();
+
+func dismiss_mech():
+		var current_mech:Mech = LINQ.First(STATE.MECHS, func (mech:Mech):
+			return mech.ID == STATE.CURRENT_MECH_ID);
+		current_mech.mission_id = -1
+		current_mech.status = ENUMS.MECH_STATUS.IN_GARAGE
+		DATA.save_mechs_to_user_data()
+		MISSIONS_MENU.on_mission_pressed(STATE.CURRENT_MISSION)
 
 func show_mech_info(mech):
 		$MECH_BOX.show()
 		DATA_TO_UI.build_mech_box($MECH_BOX,mech)
 		if($MECH_BOX.has_node("SubViewportContainer")):
 			DATA_TO_UI.display_node_for_mech(mech.ID,$MECH_BOX/SubViewportContainer/SubViewport/MECHS_NODE)
+			$MECH_BOX/DISMISS_BUTTON.ON_TIMER_DONE = dismiss_mech
 
 static func get_status_text_for_mech(mech:Mech):
 	match(mech.status):

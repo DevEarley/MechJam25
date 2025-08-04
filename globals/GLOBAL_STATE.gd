@@ -25,6 +25,7 @@ var DIFFICULTY_ALREADY_CHOSEN : bool = false
 var CREDITS = 0;
 var RECYCLE_POINTS = 0
 
+var MISSION_COMPLETE_NOTIFICATION_SENT = false
 
 var SPEED = 1.0
 var PILOTS:Array[Pilot]

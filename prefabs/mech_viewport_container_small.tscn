@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddu11pa0q3uk0"]
+[gd_scene load_steps=11 format=3 uid="uid://ddu11pa0q3uk0"]
 
 [ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="1_vwrtx"]
 [ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="2_7rhkb"]
 [ext_resource type="Environment" uid="uid://c7ssmhiiplyg8" path="res://world_environment.tres" id="2_ilxod"]
 [ext_resource type="PackedScene" uid="uid://dimmt4xbgqqdb" path="res://mechs-3D/mech-001.glb" id="3_umgmh"]
 [ext_resource type="Material" uid="uid://dj2chdusgvktn" path="res://materials/world_mat_alt.tres" id="4_qne6b"]
+[ext_resource type="PackedScene" uid="uid://buc3pa7ovo81q" path="res://prefabs/long-press-button.tscn" id="6_4fkpd"]
 
 [sub_resource type="Animation" id="Animation_d1idq"]
 length = 0.001
@@ -272,6 +273,14 @@ visible = false
 [node name="Cube2_copy4" parent="SubViewportContainer/SubViewport/MECHS_NODE/RED_MECH_005" index="0"]
 layers = 256
 surface_material_override/0 = ExtResource("4_qne6b")
+
+[node name="DISMISS_BUTTON" parent="." instance=ExtResource("6_4fkpd")]
+layout_mode = 1
+offset_left = -632.0
+offset_top = 248.0
+offset_right = -147.0
+offset_bottom = 288.0
+text = "DISMISS MECH FROM MISSION"
 
 [editable path="SubViewportContainer/SubViewport/MECHS_NODE/BLUE_MECH_001"]
 [editable path="SubViewportContainer/SubViewport/MECHS_NODE/RED_MECH_001"]
