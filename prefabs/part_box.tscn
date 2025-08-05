@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://hyfii46i30t8"]
+[gd_scene load_steps=4 format=3 uid="uid://hyfii46i30t8"]
 
 [ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="1_w8og1"]
+[ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="2_ag08s"]
 [ext_resource type="PackedScene" uid="uid://cv054k41vsqhf" path="res://prefabs/RichText_with_dim_zeros.tscn" id="2_t3k53"]
 
 [node name="PART_BOX" type="Control"]
@@ -11,6 +12,13 @@ anchor_bottom = 0.667
 offset_right = -3.05176e-05
 offset_bottom = -0.240051
 theme = ExtResource("1_w8og1")
+
+[node name="BG2" parent="." instance=ExtResource("2_ag08s")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 4.0
+offset_right = 506.0
+offset_bottom = 407.0
 
 [node name="ID" parent="." instance=ExtResource("2_t3k53")]
 layout_mode = 0

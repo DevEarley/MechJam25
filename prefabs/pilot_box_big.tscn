@@ -39,6 +39,16 @@ offset_bottom = 68.0
 theme = ExtResource("2_vcc51")
 text = "NAME"
 
+[node name="STATUS" type="Label" parent="."]
+layout_mode = 2
+offset_left = 800.0
+offset_top = 40.0
+offset_right = 996.0
+offset_bottom = 68.0
+theme = ExtResource("2_vcc51")
+text = "???"
+horizontal_alignment = 2
+
 [node name="CRITERIA_FOR_MISSION_ODDS" type="RichTextLabel" parent="."]
 layout_mode = 2
 offset_left = 112.0
@@ -78,6 +88,16 @@ offset_bottom = 102.0
 theme = ExtResource("2_vcc51")
 theme_override_font_sizes/font_size = 16
 text = "RETURNING ODDS"
+
+[node name="RETURNING_ODDS_LABEL2" type="Label" parent="."]
+layout_mode = 2
+offset_left = 938.0
+offset_top = 24.0
+offset_right = 992.0
+offset_bottom = 38.0
+theme = ExtResource("2_vcc51")
+theme_override_font_sizes/font_size = 16
+text = "STATUS"
 
 [node name="HIRE_PILOT" parent="." instance=ExtResource("3_vcc51")]
 layout_mode = 1

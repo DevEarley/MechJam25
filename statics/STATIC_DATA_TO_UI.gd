@@ -25,40 +25,34 @@ static func build_mech_box(mech_button, mech):
 			mech_button.get_node("FLAVOR").text = mech.flavor
 		if(mech_button.has_node("STATUS")):
 			mech_button.get_node("STATUS").text = get_status_text_for_mech(mech)
+			match(mech.status):
+				ENUMS.MECH_STATUS.IN_GARAGE:
+					mech_button.get_node("STATUS").modulate = Color(0,1,170.0/255.0)
+
+				ENUMS.MECH_STATUS.NOT_AVAILABLE:
+					mech_button.get_node("STATUS").modulate = Color(338.0/255,0,93.0/255.0)
 		return mech_button
 
-static func build_mech_box_small(MECH_BOX_PREFAB, mech):
-		var mech_button = MECH_BOX_PREFAB.instantiate()
-		mech_button.get_node("ID").text =DATA_TO_UI.insert_leading_zeros(mech.ID)
-		mech_button.get_node("NAME").text = "%s"%mech.name
-		mech_button.get_node("COMPATIBLE_ENVIRONMENT").text = "";
-		for environment in mech.compatible_environments:
-			var results = get_environment_text_and_tint(environment)
-			var environment_text= results[0]
-			var environment_tint= results[1]
-			mech_button.get_node("COMPATIBLE_ENVIRONMENT").text += "[%s] "%environment_text
-		mech_button.get_node("TYPE").text  = get_mech_type(mech)
-		if(mech_button.has_node("BASE_HEALTH")):
-			mech_button.get_node("BASE_HEALTH").text = DATA_TO_UI.insert_leading_zeros(mech.base_health)
-		if(mech_button.has_node("CURRENT_HEALTH")):
-			mech_button.get_node("CURRENT_HEALTH").text = DATA_TO_UI.insert_leading_zeros(mech.current_health)
-		mech_button.get_node("STATUS").text = get_status_text_for_mech(mech)
-		return mech_button
 
 static func build_small_part_box(BOX_PREFAB,part:Part):
 		var part_button = BOX_PREFAB.instantiate()
 		part_button.get_node("ID").text = DATA_TO_UI.insert_leading_zeros(part.ID)
 		part_button.get_node("NAME").text = "%s"%part.name
+
+
+
 		match(part.status):
 			ENUMS.PART_STATUS.FOR_SALE:
 				part_button.get_node("STATUS").text ="FOR SALE [%s CREDITS]"%part.cost
 			ENUMS.PART_STATUS.PURCHASED:
+				part_button.get_node("STATUS").modulate = Color(0,1,170.0/255.0)
 				part_button.get_node("STATUS").text ="AVAILABLE"
 			ENUMS.PART_STATUS.EQUIPT:
+				part_button.get_node("STATUS").modulate = Color(0,1,170.0/255.0)
 				var mech = LINQ.First(STATE.MECHS, func (mech:Mech):return mech.ID == part.attached_to_mech_id  && part.status == ENUMS.PART_STATUS.EQUIPT)
 				part_button.get_node("STATUS").text ="EQUIPT TO %s"% mech.name
-
 			ENUMS.PART_STATUS.NOT_AVAILABLE:
+				part_button.get_node("STATUS").modulate = Color(338.0/255,0,93.0/255.0)
 				part_button.get_node("STATUS").text ="NOT AVAILABLE"
 
 		return part_button
@@ -94,18 +88,32 @@ static func build_part_box(part_button,part:Part):
 
 static func build_pilot_box(pilot_button,pilot:Pilot):
 
-		pilot_button.get_node("ID").text = DATA_TO_UI.insert_leading_zeros(pilot.ID)
-		pilot_button.get_node("NAME").text = "%s"%pilot.name
-		#pilot_button.get_node("COST").text = "%s"%pilot.cost
-		#pilot_button.get_node("FLAVOR").text = "%s"%pilot.flavor
-		#pilot_button.get_node("THEME").text = "%s"%pilot.theme
-		pilot_button.get_node("MISSION_ODDS").text = "+%s/%s"%[pilot.mission_odds,pilot.mission_odds]
-		pilot_button.get_node("CRITERIA_FOR_MISSION_ODDS").text = get_criteria_for_mission_odds(pilot.criteria_for_mission_odds)
-		pilot_button.get_node("RETURNING_ODDS").text = "+%s/%s"%[pilot.returning_odds,pilot.returning_odds]
-
-		pilot_button.get_node("CRITERIA_FOR_RETURNING_ODDS").text =get_criteria_for_return_odds(pilot.criteria_for_returning_odds)
-		#pilot_button.get_node("STATUS").text = "%s"%pilot.status
-
+		if(pilot_button.has_node("ID")):
+			pilot_button.get_node("ID").text = DATA_TO_UI.insert_leading_zeros(pilot.ID)
+		if(pilot_button.has_node("NAME")):
+			pilot_button.get_node("NAME").text = "%s"%pilot.name
+		if(pilot_button.has_node("COST")):
+			pilot_button.get_node("COST").text = "%s"%pilot.cost
+		if(pilot_button.has_node("MISSION_ODDS")):
+			pilot_button.get_node("MISSION_ODDS").text = "+%s/%s"%[pilot.mission_odds,pilot.mission_odds]
+		if(pilot_button.has_node("CRITERIA_FOR_MISSION_ODDS")):
+			pilot_button.get_node("CRITERIA_FOR_MISSION_ODDS").text = get_criteria_for_mission_odds(pilot.criteria_for_mission_odds)
+		if(pilot_button.has_node("RETURNING_ODDS")):
+			pilot_button.get_node("RETURNING_ODDS").text = "+%s/%s"%[pilot.returning_odds,pilot.returning_odds]
+		if(pilot_button.has_node("CRITERIA_FOR_RETURNING_ODDS")):
+			pilot_button.get_node("CRITERIA_FOR_RETURNING_ODDS").text =get_criteria_for_return_odds(pilot.criteria_for_returning_odds)
+		if(pilot_button.has_node("STATUS")):
+			match(pilot.status):
+				ENUMS.PILOT_STATUS.HIRED:
+					pilot_button.get_node("STATUS").text = "HIRED"
+					pilot_button.get_node("STATUS").modulate = Color(0,1,170.0/255.0)
+				ENUMS.PILOT_STATUS.FOR_HIRE:
+					pilot_button.get_node("STATUS").text = "FOR HIRE"
+				ENUMS.PILOT_STATUS.ON_MISSION:
+					pilot_button.get_node("STATUS").text = "ON MISSION"
+				ENUMS.PILOT_STATUS.DEAD:
+					pilot_button.get_node("STATUS").text = "DEAD"
+					pilot_button.get_node("STATUS").modulate = Color(338.0/255,0,93.0/255.0)
 		return pilot_button
 
 static func get_criteria_for_mission_odds(criteria_code:ENUMS.MISSION_CRITERIA)->String:

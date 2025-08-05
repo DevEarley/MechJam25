@@ -36,7 +36,7 @@ func init_children():
 		child.queue_free()
 	STATE.CURRENT_MECH_ID = 0;
 	for mech:Mech in STATE.MECHS:
-		var mech_box = DATA_TO_UI.build_mech_box_small(MECH_BOX_PREFAB, mech)
+		var mech_box = DATA_TO_UI.build_mech_box(MECH_BOX_PREFAB.instantiate(), mech)
 
 		mech_box.add_child(mech_box)
 		if(mech.status == ENUMS.MECH_STATUS.IN_GARAGE):

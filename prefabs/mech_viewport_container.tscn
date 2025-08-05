@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b046x8i5jrnqw"]
+[gd_scene load_steps=23 format=3 uid="uid://b046x8i5jrnqw"]
 
 [ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="1_jiv2m"]
 [ext_resource type="Environment" uid="uid://c7ssmhiiplyg8" path="res://world_environment.tres" id="1_ph5yv"]
@@ -6,11 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://dimmt4xbgqqdb" path="res://mechs-3D/mech-001.glb" id="3_jiv2m"]
 [ext_resource type="AnimationLibrary" uid="uid://n8a7jdk5h04r" path="res://addons/mrminimal_camera_shake/animations/shaky_camera_lib.tres" id="3_sgwqr"]
 [ext_resource type="Material" uid="uid://dj2chdusgvktn" path="res://materials/world_mat_alt.tres" id="4_pg47d"]
+[ext_resource type="PackedScene" uid="uid://jqfcrgtcowf1" path="res://prefabs/left-hand-button.tscn" id="5_pg47d"]
 [ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="7_b1eyc"]
 [ext_resource type="PackedScene" uid="uid://buc3pa7ovo81q" path="res://prefabs/long-press-button.tscn" id="8_26s2w"]
 [ext_resource type="Texture2D" uid="uid://bng8j8q10k6yt" path="res://prefabs/recycle-icon.tres" id="9_jcufk"]
 [ext_resource type="Texture2D" uid="uid://d1exujn7egkcm" path="res://prefabs/credits-icon.tres" id="9_sgwqr"]
 [ext_resource type="PackedScene" uid="uid://cv054k41vsqhf" path="res://prefabs/RichText_with_dim_zeros.tscn" id="10_h87oc"]
+[ext_resource type="Texture2D" uid="uid://53xu5q60s4pm" path="res://prefabs/parts-icoin.tres" id="13_b8b24"]
+[ext_resource type="Script" uid="uid://bnqkve0s6tyei" path="res://prefabs/mech-parts-button.gd" id="14_b8b24"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wkale"]
 
@@ -93,51 +96,6 @@ tracks/2/keys = {
 "values": [Vector3(0, 2.85556, 1.7297)]
 }
 
-[sub_resource type="Animation" id="Animation_6v034"]
-resource_name = "spin"
-length = 4.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.266667, 2.33333, 4),
-"transitions": PackedFloat32Array(2.2974, 2.2974, 0.435275, 0.353553),
-"update": 0,
-"values": [Vector3(-0.232967, 0, 0), Vector3(-0.232967, 0, 0), Vector3(-0.232953, 0.105189, 0), Vector3(-0.232129, 6.28319, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D/ShakyCamera:speed_multiplier")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Camera3D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 1.821, 0.185)]
-}
-
-[sub_resource type="Animation" id="Animation_pia31"]
-resource_name = "spin_up"
-length = 4.0
-
 [sub_resource type="Animation" id="Animation_h87oc"]
 resource_name = "look_up_at_mech_2"
 length = 5.0
@@ -218,6 +176,51 @@ tracks/2/keys = {
 "values": [Vector3(0, 2.356, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_6v034"]
+resource_name = "spin"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 2.33333, 4),
+"transitions": PackedFloat32Array(2.2974, 2.2974, 0.435275, 0.353553),
+"update": 0,
+"values": [Vector3(-0.232967, 0, 0), Vector3(-0.232967, 0, 0), Vector3(-0.232953, 0.105189, 0), Vector3(-0.232129, 6.28319, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D/ShakyCamera:speed_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.821, 0.185)]
+}
+
+[sub_resource type="Animation" id="Animation_pia31"]
+resource_name = "spin_up"
+length = 4.0
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qppqj"]
 _data = {
 &"RESET": SubResource("Animation_d1idq"),
@@ -287,9 +290,9 @@ libraries = {
 }
 autoplay = "look_up_at_mech"
 next/look_up_at_mech = &"look_up_at_mech_2"
-next/spin_up = &"spin"
 next/look_up_at_mech_2 = &"look_up_at_mech_3"
 next/look_up_at_mech_3 = &"look_up_at_mech"
+next/spin_up = &"spin"
 blend_times = [&"spin", &"spin_up", 0.25, &"spin_up", &"spin", 0.25]
 
 [node name="MECHS_NODE" type="Node3D" parent="SubViewportContainer/SubViewport"]
@@ -378,22 +381,161 @@ offset_right = 624.0
 offset_bottom = 568.0
 mouse_filter = 2
 
+[node name="STATUS3" type="Label" parent="MECH_BOX"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = -248.0
+offset_right = 62.0
+offset_bottom = -234.0
+theme = ExtResource("7_b1eyc")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "BASE P."
+
+[node name="BASE_HEALTH" parent="MECH_BOX" instance=ExtResource("10_h87oc")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = -239.0
+offset_right = 62.0
+offset_bottom = -211.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "[right][dim]00[/dim]1"
+
+[node name="STATUS4" type="Label" parent="MECH_BOX"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = -184.0
+offset_right = 63.0
+offset_bottom = -170.0
+theme = ExtResource("7_b1eyc")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "STATUS"
+
+[node name="STATUS5" type="Label" parent="MECH_BOX"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = -120.0
+offset_right = 75.0
+offset_bottom = -106.0
+theme = ExtResource("7_b1eyc")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "VIEW PARTS"
+
+[node name="STATUS" type="Label" parent="MECH_BOX"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = -168.0
+offset_right = 104.0
+offset_bottom = -154.0
+theme = ExtResource("7_b1eyc")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "IN_GARAGE"
+horizontal_alignment = 1
+
+[node name="STATUS2" type="Label" parent="MECH_BOX"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = -312.0
+offset_right = 62.0
+offset_bottom = -298.0
+theme = ExtResource("7_b1eyc")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "POWER"
+
+[node name="CURRENT_HEALTH" parent="MECH_BOX" instance=ExtResource("10_h87oc")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = -303.0
+offset_right = 62.0
+offset_bottom = -275.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "[right][dim]00[/dim]1"
+
 [node name="BG2" parent="MECH_BOX" instance=ExtResource("1_jiv2m")]
 layout_mode = 0
-offset_left = -16.0
-offset_top = 23.0
-offset_right = 560.0
+offset_left = 104.0
+offset_top = -16.0
+offset_right = 608.0
+offset_bottom = 112.0
+
+[node name="FLAVOR" type="Label" parent="MECH_BOX"]
+layout_mode = 2
+offset_left = 128.0
+offset_top = 24.0
+offset_right = 592.0
 offset_bottom = 120.0
+theme = ExtResource("7_b1eyc")
+text = "Flavor Text Flavor Text Flavor Text Flavor Text Flavor Text Flavor Text  assd"
+autowrap_mode = 2
+text_overrun_behavior = 3
 
 [node name="NAME" type="Label" parent="MECH_BOX"]
 layout_mode = 2
-offset_left = -8.0
-offset_top = -368.0
-offset_right = 30.0
-offset_bottom = -354.0
+offset_left = 128.0
+offset_top = 8.0
+offset_right = 166.0
+offset_bottom = 22.0
 theme = ExtResource("7_b1eyc")
 theme_override_font_sizes/font_size = 16
 text = "NAME"
+
+[node name="PARTS_BUTTON" parent="MECH_BOX" node_paths=PackedStringArray("VBOX") instance=ExtResource("5_pg47d")]
+layout_mode = 1
+offset_left = -328.0
+offset_top = -184.0
+offset_right = -248.0
+offset_bottom = -140.0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+icon = ExtResource("13_b8b24")
+script = ExtResource("14_b8b24")
+VBOX = NodePath("BOX/ScrollContainer/VBoxContainer")
+
+[node name="BOX" type="Control" parent="MECH_BOX/PARTS_BUTTON"]
+visible = false
+clip_contents = true
+anchors_preset = 0
+offset_left = 112.0
+offset_top = -216.0
+offset_right = 640.0
+offset_bottom = 208.0
+
+[node name="BG2" parent="MECH_BOX/PARTS_BUTTON/BOX" instance=ExtResource("1_jiv2m")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 504.0
+offset_bottom = 424.0
+
+[node name="STATUS6" type="Label" parent="MECH_BOX/PARTS_BUTTON/BOX"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 8.0
+offset_right = 124.0
+offset_bottom = 22.0
+theme = ExtResource("7_b1eyc")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "EQUIPT PARTS"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MECH_BOX/PARTS_BUTTON/BOX"]
+clip_contents = false
+layout_mode = 0
+offset_left = 8.0
+offset_top = 40.0
+offset_right = 504.0
+offset_bottom = 408.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MECH_BOX/PARTS_BUTTON/BOX/ScrollContainer"]
+layout_mode = 2
 
 [node name="NAME2" type="Label" parent="MECH_BOX"]
 layout_mode = 2
@@ -405,15 +547,15 @@ theme = ExtResource("7_b1eyc")
 theme_override_font_sizes/font_size = 16
 text = "COMPATIBLE ENVIRONMENTS"
 
-[node name="FLAVOR" type="Label" parent="MECH_BOX"]
+[node name="NAME3" type="Label" parent="MECH_BOX"]
 layout_mode = 2
-offset_left = 13.0
-offset_top = 43.0
-offset_right = 549.0
-offset_bottom = 102.0
+offset_left = -8.0
+offset_top = -368.0
+offset_right = 188.0
+offset_bottom = -354.0
 theme = ExtResource("7_b1eyc")
-text = "Flavor Text Flavor Text Flavor Text Flavor Text Flavor Text Flavor Text Flavor Text"
-autowrap_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "TYPE"
 
 [node name="COMPATIBLE_ENVIRONMENT" type="Label" parent="MECH_BOX"]
 layout_mode = 2
@@ -463,47 +605,7 @@ offset_right = 576.0
 offset_bottom = 572.0
 icon = ExtResource("9_sgwqr")
 
-[node name="STATUS3" type="Label" parent="."]
-layout_mode = 0
-offset_left = -31.0
-offset_top = 127.0
-offset_right = 22.0
-offset_bottom = 141.0
-theme = ExtResource("7_b1eyc")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 16
-text = "BASE P."
-
-[node name="BASE_HEALTH" parent="." instance=ExtResource("10_h87oc")]
-layout_mode = 0
-offset_left = -40.0
-offset_top = 136.0
-offset_right = 22.0
-offset_bottom = 164.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "[right][dim]00[/dim]1"
-
-[node name="STATUS2" type="Label" parent="."]
-layout_mode = 0
-offset_left = -31.0
-offset_top = 80.0
-offset_right = 22.0
-offset_bottom = 94.0
-theme = ExtResource("7_b1eyc")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 16
-text = "POWER"
-
-[node name="CURRENT_HEALTH" parent="." instance=ExtResource("10_h87oc")]
-layout_mode = 0
-offset_left = -40.0
-offset_top = 89.0
-offset_right = 22.0
-offset_bottom = 117.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "[right][dim]00[/dim]1"
+[connection signal="pressed" from="MECH_BOX/PARTS_BUTTON" to="MECH_BOX/PARTS_BUTTON" method="_on_pressed"]
 
 [editable path="SubViewportContainer/SubViewport/MECHS_NODE/BLUE_MECH_001"]
 [editable path="SubViewportContainer/SubViewport/MECHS_NODE/RED_MECH_001"]

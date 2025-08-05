@@ -82,7 +82,14 @@ func on_equip_pressed():
 	STATE.ON_BACK_BUTTON_PRESSED = on_cancel_equip_part_pop_up
 
 func on_recycle_button_pressed():
-	#todo show popup
+	var current_part:Part = LINQ.First(STATE.PARTS, func (part:Part):
+		return part.ID == STATE.CURRENT_PART_ID);
+	current_part.status= ENUMS.PART_STATUS.NOT_AVAILABLE
+	STATE.RECYCLE_POINTS+=current_part.recycle_points
+	show_parts()
+	STATUS_BAR.update_status()
+	DATA.save_game_state_to_user_data()
+	DATA.save_parts_to_user_data()
 	pass
 
 func on_sell_button_pressed():
@@ -105,6 +112,7 @@ func on_part_pressed(id:int):
 		SELL_BUTTON.disabled = false
 		SELL_BUTTON.visible = true
 		BUY_BUTTON.visible = false
+		RECYCLE_BUTTON.visible = true;
 		RECYCLE_BUTTON.disabled = false
 		EQUIP_BUTTON.disabled = false
 		EQUIP_BUTTON.visible = true
@@ -119,6 +127,8 @@ func on_part_pressed(id:int):
 		BUY_BUTTON.visible = true
 		SELL_BUTTON.disabled = true
 		SELL_BUTTON.visible = false
+
+		RECYCLE_BUTTON.visible = true;
 		RECYCLE_BUTTON.disabled = true
 		EQUIP_BUTTON.visible = true
 		EQUIP_BUTTON.disabled = true
@@ -129,6 +139,8 @@ func on_part_pressed(id:int):
 		SELL_BUTTON.visible = true
 		BUY_BUTTON.disabled = true
 		BUY_BUTTON.visible = false
+
+		RECYCLE_BUTTON.visible = true;
 		RECYCLE_BUTTON.disabled = true
 		EQUIP_BUTTON.visible = true
 		EQUIP_BUTTON.disabled = true
@@ -139,6 +151,8 @@ func on_part_pressed(id:int):
 		SELL_BUTTON.visible = true
 		BUY_BUTTON.disabled = true
 		BUY_BUTTON.visible = false
+
+		RECYCLE_BUTTON.visible = true;
 		RECYCLE_BUTTON.disabled = true
 		EQUIP_BUTTON.visible = false
 		EQUIP_BUTTON.disabled = true
@@ -149,6 +163,8 @@ func on_part_pressed(id:int):
 		SELL_BUTTON.visible = true
 		BUY_BUTTON.disabled = true
 		BUY_BUTTON.visible = false
+
+		RECYCLE_BUTTON.visible = true;
 		RECYCLE_BUTTON.disabled = true
 		EQUIP_BUTTON.visible = true
 		EQUIP_BUTTON.disabled = true

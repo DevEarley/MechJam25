@@ -34,7 +34,10 @@ func _on_PILOTS_pressed():
 	STATE.ON_BACK_BUTTON_PRESSED = _on_back_to_start_menu
 
 func _on_MECHS_pressed():
+
+	STATE.CURRENT_MECH_ID = 0;
 	MECH_MENU.show_mechs()
+
 	STATE.MECH_MENU_CANVAS.show()
 	STATE.START_MENU_CANVAS.hide()
 	STATE.ON_BACK_BUTTON_PRESSED = _on_back_to_start_menu

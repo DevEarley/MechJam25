@@ -2,14 +2,13 @@ extends Node
 var MECH_BOX_PREFAB = preload("res://prefabs/mech_box_small.tscn")
 
 func show_mechs():
-	STATE.CURRENT_MECH_ID = 0;
 	var MECH_BUTTONS = STATE.MECH_MENU_CANVAS.get_node("Control/SCROLLABLE/BUTTONS")
 	for child in MECH_BUTTONS.get_children():
 		child.queue_free()
 	var button
 	for mech:Mech in STATE.MECHS:
 
-		var mech_button = DATA_TO_UI.build_mech_box_small(MECH_BOX_PREFAB, mech)
+		var mech_button = DATA_TO_UI.build_mech_box(MECH_BOX_PREFAB.instantiate(), mech)
 
 
 		mech_button.connect("pressed",on_mech_pressed.bind(mech.ID))
@@ -18,6 +17,7 @@ func show_mechs():
 		if(mech.ID == STATE.CURRENT_MECH_ID):
 			button = mech_button
 	on_mech_pressed(STATE.CURRENT_MECH_ID)
+
 
 
 func on_mech_pressed(id):
@@ -72,8 +72,8 @@ func on_buy_mech():
 func on_repair_mech():
 	var mech:Mech = LINQ.First(STATE.MECHS, func (mech:Mech):
 		return mech.ID == STATE.CURRENT_MECH_ID);
-	STATE.CREDITS-=mech.cost
-	mech.status = ENUMS.MECH_STATUS.IN_GARAGE
+	STATE.RECYCLE_POINTS-=1
+	mech.current_health += 1
 	DATA.save_game_state_to_user_data()
 	DATA.save_mechs_to_user_data()
 	STATUS_BAR.update_status()

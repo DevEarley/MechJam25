@@ -1,4 +1,9 @@
 extends Node
+
+func _input(event:InputEvent):
+	if(event.is_action_released("refresh")):
+		load_or_create_everything()
+
 func save_everything():
 	save_game_state_to_user_data()
 	save_mechs_to_user_data()
@@ -7,8 +12,7 @@ func save_everything():
 	save_pilots_to_user_data()
 	save_voicemails_to_user_data()
 
-func load_data() -> void:
-
+func load_or_create_everything():
 
 	load_or_create_user_user_options()
 	load_or_create_user_locations()
@@ -18,6 +22,10 @@ func load_data() -> void:
 	load_or_create_user_pilots()
 	load_or_create_user_voicemails()
 	load_or_create_user_game_state()
+	STATUS_BAR.update_status()
+
+func load_data() -> void:
+	load_or_create_everything()
 	STATE.CURRENT_MISSION = LINQ.First(STATE.MISSIONS,func (mission:Mission):return mission.status == ENUMS.MISSION_STATUS.IN_PROGRESS)
 	STATE.HAS_MISSION_IN_PROGRESS = STATE.CURRENT_MISSION !=null;
 	STATUS_BAR.update_status()
@@ -43,6 +51,8 @@ func on_initial_script_done():
 
 
 func load_or_create_user_missions():
+
+	STATE.MISSIONS = []
 	var slot_index = 1
 	var section = "SAVESLOT_%s"%slot_index
 	var user_data = ConfigFile.new()
@@ -171,6 +181,7 @@ func save_missions_to_user_data():
 		print(err)
 
 func load_or_create_user_parts():
+	STATE.PARTS=[]
 	var slot_index = 1
 	var section = "SAVESLOT_%s"%slot_index
 	var user_data = ConfigFile.new()
@@ -284,6 +295,7 @@ func save_parts_to_user_data():
 		print(err)
 
 func load_or_create_user_pilots():
+	STATE.PILOTS=[]
 	var slot_index = 1
 	var section = "SAVESLOT_%s"%slot_index
 	var user_data = ConfigFile.new()
@@ -388,6 +400,8 @@ func save_pilots_to_user_data():
 		print(err)
 
 func load_or_create_user_locations():
+
+	STATE.LOCATIONS = []
 	var slot_index = 1
 	var section = "SAVESLOT_%s"%slot_index
 	var user_data = ConfigFile.new()
@@ -453,6 +467,7 @@ func save_locations_to_user_data():
 		print(err)
 
 func load_or_create_user_mechs():
+	STATE.MECHS = []
 	var slot_index = 1
 	var section = "SAVESLOT_%s"%slot_index
 	var user_data = ConfigFile.new()
@@ -675,6 +690,7 @@ func save_game_state_to_user_data():
 
 
 func load_or_create_user_voicemails():
+	STATE.VOICEMAILS
 	var slot_index = 1
 	var section = "SAVESLOT_%s"%slot_index
 	var user_data = ConfigFile.new()

@@ -224,7 +224,7 @@ text = "[center]EQUIP PART"
 [node name="MECH_LIST" type="ScrollContainer" parent="."]
 offset_left = 8.0
 offset_top = 64.0
-offset_right = 658.0
+offset_right = 603.0
 offset_bottom = 578.0
 
 [node name="MECH_BUTTONS" type="VBoxContainer" parent="MECH_LIST"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://b6udq8vvo4y28"]
+[gd_scene load_steps=13 format=3 uid="uid://b6udq8vvo4y28"]
 
 [ext_resource type="Texture2D" uid="uid://x66vokp7xc81" path="res://UI/ui-sheet-1.svg" id="1_7t0a2"]
 [ext_resource type="Script" uid="uid://dnxelvv2iqrt4" path="res://scene-scripts/status-bar.gd" id="1_ujn7t"]
 [ext_resource type="Texture2D" uid="uid://l6oe44m1j68v" path="res://UI/ui-sheet-1.png" id="2_ujn7t"]
 [ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="2_vmkjb"]
+[ext_resource type="RichTextEffect" uid="uid://cnvbgn55pb5hs" path="res://text-FX/new_rich_text_effect.tres" id="5_d0ec2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d0ec2"]
 atlas = ExtResource("2_ujn7t")
@@ -86,10 +87,12 @@ offset_top = 675.0
 offset_right = 120.0
 offset_bottom = 710.0
 theme = ExtResource("2_vmkjb")
+bbcode_enabled = true
 text = "[0]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+custom_effects = [ExtResource("5_d0ec2")]
 
 [node name="MECH_TEXT" type="RichTextLabel" parent="StatusBar"]
 clip_contents = false
@@ -99,10 +102,12 @@ offset_top = 675.0
 offset_right = 248.0
 offset_bottom = 710.0
 theme = ExtResource("2_vmkjb")
+bbcode_enabled = true
 text = "[0]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+custom_effects = [ExtResource("5_d0ec2")]
 
 [node name="PILOT_TEXT" type="RichTextLabel" parent="StatusBar"]
 clip_contents = false
@@ -112,10 +117,12 @@ offset_top = 675.0
 offset_right = 368.0
 offset_bottom = 710.0
 theme = ExtResource("2_vmkjb")
+bbcode_enabled = true
 text = "[0]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+custom_effects = [ExtResource("5_d0ec2")]
 
 [node name="MISSION_TIME" type="Label" parent="StatusBar"]
 layout_mode = 1
@@ -171,10 +178,12 @@ offset_top = 675.0
 offset_right = 1032.0
 offset_bottom = 710.0
 theme = ExtResource("2_vmkjb")
+bbcode_enabled = true
 text = "[0]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+custom_effects = [ExtResource("5_d0ec2")]
 
 [node name="CREDITS" type="RichTextLabel" parent="StatusBar"]
 clip_contents = false
@@ -184,7 +193,9 @@ offset_top = 675.0
 offset_right = 1152.0
 offset_bottom = 710.0
 theme = ExtResource("2_vmkjb")
+bbcode_enabled = true
 text = "[0]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+custom_effects = [ExtResource("5_d0ec2")]
