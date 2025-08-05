@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bwlhvw7r5jrdg"]
+[gd_scene load_steps=19 format=4 uid="uid://bwlhvw7r5jrdg"]
 
 [ext_resource type="Environment" uid="uid://c7ssmhiiplyg8" path="res://world_environment.tres" id="1_2e7hn"]
 [ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="1_eucbt"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://c5y2ylmr1vdhh" path="res://prefabs/show_part_info_button.gd" id="4_e4vel"]
 [ext_resource type="Material" uid="uid://dj2chdusgvktn" path="res://materials/world_mat_alt.tres" id="4_nfuy1"]
 [ext_resource type="PackedScene" uid="uid://dpgf5w3yji5il" path="res://parts-3D/heat-blade.glb" id="5_jh33o"]
+[ext_resource type="Material" uid="uid://058wo108arlc" path="res://materials/windows_mat.tres" id="7_rhp2j"]
 
 [sub_resource type="Animation" id="Animation_d1idq"]
 length = 0.001
@@ -162,21 +163,22 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_nfuy1")
 
 [node name="HEAT_BLADE" parent="SubViewportContainer/SubViewport/PARTS_NODE" instance=ExtResource("5_jh33o")]
-transform = Transform3D(0.976582, -0.215144, -1.5482e-08, 0.215144, 0.976582, -7.1932e-08, 3.05952e-08, 6.69166e-08, 1, 0.186366, -0.119, -1.16733e-07)
+transform = Transform3D(0.79886, -0.414514, 3.29659e-09, 0.414514, 0.79886, -6.61392e-08, 2.75357e-08, 6.02249e-08, 0.9, 0.0982654, 0.375826, -1.16733e-07)
 visible = false
 
 [node name="HEAT-BLADE" parent="SubViewportContainer/SubViewport/PARTS_NODE/HEAT_BLADE" index="0"]
 layers = 4
+surface_material_override/0 = ExtResource("4_nfuy1")
 
 [node name="ICE_BLADE" type="Node3D" parent="SubViewportContainer/SubViewport/PARTS_NODE"]
-transform = Transform3D(0.976582, -0.215144, -1.5482e-08, 0.215144, 0.976582, -7.1932e-08, 3.05952e-08, 6.69166e-08, 1, 0.186366, -0.119, -1.16733e-07)
+transform = Transform3D(0.79886, -0.414514, 3.29659e-09, 0.414514, 0.79886, -6.61392e-08, 2.75357e-08, 6.02249e-08, 0.9, 0.0982654, 0.375826, -1.16733e-07)
 visible = false
 
 [node name="HEAT-BLADE" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/PARTS_NODE/ICE_BLADE"]
 layers = 4
-material_override = ExtResource("4_nfuy1")
 mesh = SubResource("ArrayMesh_04fvn")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("7_rhp2j")
 
 [node name="Button" parent="." instance=ExtResource("2_jh33o")]
 layout_mode = 1

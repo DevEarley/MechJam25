@@ -17,14 +17,25 @@ do[quit]
 go[end]
 [YES]
 say[Yeah, sure.]YOU
-say[OK, Just refer to me as the 'Benefactor']???
-say[I have a mission for you.]Benefactor
-say[There is a pilot I'd like you to talk to.]Benefator
-say[You can find more info about the mission on your PC]Benefactor
-say[I assigned the mission to you. You can find it on the missions menu.]Benefator
-say[Also, I am giving you an allowance of ten thousand credits per day.]Benefator
-say[If you let me down, I am cutting you off. So don't screw with me.]Benefactor
+say[OK, Just refer to me as the 'Benefactor'.]???
+say[Obtain a mech and recruit a pilot.]Benefator
+choice[How will I afford a mech?,Who are you?,Where can I find a pilot?, Why me?]
+[How will I afford a mech?]
+go[end]
+[Who are you?]
+say[To you, I am your ‘Benefactor’. Besides that, I am no one to you.]Benefactor
+go[end]
+[Where can I find a pilot?]
+say[Pick up your phone and call your acquaintances.]Benefactor
+say[I am sure you can persuade them with enough credits.]Benefactor
+go[end]
+[Why me?]
+say[No more questions.]Benefactor
+[end]
+say[Everyday, I will move ten thousand credits into your account.]Benefator
+say[If you let me down, I am cutting you off.]Benefactor
+say[I will have a mission for you tomorrow.]Benefactor
+say[Do not miss my call.]Benefactor
 say[*CLICK*]
 say[YOU RECIEVE 10000 CREDITS]
 do[get credits(10000)]
-[end]

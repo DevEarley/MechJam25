@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://q3apfh65koxm"]
+[gd_scene load_steps=24 format=3 uid="uid://q3apfh65koxm"]
 
 [ext_resource type="Script" uid="uid://bxy3br0irscae" path="res://scripts/add-self-to-scaled-ui.gd" id="1_xg1py"]
 [ext_resource type="PackedScene" uid="uid://bunfxp7cx281n" path="res://prefabs/title-bar-wide.tscn" id="2_0u6b5"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cpjutl2vxvyra" path="res://addons/mrminimal_camera_shake/scripts/shaky_camera.gd" id="5_cgepm"]
 [ext_resource type="PackedScene" uid="uid://dimmt4xbgqqdb" path="res://mechs-3D/mech-001.glb" id="6_5ucbf"]
 [ext_resource type="AnimationLibrary" uid="uid://n8a7jdk5h04r" path="res://addons/mrminimal_camera_shake/animations/shaky_camera_lib.tres" id="6_15bby"]
+[ext_resource type="Material" uid="uid://b123ia1205hm8" path="res://materials/garage_mat.tres" id="6_1000w"]
 [ext_resource type="Environment" uid="uid://c7ssmhiiplyg8" path="res://world_environment.tres" id="7_jg0gq"]
 [ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="9_jg0gq"]
 [ext_resource type="FontFile" uid="uid://bctd8hc7xxt4f" path="res://fonts/VCRFont.ttf" id="10_7g1db"]
@@ -266,6 +267,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -2.43374, -1.39491)
 
 [node name="GARAGE" parent="SubViewportContainer/SubViewport/garage-1" index="0"]
 layers = 1288
+surface_material_override/0 = ExtResource("6_1000w")
 
 [node name="WINDOWS" parent="SubViewportContainer/SubViewport/garage-1" index="1"]
 layers = 1288
