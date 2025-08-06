@@ -196,17 +196,17 @@ static func display_node_for_part(id,part_nodes_parent):
 			3:
 				part_nodes_parent.get_node("RED_NUT").show();
 			4:
-				part_nodes_parent.get_node("BLUE_NUT").show();
+				part_nodes_parent.get_node("BLUE_PLATE").show();
 			5:
-				part_nodes_parent.get_node("RED_NUT").show();
+				part_nodes_parent.get_node("RED_PLATE").show();
 			6:
-				part_nodes_parent.get_node("BLUE_NUT").show();
+				part_nodes_parent.get_node("BLUE_NADE").show();
 			7:
-				part_nodes_parent.get_node("RED_NUT").show();
+				part_nodes_parent.get_node("RED_NADE").show();
 			8:
-				part_nodes_parent.get_node("BLUE_NUT").show();
+				part_nodes_parent.get_node("BLUE_GUN").show()
 			9:
-				part_nodes_parent.get_node("RED_NUT").show();
+				part_nodes_parent.get_node("RED_GUN").show();
 
 static func display_node_for_mech(id,mech_nodes_parent):
 

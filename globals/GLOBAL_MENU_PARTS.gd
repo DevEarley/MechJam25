@@ -22,16 +22,17 @@ func show_parts():
 	EQUIP_BUTTON.disabled = true
 
 	RECYCLE_BUTTON = part_buttons.get_node("RECYCLE_BUTTON");
-	RECYCLE_BUTTON.connect("pressed",on_recycle_button_pressed)
+	RECYCLE_BUTTON.ON_TIMER_DONE = on_recycle_button_pressed
 	RECYCLE_BUTTON.disabled = true
 
 	SELL_BUTTON= part_buttons.get_node("SELL_BUTTON");
-	SELL_BUTTON.connect("pressed",on_sell_button_pressed)
+	SELL_BUTTON.ON_TIMER_DONE = on_sell_button_pressed
 	SELL_BUTTON.disabled = true
 	SELL_BUTTON.visible = false
 
 	BUY_BUTTON= part_buttons.get_node("BUY_BUTTON");
-	BUY_BUTTON.connect("pressed",on_buy_button_pressed)
+	BUY_BUTTON.ON_TIMER_DONE = on_buy_button_pressed
+
 	BUY_BUTTON.disabled = true
 	BUY_BUTTON.visible = true
 

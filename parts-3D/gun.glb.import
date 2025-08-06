@@ -1,0 +1,44 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://cpi68ocj80k7q"
+path="res://.godot/imported/gun.glb-e8634cbcd9c5f5fbfb9929d3ca127ada.scn"
+
+[deps]
+
+source_file="res://parts-3D/gun.glb"
+dest_files=["res://.godot/imported/gun.glb-e8634cbcd9c5f5fbfb9929d3ca127ada.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=0.33
+nodes/import_as_skeleton_bones=false
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=false
+meshes/generate_lods=false
+meshes/create_shadow_meshes=false
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=false
+animation/import=false
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=false
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"materials": {
+"Cube1_auv": {
+"use_external/enabled": true,
+"use_external/path": "uid://b1vqp2jv6egmn"
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=0

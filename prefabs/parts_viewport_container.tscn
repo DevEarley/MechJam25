@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://bwlhvw7r5jrdg"]
+[gd_scene load_steps=22 format=4 uid="uid://bwlhvw7r5jrdg"]
 
 [ext_resource type="Environment" uid="uid://c7ssmhiiplyg8" path="res://world_environment.tres" id="1_2e7hn"]
 [ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="1_eucbt"]
@@ -6,10 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://0oxg82vlhnmf" path="res://parts-3D/nut.glb" id="2_eucbt"]
 [ext_resource type="PackedScene" uid="uid://jqfcrgtcowf1" path="res://prefabs/left-hand-button.tscn" id="2_jh33o"]
 [ext_resource type="Material" uid="uid://b1vqp2jv6egmn" path="res://materials/world_mat.tres" id="3_6bmw3"]
+[ext_resource type="PackedScene" uid="uid://dwt6agdcbir3q" path="res://parts-3D/somethin.glb" id="3_84ir1"]
 [ext_resource type="Texture2D" uid="uid://l6oe44m1j68v" path="res://UI/ui-sheet-1.png" id="3_e4vel"]
 [ext_resource type="Script" uid="uid://c5y2ylmr1vdhh" path="res://prefabs/show_part_info_button.gd" id="4_e4vel"]
 [ext_resource type="Material" uid="uid://dj2chdusgvktn" path="res://materials/world_mat_alt.tres" id="4_nfuy1"]
+[ext_resource type="PackedScene" uid="uid://bnwhcocf005p5" path="res://parts-3D/nade.glb" id="5_ghbwn"]
 [ext_resource type="PackedScene" uid="uid://dpgf5w3yji5il" path="res://parts-3D/heat-blade.glb" id="5_jh33o"]
+[ext_resource type="PackedScene" uid="uid://cpi68ocj80k7q" path="res://parts-3D/gun.glb" id="6_qixk2"]
 [ext_resource type="Material" uid="uid://058wo108arlc" path="res://materials/windows_mat.tres" id="7_rhp2j"]
 
 [sub_resource type="Animation" id="Animation_d1idq"]
@@ -145,6 +148,51 @@ blend_times = [&"spin", &"spin_up", 0.25, &"spin_up", &"spin", 0.25]
 
 [node name="PARTS_NODE" type="Node3D" parent="SubViewportContainer/SubViewport"]
 
+[node name="BLUE_PLATE" parent="SubViewportContainer/SubViewport/PARTS_NODE" instance=ExtResource("3_84ir1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46457, 0)
+visible = false
+
+[node name="Cube2" parent="SubViewportContainer/SubViewport/PARTS_NODE/BLUE_PLATE" index="0"]
+layers = 4
+
+[node name="RED_PLATE" parent="SubViewportContainer/SubViewport/PARTS_NODE" instance=ExtResource("3_84ir1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46457, 0)
+visible = false
+
+[node name="Cube2" parent="SubViewportContainer/SubViewport/PARTS_NODE/RED_PLATE" index="0"]
+layers = 4
+material_override = ExtResource("4_nfuy1")
+
+[node name="BLUE_NADE" parent="SubViewportContainer/SubViewport/PARTS_NODE" instance=ExtResource("5_ghbwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.661284, 0)
+visible = false
+
+[node name="Cylinder1" parent="SubViewportContainer/SubViewport/PARTS_NODE/BLUE_NADE" index="0"]
+layers = 4
+
+[node name="RED_NADE" parent="SubViewportContainer/SubViewport/PARTS_NODE" instance=ExtResource("5_ghbwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.661284, 0)
+visible = false
+
+[node name="Cylinder1" parent="SubViewportContainer/SubViewport/PARTS_NODE/RED_NADE" index="0"]
+layers = 4
+material_override = ExtResource("4_nfuy1")
+
+[node name="RED_GUN" parent="SubViewportContainer/SubViewport/PARTS_NODE" instance=ExtResource("6_qixk2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03781, 1.00503, 0)
+visible = false
+
+[node name="Cube1" parent="SubViewportContainer/SubViewport/PARTS_NODE/RED_GUN" index="0"]
+layers = 4
+material_override = ExtResource("4_nfuy1")
+
+[node name="BLUE_GUN" parent="SubViewportContainer/SubViewport/PARTS_NODE" instance=ExtResource("6_qixk2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03781, 1.00503, 0)
+visible = false
+
+[node name="Cube1" parent="SubViewportContainer/SubViewport/PARTS_NODE/BLUE_GUN" index="0"]
+layers = 4
+
 [node name="BLUE_NUT" parent="SubViewportContainer/SubViewport/PARTS_NODE" instance=ExtResource("2_eucbt")]
 transform = Transform3D(-0.134246, 0.228578, 0.964225, 0.862284, 0.506425, 5.02135e-07, -0.488308, 0.831436, -0.265085, 0, 1, 0)
 visible = false
@@ -212,5 +260,11 @@ mouse_filter = 2
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
 
+[editable path="SubViewportContainer/SubViewport/PARTS_NODE/BLUE_PLATE"]
+[editable path="SubViewportContainer/SubViewport/PARTS_NODE/RED_PLATE"]
+[editable path="SubViewportContainer/SubViewport/PARTS_NODE/BLUE_NADE"]
+[editable path="SubViewportContainer/SubViewport/PARTS_NODE/RED_NADE"]
+[editable path="SubViewportContainer/SubViewport/PARTS_NODE/RED_GUN"]
+[editable path="SubViewportContainer/SubViewport/PARTS_NODE/BLUE_GUN"]
 [editable path="SubViewportContainer/SubViewport/PARTS_NODE/BLUE_NUT"]
 [editable path="SubViewportContainer/SubViewport/PARTS_NODE/HEAT_BLADE"]

@@ -7,8 +7,11 @@ say[I am sending you your daily allowance now.]Benefactor
 say[I trust you know what to do with it.]Benefactor
 go[end]
 [M2]
+if[rng_bool(2),M3]
 say[I sent you more money.]Benefactor
 say[Don't let me down.]Benefactor
+go[end]
+[M3]
 [end]
 do[get credits(10000)]
 say[*CLICK*]
