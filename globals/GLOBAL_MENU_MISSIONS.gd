@@ -66,7 +66,7 @@ func check_for_completed_missions():
 			DATA.save_everything()
 
 func on_instant_player_result_script_finished():
-	QS.run_script_from_file("daily") #for instant user
+	QS.run_script_from_file(preload("res://quest_scripts/daily.qs.tres")) #for instant user
 	STATE.ON_QUEST_SCRIPT_DONE = on_back_to_mission_list
 
 func on_start_mission_script_finished():

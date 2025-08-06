@@ -41,7 +41,8 @@ func show_difficulty_select_or_main_menu():
 
 	elif STATE.DIFFICULTY_ALREADY_CHOSEN == false:
 		STATE.DIFFICULTY_SETTTING_MENU_CANVAS.hide()
-		QS.run_script_from_file("intro")
+		QS.run_script_from_file(preload("res://quest_scripts/intro.qs.tres"))
+
 		STATE.ON_QUEST_SCRIPT_DONE = on_initial_script_done
 
 func on_initial_script_done():
@@ -56,11 +57,12 @@ func load_or_create_user_missions():
 	var slot_index = 1
 	var section = "SAVESLOT_%s"%slot_index
 	var user_data = ConfigFile.new()
-	var resource_data = ConfigFile.new()
+	var resource_data:ConfigFile = ConfigFile.new()
 	var user_data_err = user_data.load("user://missions.cfg")
-	var resource_data_err = resource_data.load("res://data/data_missions.cfg")
+	var static_data = preload("res://data/DATA_MISSIONS.tres").CONFIG_FILE
+	var resource_data_error = resource_data.parse(static_data)
 	STATE.MISSIONS_VERSION = resource_data.get_value("DEFAULT","VERSION")
-	if(user_data_err == 7 ):
+	if(user_data_err != 0 ):
 		var number_of_missions:int = resource_data.get_value("DEFAULT","NUMBER_OF_MISSIONS")
 		for mission_index in number_of_missions:
 			create_and_push_mission_to_STATE("DEFAULT",mission_index,resource_data)
@@ -187,9 +189,13 @@ func load_or_create_user_parts():
 	var user_data = ConfigFile.new()
 	var resource_data = ConfigFile.new()
 	var user_data_err = user_data.load("user://parts.cfg")
-	var resource_data_err = resource_data.load("res://data/data_parts.cfg")
+	#var resource_data_err = resource_data.load("res://data/data_parts.cfg")
+	var static_data = preload("res://data/DATA_PARTS.tres").CONFIG_FILE
+	var resource_data_err = resource_data.parse(static_data)
+
+
 	STATE.PARTS_VERSION = resource_data.get_value("DEFAULT","VERSION")
-	if(user_data_err == 7 ):
+	if(user_data_err != 0 ):
 		var number_of_parts:int = resource_data.get_value("DEFAULT","NUMBER_OF_PARTS")
 		for part_index in number_of_parts:
 			create_and_push_part_to_STATE("DEFAULT",part_index,resource_data)
@@ -301,9 +307,12 @@ func load_or_create_user_pilots():
 	var user_data = ConfigFile.new()
 	var resource_data = ConfigFile.new()
 	var user_data_err = user_data.load("user://pilots.cfg")
-	var resource_data_err = resource_data.load("res://data/data_pilots.cfg")
+	#var resource_data_err = resource_data.load("res://data/data_pilots.cfg")
+
+	var static_data = preload("res://data/DATA_PILOTS.tres").CONFIG_FILE
+	var resource_data_err = resource_data.parse(static_data)
 	STATE.PILOTS_VERSION = resource_data.get_value("DEFAULT","VERSION")
-	if(user_data_err == 7 ):
+	if(user_data_err != 0 ):
 		var number_of_pilots:int = resource_data.get_value("DEFAULT","NUMBER_OF_PILOTS")
 		for pilot_index in number_of_pilots:
 			create_and_push_pilot_to_STATE("DEFAULT",pilot_index,resource_data)
@@ -407,9 +416,12 @@ func load_or_create_user_locations():
 	var user_data = ConfigFile.new()
 	var resource_data = ConfigFile.new()
 	var user_data_err = user_data.load("user://locations.cfg")
-	var resource_data_err = resource_data.load("res://data/data_locations.cfg")
+	#var resource_data_err = resource_data.load("res://data/data_locations.cfg")
+
+	var static_data = preload("res://data/DATA_LOCATIONS.tres").CONFIG_FILE
+	var resource_data_err = resource_data.parse(static_data)
 	STATE.LOCATIONS_VERSION = resource_data.get_value("DEFAULT","VERSION")
-	if(user_data_err == 7):
+	if(user_data_err != 0):
 		var number_of_locations:int = resource_data.get_value("DEFAULT","NUMBER_OF_LOCATIONS")
 		for location_index in number_of_locations:
 			create_and_push_location_to_STATE("DEFAULT",location_index,resource_data)
@@ -473,9 +485,13 @@ func load_or_create_user_mechs():
 	var user_data = ConfigFile.new()
 	var resource_data = ConfigFile.new()
 	var user_data_err = user_data.load("user://mechs.cfg")
-	var resource_data_err = resource_data.load("res://data/data_mechs.cfg")
+	#var resource_data_err = resource_data.load("res://data/data_mechs.cfg")
+
+
+	var static_data = preload("res://data/DATA_MECHS.tres").CONFIG_FILE
+	var resource_data_err = resource_data.parse(static_data)
 	STATE.MECHS_VERSION= resource_data.get_value("DEFAULT","VERSION")
-	if(user_data_err == 7):
+	if(user_data_err != 0):
 		var number_of_mechs:int = resource_data.get_value("DEFAULT","NUMBER_OF_MECHS")
 		for mech_index in number_of_mechs:
 			create_and_push_mech_to_STATE("DEFAULT",mech_index,resource_data)
@@ -577,9 +593,12 @@ func load_or_create_user_user_options():
 	var user_data = ConfigFile.new()
 	var resource_data = ConfigFile.new()
 	var user_data_err = user_data.load("user://user_options.cfg")
-	var resource_data_err = resource_data.load("res://data/data_user_options.cfg")
+	#var resource_data_err = resource_data.load("res://data/data_user_options.cfg")
+
+	var static_data = preload("res://data/DATA_USER_OPTIONS.tres").CONFIG_FILE
+	var resource_data_err = resource_data.parse(static_data)
 	STATE.USER_OPTIONS_VERSION = resource_data.get_value("DEFAULT","VERSION")
-	if(user_data_err == 7 ):
+	if(user_data_err != 0 ):
 		create_and_push_user_option_to_STATE("DEFAULT",resource_data)
 		save_user_options_to_user_data()
 	elif(user_data_err != 7 ):
@@ -617,9 +636,12 @@ func load_or_create_user_game_state():
 	var user_data = ConfigFile.new()
 	var resource_data = ConfigFile.new()
 	var user_data_err = user_data.load("user://game_state.cfg")
-	var resource_data_err = resource_data.load("res://data/data_game_state.cfg")
+	#var resource_data_err = resource_data.load("res://data/data_game_state.cfg")
+
+	var static_data = preload("res://data/DATA_GAME_STATE.tres").CONFIG_FILE
+	var resource_data_err = resource_data.parse(static_data)
 	STATE.GAME_STATE_VERSION = resource_data.get_value("DEFAULT","VERSION")
-	if(user_data_err == 7 ):
+	if(user_data_err != 0 ):
 		create_and_push_game_state_data_to_STATE("DEFAULT",resource_data)
 		save_game_state_to_user_data()
 	elif(user_data_err != 7 ):
@@ -696,9 +718,12 @@ func load_or_create_user_voicemails():
 	var user_data = ConfigFile.new()
 	var resource_data = ConfigFile.new()
 	var user_data_err = user_data.load("user://voicemails.cfg")
-	var resource_data_err = resource_data.load("res://data/data_voicemails.cfg")
+	#var resource_data_err = resource_data.load("res://data/data_voicemails.cfg")
+
+	var static_data = preload("res://data/DATA_VOICEMAILS.tres").CONFIG_FILE
+	var resource_data_err = resource_data.parse(static_data)
 	STATE.VOICEMAILS_VERSION = resource_data.get_value("DEFAULT","VERSION")
-	if(user_data_err == 7 ):
+	if(user_data_err != 0 ):
 		var number_of_voicemails:int = resource_data.get_value("DEFAULT","NUMBER_OF_VOICEMAILS")
 		for voicemail_index in number_of_voicemails:
 			create_and_push_voicemail_to_STATE("DEFAULT",voicemail_index,resource_data)

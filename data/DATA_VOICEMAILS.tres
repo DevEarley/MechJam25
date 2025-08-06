@@ -1,0 +1,124 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bvui47k2kxwtm"]
+
+[ext_resource type="Script" uid="uid://d2s1dviaylokl" path="res://resource-types/multiline_resource.gd" id="1_475fa"]
+
+[resource]
+script = ExtResource("1_475fa")
+CONFIG_FILE = "[DEFAULT]
+
+VERSION=1.0
+
+NUMBER_OF_VOICEMAILS =10
+
+VOICEMAIL_0_ID=0
+VOICEMAIL_0_STATUS=1
+VOICEMAIL_0_FROM=\"Jack\"
+VOICEMAIL_0_SCRIPT=\"say[Hey, It’s me. Give me a call back. ASAP!]Jack
+\"
+VOICEMAIL_0_CALLBACK=\"say[*RING!! RING!!*]
+say[Hello?]Jack
+say[I know it has been awhile, but I need your help with something.]Jack
+say[I lost contact with Jill while she was on a mission.]Jack
+say[She was looking for this part in the Sunfire Desert.]Jack
+say[I sent the location and mission request to your PC.]Jack
+say[Buy a mech and assign me as the pilot.]Jack
+say[When you are all ready, hit Start Mission.]Jack
+do[unlock pilot(0)]
+do[unlock mission(0)]
+[end]
+\"
+
+
+
+VOICEMAIL_1_ID=1
+VOICEMAIL_1_STATUS=0
+VOICEMAIL_1_FROM=\"Jack\"
+VOICEMAIL_1_SCRIPT=\"say[I sent a mission to your PC. Do not fail me.]Benefactor
+do[unlock mission(2)]
+\"
+VOICEMAIL_1_CALLBACK=\"say[*RING!! RING!!*]
+say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
+say[*CLICK*]
+\"
+
+VOICEMAIL_2_ID=2
+VOICEMAIL_2_STATUS=0
+VOICEMAIL_2_FROM=\"Jack\"
+VOICEMAIL_2_SCRIPT=\"say[Alright, nevermind.]\"
+VOICEMAIL_2_CALLBACK=\"
+say[RING RING!]
+say[RING RING!]
+say[Hey this is Jack. Sorry I can't get to the phone right now. Please leave a message.]Jack's Voicemail
+say[BEEP!]\"
+
+VOICEMAIL_3_ID=3
+VOICEMAIL_3_STATUS=0
+VOICEMAIL_3_FROM=\"???\"
+VOICEMAIL_3_SCRIPT=\"say[BEEP BEEP BEEP]\"
+VOICEMAIL_3_CALLBACK=\"
+say[RING RING!]
+say[RING RING!]
+say[This line has been disconnected. Good bye.]???
+say[BEEP!]\"
+
+VOICEMAIL_4_ID=4
+VOICEMAIL_4_STATUS=0
+VOICEMAIL_4_FROM=\"???\"
+VOICEMAIL_4_SCRIPT=\"say[BEEP BEEP BEEP]\"
+VOICEMAIL_4_CALLBACK=\"
+say[RING RING!]
+say[RING RING!]
+say[This line has been disconnected. Good bye.]???
+say[BEEP!]\"
+
+
+VOICEMAIL_5_ID=5
+VOICEMAIL_5_STATUS=0
+VOICEMAIL_5_FROM=\"???\"
+VOICEMAIL_5_SCRIPT=\"say[BEEP BEEP BEEP]\"
+VOICEMAIL_5_CALLBACK=\"
+say[RING RING!]
+say[RING RING!]
+say[This line has been disconnected. Good bye.]???
+say[BEEP!]\"
+
+VOICEMAIL_6_ID=6
+VOICEMAIL_6_STATUS=0
+VOICEMAIL_6_FROM=\"???\"
+VOICEMAIL_6_SCRIPT=\"say[BEEP BEEP BEEP]\"
+VOICEMAIL_6_CALLBACK=\"
+say[RING RING!]
+say[RING RING!]
+say[This line has been disconnected. Good bye.]???
+say[BEEP!]\"
+
+VOICEMAIL_7_ID=7
+VOICEMAIL_7_STATUS=0
+VOICEMAIL_7_FROM=\"???\"
+VOICEMAIL_7_SCRIPT=\"say[BEEP BEEP BEEP]\"
+VOICEMAIL_7_CALLBACK=\"
+say[RING RING!]
+say[RING RING!]
+say[This line has been disconnected. Good bye.]???
+say[BEEP!]\"
+
+VOICEMAIL_8_ID=8
+VOICEMAIL_8_STATUS=0
+VOICEMAIL_8_FROM=\"???\"
+VOICEMAIL_8_SCRIPT=\"say[BEEP BEEP BEEP]\"
+VOICEMAIL_8_CALLBACK=\"
+say[RING RING!]
+say[RING RING!]
+say[This line has been disconnected. Good bye.]???
+say[BEEP!]\"
+
+VOICEMAIL_9_ID=9
+VOICEMAIL_9_STATUS=0
+VOICEMAIL_9_FROM=\"???\"
+VOICEMAIL_9_SCRIPT=\"say[BEEP BEEP BEEP]\"
+VOICEMAIL_9_CALLBACK=\"
+say[RING RING!]
+say[RING RING!]
+say[This line has been disconnected. Good bye.]???
+say[BEEP!]\"
+"

@@ -1,4 +1,10 @@
-say[RING! RING!]
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://u31bojbflyb3"]
+
+[ext_resource type="Script" uid="uid://bts0r80d6wia2" path="res://resource-types/QUEST_SCRIPT_resource.gd" id="1_nkgge"]
+
+[resource]
+script = ExtResource("1_nkgge")
+QUEST_SCRIPT = "say[RING! RING!]
 say[Nice work on that last mission]Benefactor
 if[rng_bool(2),M1]
 go[M2]
@@ -16,3 +22,4 @@ go[end]
 do[get credits(10000)]
 say[*CLICK*]
 say[YOU RECIEVE 10000 CREDITS]
+"

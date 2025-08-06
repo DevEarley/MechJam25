@@ -51,10 +51,8 @@ func init_script(_script:String,callback:Callable):
 	CURRENT_SCRIPT = lines
 	CURRENT_LINE = 0;
 
-func run_script_from_file(filename):
-		var intro_script = FileAccess.open("res://quest_scripts/%s.qs.txt"%filename, FileAccess.READ)
-		var content = intro_script.get_as_text()
-		QS.run_script(content)
+func run_script_from_file(resource:QuestScriptResource):
+	QS.run_script(resource.QUEST_SCRIPT)
 
 func run_script(_script:String):
 	if(_script == ""):
@@ -66,6 +64,7 @@ func run_script(_script:String):
 	var lines:PackedStringArray = _script.split("\n",false)
 
 	for line in lines.size():
+		lines.set(line,lines[line].replace("’","'"))
 		lines.set(line,lines[line].trim_prefix("\t"))
 		lines.set(line,(lines[line]).strip_edges(true,true))
 	CURRENT_LINE = 0;

@@ -20,7 +20,8 @@ func on_debrief():
 
 func do_daily_if_needed_or_go_to_menu():
 		#if(STATE.DID_DAILY_FOR_MISSION == false):
-		QS.run_script_from_file("daily") #for 24hour user
+		QS.run_script_from_file(preload("res://quest_scripts/daily.qs.tres"))
+
 		STATE.ON_QUEST_SCRIPT_DONE = MISSIONS_MENU.on_back_to_mission_list
 		#else:
 		#STATE.MISSIONS_MENU_CANVAS.hide()

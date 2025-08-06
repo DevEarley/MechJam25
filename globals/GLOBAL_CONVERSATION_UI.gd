@@ -52,6 +52,11 @@ func _ready():
 	STATE.CONVERSATION_CONTROL_NODE.hide()
 	STATE.CONVERSATION_SCREEN_CANVAS.hide()
 
+func _input(event: InputEvent) -> void:
+	if(event.is_action_released("ui_accept") && SHOWING_CHOICES == false && QS.RUNNING_SCRIPT== true):
+		QS.continue_script()
+		CONTINUE_LABEL.hide();
+
 #QS.start();
 
 #QS.continue_script()
@@ -149,8 +154,3 @@ func continue_conversation(message,character_name):
 	NAME.text = character_name
 	await WAIT.for_seconds(0.2)
 	CONTINUE_LABEL.show()
-
-func _input(event: InputEvent) -> void:
-	if(event.is_action_released("ui_accept") && SHOWING_CHOICES == false && QS.RUNNING_SCRIPT== true):
-		QS.continue_script()
-		CONTINUE_LABEL.hide();

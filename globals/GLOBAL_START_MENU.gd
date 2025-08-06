@@ -44,9 +44,8 @@ func on_voice_mail_done(voicemail:Voicemail):
 		choices[Yes! Call them back.,No! Don't call them back.]\n
 		[Yes! Call them back.]\n
 		%s\n
-		go[end]\n
+		go[No! Don't call them back.]\n
 		[No! Don't call them back.]\n
-		[end]\n
 		say[*Click*]\n" % voicemail.callback_script
 	QS.run_script(callback_script)
 

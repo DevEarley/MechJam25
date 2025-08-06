@@ -1,134 +1,142 @@
-[DEFAULT]
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dpx708c66hlxt"]
+
+[ext_resource type="Script" uid="uid://d2s1dviaylokl" path="res://resource-types/multiline_resource.gd" id="1_bxldj"]
+
+[resource]
+script = ExtResource("1_bxldj")
+QUEST_SCRIPT = ""
+CONFIG_FILE = "[DEFAULT]
 
 VERSION=1.0
 NUMBER_OF_MECHS=10
 
 MECH_0_ID=0
-MECH_0_NAME="BLUE OCELOT"
+MECH_0_NAME=\"BLUE OCELOT\"
 MECH_0_COST=5000
 MECH_0_BASE_HEALTH=4
 MECH_0_CURRENT_HEALTH=4
 MECH_0_MISSION_ID=-1
 MECH_0_THEME=1
 MECH_0_STATUS=0
-MECH_0_FLAVOR="Great for special ops. Has amazing resale value. "
+MECH_0_FLAVOR=\"Great for special ops. Has amazing resale value. \"
 MECH_0_TYPE=1
 MECH_0_COMPATIBLE_ENVIRONMENTS=Array[int]([0,1,2])
 MECH_0_SELLING_PRICE=5000
 
 MECH_1_ID=1
-MECH_1_NAME="RED OCELOT"
+MECH_1_NAME=\"RED OCELOT\"
 MECH_1_COST=10000
 MECH_1_BASE_HEALTH=4
 MECH_1_CURRENT_HEALTH=4
 MECH_1_MISSION_ID=-1
 MECH_1_THEME=1
 MECH_1_STATUS=0
-MECH_1_FLAVOR="Great for special ops. Waterproof, but has trouble underwater. "
+MECH_1_FLAVOR=\"Great for special ops. Waterproof, but has trouble underwater. \"
 MECH_1_TYPE=1
 MECH_1_COMPATIBLE_ENVIRONMENTS=Array[int]([0,1,2])
 MECH_1_SELLING_PRICE=5000
 
 MECH_2_ID=2
-MECH_2_NAME="TEST OCELOT"
+MECH_2_NAME=\"TEST OCELOT\"
 MECH_2_COST=10000
 MECH_2_BASE_HEALTH=4
 MECH_2_CURRENT_HEALTH=4
 MECH_2_MISSION_ID=-1
 MECH_2_THEME=1
 MECH_2_STATUS=0
-MECH_2_FLAVOR="Great for special ops. Waterproof, but has trouble underwater. "
+MECH_2_FLAVOR=\"Great for special ops. Waterproof, but has trouble underwater. \"
 MECH_2_TYPE=1
 MECH_2_COMPATIBLE_ENVIRONMENTS=Array[int]([0,1,2])
 MECH_2_SELLING_PRICE=5000
 
 MECH_3_ID=3
-MECH_3_NAME="MOSQUITO"
+MECH_3_NAME=\"MOSQUITO\"
 MECH_3_COST=10000
 MECH_3_BASE_HEALTH=4
 MECH_3_CURRENT_HEALTH=4
 MECH_3_MISSION_ID=-1
 MECH_3_THEME=1
 MECH_3_STATUS=0
-MECH_3_FLAVOR="Great for special ops. Waterproof, but has trouble underwater. "
+MECH_3_FLAVOR=\"Great for special ops. Waterproof, but has trouble underwater. \"
 MECH_3_TYPE=1
 MECH_3_COMPATIBLE_ENVIRONMENTS=Array[int]([0,1,2])
 MECH_3_SELLING_PRICE=5000
 
 MECH_4_ID=4
-MECH_4_NAME="OCELOT"
+MECH_4_NAME=\"OCELOT\"
 MECH_4_COST=10000
 MECH_4_BASE_HEALTH=4
 MECH_4_CURRENT_HEALTH=4
 MECH_4_MISSION_ID=-1
 MECH_4_THEME=1
 MECH_4_STATUS=0
-MECH_4_FLAVOR="Great for special ops. Waterproof, but has trouble underwater. "
+MECH_4_FLAVOR=\"Great for special ops. Waterproof, but has trouble underwater. \"
 MECH_4_TYPE=1
 MECH_4_COMPATIBLE_ENVIRONMENTS=Array[int]([0,1,2])
 MECH_4_SELLING_PRICE=5000
 
 MECH_5_ID=5
-MECH_5_NAME="OCELOT"
+MECH_5_NAME=\"OCELOT\"
 MECH_5_COST=10000
 MECH_5_BASE_HEALTH=4
 MECH_5_CURRENT_HEALTH=4
 MECH_5_MISSION_ID=-1
 MECH_5_THEME=1
 MECH_5_STATUS=0
-MECH_5_FLAVOR="Great for special ops. Waterproof, but has trouble underwater. "
+MECH_5_FLAVOR=\"Great for special ops. Waterproof, but has trouble underwater. \"
 MECH_5_TYPE=1
 MECH_5_COMPATIBLE_ENVIRONMENTS=Array[int]([0,1,2])
 MECH_5_SELLING_PRICE=5000
 
 MECH_6_ID=6
-MECH_6_NAME="OCELOT"
+MECH_6_NAME=\"OCELOT\"
 MECH_6_COST=10000
 MECH_6_BASE_HEALTH=4
 MECH_6_CURRENT_HEALTH=4
 MECH_6_MISSION_ID=-1
 MECH_6_THEME=1
 MECH_6_STATUS=0
-MECH_6_FLAVOR="Great for special ops. Waterproof, but has trouble underwater. "
+MECH_6_FLAVOR=\"Great for special ops. Waterproof, but has trouble underwater. \"
 MECH_6_TYPE=1
 MECH_6_COMPATIBLE_ENVIRONMENTS=Array[int]([0,1,2])
 MECH_6_SELLING_PRICE=5000
 
 MECH_7_ID=7
-MECH_7_NAME="OCELOT"
+MECH_7_NAME=\"OCELOT\"
 MECH_7_COST=10000
 MECH_7_BASE_HEALTH=4
 MECH_7_CURRENT_HEALTH=4
 MECH_7_MISSION_ID=-1
 MECH_7_THEME=1
 MECH_7_STATUS=0
-MECH_7_FLAVOR="Great for special ops. Waterproof, but has trouble underwater. "
+MECH_7_FLAVOR=\"Great for special ops. Waterproof, but has trouble underwater. \"
 MECH_7_TYPE=1
 MECH_7_COMPATIBLE_ENVIRONMENTS=Array[int]([0,1,2])
 MECH_7_SELLING_PRICE=5000
 
 MECH_8_ID=8
-MECH_8_NAME="OCELOT"
+MECH_8_NAME=\"OCELOT\"
 MECH_8_COST=10000
 MECH_8_BASE_HEALTH=4
 MECH_8_CURRENT_HEALTH=4
 MECH_8_MISSION_ID=-1
 MECH_8_THEME=1
 MECH_8_STATUS=0
-MECH_8_FLAVOR="Great for special ops. Waterproof, but has trouble underwater. "
+MECH_8_FLAVOR=\"Great for special ops. Waterproof, but has trouble underwater. \"
 MECH_8_TYPE=1
 MECH_8_COMPATIBLE_ENVIRONMENTS=Array[int]([0,1,2])
 MECH_8_SELLING_PRICE=5000
 
 MECH_9_ID=9
-MECH_9_NAME="OCELOT"
+MECH_9_NAME=\"OCELOT\"
 MECH_9_COST=10000
 MECH_9_BASE_HEALTH=4
 MECH_9_CURRENT_HEALTH=4
 MECH_9_MISSION_ID=-1
 MECH_9_THEME=1
 MECH_9_STATUS=0
-MECH_9_FLAVOR="Great for special ops. Waterproof, but has trouble underwater. "
+MECH_9_FLAVOR=\"Great for special ops. Waterproof, but has trouble underwater. \"
 MECH_9_TYPE=1
 MECH_9_COMPATIBLE_ENVIRONMENTS=Array[int]([0,1,2])
 MECH_9_SELLING_PRICE=5000
+"

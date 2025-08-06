@@ -1,11 +1,18 @@
-[DEFAULT]
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c1njm63f2symx"]
+
+[ext_resource type="Script" uid="uid://d2s1dviaylokl" path="res://resource-types/multiline_resource.gd" id="1_yya66"]
+
+[resource]
+script = ExtResource("1_yya66")
+QUEST_SCRIPT = ""
+CONFIG_FILE = "[DEFAULT]
 
 VERSION=1.0
 NUMBER_OF_PARTS=10
 
 PART_0_ID=0
-PART_0_NAME="Heat Blade"
-PART_0_FLAVOR="Sharp."
+PART_0_NAME=\"Heat Blade\"
+PART_0_FLAVOR=\"Sharp.\"
 PART_0_THEME=0
 PART_0_RECYCLE_POINTS = 1
 PART_0_SELLING_PRICE = 10
@@ -19,8 +26,8 @@ PART_0_STATUS=0
 PART_0_COST=1000
 
 PART_1_ID=1
-PART_1_NAME="Ice Blade"
-PART_1_FLAVOR="Sharp."
+PART_1_NAME=\"Ice Blade\"
+PART_1_FLAVOR=\"Sharp.\"
 PART_1_THEME=1
 PART_1_RECYCLE_POINTS = 1
 PART_1_SELLING_PRICE = 10
@@ -34,9 +41,9 @@ PART_1_STATUS=0
 PART_1_COST=1000
 
 PART_2_ID=2
-PART_2_NAME="Red Nut"
+PART_2_NAME=\"Red Nut\"
 PART_2_THEME=1
-PART_2_FLAVOR="A random assortment."
+PART_2_FLAVOR=\"A random assortment.\"
 PART_2_RECYCLE_POINTS = 10
 PART_2_SELLING_PRICE = 0
 PART_2_MISSION_ODDS =3
@@ -49,9 +56,9 @@ PART_2_STATUS=0
 PART_2_COST=1000
 
 PART_3_ID=3
-PART_3_NAME="Blue Nut"
+PART_3_NAME=\"Blue Nut\"
 PART_3_THEME=1
-PART_3_FLAVOR="A random assortment."
+PART_3_FLAVOR=\"A random assortment.\"
 PART_3_RECYCLE_POINTS = 10
 PART_3_SELLING_PRICE = 0
 PART_3_MISSION_ODDS =3
@@ -64,9 +71,9 @@ PART_3_STATUS=0
 PART_3_COST=1000
 
 PART_4_ID=4
-PART_4_NAME="Blue Nut"
+PART_4_NAME=\"Blue Nut\"
 PART_4_THEME=1
-PART_4_FLAVOR="A random assortment."
+PART_4_FLAVOR=\"A random assortment.\"
 PART_4_RECYCLE_POINTS = 10
 PART_4_SELLING_PRICE = 0
 PART_4_MISSION_ODDS =3
@@ -79,9 +86,9 @@ PART_4_STATUS=0
 PART_4_COST=1000
 
 PART_5_ID=5
-PART_5_NAME="Blue Nut"
+PART_5_NAME=\"Blue Nut\"
 PART_5_THEME=1
-PART_5_FLAVOR="A random assortment."
+PART_5_FLAVOR=\"A random assortment.\"
 PART_5_RECYCLE_POINTS = 10
 PART_5_SELLING_PRICE = 0
 PART_5_MISSION_ODDS =3
@@ -94,9 +101,9 @@ PART_5_STATUS=0
 PART_5_COST=1000
 
 PART_6_ID=6
-PART_6_NAME="Blue Nut"
+PART_6_NAME=\"Blue Nut\"
 PART_6_THEME=1
-PART_6_FLAVOR="A random assortment."
+PART_6_FLAVOR=\"A random assortment.\"
 PART_6_RECYCLE_POINTS = 10
 PART_6_SELLING_PRICE = 0
 PART_6_MISSION_ODDS =3
@@ -109,9 +116,9 @@ PART_6_STATUS=0
 PART_6_COST=1000
 
 PART_7_ID=7
-PART_7_NAME="Blue Nut"
+PART_7_NAME=\"Blue Nut\"
 PART_7_THEME=1
-PART_7_FLAVOR="A random assortment."
+PART_7_FLAVOR=\"A random assortment.\"
 PART_7_RECYCLE_POINTS = 10
 PART_7_SELLING_PRICE = 0
 PART_7_MISSION_ODDS =3
@@ -124,9 +131,9 @@ PART_7_STATUS=0
 PART_7_COST=1000
 
 PART_8_ID=8
-PART_8_NAME="Blue Nut"
+PART_8_NAME=\"Blue Nut\"
 PART_8_THEME=1
-PART_8_FLAVOR="A random assortment."
+PART_8_FLAVOR=\"A random assortment.\"
 PART_8_RECYCLE_POINTS = 10
 PART_8_SELLING_PRICE = 0
 PART_8_MISSION_ODDS =3
@@ -140,9 +147,9 @@ PART_8_COST=1000
 
 
 PART_9_ID=9
-PART_9_NAME="Blue Nut"
+PART_9_NAME=\"Blue Nut\"
 PART_9_THEME=1
-PART_9_FLAVOR="A random assortment."
+PART_9_FLAVOR=\"A random assortment.\"
 PART_9_RECYCLE_POINTS = 10
 PART_9_SELLING_PRICE = 0
 PART_9_MISSION_ODDS =3
@@ -153,3 +160,4 @@ PART_9_TYPE = 0
 PART_9_ATTACHED_TO_MECH_ID=0
 PART_9_STATUS=0
 PART_9_COST=1000
+"

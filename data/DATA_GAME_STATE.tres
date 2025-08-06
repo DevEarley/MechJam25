@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://fc8yhdmdggqd"]
+
+[ext_resource type="Script" uid="uid://d2s1dviaylokl" path="res://resource-types/multiline_resource.gd" id="1_qxrse"]
+
+[resource]
+script = ExtResource("1_qxrse")
+QUEST_SCRIPT = ""
+CONFIG_FILE = "[DEFAULT]
+
+VERSION=1.0
+
+CREDITS=0
+RECYCLE_POINTS=0
+USE_REAL_TIME =true
+DIFFICULTY_ALREADY_CHOSEN=false
+"

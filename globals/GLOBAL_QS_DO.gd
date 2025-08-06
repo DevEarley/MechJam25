@@ -55,7 +55,7 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 			QS.CURRENT_LINE+=1;
 			QS.run_script__process_line();
 
-		"get pilot":
+		"get pilot", "unlock pilot":
 			var pilot_id = int(values[0])
 			var pilot:Pilot = LINQ.First(STATE.PILOTS,func (pilot:Pilot): return pilot.ID == pilot_id);
 			pilot.status = ENUMS.PILOT_STATUS.HIRED
@@ -65,7 +65,7 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 			QS.CURRENT_LINE+=1;
 			QS.run_script__process_line();
 
-		"get mech":
+		"get mech", "unlock mech":
 			var mech_id = int(values[0])
 			var mech:Mech = LINQ.First(STATE.MECHS,func (mech:Mech): return mech.ID == mech_id);
 			mech.status = ENUMS.MECH_STATUS.IN_GARAGE
@@ -75,7 +75,7 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 			QS.CURRENT_LINE+=1;
 			QS.run_script__process_line();
 
-		"get part":
+		"get part","unlock part":
 			var part_id = int(values[0])
 			var part:Part = LINQ.First(STATE.PARTS,func (part:Part): return part.ID == part_id);
 			part.status = ENUMS.PART_STATUS.PURCHASED
