@@ -4,7 +4,6 @@
 
 [resource]
 script = ExtResource("1_4skxx")
-QUEST_SCRIPT = ""
 CONFIG_FILE = "[DEFAULT]
 
 VERSION=1.0
@@ -15,7 +14,7 @@ PILOT_0_MECH_ID=-1
 PILOT_0_NAME=\"Jack\"
 PILOT_0_COST=1000
 PILOT_0_THEME=1
-PILOT_0_STATUS=0
+PILOT_0_STATUS=4
 PILOT_0_FLAVOR=\"Loves Jill and exploring space. Is afraid of deep water.\"
 PILOT_0_CRITERIA_FOR_MISSION_ODDS=3
 PILOT_0_CRITERIA_FOR_RETURNING_ODDS=2

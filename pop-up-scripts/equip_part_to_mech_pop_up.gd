@@ -66,6 +66,8 @@ func on_look_at_mech(mech:Mech):
 	$Mech_SubViewportContainer/BUY_MECH_BUTTON.hide()
 
 func on_pick_mech(mech:Mech):
+	SFX.play_click_sound()
+
 	STATE.CURRENT_MECH_ID = mech.ID
 	DATA_TO_UI.display_node_for_mech(STATE.CURRENT_MECH_ID,$Mech_SubViewportContainer/SubViewportContainer/SubViewport/MECHS_NODE);
 	#$Mech_SubViewportContainer/Button.show()
@@ -92,6 +94,8 @@ func on_pick_mech(mech:Mech):
 	#ON_CANCEL.call()
 
 func on_equip_button_pressed():
+
+	SFX.play_equip_sound()
 	var current_part:Part = LINQ.First(STATE.PARTS, func (part:Part):
 		return part.ID == STATE.CURRENT_PART_ID);
 	current_part.attached_to_mech_id = STATE.CURRENT_MECH_ID;

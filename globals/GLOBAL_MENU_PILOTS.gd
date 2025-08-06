@@ -22,6 +22,7 @@ func show_pilots():
 		PILOT_BUTTONS.add_child(pilot_box)
 
 func hire_pilot(pilot:Pilot):
+	SFX.play_click_sound()
 	STATE.CREDITS -= pilot.cost
 	pilot.status = ENUMS.PILOT_STATUS.HIRED;
 	DATA.save_pilots_to_user_data()

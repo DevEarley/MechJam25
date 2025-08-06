@@ -84,6 +84,19 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 			DATA.save_parts_to_user_data()
 			QS.CURRENT_LINE+=1;
 			QS.run_script__process_line();
+		"play":
+			match(values[0]):
+				"success":
+					SFX.play_mission_success_sound()
+					pass
+				"fail","failure":
+					SFX.play_mission_fail_sound()
+
+					pass
+				"ring ring":
+					SFX.play_ring_ring_sound()
+					pass
+			pass
 
 
 	pass;

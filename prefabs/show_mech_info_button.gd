@@ -71,6 +71,8 @@ static func get_status_text_for_mech(mech:Mech):
 			return "UNAVAILABLE";
 
 func on_pick_mech(mech:Mech):
+
+	SFX.play_click_sound()
 	if(mech.status == ENUMS.MECH_STATUS.IN_GARAGE):
 		mech.status = ENUMS.MECH_STATUS.ON_MISSION #don't save yet
 		mech.mission_id = STATE.CURRENT_MISSION_ID

@@ -43,6 +43,7 @@ func on_voice_mail_done(voicemail:Voicemail):
 	var callback_script = "say[Call back?]\n
 		choices[Yes! Call them back.,No! Don't call them back.]\n
 		[Yes! Call them back.]\n
+		do[play(ring ring)]
 		%s\n
 		go[No! Don't call them back.]\n
 		[No! Don't call them back.]\n
@@ -50,6 +51,7 @@ func on_voice_mail_done(voicemail:Voicemail):
 	QS.run_script(callback_script)
 
 func on_play_voicemail(voicemail:Voicemail ):
+	SFX.play_click_sound()
 	STATE.START_MENU_CANVAS.hide()
 	STATE.STATUS_BAR_CANVAS.hide()
 	STATE.ON_QUEST_SCRIPT_DONE = on_voice_mail_done.bind(voicemail)

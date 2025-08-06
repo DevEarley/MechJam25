@@ -69,6 +69,7 @@ func on_buy_button_pressed():
 
 
 func on_unequip_pressed():
+	SFX.play_unequip_sound()
 	var current_part:Part = LINQ.First(STATE.PARTS, func (part:Part):
 		return part.ID == STATE.CURRENT_PART_ID);
 	current_part.attached_to_mech_id=0
@@ -78,11 +79,14 @@ func on_unequip_pressed():
 	DATA.save_parts_to_user_data()
 
 func on_equip_pressed():
+	SFX.play_equip_sound()
 	STATE.EQUIP_PART_TO_MECH_POP_UP.show();
 	STATE.EQUIP_PART_TO_MECH_POP_UP.show_popup(on_cancel_equip_part_pop_up)
 	STATE.ON_BACK_BUTTON_PRESSED = on_cancel_equip_part_pop_up
 
 func on_recycle_button_pressed():
+
+	SFX.play_recycle_sound()
 	var current_part:Part = LINQ.First(STATE.PARTS, func (part:Part):
 		return part.ID == STATE.CURRENT_PART_ID);
 	current_part.status= ENUMS.PART_STATUS.NOT_AVAILABLE
@@ -94,6 +98,7 @@ func on_recycle_button_pressed():
 	pass
 
 func on_sell_button_pressed():
+	SFX.play_sell_sound()
 	var current_part:Part = LINQ.First(STATE.PARTS, func (part:Part):
 		return part.ID == STATE.CURRENT_PART_ID);
 	current_part.status= ENUMS.PART_STATUS.NOT_AVAILABLE
@@ -105,6 +110,7 @@ func on_sell_button_pressed():
 
 func on_part_pressed(id:int):
 
+	SFX.play_click_sound()
 	STATE.CURRENT_PART_ID = id;
 	var current_part:Part = LINQ.First(STATE.PARTS, func (part:Part):
 		return part.ID == STATE.CURRENT_PART_ID);

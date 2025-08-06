@@ -39,6 +39,7 @@ func show_difficulty_select_or_main_menu():
 		CONVERSATION_UI.hide_ui()
 		STATE.MAIN_MENU_CANVAS.show()
 
+		MUSIC.play_music_for_main_menu()
 	elif STATE.DIFFICULTY_ALREADY_CHOSEN == false:
 		STATE.DIFFICULTY_SETTTING_MENU_CANVAS.hide()
 		QS.run_script_from_file(preload("res://quest_scripts/intro.qs.tres"))

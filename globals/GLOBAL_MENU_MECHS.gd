@@ -21,6 +21,8 @@ func show_mechs():
 
 
 func on_mech_pressed(id):
+
+	SFX.play_click_sound()
 	STATE.CURRENT_MECH_ID = id;
 	var current_mech:Mech = LINQ.First(STATE.MECHS, func (mech:Mech):
 		return mech.ID == STATE.CURRENT_MECH_ID);

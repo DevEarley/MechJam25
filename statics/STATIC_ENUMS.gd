@@ -39,7 +39,8 @@ enum MECH_STATUS {
 	FOR_SALE = 0,
 	IN_GARAGE = 1,
 	ON_MISSION = 2,
-	NOT_AVAILABLE =3 # Destroyed or sold
+	NOT_AVAILABLE =3,
+	DESTROYED=4
 }
 
 enum RETURN_CRITERIA {

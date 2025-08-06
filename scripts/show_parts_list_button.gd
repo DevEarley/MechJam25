@@ -23,6 +23,8 @@ func _on_pressed() -> void:
 				VBOX.add_child(part_button)
 
 func _on_part_pressed(part:Part,button) -> void:
+	SFX.play_click_sound()
+
 	for child in VBOX.get_children():
 		var child_PART_BOX  = child.get_node("PART_BOX")
 		child_PART_BOX.hide()

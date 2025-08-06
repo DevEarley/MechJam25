@@ -43,6 +43,8 @@ static func get_status_text_for_pilot(pilot:Pilot):
 			return "UNAVAILABLE";
 
 func on_pick_pilot(pilot:Pilot):
+
+	SFX.play_click_sound()
 	if(pilot.status == ENUMS.PILOT_STATUS.HIRED):
 		pilot.status = ENUMS.PILOT_STATUS.ON_MISSION #don't save yet
 		STATE.CURRENT_PILOT_ID = pilot.ID;

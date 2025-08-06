@@ -120,6 +120,8 @@ func on_back_to_mission_list():
 	show_missions()
 
 func on_mission_pressed(mission:Mission):
+
+	SFX.play_click_sound()
 	STATE.ON_BACK_BUTTON_PRESSED =on_back_to_mission_list
 	MAP.CURSOR.show()
 	MISSION_BUTTONS_CONTAINER.hide();

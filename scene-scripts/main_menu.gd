@@ -9,6 +9,8 @@ func _ready():
 	$OPTIONS.connect("pressed",_on_OPTIONS_pressed)
 
 func on_back_to_main_menu():
+
+	MUSIC.play_music_for_main_menu()
 	MAP.ANIMATOR.play("still")
 	STATE.MAIN_MENU_CANVAS.show()
 	STATE.OPTIONS_MENU_CANVAS.hide()
@@ -16,6 +18,8 @@ func on_back_to_main_menu():
 
 
 func go_to_start_menu():
+
+		SFX.play_start_mission_sound()
 		STATUS_BAR.update_status()
 		MAP.ANIMATOR.play("idle")
 		STATE.MAIN_MENU_CANVAS.hide()
@@ -47,6 +51,7 @@ func _on_EXIT_pressed():
 	get_tree().quit()
 
 func _on_OPTIONS_pressed():
+	SFX.play_click_sound()
 	STATE.MAIN_MENU_CANVAS.hide()
 	STATE.OPTIONS_MENU_CANVAS.show()
 	STATE.ON_BACK_BUTTON_PRESSED = on_back_to_main_menu

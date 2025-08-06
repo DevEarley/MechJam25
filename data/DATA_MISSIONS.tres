@@ -5,10 +5,8 @@
 [resource]
 script = ExtResource("1_2ubog")
 CONFIG_FILE = "[DEFAULT]
-
 VERSION=1.0
-NUMBER_OF_MISSIONS=10
-
+NUMBER_OF_MISSIONS=37
 MISSION_0_ID=0
 MISSION_0_NAME=\"MISSION-000\"
 MISSION_0_FLAVOR=\"Help Jack find Jill\"
@@ -17,13 +15,11 @@ MISSION_0_ONE_OVER_ODDS_FOR_MISSION=6
 MISSION_0_ONE_OVER_ODDS_FOR_RETURNING=12
 MISSION_0_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
 MISSION_0_LOCATION_ID=0
-MISSION_0_STATUS=1
+MISSION_0_STATUS=0
 MISSION_0_TIME_STARTED=0
-
-MISSION_0_START_SCRIPT=\"
-say[Love the smell of a brand new mech!]Jack
-say[I’ll be back in a day.]Jack
-say[Good odds I’ll make it back in one piece.]Jack
+MISSION_0_START_SCRIPT=\"say[Love the smell of a brand new mech!]Jack
+say[I'll be back in a day.]Jack
+say[Good odds I'll make it back in one piece.]Jack
 \"
 MISSION_0_SUCCESS_SCRIPT=\"
 say[Good news, bad news.]Jack
@@ -41,10 +37,10 @@ do[get part(1)]
 say[...and I got a lead on Jill.]Jack
 say[I met this porter along the way home. His name was Jam.]Jack
 say[Jam told me there is a new Gradient settlement in the Muckthorn swamp]Jack
-say[Jill wasn’t a Gradient, but her friends usually were.]Jack
+say[Jill wasn't a Gradient, but her friends usually were.]Jack
 say[Can I use this mech again? I want to see if anyone at this settlement knows her.]Jack
-choices[Yes. let’s go look for Jill., No. maybe tomorrow.]
-[Yes. let’s go look for Jill.]
+choices[Yes. let's go look for Jill., No. maybe tomorrow.]
+[Yes. let's go look for Jill.]
 do[unlock mission(1)]
 go[end]
 [No. maybe tomorrow.]
@@ -56,6 +52,7 @@ say[Jack broke his crown. GAME OVER]
 do[game over]
 \"
 
+
 MISSION_1_ID=1
 MISSION_1_NAME=\"MISSION-001\"
 MISSION_1_FLAVOR=\"Destroy two targets at location.\"
@@ -66,12 +63,32 @@ MISSION_1_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
 MISSION_1_LOCATION_ID=1
 MISSION_1_STATUS=0
 MISSION_1_TIME_STARTED=0
-
-MISSION_1_START_SCRIPT=\"say[START!]\"
-
-MISSION_1_SUCCESS_SCRIPT=\"do[complete mission(1)]
-do[unlock mission(2)]\"
-MISSION_1_FAIL_SCRIPT=\"SAY[What a disaster!]Jack\"
+MISSION_1_START_SCRIPT=\"
+say[Another easy mission.]Jack
+say[Everything considered, it's a nice day out.]Jack
+say[Sun is shining, bees a buzzin. What could go wrong?]Jack
+say[Gonna ask these Gradients about Jill.]Jack
+say[I promise to wash the mech when I get back. I am sure it will have swamp-stink.]Jack
+\"
+MISSION_1_SUCCESS_SCRIPT=\"
+say[*MECH AUTO PILOT HAS BEEN ENGAGED*]
+say[*ONE VOICE MEMO WAS RECORDED YESTERDAY*]
+say[*PLAYING VOICE MEMO*]
+say[Crap! This wasn't a good idea after all.]Jack
+say[The gradients are not ready for anyone to know about this base yet.]Jack
+say[Their scout saw me a mile away. They are closing in now. I imagine I will be detained.]JACK
+say[I'm gonna put on auto-pilot and send it home.]Jack
+say[Sorry, I think I'll be out of commission for a bit.]Jack
+say[*HALT YOU ARE UNDER ARREST!*]???
+say[KEEP LOOKING FOR JILL!]Jack
+say[*STEP OUT OF THE VEHICLE!*]???
+say[DON'T SHOOT! I am coming out.]Jack
+say[*END OF VOICE MEMO.*]
+\"
+MISSION_1_FAIL_SCRIPT=\"
+say[Jack broke his crown. GAME OVER]
+do[game over]
+\"
 
 MISSION_2_ID=2
 MISSION_2_NAME=\"MISSION-002\"
@@ -84,11 +101,19 @@ MISSION_2_LOCATION_ID=2
 MISSION_2_STATUS=0
 MISSION_2_TIME_STARTED=0
 
-MISSION_2_START_SCRIPT=\"say[START!]\"
-
-MISSION_2_SUCCESS_SCRIPT=\"do[complete mission(2)]
-do[unlock mission(3)]\"
-MISSION_2_FAIL_SCRIPT=\"SAY[What a disaster!]Jack\"
+MISSION_2_START_SCRIPT=\"say[I need you to gather intel on a new Gradient base. Rumor says it is near the Muckthorn swamp.]Benefactor
+\"
+MISSION_2_SUCCESS_SCRIPT=\"
+say[I encountered some scouts. I wasn't spotted.](pilot)
+say[Also, I noticed a small camp outside of their base](pilot)
+say[I was able to spot Jack!](pilot)
+say[I know it isn't the Benefactor's mission, but maybe we can save him!]
+do[complete mission(2)]
+\"
+MISSION_2_FAIL_SCRIPT=\"
+say[You may retry this mission.]
+do[unlock mission(2)]
+\"
 
 MISSION_3_ID=3
 MISSION_3_NAME=\"MISSION-003\"
@@ -101,11 +126,20 @@ MISSION_3_LOCATION_ID=3
 MISSION_3_STATUS=0
 MISSION_3_TIME_STARTED=0
 
-MISSION_3_START_SCRIPT=\"say[START!]\"
-MISSION_3_SUCCESS_SCRIPT=\"do[complete mission(3)]
-do[unlock mission(4)]\"
-MISSION_3_FAIL_SCRIPT=\"SAY[What a disaster!]Jack\"
-
+MISSION_3_START_SCRIPT=\"say[I need you to deliver this info to the Dualists in Steelhaven.]Benefactor
+\"
+MISSION_3_SUCCESS_SCRIPT=\"
+say[Well, that was pretty simple. They were happy about the intel.](pilot)
+say[However, I noticed they were very keen on destroying that base in Muckthorn.](pilot)
+say[I am worried about Jack.](pilot)
+say[I know it isn't the Benefactor's mission, but maybe we can still save him!]
+do[complete mission(3)]
+do[unlock mission(4)]
+\"
+MISSION_3_FAIL_SCRIPT=\"
+say[You may retry this mission.]
+do[unlock mission(3)]
+\"
 MISSION_4_ID=4
 MISSION_4_NAME=\"MISSION-004\"
 MISSION_4_FLAVOR=\"MISSION FLAVOR TEXT\"
@@ -115,15 +149,27 @@ MISSION_4_ONE_OVER_ODDS_FOR_RETURNING=12
 MISSION_4_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
 MISSION_4_LOCATION_ID=4
 MISSION_4_STATUS=0
-MISSION_4_PILOT_ID=0
-MISSION_4_STATUS=0
 MISSION_4_TIME_STARTED=0
-
-MISSION_4_START_SCRIPT=\"say[START!]\"
+MISSION_4_START_SCRIPT=\"say[We gotta get Jack out of that swampy camp before the whole place is wiped out!](pilot)
+\"
 MISSION_4_SUCCESS_SCRIPT=\"
+say[Thanks for bustin' me out of there!]Jack
+say[That place was awful! For all their righteousness, them Gradients treat their POW like dogs.](pilot)
+choices[Are you OK Jack?, What should we do next?]
+[Are you OK Jack?]
+say[I am OK. I survived. I am just worried about my sister.]Jack
+[What should we do next?]
+say[Find Jill. I am going to go out on my own for a bit. I need to find her.]Jack
+say[As soon as I find anything I will call you.]Jack
 do[complete mission(4)]
-do[unlock mission(5)]\"
-MISSION_4_FAIL_SCRIPT=\"SAY[What a disaster!]Jack\"
+do[unlock mission(6)]
+do[unlock voicemail(4)]
+do[jack leaves]
+\"
+MISSION_4_FAIL_SCRIPT=\"
+say[You may retry this mission.]
+do[unlock mission(4)]
+\"
 
 MISSION_5_ID=5
 MISSION_5_NAME=\"MISSION-005\"
@@ -136,11 +182,19 @@ MISSION_5_LOCATION_ID=5
 MISSION_5_STATUS=0
 MISSION_5_TIME_STARTED=0
 
-MISSION_5_START_SCRIPT=\"say[START!]\"
+MISSION_5_START_SCRIPT=\"
+say[I wonder what the Dualists will do with all this ammo?](pilot)
+say[According to our intel, Gradients will be spying on any deliveries going in and out of Steelhaven. We need to be careful!](pilot)
+\"
 MISSION_5_SUCCESS_SCRIPT=\"
-do[complete mission(4)]
-do[unlock mission(5)]\"
-MISSION_5_FAIL_SCRIPT=\"SAY[What a disaster!]Jack\"
+say[That wad dicey.](pilot)
+do[complete mission(5)]
+do[unlock voicemail(7)]
+\"
+MISSION_5_FAIL_SCRIPT=\"
+say[You may retry this mission.]
+do[unlock mission(5)]
+\"
 
 MISSION_6_ID=6
 MISSION_6_NAME=\"MISSION-006\"
@@ -152,12 +206,20 @@ MISSION_6_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
 MISSION_6_LOCATION_ID=6
 MISSION_6_STATUS=0
 MISSION_6_TIME_STARTED=0
-
-MISSION_6_START_SCRIPT=\"say[START!]\"
+MISSION_6_START_SCRIPT=\"say[Hey! I am so glad you made it!]Jack
+say[I think the Dualists suck, but man I love their raceways. The EAU is beautiful today.]Jack
+say[Oh, this must be your racer.]
+say[Yo!](pilot)
+say[This race is 24 hours long. I hope you are ready!]Jack
+\"
 MISSION_6_SUCCESS_SCRIPT=\"
-do[complete mission(5)]
-do[unlock mission(6)]\"
-MISSION_6_FAIL_SCRIPT=\"SAY[What a disaster!]Jack\"
+say[Holy crap! You won? What are the odds?!]Jack
+do[unlock voicemail(9)]
+\"
+MISSION_6_FAIL_SCRIPT=\"
+say[Those races are deadly. Next time use better gear.]Jack
+say[Another good pilot gone. RIP.]Jack
+\"
 
 MISSION_7_ID=7
 MISSION_7_NAME=\"MISSION-007\"
@@ -169,12 +231,16 @@ MISSION_7_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
 MISSION_7_LOCATION_ID=7
 MISSION_7_STATUS=0
 MISSION_7_TIME_STARTED=0
-
-MISSION_7_START_SCRIPT=\"say[START!]\"
+MISSION_7_START_SCRIPT=\"say[I find it interesting the big ‘B' wants us to help the Gradients. Weren't we just delivering ammo and stuff to the Dualists? Not very righteous...](pilot)\"
 MISSION_7_SUCCESS_SCRIPT=\"
+say[No serious problems.](pilot)
 do[complete mission(7)]
-do[unlock mission(8)]\"
-MISSION_7_FAIL_SCRIPT=\"SAY[What a disaster!]Jack\"
+do[unlock voicemail(8)]
+\"
+MISSION_7_FAIL_SCRIPT=\"
+say[You may retry this mission.]
+do[unlock mission(7)]
+\"
 
 MISSION_8_ID=8
 MISSION_8_NAME=\"MISSION-008\"
@@ -186,12 +252,12 @@ MISSION_8_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
 MISSION_8_LOCATION_ID=8
 MISSION_8_STATUS=0
 MISSION_8_TIME_STARTED=0
-
-MISSION_8_START_SCRIPT=\"say[START!]\"
+MISSION_8_START_SCRIPT=\"
+\"
 MISSION_8_SUCCESS_SCRIPT=\"
-do[complete mission(8)]
-do[unlock mission(9)]\"
-MISSION_8_FAIL_SCRIPT=\"SAY[What a disaster!]Jack\"
+\"
+MISSION_8_FAIL_SCRIPT=\"
+\"
 
 MISSION_9_ID=9
 MISSION_9_NAME=\"MISSION-009\"
@@ -204,9 +270,667 @@ MISSION_9_LOCATION_ID=9
 MISSION_9_STATUS=0
 MISSION_9_TIME_STARTED=0
 
-MISSION_9_START_SCRIPT=\"say[START!]\"
+MISSION_9_START_SCRIPT=\"say[I hope this doesn't get out of hand.](pilot)
+\"
 MISSION_9_SUCCESS_SCRIPT=\"
+say[Their faces will haunt me for the rest of my life.](pilot)
 do[complete mission(9)]
-do[unlock mission(10)]\"
-MISSION_9_FAIL_SCRIPT=\"SAY[What a disaster!]Jack\"
+do[unlock voicemail(11)]
+\"
+MISSION_9_FAIL_SCRIPT=\"
+say[You may retry this mission.]
+do[unlock mission(9)]
+\"
+
+
+MISSION_10_ID=10
+MISSION_10_NAME=\"MISSION-009\"
+MISSION_10_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_10_FLAVOR_ICON=0
+MISSION_10_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_10_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_10_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_10_LOCATION_ID=9
+MISSION_10_STATUS=0
+MISSION_10_TIME_STARTED=0
+
+
+MISSION_10_START_SCRIPT=\"
+say[You stepped on my cat's tail!]Cat Lady
+say[You better take my cat to the vet.]Cat Lady
+\"
+MISSION_10_SUCCESS_SCRIPT=\"
+say[Awww. There is my baby.]Cat Lady
+say[You better watch where your steppin' next time!]Cat Lady
+do[complete mission(10)]
+\"
+MISSION_10_FAIL_SCRIPT=\"
+say[Where is my baby?!]Cat Lady
+say[I should have never trusted you!]Cat Lady
+\"
+MISSION_11_ID=11
+MISSION_11_NAME=\"MISSION-009\"
+MISSION_11_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_11_FLAVOR_ICON=0
+MISSION_11_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_11_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_11_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_11_LOCATION_ID=9
+MISSION_11_STATUS=0
+MISSION_11_TIME_STARTED=0
+
+MISSION_11_START_SCRIPT=\"
+say[‘B' needs us to find a comms tower? I wonder what they are up to this time](pilot)\"
+MISSION_11_SUCCESS_SCRIPT=\"
+say[What's next boss?](pilot)
+do[complete mission(11)]
+do[unlock voicemail(12)]
+\"
+MISSION_11_FAIL_SCRIPT=\"
+say[You may retry this mission.]
+do[unlock mission(11)]
+\"
+MISSION_12_ID=12
+MISSION_12_NAME=\"MISSION-009\"
+MISSION_12_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_12_FLAVOR_ICON=0
+MISSION_12_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_12_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_12_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_12_LOCATION_ID=9
+MISSION_12_STATUS=0
+MISSION_12_TIME_STARTED=0
+MISSION_12_START_SCRIPT=\"
+say[Alright, my plan is to go in from the west. I will be in-range 12 hours from now. ](pilot)
+\"
+MISSION_12_SUCCESS_SCRIPT=\"
+say[Nothing to it.](pilot)
+do[complete mission(12)]
+do[unlock voicemail(13)]
+\"
+MISSION_12_FAIL_SCRIPT=\"
+say[You may retry this mission.]
+do[unlock mission(12)]
+\"
+MISSION_13_ID=13
+MISSION_13_NAME=\"MISSION-009\"
+MISSION_13_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_13_FLAVOR_ICON=0
+MISSION_13_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_13_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_13_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_13_LOCATION_ID=9
+MISSION_13_STATUS=0
+MISSION_13_TIME_STARTED=0
+MISSION_13_START_SCRIPT=\"
+say[I have a very bad feeling.](pilot)
+\"
+MISSION_13_SUCCESS_SCRIPT=\"
+say[That was too easy.](pilot)
+do[complete mission(13)]
+\"
+MISSION_13_FAIL_SCRIPT=\"
+say[You may retry this mission.]
+do[unlock mission(13)]
+\"
+MISSION_14_ID=14
+MISSION_14_NAME=\"MISSION-009\"
+MISSION_14_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_14_FLAVOR_ICON=0
+MISSION_14_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_14_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_14_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_14_LOCATION_ID=9
+MISSION_14_STATUS=0
+MISSION_14_TIME_STARTED=0
+MISSION_14_START_SCRIPT=\"
+say[I am nervous about this mission, boss.](pilot)
+\"
+MISSION_14_SUCCESS_SCRIPT=\"
+say[I went all the way out there, sent a signal, and nothing happened.](pilot)
+do[complete mission(14)]
+do[unlock voicemail(15)]
+\"
+MISSION_14_FAIL_SCRIPT=\"
+say[You may retry this mission.]
+do[unlock mission(14)]
+\"
+MISSION_15_ID=15
+MISSION_15_NAME=\"MISSION-009\"
+MISSION_15_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_15_FLAVOR_ICON=0
+MISSION_15_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_15_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_15_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_15_LOCATION_ID=9
+MISSION_15_STATUS=0
+MISSION_15_TIME_STARTED=0
+MISSION_15_START_SCRIPT=\"
+say[What are in these scripts? Their file size is so small...](pilot)
+\"
+MISSION_15_SUCCESS_SCRIPT=\"
+say[That satellite came out of nowhere.](pilot)
+say[It fell out of the sky right as I was leaving. I am luck to be alive.](pilot)
+do[complete mission(15)]
+do[unlock mission(16)]
+\"
+MISSION_15_FAIL_SCRIPT=\"
+say[You may retry this mission.]
+do[unlock mission(15)]
+\"
+MISSION_16_ID=16
+MISSION_16_NAME=\"MISSION-009\"
+MISSION_16_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_16_FLAVOR_ICON=0
+MISSION_16_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_16_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_16_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_16_LOCATION_ID=9
+MISSION_16_STATUS=0
+MISSION_16_TIME_STARTED=0
+MISSION_16_START_SCRIPT=\"
+say[Not sure about this boss. Should we really trust this benefactor guy?](pilot)
+\"
+MISSION_16_SUCCESS_SCRIPT=\"
+say[Another satellite. The news said the first one was a freak accident.](pilot)
+say[We did that too. Didn't we?](pilot)
+say[Their blood is on my hands...](pilot)
+do[complete mission(16)]
+do[unlock voicemail(14)]
+do[unlock voicemail(16)]
+\"
+MISSION_16_FAIL_SCRIPT=\"
+say[You may retry this mission.]
+do[unlock mission(16)]
+\"
+MISSION_17_ID=17
+MISSION_17_NAME=\"MISSION-009\"
+MISSION_17_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_17_FLAVOR_ICON=0
+MISSION_17_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_17_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_17_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_17_LOCATION_ID=9
+MISSION_17_STATUS=0
+MISSION_17_TIME_STARTED=0
+MISSION_17_START_SCRIPT=\"
+say[...whatever you say boss...](pilot)
+\"
+MISSION_17_SUCCESS_SCRIPT=\"
+say[It is going to take forever to get to through their bunker.](pilot)
+say[It's like trying to level a mountain with a spoon.](pilot)
+do[unlock mission(17)]
+\"
+MISSION_17_FAIL_SCRIPT=\"
+say[You may retry this mission.]
+do[unlock mission(17)]
+\"
+MISSION_18_ID=18
+MISSION_18_NAME=\"MISSION-009\"
+MISSION_18_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_18_FLAVOR_ICON=0
+MISSION_18_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_18_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_18_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_18_LOCATION_ID=9
+MISSION_18_STATUS=0
+MISSION_18_TIME_STARTED=0
+
+
+MISSION_18_START_SCRIPT=\"
+\"
+MISSION_18_SUCCESS_SCRIPT=\"
+\"
+MISSION_18_FAIL_SCRIPT=\"
+\"
+MISSION_19_ID=10
+MISSION_19_NAME=\"MISSION-009\"
+MISSION_19_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_19_FLAVOR_ICON=0
+MISSION_19_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_19_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_19_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_19_LOCATION_ID=9
+MISSION_19_STATUS=0
+MISSION_19_TIME_STARTED=0
+MISSION_19_START_SCRIPT=\"
+\"
+MISSION_19_SUCCESS_SCRIPT=\"
+\"
+MISSION_19_FAIL_SCRIPT=\"
+\"
+MISSION_20_ID=20
+MISSION_20_NAME=\"MISSION-009\"
+MISSION_20_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_20_FLAVOR_ICON=0
+MISSION_20_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_20_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_20_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_20_LOCATION_ID=9
+MISSION_20_STATUS=0
+MISSION_20_TIME_STARTED=0
+
+
+
+
+
+MISSION_20_START_SCRIPT=\"
+say[Rain slowly starts to tap on the windows of the garage.]
+say[The air smells fresh and you get a chill down your spine.]
+say[The rain's tempo starts to pick up.]
+say[Mech's ready to go boss. You aight?](pilot)
+choices[I'm fine., I'm worried.]
+[I'm fine.]
+go[end]
+[I'm worried.]
+say[You will know it when it's time to trust your gut again.](pilot)
+[end]
+say[Sometimes you gotta just keep pushing forward.](pilot)
+say[We aren't in any position to do anything but make a little progress everyday](pilot)
+\"
+
+MISSION_20_SUCCESS_SCRIPT=\"
+say[I pushed a boulder down a cliff and I killed some random f&*%!^$ people.](pilot)
+say[I have too much callus on my soul...](pilot)
+unlock[]
+\"
+
+MISSION_20_FAIL_SCRIPT=\"
+say[You may retry this mission.]
+do[unlock mission(20)]
+
+\"
+MISSION_21_ID=21
+MISSION_21_NAME=\"MISSION-009\"
+MISSION_21_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_21_FLAVOR_ICON=0
+MISSION_21_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_21_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_21_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_21_LOCATION_ID=9
+MISSION_21_STATUS=0
+MISSION_21_TIME_STARTED=0
+
+MISSION_21_START_SCRIPT=\"
+\"
+
+MISSION_21_SUCCESS_SCRIPT=\"
+
+\"
+
+MISSION_21_FAIL_SCRIPT=\"
+\"
+
+MISSION_22_ID=22
+MISSION_22_NAME=\"MISSION-009\"
+MISSION_22_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_22_FLAVOR_ICON=0
+MISSION_22_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_22_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_22_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_22_LOCATION_ID=9
+MISSION_22_STATUS=0
+MISSION_22_TIME_STARTED=0
+
+
+
+MISSION_22_START_SCRIPT=\"
+\"
+
+MISSION_22_SUCCESS_SCRIPT=\"
+
+\"
+
+MISSION_22_FAIL_SCRIPT=\"
+\"
+MISSION_23_ID=23
+MISSION_23_NAME=\"MISSION-009\"
+MISSION_23_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_23_FLAVOR_ICON=0
+MISSION_23_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_23_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_23_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_23_LOCATION_ID=9
+MISSION_23_STATUS=0
+MISSION_23_TIME_STARTED=0
+
+MISSION_23_START_SCRIPT=\"
+
+\"
+MISSION_23_SUCCESS_SCRIPT=\"
+\"
+MISSION_23_FAIL_SCRIPT=\"
+say[You may retry this mission.]
+do[unlock mission(23)]
+\"
+
+MISSION_24_ID=24
+MISSION_24_NAME=\"MISSION-009\"
+MISSION_24_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_24_FLAVOR_ICON=0
+MISSION_24_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_24_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_24_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_24_LOCATION_ID=9
+MISSION_24_STATUS=0
+MISSION_24_TIME_STARTED=0
+
+MISSION_24_START_SCRIPT=\"say[The smell of roses fills the air.]
+say[A hooded figure approaches you.]
+say[It's uh- me. DT. Let me help you with this mission.]DT
+say[I will give you the benefactor's location]DT
+say[Good luck!]DT
+\"
+
+MISSION_24_SUCCESS_SCRIPT=\"say[The smell of roses fills the air.]
+say[You are finally free from his grasp.]DT
+do[unlock voicemail(23)]
+\"
+
+MISSION_24_FAIL_SCRIPT=\"
+say[Mwahaha! You cannot defeat me!]Benefactor
+do[unlock mission(24)]
+\"
+MISSION_25_ID=25
+MISSION_25_NAME=\"MISSION-009\"
+MISSION_25_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_25_FLAVOR_ICON=0
+MISSION_25_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_25_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_25_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_25_LOCATION_ID=9
+MISSION_25_STATUS=0
+MISSION_25_TIME_STARTED=0
+
+
+MISSION_25_START_SCRIPT=\"say[The smell of roses fills the air.]
+say[I need you to transport some military supplies for the Dualists]Rose
+say[No death or destruction on your part]Rose
+say[Just some routine deliveries]Rose
+say[Good luck!]Rose
+\"
+
+MISSION_25_SUCCESS_SCRIPT=\"say[The smell of roses fills the air.]
+say[Good work]Rose
+do[unlock mission(25)]
+\"
+
+MISSION_25_FAIL_SCRIPT=\"say[The smell of roses fills the air.]
+say[Disastrous...Well there is always next time.]Rose
+do[unlock mission(25)]
+\"
+MISSION_26_ID=26
+MISSION_26_NAME=\"MISSION-009\"
+MISSION_26_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_26_FLAVOR_ICON=0
+MISSION_26_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_26_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_26_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_26_LOCATION_ID=9
+MISSION_26_STATUS=0
+MISSION_26_TIME_STARTED=0
+
+MISSION_26_START_SCRIPT=\"
+\"
+
+MISSION_26_SUCCESS_SCRIPT=\"
+
+\"
+
+MISSION_26_FAIL_SCRIPT=\"
+\"
+MISSION_27_ID=27
+MISSION_27_NAME=\"MISSION-009\"
+MISSION_27_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_27_FLAVOR_ICON=0
+MISSION_27_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_27_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_27_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_27_LOCATION_ID=9
+MISSION_27_STATUS=0
+MISSION_27_TIME_STARTED=0
+
+
+MISSION_27_START_SCRIPT=\"say[The smell of roses fills the air.]
+\"
+
+MISSION_27_SUCCESS_SCRIPT=\"say[The smell of roses fills the air.]
+
+\"
+
+MISSION_27_FAIL_SCRIPT=\"say[The smell of roses fills the air.]
+\"
+MISSION_28_ID=28
+MISSION_28_NAME=\"MISSION-009\"
+MISSION_28_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_28_FLAVOR_ICON=0
+MISSION_28_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_28_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_28_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_28_LOCATION_ID=9
+MISSION_28_STATUS=0
+MISSION_28_TIME_STARTED=0
+
+MISSION_28_START_SCRIPT=\"
+\"
+
+MISSION_28_SUCCESS_SCRIPT=\"
+
+\"
+
+MISSION_28_FAIL_SCRIPT=\"
+\"
+
+MISSION_29_ID=29
+MISSION_29_NAME=\"MISSION-009\"
+MISSION_29_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_29_FLAVOR_ICON=0
+MISSION_29_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_29_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_29_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_29_LOCATION_ID=9
+MISSION_29_STATUS=0
+MISSION_29_TIME_STARTED=0
+MISSION_29_START_SCRIPT=\"
+\"
+
+MISSION_29_SUCCESS_SCRIPT=\"
+do[unlock voicemail(30)]
+\"
+
+MISSION_29_FAIL_SCRIPT=\"
+\"
+
+MISSION_30_ID=30
+MISSION_30_NAME=\"MISSION-009\"
+MISSION_30_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_30_FLAVOR_ICON=0
+MISSION_30_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_30_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_30_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_30_LOCATION_ID=9
+MISSION_30_STATUS=0
+MISSION_30_TIME_STARTED=0
+
+MISSION_30_START_SCRIPT=\"say[The smell of roses fills the air.]
+say[How dare you!]Rose
+say[I cannot believe you would cross me. After everything I have done for you]Rose
+say[Prepare to die.]Rose
+\"
+
+MISSION_30_SUCCESS_SCRIPT=\"say[A stench of rot fills the air.]
+say[How could you...]Rose
+say[*Rose has been defeated*]
+do[unlock voicemail(31)]
+\"
+
+MISSION_30_FAIL_SCRIPT=\"say[The smell of roses fills the air.]
+say[Let this be a lesson to you:]Rose
+say[You cannot defeat me.]Rose
+do[unlock mission(30)]
+\"
+MISSION_31_ID=31
+MISSION_31_NAME=\"MISSION-009\"
+MISSION_31_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_31_FLAVOR_ICON=0
+MISSION_31_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_31_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_31_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_31_LOCATION_ID=9
+MISSION_31_STATUS=0
+MISSION_31_TIME_STARTED=0
+MISSION_31_START_SCRIPT=\"
+say[See you soon!]Jack
+say[Can't wait to see you!]Jill
+\"
+
+MISSION_31_SUCCESS_SCRIPT=\"
+say[*You've traveled to the planet Jack & Jill are living on.*]
+say[Hey stranger!]Jack
+say[*Jack gives you a big hug*]
+say[Hey!I missed you so much!]Jill
+say[*Jill hugs you while jumping up and down*]
+say[Ha don't just hug Jill, help our guest with their luggage.]
+do[unlock mission(32)]
+\"
+
+MISSION_31_FAIL_SCRIPT=\"
+say[*On your way to Jack & Jill, your ship explodes and you die*]
+say[GAME OVER]
+do[game over]
+\"
+MISSION_32_ID=32
+MISSION_32_NAME=\"MISSION-009\"
+MISSION_32_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_32_FLAVOR_ICON=0
+MISSION_32_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_32_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_32_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_32_LOCATION_ID=9
+MISSION_32_STATUS=0
+MISSION_32_TIME_STARTED=0
+MISSION_32_START_SCRIPT=\"say[The race starts soon!]
+say[Get to your marks!]
+\"
+
+MISSION_32_SUCCESS_SCRIPT=\"
+say[You won!]Jack
+say[Congratulations!]Jill
+\"
+
+MISSION_32_FAIL_SCRIPT=\"
+say[Maybe next time!]Jack
+say[It's just bad luck.]Jill
+\"
+MISSION_33_ID=10
+MISSION_33_NAME=\"MISSION-009\"
+MISSION_33_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_33_FLAVOR_ICON=0
+MISSION_33_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_33_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_33_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_33_LOCATION_ID=9
+MISSION_33_STATUS=0
+MISSION_33_TIME_STARTED=0
+MISSION_33_START_SCRIPT=\"say[I knew you'd qualify!]Jack
+say[You got this.]Jill
+say[*Jill winks at you*]
+say[*Jack gives you a thumbs up*]
+say[GOOD LUCK!]Jack & Jill
+\"
+
+MISSION_33_SUCCESS_SCRIPT=\"
+say[Woo hoo! You did it! Quarter finals are next!]Jack
+do[unlock voicemail(34)]
+\"
+
+MISSION_33_FAIL_SCRIPT=\"
+say[Dang. So close. Sorry bud]Jack
+say[Maybe you can try again...]Jill
+do[unlock mission(33)]
+\"
+
+MISSION_34_ID=34
+MISSION_34_NAME=\"MISSION-009\"
+MISSION_34_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_34_FLAVOR_ICON=0
+MISSION_34_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_34_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_34_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_34_LOCATION_ID=9
+MISSION_34_STATUS=0
+MISSION_34_TIME_STARTED=0
+MISSION_34_START_SCRIPT=\"
+say[Time for the quarter finals!]Jack
+say[Are you ready?]Jill
+\"
+
+MISSION_34_SUCCESS_SCRIPT=\"
+say[You did it! You are gonna race in the semi finals!]Jack
+say[So exciting!]Jill
+do[unlock voicemail(35)]
+\"
+
+MISSION_34_FAIL_SCRIPT=\"
+say[Dang. So close. Sorry bud]Jack
+say[Maybe you can try again...]Jill
+do[unlock mission(33)]
+\"
+MISSION_35_ID=35
+MISSION_35_NAME=\"MISSION-009\"
+MISSION_35_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_35_FLAVOR_ICON=0
+MISSION_35_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_35_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_35_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_35_LOCATION_ID=9
+MISSION_35_STATUS=0
+MISSION_35_TIME_STARTED=0
+MISSION_35_START_SCRIPT=\"
+say[Just another race. You got this!]Jack
+say[I personally fine-tuned the suspension on your mech]Jill
+say[You are gonna do great!]Jill
+\"
+MISSION_35_SUCCESS_SCRIPT=\"
+say[Here we come SEMI-FINALS!]Jack
+say[You did it!]Jill
+do[unlock voicemail(36)]
+
+\"
+MISSION_35_FAIL_SCRIPT=\"
+say[Dang. So close. Sorry bud]Jack
+say[Maybe you can try again...]Jill
+do[unlock mission(33)]
+\"
+MISSION_36_ID=36
+MISSION_36_NAME=\"MISSION-009\"
+MISSION_36_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_36_FLAVOR_ICON=0
+MISSION_36_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_36_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_36_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_36_LOCATION_ID=9
+MISSION_36_STATUS=0
+MISSION_36_TIME_STARTED=0
+MISSION_36_START_SCRIPT=\"say[It's the big day!]Jack
+say[Don't be nervous. You are going to do just fine.]Jill
+say[*Jill gives you a hug*]
+say[*Jack shakes your hand*]
+say[GOOD LUCK!]Jack & Jill
+\"
+MISSION_36_SUCCESS_SCRIPT=\"
+say[You did it!! WOO!]Jack
+say[*Jack gives you a jumping high-five*]
+say[You are so amazing! That was unbelievable! ]
+say[*Jill gives you kiss on the cheek*]
+say[Will you race again?]Jill
+say[They are holding another tournament tomorrow.]Jack
+do[unlock mission(33)]
+\"
+MISSION_36_FAIL_SCRIPT=\"
+say[DANG! You were so close...]Jack
+say[Maybe you can try again...]Jill
+do[unlock mission(33)]
+\"
+
 "

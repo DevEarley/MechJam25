@@ -8,10 +8,14 @@ func _ready():
 
 
 func _on_difficulty_24_hours_button_pressed():
+
+	SFX.play_start_mission_sound()
 	STATE.USE_REAL_TIME = true
 
 
 func _on_difficulty_instant_button_pressed():
+
+	SFX.play_start_mission_sound()
 	STATE.USE_REAL_TIME = false
 
 
