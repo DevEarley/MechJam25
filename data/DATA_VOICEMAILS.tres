@@ -11,12 +11,11 @@ VERSION=1.0
 NUMBER_OF_VOICEMAILS =37
 
 VOICEMAIL_0_ID=0
-VOICEMAIL_0_STATUS=0
+VOICEMAIL_0_STATUS=1
 VOICEMAIL_0_FROM=\"Jack\"
 VOICEMAIL_0_SCRIPT=\"say[Hey, It’s me. Give me a call back. ASAP!]Jack
 \"
-VOICEMAIL_0_CALLBACK=\"say[*RING!! RING!!*]
-say[Hello?]Jack
+VOICEMAIL_0_CALLBACK=\"say[Hello?]Jack
 say[I know it has been awhile, but I need your help with something.]Jack
 say[I lost contact with Jill while she was on a mission.]Jack
 say[She was looking for this part in the Sunfire Desert.]Jack
@@ -34,7 +33,7 @@ VOICEMAIL_1_FROM=\"Jack\"
 VOICEMAIL_1_SCRIPT=\"say[I sent a mission to your PC. Do not fail me.]Benefactor
 do[unlock mission(2)]
 \"
-VOICEMAIL_1_CALLBACK=\"say[*RING!! RING!!*]
+VOICEMAIL_1_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 say[*CLICK*]
 \"
@@ -125,8 +124,7 @@ VOICEMAIL_7_STATUS=0
 VOICEMAIL_7_FROM=\"Jack\"
 VOICEMAIL_7_SCRIPT=\"say[I need you to tell the leaders at the Gradient base in Muckthorn about the Dualists’ plans to destroy them.]Benefactor
 do[unlock mission(7)]\"
-VOICEMAIL_7_CALLBACK=\"say[*RING!! RING!!*]
-say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
+VOICEMAIL_7_CALLBACK=\"say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 say[*CLICK*]
 \"
 
@@ -135,7 +133,7 @@ VOICEMAIL_8_STATUS=0
 VOICEMAIL_8_FROM=\"Jack\"
 VOICEMAIL_8_SCRIPT=\"say[You are to help the Dualists destroy the Gradient’s base in Muckthorn.]Benefactor
 do[unlock mission(9)]\"
-VOICEMAIL_8_CALLBACK=\"say[*RING!! RING!!*]
+VOICEMAIL_8_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 say[*CLICK*]
 \"
@@ -150,7 +148,7 @@ say[You have been invited you back to race. ]
 say[The event has been sent to your PC.]
 do[unlock mission(33)]
 \"
-VOICEMAIL_9_CALLBACK=\"say[*RING!! RING!!*]
+VOICEMAIL_9_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 say[*CLICK*]
 \"
@@ -174,7 +172,7 @@ VOICEMAIL_11_STATUS=0
 VOICEMAIL_11_FROM=\"Jack\"
 VOICEMAIL_11_SCRIPT=\"say[I need access to an old decommissioned comms tower.]Benefactor
 do[unlock mission(11)]\"
-VOICEMAIL_11_CALLBACK=\"say[*RING!! RING!!*]
+VOICEMAIL_11_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 say[*CLICK*]
 \"
@@ -187,7 +185,7 @@ VOICEMAIL_12_SCRIPT=\"say[Now that we have access, I need you to do some reconna
 do[unlock mission(12)]
 do[unlock mission(13)]
 do[unlock mission(14)]\"
-VOICEMAIL_12_CALLBACK=\"say[*RING!! RING!!*]
+VOICEMAIL_12_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 say[*CLICK*]
 \"
@@ -216,7 +214,7 @@ VOICEMAIL_15_FROM=\"Jack\"
 VOICEMAIL_15_SCRIPT=\"say[Your next assignment is simple. Broadcast this script to the comms tower once you are in range of the provided location.]Benefactor
 do[unlock mission(15)]
 \"
-VOICEMAIL_15_CALLBACK=\"say[*RING!! RING!!*]
+VOICEMAIL_15_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 say[*CLICK*]
 \"
@@ -227,7 +225,7 @@ VOICEMAIL_16_FROM=\"Jack\"
 VOICEMAIL_16_SCRIPT=\"say[Just like before, broadcast this script to the comms tower once you are in range.]Benefactor
 do[unlock mission(16)]
 \"
-VOICEMAIL_16_CALLBACK=\"say[*RING!! RING!!*]
+VOICEMAIL_16_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 say[*CLICK*]
 \"
@@ -238,7 +236,7 @@ VOICEMAIL_17_FROM=\"Jack\"
 VOICEMAIL_17_SCRIPT=\"say[I have a long term contract for you.]Benefactor
 do[unlock mission(17)]
 \"
-VOICEMAIL_17_CALLBACK=\"say[*RING!! RING!!*]
+VOICEMAIL_17_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 say[*CLICK*]
 \"
@@ -250,7 +248,7 @@ VOICEMAIL_18_SCRIPT=\"say[It’s …]???
 say[I’ve been …]???
 say[Jill is … She’s with our…]???
 \"
-VOICEMAIL_18_CALLBACK=\"say[*RING!! RING!!*]
+VOICEMAIL_18_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 say[*CLICK*]
 \"
@@ -264,7 +262,7 @@ say[I need you to make it look like an accident]Benefactor
 say[Wait till their transport is below the cliff line. Then push a boulder onto them or something.]Benefactor
 say[Cause a landslide. Do what it takes. No fire arms. Special-Ops only.]Benefactor
 \"
-VOICEMAIL_19_CALLBACK=\"say[*RING!! RING!!*]
+VOICEMAIL_19_CALLBACK=\"
 say[*THIS CALL CANNOT BE COMPLETED. GOOD BYE.*]
 say[*CLICK*]
 \"

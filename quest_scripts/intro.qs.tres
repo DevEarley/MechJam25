@@ -1,13 +1,13 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dxlo621a4a6r5"]
+[gd_resource type="Resource" script_class="QuestScriptResource" load_steps=2 format=3 uid="uid://dxlo621a4a6r5"]
 
 [ext_resource type="Script" uid="uid://bts0r80d6wia2" path="res://resource-types/QUEST_SCRIPT_resource.gd" id="1_b4ica"]
 
 [resource]
 script = ExtResource("1_b4ica")
 QUEST_SCRIPT = "say[Game by AsFunAsFun]
-say[*RING!! RING!!*]
 [Let it ring]
-say[*RING!! RING!! RING!!*]
+do[play(ring ring)]
+say[*RING!! RING!! *]
 choice[Answer the phone,Let it ring]
 [Answer the phone]
 say[HELLO?]YOU

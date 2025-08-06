@@ -23,8 +23,8 @@ func _on_back_to_start_menu():
 	STATE.LOCATION_SELECT_MENU_CANVAS.hide()
 
 func _on_MISSIONS_pressed():
+	MUSIC.AUDIO_SOURCE.play(0)
 	MUSIC.play_music_for_mission_menu()
-
 	SFX.play_click_sound()
 	MISSIONS_MENU.show_missions()
 	STATE.MISSIONS_MENU_CANVAS.show()

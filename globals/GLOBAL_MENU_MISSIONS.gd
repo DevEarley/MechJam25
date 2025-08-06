@@ -104,6 +104,7 @@ func on_back_to_start_menu():
 
 
 func on_back_to_mission_list():
+	MUSIC.play_music_for_mission_menu()
 	STATE.CURRENT_MECH_ID = -1
 	STATE.CURRENT_PILOT_ID = -1
 	MISSION_BUTTONS_CONTAINER.show();

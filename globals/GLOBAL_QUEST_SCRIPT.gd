@@ -95,6 +95,7 @@ func process_info(rest_of_line):
 	run_script__info(message,options);
 
 func process_say(rest_of_line):
+	SFX.play_click_sound()
 	var message:String;
 	var speaker:String;
 	var options:String;
@@ -304,56 +305,56 @@ func process_options(options:String)->Array[String]:
 
 func on_choice_1_pressed():
 
-	SFX.play_click_sound()
+	SFX.play_dialogue_click_sound()
 	CURRENT_LINE = get_line_index_for_marker(CHOICE_1_MARKER);
 	CONVERSATION_UI.done_with_choices();
 	run_script__process_line();
 
 func on_choice_2_pressed():
 
-	SFX.play_click_sound()
+	SFX.play_dialogue_click_sound()
 	CURRENT_LINE = get_line_index_for_marker(CHOICE_2_MARKER);
 	CONVERSATION_UI.done_with_choices();
 	run_script__process_line();
 
 func on_choice_3_pressed():
 
-	SFX.play_click_sound()
+	SFX.play_dialogue_click_sound()
 	CURRENT_LINE = get_line_index_for_marker(CHOICE_3_MARKER);
 	CONVERSATION_UI.done_with_choices();
 	run_script__process_line();
 
 func on_choice_4_pressed():
 
-	SFX.play_click_sound()
+	SFX.play_dialogue_click_sound()
 	CURRENT_LINE = get_line_index_for_marker(CHOICE_4_MARKER);
 	CONVERSATION_UI.done_with_choices();
 	run_script__process_line();
 
 func on_action_1_pressed():
 
-	SFX.play_click_sound()
+	SFX.play_dialogue_click_sound()
 	CURRENT_LINE = get_line_index_for_marker(ACTION_1_MARKER);
 	CONVERSATION_UI.done_with_actions();
 	run_script__process_line();
 
 func on_action_2_pressed():
 
-	SFX.play_click_sound()
+	SFX.play_dialogue_click_sound()
 	CURRENT_LINE = get_line_index_for_marker(ACTION_2_MARKER);
 	CONVERSATION_UI.done_with_actions();
 	run_script__process_line();
 
 func on_action_3_pressed():
 
-	SFX.play_click_sound()
+	SFX.play_dialogue_click_sound()
 	CURRENT_LINE = get_line_index_for_marker(ACTION_3_MARKER);
 	CONVERSATION_UI.done_with_actions();
 	run_script__process_line();
 
 func on_action_4_pressed():
 
-	SFX.play_click_sound()
+	SFX.play_dialogue_click_sound()
 	CURRENT_LINE = get_line_index_for_marker(ACTION_4_MARKER);
 	CONVERSATION_UI.done_with_actions();
 	run_script__process_line();

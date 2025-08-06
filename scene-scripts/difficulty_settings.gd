@@ -17,6 +17,7 @@ func _on_difficulty_24_hours_button_pressed():
 	STATE.DIFFICULTY_SETTTING_MENU_CANVAS.hide()
 	STATE.MAIN_MENU_CANVAS.show()
 
+	MUSIC.AUDIO_SOURCE.play(0)
 	MUSIC.play_music_for_main_menu()
 
 func _on_difficulty_instant_button_pressed():
@@ -27,5 +28,5 @@ func _on_difficulty_instant_button_pressed():
 	DATA.save_game_state_to_user_data()
 	STATE.DIFFICULTY_SETTTING_MENU_CANVAS.hide()
 	STATE.MAIN_MENU_CANVAS.show()
-
+	MUSIC.AUDIO_SOURCE.play(0)
 	MUSIC.play_music_for_main_menu()

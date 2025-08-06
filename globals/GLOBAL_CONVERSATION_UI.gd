@@ -53,7 +53,7 @@ func _ready():
 	STATE.CONVERSATION_SCREEN_CANVAS.hide()
 
 func _input(event: InputEvent) -> void:
-	if(event.is_action_released("ui_accept") && SHOWING_CHOICES == false && QS.RUNNING_SCRIPT== true):
+	if(event.is_action_pressed("ui_accept") && SHOWING_CHOICES == false && QS.RUNNING_SCRIPT== true):
 		QS.continue_script()
 		CONTINUE_LABEL.hide();
 
@@ -82,6 +82,8 @@ func _input(event: InputEvent) -> void:
 	#3:
 		#QS.on_action_4_pressed()
 func start_conversation():
+
+	MUSIC.play_music_for_conversation_menu()
 	STATE.CONVERSATION_CONTROL_NODE.show()
 	STATE.CONVERSATION_SCREEN_CANVAS.show()
 	STATE.STATUS_BAR_CANVAS.hide()

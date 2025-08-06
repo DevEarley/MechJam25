@@ -35,24 +35,36 @@ func show_start_menu():
 	STATE.START_MENU_CANVAS.get_node("VOICEMAIL").text = "VOICEMAILS [%s]" % count
 func on_callback_done():
 	DATA.save_everything()
+	MUSIC.AUDIO_SOURCE.play(0)
+	MUSIC.play_music_for_start_menu()
 	show_start_menu()
 
 func on_voice_mail_done(voicemail:Voicemail):
-	STATE.ON_QUEST_SCRIPT_DONE = on_callback_done
-	voicemail.status = ENUMS.VOICEMAIL_STATUS.HEARD
-	var callback_script = "say[Call back?]\n
-		choices[Yes! Call them back.,No! Don't call them back.]\n
-		[Yes! Call them back.]\n
-		do[play(ring ring)]
-		%s\n
-		go[No! Don't call them back.]\n
-		[No! Don't call them back.]\n
-		say[*Click*]\n" % voicemail.callback_script
-	QS.run_script(callback_script)
+	var callback_script
+	if(voicemail.status == ENUMS.VOICEMAIL_STATUS.HEARD):
+		on_callback_done()
+	elif(voicemail.status == ENUMS.VOICEMAIL_STATUS.UNHEARD):
+		STATE.ON_QUEST_SCRIPT_DONE = on_callback_done
+		voicemail.status = ENUMS.VOICEMAIL_STATUS.HEARD
+		callback_script= "say[Call back?]\n
+			choices[Yes! Call them back.,No! Don't call them back.]\n
+			[Yes! Call them back.]\n
+			do[play(ring ring)]
+			say[*RING!! RING!!*]
+			%s\n
+			go[No! Don't call them back.]\n
+			[No! Don't call them back.]\n
+			say[*Click*]\n" % voicemail.callback_script
+		QS.run_script(callback_script)
 
 func on_play_voicemail(voicemail:Voicemail ):
 	SFX.play_click_sound()
 	STATE.START_MENU_CANVAS.hide()
 	STATE.STATUS_BAR_CANVAS.hide()
 	STATE.ON_QUEST_SCRIPT_DONE = on_voice_mail_done.bind(voicemail)
-	QS.run_script(voicemail.voicemail_script);
+	if(voicemail.status == ENUMS.VOICEMAIL_STATUS.HEARD):
+		QS.run_script(voicemail.voicemail_script);
+
+	elif(voicemail.status == ENUMS.VOICEMAIL_STATUS.UNHEARD):
+
+		QS.run_script("say[*New voicemail from %s.*]\n%s"%[voicemail.from,voicemail.voicemail_script]);

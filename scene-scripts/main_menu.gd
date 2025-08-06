@@ -18,8 +18,8 @@ func on_back_to_main_menu():
 
 
 func go_to_start_menu():
-
-		SFX.play_start_mission_sound()
+		MUSIC.play_music_for_start_menu()
+		SFX.play_click_sound()
 		STATUS_BAR.update_status()
 		MAP.ANIMATOR.play("idle")
 		STATE.MAIN_MENU_CANVAS.hide()

@@ -85,6 +85,9 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 			QS.CURRENT_LINE+=1;
 			QS.run_script__process_line();
 		"play":
+			QS.CURRENT_LINE+=1;
+			QS.run_script__process_line();
+			await WAIT.for_seconds(0.1)
 			match(values[0]):
 				"success":
 					SFX.play_mission_success_sound()
@@ -96,7 +99,8 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 				"ring ring":
 					SFX.play_ring_ring_sound()
 					pass
-			pass
+
+
 
 
 	pass;

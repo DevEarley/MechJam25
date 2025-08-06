@@ -4,7 +4,6 @@
 
 [resource]
 script = ExtResource("1_yya66")
-QUEST_SCRIPT = ""
 CONFIG_FILE = "[DEFAULT]
 
 VERSION=1.0
@@ -41,7 +40,7 @@ PART_1_STATUS=0
 PART_1_COST=1000
 
 PART_2_ID=2
-PART_2_NAME=\"Red Nut\"
+PART_2_NAME=\"Blue Nut\"
 PART_2_THEME=1
 PART_2_FLAVOR=\"A random assortment.\"
 PART_2_RECYCLE_POINTS = 10
@@ -56,7 +55,7 @@ PART_2_STATUS=0
 PART_2_COST=1000
 
 PART_3_ID=3
-PART_3_NAME=\"Blue Nut\"
+PART_3_NAME=\"Red Nut\"
 PART_3_THEME=1
 PART_3_FLAVOR=\"A random assortment.\"
 PART_3_RECYCLE_POINTS = 10
@@ -71,7 +70,7 @@ PART_3_STATUS=0
 PART_3_COST=1000
 
 PART_4_ID=4
-PART_4_NAME=\"Blue Nut\"
+PART_4_NAME=\"Blue Arm Shield\"
 PART_4_THEME=1
 PART_4_FLAVOR=\"A random assortment.\"
 PART_4_RECYCLE_POINTS = 10
@@ -86,7 +85,7 @@ PART_4_STATUS=0
 PART_4_COST=1000
 
 PART_5_ID=5
-PART_5_NAME=\"Blue Nut\"
+PART_5_NAME=\"Red Arm Shield\"
 PART_5_THEME=1
 PART_5_FLAVOR=\"A random assortment.\"
 PART_5_RECYCLE_POINTS = 10
@@ -101,7 +100,7 @@ PART_5_STATUS=0
 PART_5_COST=1000
 
 PART_6_ID=6
-PART_6_NAME=\"Blue Nut\"
+PART_6_NAME=\"Blue Nano Spray\"
 PART_6_THEME=1
 PART_6_FLAVOR=\"A random assortment.\"
 PART_6_RECYCLE_POINTS = 10
@@ -116,7 +115,7 @@ PART_6_STATUS=0
 PART_6_COST=1000
 
 PART_7_ID=7
-PART_7_NAME=\"Blue Nut\"
+PART_7_NAME=\"Red Nano Spray\"
 PART_7_THEME=1
 PART_7_FLAVOR=\"A random assortment.\"
 PART_7_RECYCLE_POINTS = 10
@@ -131,7 +130,7 @@ PART_7_STATUS=0
 PART_7_COST=1000
 
 PART_8_ID=8
-PART_8_NAME=\"Blue Nut\"
+PART_8_NAME=\"Blue Blaster\"
 PART_8_THEME=1
 PART_8_FLAVOR=\"A random assortment.\"
 PART_8_RECYCLE_POINTS = 10
@@ -147,7 +146,7 @@ PART_8_COST=1000
 
 
 PART_9_ID=9
-PART_9_NAME=\"Blue Nut\"
+PART_9_NAME=\"Red Blaster\"
 PART_9_THEME=1
 PART_9_FLAVOR=\"A random assortment.\"
 PART_9_RECYCLE_POINTS = 10
