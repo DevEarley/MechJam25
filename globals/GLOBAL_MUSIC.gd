@@ -2,12 +2,13 @@ extends Node
 
 var TRACK_POSITION:float = 0.0;
 
-var main_menu_music= preload("res://music/MechJam-JE-Theme-1-Var-2.ogg")
+var main_menu_music= preload("res://music/MECHAJAM_DEMO5_SOLO_(DRUMS).ogg")
 var start_menu_music= preload("res://music/MechJam-JE-Theme-1-Var-2.ogg")
 var mech_menu_music= preload("res://music/MechJam-JE-Theme-1-Var-1.ogg")
 var part_menu_music= preload("res://music/MechJam-JE-Theme-1-Var-1.ogg")
 var pilot_menu_music= preload("res://music/MechJam-JE-Theme-1-Var-1.ogg")
 var options_menu_music= preload("res://music/MECHAJAM_DEMO5_(08_07_25).ogg")
+
 var mission_menu_music= preload("res://music/TGEMech2.ogg")
 var conversation_menu_music= preload("res://music/TGEMech1.ogg")
 

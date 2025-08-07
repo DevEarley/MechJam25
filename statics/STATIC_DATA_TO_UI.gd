@@ -122,7 +122,7 @@ static func get_criteria_for_mission_odds(criteria_code:ENUMS.MISSION_CRITERIA)-
 			return "UNDECIDED";
 
 		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_1:
-			return "MISSION_CRITERIA #1";
+			return " #1";
 
 		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_2:
 			return "MISSION_CRITERIA #2";
@@ -207,6 +207,22 @@ static func display_node_for_part(id,part_nodes_parent):
 				part_nodes_parent.get_node("BLUE_GUN").show()
 			9:
 				part_nodes_parent.get_node("RED_GUN").show();
+			10:
+				part_nodes_parent.get_node("BLUE_ChainMesh").show()
+			11:
+				part_nodes_parent.get_node("BLUE_CLIPMesh").show();
+			12:
+				part_nodes_parent.get_node("BLUE_HammerKnuckle").show();
+			13:
+				part_nodes_parent.get_node("BLUE_NanoApplicator").show();
+			14:
+				part_nodes_parent.get_node("RED_ChainMesh").show();
+			15:
+				part_nodes_parent.get_node("RED_CLIPMesh").show();
+			16:
+				part_nodes_parent.get_node("RED_HammerKnuckle").show();
+			17:
+				part_nodes_parent.get_node("RED_NanoApplicator").show();
 
 static func display_node_for_mech(id,mech_nodes_parent):
 

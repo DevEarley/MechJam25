@@ -95,27 +95,27 @@ text = "[dim]???"
 
 [node name="ONE_OVER_ODDS_FOR_MISSION_LABEL" type="Label" parent="."]
 layout_mode = 2
-offset_left = 479.0
+offset_left = 441.0
 offset_top = 6.0
-offset_right = 551.0
+offset_right = 539.0
 offset_bottom = 34.0
 theme = ExtResource("1_ighwi")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
 theme_override_font_sizes/font_size = 16
-text = "MISSION"
+text = "MISSION ODDS"
 
 [node name="ONE_OVER_ODDS_FOR_RETURNING_LABEL" type="Label" parent="."]
 layout_mode = 2
-offset_left = 479.0
+offset_left = 441.0
 offset_top = 54.0
-offset_right = 551.0
+offset_right = 539.0
 offset_bottom = 82.0
 theme = ExtResource("1_ighwi")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
 theme_override_font_sizes/font_size = 16
-text = "RETURN"
+text = "RETURN ODDS"
 
 [node name="STATUS_FAILED_ICON" type="TextureRect" parent="."]
 visible = false

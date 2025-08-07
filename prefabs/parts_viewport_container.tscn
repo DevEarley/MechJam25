@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://bwlhvw7r5jrdg"]
+[gd_scene load_steps=25 format=4 uid="uid://bwlhvw7r5jrdg"]
 
 [ext_resource type="Environment" uid="uid://c7ssmhiiplyg8" path="res://world_environment.tres" id="1_2e7hn"]
 [ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="1_eucbt"]
@@ -8,12 +8,15 @@
 [ext_resource type="Material" uid="uid://b1vqp2jv6egmn" path="res://materials/world_mat.tres" id="3_6bmw3"]
 [ext_resource type="PackedScene" uid="uid://dwt6agdcbir3q" path="res://parts-3D/somethin.glb" id="3_84ir1"]
 [ext_resource type="Texture2D" uid="uid://l6oe44m1j68v" path="res://UI/ui-sheet-1.png" id="3_e4vel"]
+[ext_resource type="PackedScene" uid="uid://cx7mg3ip4xgka" path="res://parts-3D/ChainMesh.glb" id="3_maueq"]
 [ext_resource type="Script" uid="uid://c5y2ylmr1vdhh" path="res://prefabs/show_part_info_button.gd" id="4_e4vel"]
 [ext_resource type="Material" uid="uid://dj2chdusgvktn" path="res://materials/world_mat_alt.tres" id="4_nfuy1"]
 [ext_resource type="PackedScene" uid="uid://bnwhcocf005p5" path="res://parts-3D/nade.glb" id="5_ghbwn"]
 [ext_resource type="PackedScene" uid="uid://dpgf5w3yji5il" path="res://parts-3D/heat-blade.glb" id="5_jh33o"]
+[ext_resource type="PackedScene" uid="uid://b7b7sgys5tbxy" path="res://parts-3D/CLIPMesh.glb" id="5_wpveu"]
+[ext_resource type="PackedScene" uid="uid://dswmh08ynwaj7" path="res://parts-3D/HammerKnuckle.glb" id="6_6n5it"]
 [ext_resource type="PackedScene" uid="uid://cpi68ocj80k7q" path="res://parts-3D/gun.glb" id="6_qixk2"]
-[ext_resource type="Material" uid="uid://058wo108arlc" path="res://materials/windows_mat.tres" id="7_rhp2j"]
+[ext_resource type="PackedScene" uid="uid://ca0aqieh8anio" path="res://parts-3D/NanoApplicator.glb" id="7_edtmm"]
 
 [sub_resource type="Animation" id="Animation_d1idq"]
 length = 0.001
@@ -148,6 +151,70 @@ blend_times = [&"spin", &"spin_up", 0.25, &"spin_up", &"spin", 0.25]
 
 [node name="PARTS_NODE" type="Node3D" parent="SubViewportContainer/SubViewport"]
 
+[node name="BLUE_ChainMesh" parent="SubViewportContainer/SubViewport/PARTS_NODE" instance=ExtResource("3_maueq")]
+transform = Transform3D(1, 0, 0, 0, 0.993171, -0.116671, 0, 0.116671, 0.993171, 0, 1.12888, 0)
+visible = false
+
+[node name="ChaingunModel" parent="SubViewportContainer/SubViewport/PARTS_NODE/BLUE_ChainMesh" index="0"]
+layers = 4
+surface_material_override/0 = ExtResource("3_6bmw3")
+
+[node name="BLUE_CLIPMesh" parent="SubViewportContainer/SubViewport/PARTS_NODE" instance=ExtResource("5_wpveu")]
+transform = Transform3D(0.891054, 0.453897, 0, -0.439026, 0.86186, -0.253876, -0.115234, 0.226217, 0.967237, 0, 1.13958, 0)
+visible = false
+
+[node name="ClipDroneN" parent="SubViewportContainer/SubViewport/PARTS_NODE/BLUE_CLIPMesh" index="0"]
+layers = 4
+surface_material_override/0 = ExtResource("3_6bmw3")
+
+[node name="BLUE_HammerKnuckle" parent="SubViewportContainer/SubViewport/PARTS_NODE" instance=ExtResource("6_6n5it")]
+transform = Transform3D(1, 0, 0, 0, 0.932046, 0.36234, 0, -0.36234, 0.932046, 0, 1.24641, 0)
+visible = false
+
+[node name="Hammer-Knuckle" parent="SubViewportContainer/SubViewport/PARTS_NODE/BLUE_HammerKnuckle" index="0"]
+layers = 4
+surface_material_override/0 = ExtResource("3_6bmw3")
+
+[node name="BLUE_NanoApplicator" parent="SubViewportContainer/SubViewport/PARTS_NODE" instance=ExtResource("7_edtmm")]
+transform = Transform3D(1, 0, 0, 0, 0.967285, -0.25369, 0, 0.25369, 0.967285, 0, 1.47043, 0)
+visible = false
+
+[node name="NanoApplicator" parent="SubViewportContainer/SubViewport/PARTS_NODE/BLUE_NanoApplicator" index="0"]
+layers = 4
+surface_material_override/0 = ExtResource("3_6bmw3")
+
+[node name="RED_ChainMesh" parent="SubViewportContainer/SubViewport/PARTS_NODE" instance=ExtResource("3_maueq")]
+transform = Transform3D(1, 0, 0, 0, 0.993171, -0.116671, 0, 0.116671, 0.993171, 0, 1.12888, 0)
+visible = false
+
+[node name="ChaingunModel" parent="SubViewportContainer/SubViewport/PARTS_NODE/RED_ChainMesh" index="0"]
+layers = 4
+surface_material_override/0 = ExtResource("4_nfuy1")
+
+[node name="RED_CLIPMesh" parent="SubViewportContainer/SubViewport/PARTS_NODE" instance=ExtResource("5_wpveu")]
+transform = Transform3D(0.891054, 0.453897, 0, -0.439026, 0.86186, -0.253876, -0.115234, 0.226217, 0.967237, 0, 1.13958, 0)
+visible = false
+
+[node name="ClipDroneN" parent="SubViewportContainer/SubViewport/PARTS_NODE/RED_CLIPMesh" index="0"]
+layers = 4
+surface_material_override/0 = ExtResource("4_nfuy1")
+
+[node name="RED_HammerKnuckle" parent="SubViewportContainer/SubViewport/PARTS_NODE" instance=ExtResource("6_6n5it")]
+transform = Transform3D(1, 0, 0, 0, 0.932046, 0.36234, 0, -0.36234, 0.932046, 0, 1.24641, 0)
+visible = false
+
+[node name="Hammer-Knuckle" parent="SubViewportContainer/SubViewport/PARTS_NODE/RED_HammerKnuckle" index="0"]
+layers = 4
+surface_material_override/0 = ExtResource("4_nfuy1")
+
+[node name="RED_NanoApplicator" parent="SubViewportContainer/SubViewport/PARTS_NODE" instance=ExtResource("7_edtmm")]
+transform = Transform3D(1, 0, 0, 0, 0.967285, -0.25369, 0, 0.25369, 0.967285, 0, 1.47043, 0)
+visible = false
+
+[node name="NanoApplicator" parent="SubViewportContainer/SubViewport/PARTS_NODE/RED_NanoApplicator" index="0"]
+layers = 4
+surface_material_override/0 = ExtResource("4_nfuy1")
+
 [node name="BLUE_PLATE" parent="SubViewportContainer/SubViewport/PARTS_NODE" instance=ExtResource("3_84ir1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46457, 0)
 visible = false
@@ -208,7 +275,6 @@ visible = false
 layers = 4
 mesh = SubResource("ArrayMesh_toch8")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("4_nfuy1")
 
 [node name="HEAT_BLADE" parent="SubViewportContainer/SubViewport/PARTS_NODE" instance=ExtResource("5_jh33o")]
 transform = Transform3D(0.79886, -0.414514, 3.29659e-09, 0.414514, 0.79886, -6.61392e-08, 2.75357e-08, 6.02249e-08, 0.9, 0.0982654, 0.375826, -1.16733e-07)
@@ -226,7 +292,6 @@ visible = false
 layers = 4
 mesh = SubResource("ArrayMesh_04fvn")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("7_rhp2j")
 
 [node name="Button" parent="." instance=ExtResource("2_jh33o")]
 layout_mode = 1
@@ -260,6 +325,14 @@ mouse_filter = 2
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
 
+[editable path="SubViewportContainer/SubViewport/PARTS_NODE/BLUE_ChainMesh"]
+[editable path="SubViewportContainer/SubViewport/PARTS_NODE/BLUE_CLIPMesh"]
+[editable path="SubViewportContainer/SubViewport/PARTS_NODE/BLUE_HammerKnuckle"]
+[editable path="SubViewportContainer/SubViewport/PARTS_NODE/BLUE_NanoApplicator"]
+[editable path="SubViewportContainer/SubViewport/PARTS_NODE/RED_ChainMesh"]
+[editable path="SubViewportContainer/SubViewport/PARTS_NODE/RED_CLIPMesh"]
+[editable path="SubViewportContainer/SubViewport/PARTS_NODE/RED_HammerKnuckle"]
+[editable path="SubViewportContainer/SubViewport/PARTS_NODE/RED_NanoApplicator"]
 [editable path="SubViewportContainer/SubViewport/PARTS_NODE/BLUE_PLATE"]
 [editable path="SubViewportContainer/SubViewport/PARTS_NODE/RED_PLATE"]
 [editable path="SubViewportContainer/SubViewport/PARTS_NODE/BLUE_NADE"]

@@ -51,7 +51,7 @@ func _on_EXIT_pressed():
 	get_tree().quit()
 
 func _on_OPTIONS_pressed():
-	MUSIC.AUDIO_SOURCE.play(0)
+	#MUSIC.AUDIO_SOURCE.play(0)
 	SFX.play_click_sound()
 	MUSIC.play_music_for_options_menu()
 	STATE.MAIN_MENU_CANVAS.hide()
