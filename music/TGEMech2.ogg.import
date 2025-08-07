@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/TGEMech2.ogg-427b1000295daa3dc7c38a6a22a7ad05
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

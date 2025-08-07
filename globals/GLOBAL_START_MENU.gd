@@ -23,7 +23,7 @@ func show_start_menu():
 			button.text = "%s [%s]" %[voicemail.from,status_text]
 
 		elif(voicemail.status == ENUMS.VOICEMAIL_STATUS.HEARD):
-			count +=1;
+
 			status_text="OLD"
 			button.text = "%s [%s]" %[voicemail.from,status_text]
 		else:
@@ -33,28 +33,37 @@ func show_start_menu():
 		button.connect("pressed",on_play_voicemail.bind(voicemail))
 		STATE.START_MENU_CANVAS.get_node("VOICEMAIL/BOX/ScrollContainer/VBoxContainer").add_child(button)
 	STATE.START_MENU_CANVAS.get_node("VOICEMAIL").text = "VOICEMAILS [%s]" % count
-func on_callback_done():
+
+func on_voicemail_done():
 	DATA.save_everything()
 	MUSIC.AUDIO_SOURCE.play(0)
 	MUSIC.play_music_for_start_menu()
 	show_start_menu()
 
+func on_callback_done(voicemail):
+	voicemail.status = ENUMS.VOICEMAIL_STATUS.HEARD
+
+
+
 func on_voice_mail_done(voicemail:Voicemail):
 	var callback_script
 	if(voicemail.status == ENUMS.VOICEMAIL_STATUS.HEARD):
-		on_callback_done()
+		on_voicemail_done()
 	elif(voicemail.status == ENUMS.VOICEMAIL_STATUS.UNHEARD):
-		STATE.ON_QUEST_SCRIPT_DONE = on_callback_done
-		voicemail.status = ENUMS.VOICEMAIL_STATUS.HEARD
+		STATE.ON_QUEST_SCRIPT_DONE = on_voicemail_done
+
 		callback_script= "say[Call back?]\n
 			choices[Yes! Call them back.,No! Don't call them back.]\n
 			[Yes! Call them back.]\n
-			do[play(ring ring)]
-			say[*RING!! RING!!*]
+			do[play(ring ring)]\n
+			say[*RING!! RING!!*]\n
 			%s\n
-			go[No! Don't call them back.]\n
+			say[*Click*]\n
+			do[on voicemail callback(%s)]\n
+			go[very end]\n
 			[No! Don't call them back.]\n
-			say[*Click*]\n" % voicemail.callback_script
+			[very end]
+			\n" % [voicemail.callback_script,voicemail.ID]
 		QS.run_script(callback_script)
 
 func on_play_voicemail(voicemail:Voicemail ):

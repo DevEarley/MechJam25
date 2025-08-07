@@ -31,6 +31,22 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 			DATA.save_missions_to_user_data()
 			QS.CURRENT_LINE+=1;
 			QS.run_script__process_line();
+		"unlock voicemail","get voicemail":
+
+			var voicemail_id = int(values[0])
+			var voicemail:Voicemail = LINQ.First(STATE.VOICEMAILS,func (voicemail:Voicemail): return voicemail.ID == voicemail_id);
+			voicemail.status = ENUMS.VOICEMAIL_STATUS.UNHEARD
+			DATA.save_voicemails_to_user_data()
+			QS.CURRENT_LINE+=1;
+			QS.run_script__process_line();
+		"complete voicemail":
+
+			var voicemail_id = int(values[0])
+			var voicemail:Voicemail = LINQ.First(STATE.VOICEMAILS,func (voicemail:Voicemail): return voicemail.ID == voicemail_id);
+			voicemail.status = ENUMS.VOICEMAIL_STATUS.HEARD
+			DATA.save_voicemails_to_user_data()
+			QS.CURRENT_LINE+=1;
+			QS.run_script__process_line();
 
 		"fail mission":
 			var id:int = int(values[0])
@@ -44,6 +60,7 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 			var id:int = int(values[0])
 			var mission:Mission = LINQ.First(STATE.MISSIONS,func (mission:Mission): return mission.ID==id);
 			mission.status = ENUMS.MISSION_STATUS.SUCCESS
+
 			DATA.save_missions_to_user_data()
 			QS.CURRENT_LINE+=1;
 			QS.run_script__process_line();
@@ -55,12 +72,33 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 			QS.CURRENT_LINE+=1;
 			QS.run_script__process_line();
 
-		"get pilot", "unlock pilot":
+		"get pilot","hire pilot":
 			var pilot_id = int(values[0])
 			var pilot:Pilot = LINQ.First(STATE.PILOTS,func (pilot:Pilot): return pilot.ID == pilot_id);
 			pilot.status = ENUMS.PILOT_STATUS.HIRED
 			STATUS_BAR.update_status()
 
+			DATA.save_pilots_to_user_data()
+			QS.CURRENT_LINE+=1;
+			QS.run_script__process_line();
+
+		"unlock pilot":
+			var pilot_id = int(values[0])
+			var pilot:Pilot = LINQ.First(STATE.PILOTS,func (pilot:Pilot): return pilot.ID == pilot_id);
+			pilot.status = ENUMS.PILOT_STATUS.FOR_HIRE
+			STATUS_BAR.update_status()
+
+			DATA.save_pilots_to_user_data()
+			QS.CURRENT_LINE+=1;
+			QS.run_script__process_line();
+
+		"lose pilot", "lock pilot":
+			var pilot_id = int(values[0])
+			var pilot:Pilot = LINQ.First(STATE.PILOTS,func (pilot:Pilot): return pilot.ID == pilot_id);
+			pilot.status = ENUMS.PILOT_STATUS.NOT_AVAILABLE_YET
+			pilot.mech_id = -1
+			STATUS_BAR.update_status()
+			STATE.CURRENT_PILOT_ID = -1
 			DATA.save_pilots_to_user_data()
 			QS.CURRENT_LINE+=1;
 			QS.run_script__process_line();
@@ -74,6 +112,11 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 			DATA.save_mechs_to_user_data()
 			QS.CURRENT_LINE+=1;
 			QS.run_script__process_line();
+
+		"on voicemail callback":
+			var voicemail_id = int(values[0])
+			var voicemail:Voicemail = LINQ.First(STATE.VOICEMAILS,func (voicemail:Voicemail): return voicemail.ID == voicemail_id);
+			START_MENU.on_callback_done(voicemail)
 
 		"get part","unlock part":
 			var part_id = int(values[0])
@@ -102,5 +145,17 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 
 
 
-
+		"destroy benefactor":
+			STATE.BENEFACTOR_IS_GIVING_YOU_MONEY = false;
+			STATE.DT_ROSE_IS_GIVING_YOU_MONEY = true;
+			DATA.save_game_state_to_user_data()
+			pass
+		"destroy rose":
+			STATE.DT_ROSE_IS_GIVING_YOU_MONEY = false;
+			DATA.save_game_state_to_user_data()
+			pass
+		"race with jack and jill":
+			STATE.YOU_ARE_RACING_WITH_JACK_AND_JILL = true
+			DATA.save_game_state_to_user_data()
+			pass
 	pass;

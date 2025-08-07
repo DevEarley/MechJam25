@@ -126,15 +126,26 @@ custom_effects = [ExtResource("5_d0ec2")]
 
 [node name="MISSION_TIME" type="Label" parent="StatusBar"]
 layout_mode = 1
-offset_left = 403.0
-offset_top = 675.0
-offset_right = 889.0
-offset_bottom = 710.0
+offset_left = 454.0
+offset_top = 681.0
+offset_right = 945.0
+offset_bottom = 713.0
 theme = ExtResource("2_vmkjb")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
 text = "24:00:00"
-horizontal_alignment = 2
+
+[node name="MISSION_LABEL" type="Label" parent="StatusBar"]
+layout_mode = 1
+offset_left = 458.0
+offset_top = 669.0
+offset_right = 673.0
+offset_bottom = 683.0
+theme = ExtResource("2_vmkjb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/font_size = 16
+text = "24:00:00"
 
 [node name="MISSION_TIME_ICON" type="TextureRect" parent="StatusBar"]
 layout_mode = 0

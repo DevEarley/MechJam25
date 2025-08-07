@@ -56,7 +56,9 @@ var MAP_BG:NinePatchRect
 var SFX_VOLUME
 var MUSIC_VOLUME
 
-
+var BENEFACTOR_IS_GIVING_YOU_MONEY
+var DT_ROSE_IS_GIVING_YOU_MONEY
+var YOU_ARE_RACING_WITH_JACK_AND_JILL
 #var DID_DAILY_FOR_MISSION = false
 
 # you signed in before 24 hour mark - you are still waiting. You may get Daily on Debrief.

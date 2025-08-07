@@ -30,8 +30,9 @@ atlas = ExtResource("2_46qc3")
 region = Rect2(28, 387, 44, 43)
 
 [node name="MISSION_BOX_SMALL" type="Button"]
-custom_minimum_size = Vector2(539, 96)
-offset_right = 539.0
+custom_minimum_size = Vector2(600, 96)
+offset_left = -37.0
+offset_right = 576.0
 offset_bottom = 96.0
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_ighwi")
@@ -44,11 +45,12 @@ metadata/_edit_vertical_guides_ = [76.0, 125.0, 132.0, 68.0, 60.0, 530.0, 536.0]
 layout_mode = 2
 offset_left = 72.0
 offset_top = 16.0
-offset_right = 477.0
+offset_right = 553.0
 offset_bottom = 44.0
 theme = ExtResource("1_ighwi")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 24
 text = "NAME"
 text_overrun_behavior = 3
 
@@ -75,25 +77,27 @@ text = "[dim]00[/dim]5"
 
 [node name="ONE_OVER_ODDS_FOR_MISSION" parent="." instance=ExtResource("3_otvo8")]
 layout_mode = 0
-offset_left = 468.0
+offset_left = 490.0
 offset_top = 18.0
-offset_right = 530.0
+offset_right = 552.0
 offset_bottom = 46.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "[dim]???"
 
 [node name="ONE_OVER_ODDS_FOR_RETURNING" parent="." instance=ExtResource("3_otvo8")]
 layout_mode = 0
-offset_left = 467.0
+offset_left = 489.0
 offset_top = 66.0
-offset_right = 529.0
+offset_right = 551.0
 offset_bottom = 94.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "[dim]???"
 
 [node name="ONE_OVER_ODDS_FOR_MISSION_LABEL" type="Label" parent="."]
 layout_mode = 2
-offset_left = 457.0
+offset_left = 479.0
 offset_top = 6.0
-offset_right = 529.0
+offset_right = 551.0
 offset_bottom = 34.0
 theme = ExtResource("1_ighwi")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -103,9 +107,9 @@ text = "MISSION"
 
 [node name="ONE_OVER_ODDS_FOR_RETURNING_LABEL" type="Label" parent="."]
 layout_mode = 2
-offset_left = 457.0
+offset_left = 479.0
 offset_top = 54.0
-offset_right = 529.0
+offset_right = 551.0
 offset_bottom = 82.0
 theme = ExtResource("1_ighwi")
 theme_override_colors/font_color = Color(0, 0, 0, 1)

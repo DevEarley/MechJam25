@@ -24,17 +24,21 @@ func _process(delta: float) -> void:
 				if(STATE.MISSIONS_MENU_CANVAS.visible):
 					MISSIONS_MENU.show_missions()
 			if(seconds_left <0 ):
-				$StatusBar/MISSION_TIME.text = "%s [COMPLETE]" % STATE.CURRENT_MISSION.name;
+				$StatusBar/MISSION_LABEL.text = STATE.CURRENT_MISSION.name;
+				$StatusBar/MISSION_TIME.text = "[COMPLETE]"
 
 			else:
-				$StatusBar/MISSION_TIME.text = "%s REMAINING [%s]" % [get_24_string_from_seconds(seconds_left) ,STATE.CURRENT_MISSION.name];
+				$StatusBar/MISSION_TIME.text = "%s REMAINING" % get_24_string_from_seconds(seconds_left);
+				$StatusBar/MISSION_LABEL.text = STATE.CURRENT_MISSION.name
 			$StatusBar/MISSION_STAR_ICON.show()
 			$StatusBar/MISSION_TIME_ICON.hide()
 		else:
+			$StatusBar/MISSION_LABEL.text = "Current Time"
 			$StatusBar/MISSION_TIME.text = "%s [NO ACTIVE MISSION]" %Time.get_time_string_from_system();
 			$StatusBar/MISSION_STAR_ICON.hide()
 			$StatusBar/MISSION_TIME_ICON.show()
 	else:
+		$StatusBar/MISSION_LABEL.text = "Current Time"
 		$StatusBar/MISSION_TIME.text = "%s [NO ACTIVE MISSION]" % Time.get_time_string_from_system();
 		$StatusBar/MISSION_STAR_ICON.hide()
 		$StatusBar/MISSION_TIME_ICON.show()

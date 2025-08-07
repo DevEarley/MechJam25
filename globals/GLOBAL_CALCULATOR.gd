@@ -128,6 +128,7 @@ func print_rng_and_odds(rng_number,odds):
 	print("RNG: %s | out of %s | ODS: %s | 1/RNG: %s | 1/ODDS: %s" % [rng_number,RNG.RNG_COUNT,odds,rng_number/ RNG.RNG_COUNT,1.0/odds] )
 
 func has_passed_current_mission():
+
 	var mission_odds = STATE.CURRENT_MISSION.one_over_odds_for_mission;
 	var return_odds = STATE.CURRENT_MISSION.one_over_odds_for_returning;
 	var mission_bonus = get_mission_bonus(STATE.CURRENT_MISSION)
@@ -164,7 +165,9 @@ func has_passed_current_mission():
 		mech.current_health -=1
 	if(returned==false):
 		mech.current_health -=1
-
+	mech.current_health-=1
+	mech.mission_id = -1
+	pilot.mech_id = -1
 	if(mech.current_health<=0 ):
 		mech.status = ENUMS.MECH_STATUS.NOT_AVAILABLE
 		pilot.status = ENUMS.PILOT_STATUS.DEAD

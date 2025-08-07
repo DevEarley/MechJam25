@@ -65,6 +65,8 @@ func run_script(_script:String):
 
 	for line in lines.size():
 		lines.set(line,lines[line].replace("’","'"))
+		lines.set(line,lines[line].replace("‘","'"))
+		lines.set(line,lines[line].replace("…","..."))
 		lines.set(line,lines[line].trim_prefix("\t"))
 		lines.set(line,(lines[line]).strip_edges(true,true))
 	CURRENT_LINE = 0;
@@ -74,6 +76,8 @@ func run_script(_script:String):
 func get_line_index_for_marker(marker:String):
 	if(marker.begins_with("[")==false):
 		marker = "[%s]"%marker;
+	marker=marker.trim_prefix(" ")
+	marker=marker.trim_suffix(" ")
 	var index = 0;
 	var target = -1;
 	for line in CURRENT_SCRIPT:

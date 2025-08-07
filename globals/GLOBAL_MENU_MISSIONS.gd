@@ -84,7 +84,7 @@ func on_start_mission_script_finished():
 
 
 func start_mission_pressed():
-
+	SFX.play_start_mission_sound()
 	hide_all_menus()
 	var mission:Mission = LINQ.First(STATE.MISSIONS,func (mission:Mission): return mission.ID==STATE.CURRENT_MISSION_ID);
 	STATE.HAS_MISSION_IN_PROGRESS = true
@@ -101,7 +101,8 @@ func start_mission_pressed():
 func on_back_to_start_menu():
 	START_MENU.show_start_menu()
 	STATE.MISSIONS_MENU_CANVAS.hide()
-
+	MUSIC.AUDIO_SOURCE.play(0)
+	MUSIC.play_music_for_start_menu()
 
 func on_back_to_mission_list():
 	MUSIC.play_music_for_mission_menu()
@@ -128,7 +129,7 @@ func on_mission_pressed(mission:Mission):
 	MISSION_BUTTONS_CONTAINER.hide();
 	STATE.MAP_BG.hide()
 	MAP.ANIMATOR.stop()
-	BACK_BUTTON.text="MISSION LIST"
+	BACK_BUTTON.text="MISSION LIST  	"
 	MISSION_BOX.get_node("MECH").text ="???"
 	MISSION_BOX.get_node("MECH").disabled = true
 	MISSION_BOX.get_node("PILOT_BUTTON").disabled = true
@@ -175,7 +176,7 @@ func on_mission_pressed(mission:Mission):
 
 	var location:Location = LINQ.First(STATE.LOCATIONS,func (location:Location): return location.ID==mission.location_id);
 	STATE.CURRENT_MISSION_ID = mission.ID;
-	STATE.CURRENT_MISSION = mission
+
 	STATE.CURRENT_LOCATION_ID = location.ID;
 	MISSION_BOX.show()
 	var environment_text = "UNKNOWN ENV"

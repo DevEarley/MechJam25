@@ -42,7 +42,9 @@ func dismiss_mech():
 		current_mech.mission_id = -1
 		current_mech.status = ENUMS.MECH_STATUS.IN_GARAGE
 		DATA.save_mechs_to_user_data()
-		MISSIONS_MENU.on_mission_pressed(STATE.CURRENT_MISSION)
+		var mission = LINQ.First(STATE.MISSIONS,func (mission): return mission.ID == STATE.CURRENT_MISSION_ID);
+
+		MISSIONS_MENU.on_mission_pressed(mission)
 
 func show_mech_info(mech,show_dismiss):
 		$MECH_BOX.show()
@@ -76,6 +78,8 @@ func on_pick_mech(mech:Mech):
 	if(mech.status == ENUMS.MECH_STATUS.IN_GARAGE):
 		mech.status = ENUMS.MECH_STATUS.ON_MISSION #don't save yet
 		mech.mission_id = STATE.CURRENT_MISSION_ID
+		var mission = LINQ.First(STATE.MISSIONS,func (mission): return mission.ID == STATE.CURRENT_MISSION_ID);
+
 		STATE.CURRENT_MECH_ID = mech.ID;
 		MISSIONS_MENU.hide_all_menus()
 		MISSIONS_MENU.MISSION_BOX.get_node("MECH").disabled = false;
@@ -87,4 +91,4 @@ func on_pick_mech(mech:Mech):
 			pilot.mech_id=mech.ID;
 		MISSIONS_MENU.MISSION_BOX.get_node("PILOT_BUTTON").show()
 		MISSIONS_MENU.hide_all_menus()
-		MISSIONS_MENU.on_mission_pressed(STATE.CURRENT_MISSION)
+		MISSIONS_MENU.on_mission_pressed(mission)

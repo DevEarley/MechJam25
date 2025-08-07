@@ -5,7 +5,7 @@ class_name OptionsMenu;
 func _ready():
 	$difficulty_24_hours_button.connect("pressed",_on_difficulty_24_hours_button_pressed)
 	$difficulty_instant_button.connect("pressed",_on_difficulty_instant_button_pressed)
-
+	$RESET_GAME.ON_TIMER_DONE = reset_game
 
 func _on_difficulty_24_hours_button_pressed():
 
@@ -25,3 +25,7 @@ func _on_options_menu_visibility_changed() -> void:
 			$difficulty_24_hours_button.grab_focus()
 		else:
 			$difficulty_instant_button.grab_focus()
+
+func reset_game():
+	STATE.OPTIONS_MENU_CANVAS.visible = false
+	DATA.reset_data()

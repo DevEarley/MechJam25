@@ -236,19 +236,19 @@ offset_top = 16.0
 offset_right = 632.0
 offset_bottom = 51.0
 grow_vertical = 1
-text = "[center]MECH JAM 25"
+text = "[center]MECHA MGMT"
 
 [node name="BG2" parent="." instance=ExtResource("3_nbft7")]
-offset_left = 402.0
+offset_left = 373.0
 offset_top = 59.0
-offset_right = 1269.0
+offset_right = 1277.0
 offset_bottom = 708.0
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-offset_left = 640.0
-offset_top = 81.0
-offset_right = 1240.0
-offset_bottom = 681.0
+offset_left = 656.0
+offset_top = 84.0
+offset_right = 1256.0
+offset_bottom = 684.0
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 transparent_bg = true
@@ -351,25 +351,25 @@ script = ExtResource("3_ismwm")
 
 [node name="START" parent="Main_Menu_Buttons" instance=ExtResource("4_nbft7")]
 layout_mode = 1
-offset_left = 58.0
+offset_left = -1.0
 offset_top = 314.0
-offset_right = 264.0
+offset_right = 287.0
 offset_bottom = 354.0
 text = "START  "
 
 [node name="EXIT" parent="Main_Menu_Buttons" instance=ExtResource("4_nbft7")]
 layout_mode = 1
-offset_left = 58.0
+offset_left = -1.0
 offset_top = 442.0
-offset_right = 264.0
+offset_right = 287.0
 offset_bottom = 482.0
 text = "EXIT"
 
 [node name="OPTIONS" parent="Main_Menu_Buttons" instance=ExtResource("4_nbft7")]
 layout_mode = 1
-offset_left = 58.0
+offset_left = -1.0
 offset_top = 378.0
-offset_right = 263.0
+offset_right = 287.0
 offset_bottom = 418.0
 text = "OPTIONS"
 

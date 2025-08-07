@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bwpp1tyyxytn3"]
+
+[ext_resource type="Shader" uid="uid://c013mj5wqs6fo" path="res://shaders/world_shader.tres" id="1_ss7lt"]
+[ext_resource type="Texture2D" uid="uid://31327gxuh2gc" path="res://textures/gradients_1.png" id="2_m6qx3"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ss7lt")
+shader_parameter/Texture2DParameter = ExtResource("2_m6qx3")
+shader_parameter/COLOR_BOTTOM_LIGHT = Color(0.449202, 0.293544, 0, 1)

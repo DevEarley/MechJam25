@@ -13,7 +13,6 @@ func save_everything():
 	save_voicemails_to_user_data()
 
 func load_or_create_everything():
-
 	load_or_create_user_user_options()
 	load_or_create_user_locations()
 	load_or_create_user_missions()
@@ -23,6 +22,90 @@ func load_or_create_everything():
 	load_or_create_user_voicemails()
 	load_or_create_user_game_state()
 	STATUS_BAR.update_status()
+
+func reset_data():
+	reset_mission_data();
+	reset_pilot_data()
+	reset_part_data()
+	reset_location_data()
+	reset_mech_data()
+	reset_voicemail_data()
+	STATE.BENEFACTOR_IS_GIVING_YOU_MONEY = true
+	STATE.DT_ROSE_IS_GIVING_YOU_MONEY = false
+	STATE.YOU_ARE_RACING_WITH_JACK_AND_JILL = false
+	STATE.CREDITS = 0
+	STATE.RECYCLE_POINTS = 0
+
+	save_everything();
+	STATUS_BAR.update_status()
+	STATE.DIFFICULTY_SETTTING_MENU_CANVAS.hide()
+	QS.run_script_from_file(preload("res://quest_scripts/intro.qs.tres"))
+	STATE.ON_QUEST_SCRIPT_DONE = on_initial_script_done
+
+
+func reset_mission_data():
+	var resource_data:ConfigFile = ConfigFile.new()
+	var static_data = preload("res://data/DATA_MISSIONS.tres").CONFIG_FILE
+	var resource_data_error = resource_data.parse(static_data)
+	STATE.MISSIONS_VERSION = resource_data.get_value("DEFAULT","VERSION")
+	var number_of_missions:int = resource_data.get_value("DEFAULT","NUMBER_OF_MISSIONS")
+	STATE.MISSIONS = []
+	for mission_index in number_of_missions:
+		create_and_push_mission_to_STATE("DEFAULT",mission_index,resource_data)
+
+func reset_location_data():
+	var resource_data:ConfigFile = ConfigFile.new()
+	var static_data = preload("res://data/DATA_LOCATIONS.tres").CONFIG_FILE
+	var resource_data_error = resource_data.parse(static_data)
+	STATE.LOCATIONS_VERSION = resource_data.get_value("DEFAULT","VERSION")
+	var number_of_locations:int = resource_data.get_value("DEFAULT","NUMBER_OF_LOCATIONS")
+	STATE.LOCATIONS = []
+	for location_index in number_of_locations:
+		create_and_push_location_to_STATE("DEFAULT",location_index,resource_data)
+
+func reset_part_data():
+	var resource_data:ConfigFile = ConfigFile.new()
+	var static_data = preload("res://data/DATA_PARTS.tres").CONFIG_FILE
+	var resource_data_error = resource_data.parse(static_data)
+	STATE.PARTS_VERSION = resource_data.get_value("DEFAULT","VERSION")
+	var number_of_parts:int = resource_data.get_value("DEFAULT","NUMBER_OF_PARTS")
+	STATE.PARTS = []
+	for part_index in number_of_parts:
+		create_and_push_part_to_STATE("DEFAULT",part_index,resource_data)
+
+func reset_voicemail_data():
+	var resource_data:ConfigFile = ConfigFile.new()
+	var static_data = preload("res://data/DATA_VOICEMAILS.tres").CONFIG_FILE
+	var resource_data_error = resource_data.parse(static_data)
+	STATE.VOICEMAILS_VERSION = resource_data.get_value("DEFAULT","VERSION")
+	var number_of_voicemails:int = resource_data.get_value("DEFAULT","NUMBER_OF_VOICEMAILS")
+	STATE.VOICEMAILS = []
+	for voicemail_index in number_of_voicemails:
+		create_and_push_voicemail_to_STATE("DEFAULT",voicemail_index,resource_data)
+
+
+func reset_pilot_data():
+	var resource_data:ConfigFile = ConfigFile.new()
+	var static_data = preload("res://data/DATA_PILOTS.tres").CONFIG_FILE
+	var resource_data_error = resource_data.parse(static_data)
+	STATE.PILOTS_VERSION = resource_data.get_value("DEFAULT","VERSION")
+	var number_of_pilots:int = resource_data.get_value("DEFAULT","NUMBER_OF_PILOTS")
+	STATE.PILOTS = []
+	for pilot_index in number_of_pilots:
+		create_and_push_pilot_to_STATE("DEFAULT",pilot_index,resource_data)
+
+
+
+func reset_mech_data():
+	var resource_data:ConfigFile = ConfigFile.new()
+	var static_data = preload("res://data/DATA_MECHS.tres").CONFIG_FILE
+	var resource_data_error = resource_data.parse(static_data)
+	STATE.MECHS_VERSION = resource_data.get_value("DEFAULT","VERSION")
+	var number_of_mechs:int = resource_data.get_value("DEFAULT","NUMBER_OF_MECHS")
+	STATE.MECHS = []
+	for mech_index in number_of_mechs:
+		create_and_push_mech_to_STATE("DEFAULT",mech_index,resource_data)
+
 
 func load_data() -> void:
 	load_or_create_everything()
@@ -38,22 +121,18 @@ func show_difficulty_select_or_main_menu():
 		STATE.DIFFICULTY_SETTTING_MENU_CANVAS.hide()
 		CONVERSATION_UI.hide_ui()
 		STATE.MAIN_MENU_CANVAS.show()
-
 		MUSIC.play_music_for_main_menu()
+
 	elif STATE.DIFFICULTY_ALREADY_CHOSEN == false:
 		STATE.DIFFICULTY_SETTTING_MENU_CANVAS.hide()
 		QS.run_script_from_file(preload("res://quest_scripts/intro.qs.tres"))
-
 		STATE.ON_QUEST_SCRIPT_DONE = on_initial_script_done
 
 func on_initial_script_done():
 		CONVERSATION_UI.hide_ui()
 		STATE.DIFFICULTY_SETTTING_MENU_CANVAS.show()
 
-
-
 func load_or_create_user_missions():
-
 	STATE.MISSIONS = []
 	var slot_index = 1
 	var section = "SAVESLOT_%s"%slot_index
@@ -95,35 +174,19 @@ func load_or_create_user_missions():
 func create_and_push_mission_to_STATE(section,mission_index,user_data):
 			var mission = Mission.new();
 			#todo - add checks to this- so the game doesn't crash if the user messes something up.
-
 			mission.ID = user_data.get_value(section,"MISSION_%s_ID"%mission_index)
 			mission.name = user_data.get_value(section,"MISSION_%s_NAME"%mission_index)
 			mission.flavor = user_data.get_value(section,"MISSION_%s_FLAVOR"%mission_index)
 			mission.flavor_icon = user_data.get_value(section,"MISSION_%s_FLAVOR_ICON"%mission_index)
 			mission.one_over_odds_for_mission = user_data.get_value(section,"MISSION_%s_ONE_OVER_ODDS_FOR_MISSION"%mission_index)
 			mission.one_over_odds_for_returning= user_data.get_value(section,"MISSION_%s_ONE_OVER_ODDS_FOR_RETURNING"%mission_index)
-
 			mission.allowed_mech_types = user_data.get_value(section,"MISSION_%s_ALLOWED_MECH_TYPES"%mission_index)
-
 			mission.location_id = user_data.get_value(section,"MISSION_%s_LOCATION_ID"%mission_index)
 			mission.start_script = user_data.get_value(section,"MISSION_%s_START_SCRIPT"%mission_index)
 			mission.success_script = user_data.get_value(section,"MISSION_%s_SUCCESS_SCRIPT"%mission_index)
 			mission.fail_script = user_data.get_value(section,"MISSION_%s_FAIL_SCRIPT"%mission_index)
 			mission.status = user_data.get_value(section,"MISSION_%s_STATUS"%mission_index)
 			mission.time_started = int(user_data.get_value(section,"MISSION_%s_TIME_STARTED"%mission_index))
-#
-#MISSION_0_ID=0
-#MISSION_0_NAME="MISSION-000"
-#MISSION_0_FLAVOR="Help Jack find Jill"
-#MISSION_0_FLAVOR_ICON=0
-#MISSION_0_ONE_OVER_ODDS_FOR_MISSION=1
-#MISSION_0_ONE_OVER_ODDS_FOR_RETURNING=1
-#MISSION_0_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
-#MISSION_0_LOCATION_ID=0
-#MISSION_0_STATUS=1
-#MISSION_0_TIME_STARTED=""
-
-
 
 			STATE.MISSIONS.push_back(mission);
 
@@ -374,12 +437,12 @@ func create_and_push_pilot_to_STATE_try_from_user(section,pilot_index,data,user_
 			if(user_data.get_value(section,"PILOT_%s_STATUS"%pilot_index)):
 				pilot.status = user_data.get_value(section,"PILOT_%s_STATUS"%pilot_index)
 			else:
-				pilot.status = data.get_value(section,"PILOT_%s_STATUS"%pilot_index)
+				pilot.status = data.get_value("DEFAULT","PILOT_%s_STATUS"%pilot_index)
 
 			if(user_data.get_value(section,"PILOT_%s_MECH_ID"%pilot_index)):
 				pilot.mech_id = user_data.get_value(section,"PILOT_%s_MECH_ID"%pilot_index)
 			else:
-				pilot.mech_id = data.get_value(section,"PILOT_%s_MECH_ID"%pilot_index)
+				pilot.mech_id = data.get_value("DEFAULT","PILOT_%s_MECH_ID"%pilot_index)
 
 
 			STATE.PILOTS.push_back(pilot);
@@ -443,7 +506,7 @@ func load_or_create_user_locations():
 			user_data.save("user://locations_backup_%s.cfg"%user_version)
 			var number_of_locations:int = resource_data.get_value("DEFAULT","NUMBER_OF_LOCATIONS")
 			for location_index in number_of_locations:
-				create_and_push_location_to_STATE(section,location_index,resource_data)
+				create_and_push_location_to_STATE("DEFAULT",location_index,resource_data)
 			save_locations_to_user_data()
 		elif(user_version>STATE.LOCATIONS_VERSION):
 			var number_of_locations:int = resource_data.get_value("DEFAULT","NUMBER_OF_LOCATIONS")
@@ -669,6 +732,9 @@ func create_and_push_game_state_data_to_STATE(section,user_data):
 			STATE.CREDITS = user_data.get_value(section,"CREDITS")
 			STATE.RECYCLE_POINTS= user_data.get_value(section,"RECYCLE_POINTS")
 			STATE.DIFFICULTY_ALREADY_CHOSEN  = user_data.get_value(section,"DIFFICULTY_ALREADY_CHOSEN")
+			STATE.BENEFACTOR_IS_GIVING_YOU_MONEY  = user_data.get_value(section,"BENEFACTOR_IS_GIVING_YOU_MONEY")
+			STATE.DT_ROSE_IS_GIVING_YOU_MONEY  = user_data.get_value(section,"DT_ROSE_IS_GIVING_YOU_MONEY")
+			STATE.YOU_ARE_RACING_WITH_JACK_AND_JILL  = user_data.get_value(section,"YOU_ARE_RACING_WITH_JACK_AND_JILL")
 
 func create_and_push_game_state_data_to_STATE_try_from_user(section,data,user_data:ConfigFile):
 
@@ -677,35 +743,51 @@ func create_and_push_game_state_data_to_STATE_try_from_user(section,data,user_da
 			if(user_data.get_value(section,"USE_REAL_TIME")):
 				STATE.USE_REAL_TIME= user_data.get_value(section,"USE_REAL_TIME")
 			else:
-				STATE.USE_REAL_TIME= data.get_value(section,"USE_REAL_TIME")
+				STATE.USE_REAL_TIME= data.get_value("DEFAULT","USE_REAL_TIME")
 
 			if(user_data.get_value(section,"CREDITS")):
 				STATE.CREDITS= user_data.get_value(section,"CREDITS")
 			else:
-				STATE.CREDITS = data.get_value(section,"CREDITS")
+				STATE.CREDITS = data.get_value("DEFAULT","CREDITS")
 
 			if(user_data.get_value(section,"RECYCLE_POINTS")):
 				STATE.RECYCLE_POINTS = user_data.get_value(section,"RECYCLE_POINTS")
 			else:
-				STATE.RECYCLE_POINTS = data.get_value(section,"RECYCLE_POINTS")
+				STATE.RECYCLE_POINTS = data.get_value("DEFAULT","RECYCLE_POINTS")
 
 			if(user_data.get_value(section,"DIFFICULTY_ALREADY_CHOSEN")):
 				STATE.DIFFICULTY_ALREADY_CHOSEN = user_data.get_value(section,"DIFFICULTY_ALREADY_CHOSEN")
 			else:
-				STATE.DIFFICULTY_ALREADY_CHOSEN = data.get_value(section,"DIFFICULTY_ALREADY_CHOSEN")
+				STATE.DIFFICULTY_ALREADY_CHOSEN = data.get_value("DEFAULT","DIFFICULTY_ALREADY_CHOSEN")
 
-			STATE.CREDITS
+			if(user_data.get_value(section,"BENEFACTOR_IS_GIVING_YOU_MONEY")):
+				STATE.BENEFACTOR_IS_GIVING_YOU_MONEY = user_data.get_value(section,"BENEFACTOR_IS_GIVING_YOU_MONEY")
+			else:
+				STATE.BENEFACTOR_IS_GIVING_YOU_MONEY = data.get_value("DEFAULT","BENEFACTOR_IS_GIVING_YOU_MONEY")
+
+			if(user_data.get_value(section,"DT_ROSE_IS_GIVING_YOU_MONEY")):
+				STATE.DT_ROSE_IS_GIVING_YOU_MONEY = user_data.get_value(section,"DT_ROSE_IS_GIVING_YOU_MONEY")
+			else:
+				STATE.DT_ROSE_IS_GIVING_YOU_MONEY = data.get_value("DEFAULT","DT_ROSE_IS_GIVING_YOU_MONEY")
+
+			if(user_data.get_value(section,"YOU_ARE_RACING_WITH_JACK_AND_JILL")):
+				STATE.YOU_ARE_RACING_WITH_JACK_AND_JILL = user_data.get_value(section,"YOU_ARE_RACING_WITH_JACK_AND_JILL")
+			else:
+				STATE.YOU_ARE_RACING_WITH_JACK_AND_JILL = data.get_value("DEFAULT","YOU_ARE_RACING_WITH_JACK_AND_JILL")
+
+
 func save_game_state_to_user_data():
 	var slot_index = 1
 	var section = "SAVESLOT_%s"%slot_index
 	var user_data = ConfigFile.new()
-
 	user_data.set_value(section,"VERSION",STATE.GAME_STATE_VERSION)
-
 	user_data.set_value(section,"CREDITS",STATE.CREDITS)
 	user_data.set_value(section,"RECYCLE_POINTS",STATE.RECYCLE_POINTS)
 	user_data.set_value(section,"USE_REAL_TIME",STATE.USE_REAL_TIME)
 	user_data.set_value(section,"DIFFICULTY_ALREADY_CHOSEN",STATE.DIFFICULTY_ALREADY_CHOSEN)
+	user_data.set_value(section,"BENEFACTOR_IS_GIVING_YOU_MONEY",STATE.BENEFACTOR_IS_GIVING_YOU_MONEY)
+	user_data.set_value(section,"DT_ROSE_IS_GIVING_YOU_MONEY",STATE.DT_ROSE_IS_GIVING_YOU_MONEY)
+	user_data.set_value(section,"YOU_ARE_RACING_WITH_JACK_AND_JILL",STATE.YOU_ARE_RACING_WITH_JACK_AND_JILL)
 
 	var err = user_data.save("user://game_state.cfg")
 	if err != OK:
@@ -772,8 +854,7 @@ func create_and_push_voicemail_to_STATE_try_from_user(section,voicemail_index,da
 
 			#todo - add checks to this- so the game doesn't crash if the user messes something up.
 			voicemail.ID = data.get_value("DEFAULT","VOICEMAIL_%s_ID"%voicemail_index)
-			voicemail.name = data.get_value("DEFAULT","VOICEMAIL_%s_NAME"%voicemail_index)
-
+			voicemail.from = data.get_value("DEFAULT","VOICEMAIL_%s_FROM"%voicemail_index)
 
 			voicemail.voicemail_script = user_data.get_value(section,"VOICEMAIL_%s_SCRIPT"%voicemail_index)
 			voicemail.callback_script = user_data.get_value(section,"VOICEMAIL_%s_CALLBACK"%voicemail_index)

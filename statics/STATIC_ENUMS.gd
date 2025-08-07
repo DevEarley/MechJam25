@@ -101,6 +101,7 @@ enum ENVIRONMENT {
 	ICY = 8,
 	UNDERGROUND = 9,
 	ACID_LAKE = 10,
+	RACE_TRACK = 11
 }
 
 enum PART_TYPE {

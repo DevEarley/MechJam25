@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://bo8kdbsr15ptf"]
+[gd_scene load_steps=10 format=3 uid="uid://bo8kdbsr15ptf"]
 
-[ext_resource type="Script" uid="uid://bxy3br0irscae" path="res://scripts/add-self-to-scaled-ui.gd" id="1_vjkv6"]
 [ext_resource type="PackedScene" uid="uid://jqfcrgtcowf1" path="res://prefabs/left-hand-button.tscn" id="2_tm0v0"]
 [ext_resource type="Script" uid="uid://bjyrsimh7r721" path="res://scripts/save_options_button.gd" id="3_d6dia"]
 [ext_resource type="PackedScene" uid="uid://bunfxp7cx281n" path="res://prefabs/title-bar-wide.tscn" id="3_giamy"]
@@ -8,9 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="5_rk5b5"]
 [ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="6_fgfsr"]
 [ext_resource type="Script" uid="uid://24v83hvf5tg2" path="res://scene-scripts/options_menu.gd" id="7_qrwdr"]
+[ext_resource type="PackedScene" uid="uid://buc3pa7ovo81q" path="res://prefabs/long-press-button.tscn" id="8_d6dia"]
+[ext_resource type="Texture2D" uid="uid://bng8j8q10k6yt" path="res://prefabs/recycle-icon.tres" id="9_x5il8"]
 
 [node name="OPTIONS_MENU" type="CanvasLayer"]
-script = ExtResource("1_vjkv6")
 metadata/_edit_vertical_guides_ = [640.0, 336.0, 944.0, 784.0, 800.0, 360.0]
 
 [node name="save_button" parent="." instance=ExtResource("2_tm0v0")]
@@ -121,6 +121,16 @@ offset_bottom = -224.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_qrwdr")
+
+[node name="RESET_GAME" parent="Control/ScrollContainer/VBoxContainer/BG2/options_menu_buttons" instance=ExtResource("8_d6dia")]
+layout_mode = 1
+offset_left = 148.0
+offset_top = 260.0
+offset_right = 428.0
+offset_bottom = 312.0
+theme_override_colors/icon_normal_color = Color(1, 0, 0.364706, 1)
+text = "RESET GAME"
+icon = ExtResource("9_x5il8")
 
 [node name="difficulty_24_hours_button" parent="Control/ScrollContainer/VBoxContainer/BG2/options_menu_buttons" instance=ExtResource("2_tm0v0")]
 layout_mode = 1
