@@ -11,7 +11,7 @@ static func build_mech_box(mech_button, mech):
 				var results = get_environment_text_and_tint(environment)
 				var environment_text= results[0]
 				var environment_tint= results[1]
-				mech_button.get_node("COMPATIBLE_ENVIRONMENT").text += "[%s] "%environment_text
+				mech_button.get_node("COMPATIBLE_ENVIRONMENT").text += "[%s]\n"%environment_text
 
 		if(mech_button.has_node("TYPE")):
 			mech_button.get_node("TYPE").text  = get_mech_type(mech)
@@ -38,9 +38,10 @@ static func build_small_part_box(BOX_PREFAB,part:Part):
 		var part_button = BOX_PREFAB.instantiate()
 		part_button.get_node("ID").text = DATA_TO_UI.insert_leading_zeros(part.ID)
 		part_button.get_node("NAME").text = "%s"%part.name
+		build_status(part_button,part)
 
-
-
+static func build_status(part_button,part:Part):
+		if(part_button.has_node("STATUS") == false): return;
 		match(part.status):
 			ENUMS.PART_STATUS.FOR_SALE:
 				part_button.get_node("STATUS").text ="FOR SALE [%s CREDITS]"%part.cost
@@ -55,7 +56,6 @@ static func build_small_part_box(BOX_PREFAB,part:Part):
 				part_button.get_node("STATUS").modulate = Color(338.0/255,0,93.0/255.0)
 				part_button.get_node("STATUS").text ="NOT AVAILABLE"
 
-		return part_button
 
 static func build_part_button(part_button,part:Part):
 	build_part_box(part_button.get_node("PART_BOX"),part)
@@ -80,8 +80,8 @@ static func build_part_box(part_button,part:Part):
 			var mech = LINQ.First(STATE.MECHS, func (mech:Mech):return mech.ID == part.attached_to_mech_id )
 
 			part_button.get_node("MECH").text = "EQUIPT TO %s"%mech.name
-		#if(part_button.has_node("STATUS")):
-			#part_button.get_node("STATUS").text = "%s"%part.status
+		build_status(part_button,part)
+
 		#if(part_button.has_node("TYPE")):
 			#part_button.get_node("TYPE").text = "%s"%part.type
 		return part_button
@@ -94,6 +94,8 @@ static func build_pilot_box(pilot_button,pilot:Pilot):
 			pilot_button.get_node("NAME").text = "%s"%pilot.name
 		if(pilot_button.has_node("COST")):
 			pilot_button.get_node("COST").text = "%s"%pilot.cost
+		if(pilot_button.has_node("FLAVOR")):
+			pilot_button.get_node("FLAVOR").text = pilot.flavor
 		if(pilot_button.has_node("MISSION_ODDS")):
 			pilot_button.get_node("MISSION_ODDS").text = "+%s/%s"%[pilot.mission_odds,pilot.mission_odds]
 		if(pilot_button.has_node("CRITERIA_FOR_MISSION_ODDS")):
@@ -121,32 +123,44 @@ static func get_criteria_for_mission_odds(criteria_code:ENUMS.MISSION_CRITERIA)-
 		ENUMS.MISSION_CRITERIA.UNDECIDED:
 			return "UNDECIDED";
 
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_1:
-			return " #1";
+		ENUMS.MISSION_CRITERIA.ADVANTAGE_DURING_OFFENSIVE_COMBAT:
+			return "ADVANTAGE_DURING_OFFENSIVE_COMBAT";
 
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_2:
-			return "MISSION_CRITERIA #2";
+		ENUMS.MISSION_CRITERIA.ADVANTAGE_DURING_RESCUE:
+			return "ADVANTAGE_DURING_RESCUE";
 
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_3:
-			return "MISSION_CRITERIA #3";
+		ENUMS.MISSION_CRITERIA.ADVANTAGE_DURING_DELIVERY:
+			return "ADVANTAGE_DURING_DELIVERY";
 
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_4:
-			return "MISSION_CRITERIA #4";
+		ENUMS.MISSION_CRITERIA.ADVANTAGE_DURING_ESCORT:
+			return "ADVANTAGE_DURING_ESCORT";
 
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_5:
-			return "MISSION_CRITERIA #5";
+		ENUMS.MISSION_CRITERIA.ADVANTAGE_DURING_INTEL_GATHERING:
+			return "ADVANTAGE_DURING_INTEL_GATHERING";
 
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_6:
-			return "MISSION_CRITERIA #6";
+		ENUMS.MISSION_CRITERIA.ADVANTAGE_DURING_DEFENSIVE_COMBAT:
+			return "ADVANTAGE_DURING_DEFENSIVE_COMBAT";
 
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_7:
-			return "MISSION_CRITERIA #7";
+		ENUMS.MISSION_CRITERIA.ADVANTAGE_DURING_TRAVEL:
+			return "ADVANTAGE_DURING_TRAVEL";
 
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_8:
-			return "MISSION_CRITERIA #8";
+		ENUMS.MISSION_CRITERIA.ADVANTAGE_IN_SPACE:
+			return "ADVANTAGE_IN_SPACE";
 
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_9:
-			return "MISSION_CRITERIA #9";
+		ENUMS.MISSION_CRITERIA.UNDERWATER_COMBAT_ADVANTAGE:
+			return "UNDERWATER_COMBAT_ADVANTAGE";
+
+		ENUMS.MISSION_CRITERIA.ADVANTAGE_RACING:
+			return "ADVANTAGE_RACING";
+
+		ENUMS.MISSION_CRITERIA.NO_CRITERIA_FOR_ADVANTAGE:
+			return "NO_CRITERIA_FOR_ADVANTAGE";
+
+		ENUMS.MISSION_CRITERIA.ADVANTAGE_DURING_ANY_COMBAT:
+			return "ADVANTAGE_DURING_ANY_COMBAT";
+
+		ENUMS.MISSION_CRITERIA.DRY_COMBAT_ADVANTAGE:
+			return "DRY_COMBAT_ADVANTAGE";
 
 	return "UNDECIDED"
 static func get_criteria_for_return_odds(criteria_code:ENUMS.RETURN_CRITERIA)->String:
@@ -154,32 +168,41 @@ static func get_criteria_for_return_odds(criteria_code:ENUMS.RETURN_CRITERIA)->S
 		ENUMS.RETURN_CRITERIA.UNDECIDED:
 			return "UNDECIDED";
 
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_1:
-			return "RETURN_CRITERIA #1";
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_UNDERWATER:
+			return "ADVANTAGE_UNDERWATER";
 
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_2:
-			return "RETURN_CRITERIA #2";
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_AERIAL:
+			return "ADVANTAGE_AERIAL";
 
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_3:
-			return "RETURN_CRITERIA #3";
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_IN_CITY:
+			return "ADVANTAGE_IN_CITY";
 
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_4:
-			return "RETURN_CRITERIA #4";
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_SPECIAL_OPS:
+			return "ADVANTAGE_SPECIAL_OPS";
 
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_5:
-			return "RETURN_CRITERIA #5";
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_ESCORT:
+			return "ADVANTAGE_ESCORT";
 
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_6:
-			return "RETURN_CRITERIA #6";
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_IN_SPACE:
+			return "ADVANTAGE_IN_SPACE";
 
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_7:
-			return "RETURN_CRITERIA #7";
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_IN_SWAMP:
+			return "ADVANTAGE_IN_SWAMP";
 
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_8:
-			return "RETURN_CRITERIA #8";
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_IN_DESERT:
+			return "ADVANTAGE_IN_DESERT";
 
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_9:
-			return "RETURN_CRITERIA #9";
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_IN_EXTREME_TEMPERATURES:
+			return "ADVANTAGE_IN_EXTREME_TEMPERATURES";
+
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_RACING:
+			return "ADVANTAGE_RACING";
+
+		ENUMS.RETURN_CRITERIA.NO_CRITERIA_FOR_ADVANTAGE:
+			return "NO_CRITERIA_FOR_ADVANTAGE";
+
+		ENUMS.RETURN_CRITERIA.NO_ADVANTAGE_UNDERWATER:
+			return "NO_ADVANTAGE_UNDERWATER";
 
 	return "UNDECIDED"
 
@@ -223,6 +246,10 @@ static func display_node_for_part(id,part_nodes_parent):
 				part_nodes_parent.get_node("RED_HammerKnuckle").show();
 			17:
 				part_nodes_parent.get_node("RED_NanoApplicator").show();
+			18:
+				part_nodes_parent.get_node("RED_ENGINE").show();
+			19:
+				part_nodes_parent.get_node("BLUE_ENGINE").show();
 
 static func display_node_for_mech(id,mech_nodes_parent):
 

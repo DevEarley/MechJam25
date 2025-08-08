@@ -48,6 +48,7 @@ func _on_START_pressed():
 
 
 func _on_EXIT_pressed():
+
 	get_tree().quit()
 
 func _on_OPTIONS_pressed():

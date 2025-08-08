@@ -1,0 +1,94 @@
+[gd_scene load_steps=8 format=3 uid="uid://dgr4yfbt644k6"]
+
+[ext_resource type="PackedScene" uid="uid://dimmt4xbgqqdb" path="res://mechs-3D/mech-001.glb" id="1_htunu"]
+[ext_resource type="Material" uid="uid://c3itow5c6pqcn" path="res://materials/world_mat_alt_3.tres" id="2_3am7p"]
+[ext_resource type="PackedScene" uid="uid://b0rx4ab5hx5wf" path="res://mechs-3D/mech-002.glb" id="3_82uak"]
+[ext_resource type="Material" uid="uid://b1vqp2jv6egmn" path="res://materials/world_mat.tres" id="4_nka7k"]
+[ext_resource type="PackedScene" uid="uid://nlmcc4mmvv0b" path="res://mechs-3D/MetalHead.glb" id="5_fx3hn"]
+[ext_resource type="Material" uid="uid://bwpp1tyyxytn3" path="res://materials/world_mat_alt_2.tres" id="6_alp87"]
+[ext_resource type="Material" uid="uid://dj2chdusgvktn" path="res://materials/world_mat_alt.tres" id="7_ulio8"]
+
+[node name="MECHS_NODE" type="Node3D"]
+transform = Transform3D(1, 0, 4.46638e-06, 0, 1, 0, -4.46638e-06, 0, 1, 0, 0, 0)
+
+[node name="BLUE_MECH_001" parent="." instance=ExtResource("1_htunu")]
+transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0, 0, 0)
+visible = false
+
+[node name="Cube2_copy4" parent="BLUE_MECH_001" index="0"]
+layers = 8
+surface_material_override/0 = ExtResource("2_3am7p")
+
+[node name="RED_MECH_001" parent="." instance=ExtResource("3_82uak")]
+visible = false
+
+[node name="Cube1_extract3" parent="RED_MECH_001" index="0"]
+layers = 8
+surface_material_override/0 = ExtResource("4_nka7k")
+
+[node name="RED_MECH_002" parent="." instance=ExtResource("5_fx3hn")]
+visible = false
+
+[node name="MetalHead_Mesh" parent="RED_MECH_002" index="0"]
+layers = 8
+
+[node name="BLUE_MECH_002" parent="." instance=ExtResource("5_fx3hn")]
+visible = false
+
+[node name="MetalHead_Mesh" parent="BLUE_MECH_002" index="0"]
+layers = 8
+surface_material_override/0 = ExtResource("6_alp87")
+
+[node name="BLUE_MECH_003" parent="." instance=ExtResource("1_htunu")]
+transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0, 0, 0)
+visible = false
+
+[node name="Cube2_copy4" parent="BLUE_MECH_003" index="0"]
+layers = 8
+
+[node name="RED_MECH_003" parent="." instance=ExtResource("1_htunu")]
+transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0, 0, 0)
+visible = false
+
+[node name="Cube2_copy4" parent="RED_MECH_003" index="0"]
+layers = 8
+surface_material_override/0 = ExtResource("6_alp87")
+
+[node name="RED_MECH_004" parent="." instance=ExtResource("3_82uak")]
+visible = false
+
+[node name="Cube1_extract3" parent="RED_MECH_004" index="0"]
+layers = 8
+surface_material_override/0 = ExtResource("6_alp87")
+
+[node name="BLUE_MECH_004" parent="." instance=ExtResource("5_fx3hn")]
+visible = false
+
+[node name="MetalHead_Mesh" parent="BLUE_MECH_004" index="0"]
+layers = 8
+surface_material_override/0 = ExtResource("2_3am7p")
+
+[node name="BLUE_MECH_005" parent="." instance=ExtResource("3_82uak")]
+visible = false
+
+[node name="Cube1_extract3" parent="BLUE_MECH_005" index="0"]
+layers = 8
+surface_material_override/0 = ExtResource("7_ulio8")
+
+[node name="RED_MECH_005" parent="." instance=ExtResource("3_82uak")]
+visible = false
+
+[node name="Cube1_extract3" parent="RED_MECH_005" index="0"]
+layers = 8
+surface_material_override/0 = ExtResource("2_3am7p")
+
+[editable path="BLUE_MECH_001"]
+[editable path="RED_MECH_001"]
+[editable path="RED_MECH_002"]
+[editable path="BLUE_MECH_002"]
+[editable path="BLUE_MECH_003"]
+[editable path="RED_MECH_003"]
+[editable path="RED_MECH_004"]
+[editable path="BLUE_MECH_004"]
+[editable path="BLUE_MECH_005"]
+[editable path="RED_MECH_005"]

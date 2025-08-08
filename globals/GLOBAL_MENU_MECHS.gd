@@ -39,23 +39,24 @@ func on_mech_pressed(id):
 	mech_box.show()
 	DATA_TO_UI.build_mech_box(mech_box,current_mech)
 	if(current_mech.status == ENUMS.MECH_STATUS.IN_GARAGE):
-		sell_button.show()
-		buy_button.hide()
+		sell_button.disabled = false
+		buy_button.disabled = true
 		repair_button.disabled=(current_mech.current_health>=current_mech.base_health) || STATE.RECYCLE_POINTS<=0;
 		sell_button.text = "SELL [-%s K]"%int(current_mech.selling_price/1000)
 	elif(current_mech.status == ENUMS.MECH_STATUS.FOR_SALE):
-		sell_button.hide()
-		buy_button.show()
+		sell_button.disabled = true
+		buy_button.disabled = false
 		repair_button.disabled=true;
 		buy_button.text = "BUY [+%s K]"%int(current_mech.cost/1000)
+		if(STATE.CREDITS >= current_mech.cost):
+			buy_button.disabled = false;
+		else:
+			buy_button.disabled = true;
 	else:
-		sell_button.hide()
-		buy_button.hide()
+		sell_button.disabled = true
+		buy_button.disabled = true
 		repair_button.disabled=true;
-	if(STATE.CREDITS >= current_mech.cost):
-		buy_button.disabled = false;
-	else:
-		buy_button.disabled = true;
+
 
 	animator.play("look_up_at_mech")
 	DATA_TO_UI.display_node_for_mech(id,mech_nodes)

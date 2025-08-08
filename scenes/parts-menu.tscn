@@ -1,6 +1,5 @@
 [gd_scene load_steps=11 format=3 uid="uid://bkoa56i1h4muo"]
 
-[ext_resource type="PackedScene" uid="uid://bunfxp7cx281n" path="res://prefabs/title-bar-wide.tscn" id="1_5snb0"]
 [ext_resource type="PackedScene" uid="uid://bwlhvw7r5jrdg" path="res://prefabs/parts_viewport_container.tscn" id="2_ovwcu"]
 [ext_resource type="Script" uid="uid://y03b4ogxg8vq" path="res://scene-scripts/parts-menu.gd" id="3_gv7hm"]
 [ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="4_21y2s"]
@@ -10,28 +9,50 @@
 [ext_resource type="PackedScene" uid="uid://c4koj71ge37td" path="res://prefabs/back_button.tscn" id="8_3qa8q"]
 [ext_resource type="Texture2D" uid="uid://bng8j8q10k6yt" path="res://prefabs/recycle-icon.tres" id="8_ovwcu"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pia31"]
+load_path = "res://.godot/imported/ui-sheet-1.svg-d7083482406c4ebeecb890573f984d0a.ctex"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_pia31"]
 atlas = ExtResource("5_07aea")
 region = Rect2(905, 670, 43, 47)
 
 [node name="Parts-menu" type="CanvasLayer"]
 
-[node name="TITLE" parent="." instance=ExtResource("1_5snb0")]
+[node name="TITLE" type="RichTextLabel" parent="."]
+clip_contents = false
+custom_minimum_size = Vector2(120, 35)
 anchors_preset = 5
-anchor_top = 0.0
-anchor_bottom = 0.0
-offset_left = -208.0
-offset_top = 16.0
-offset_right = 206.0
-offset_bottom = 44.0
-grow_vertical = 1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -266.0
+offset_top = 18.0
+offset_right = -146.0
+offset_bottom = 53.0
+grow_horizontal = 2
+theme = ExtResource("4_21y2s")
+bbcode_enabled = true
 text = "[center]PARTS"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TITLE"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -142.0
+offset_top = -18.0
+offset_right = 226.0
+offset_bottom = 38.0
+texture = SubResource("CompressedTexture2D_pia31")
+region_rect = Rect2(7, 239, 289, 62)
+patch_margin_left = 89
+patch_margin_right = 28
 
 [node name="SubViewportContainer" parent="." instance=ExtResource("2_ovwcu")]
-offset_left = 704.0
-offset_top = 72.0
-offset_right = 704.0
-offset_bottom = 72.0
+offset_left = 792.0
+offset_top = 8.0
+offset_right = 792.0
+offset_bottom = 8.0
 
 [node name="BUTTONS" type="Control" parent="."]
 layout_mode = 3
@@ -44,9 +65,10 @@ script = ExtResource("3_gv7hm")
 
 [node name="EQUIP_BUTTON" type="Button" parent="BUTTONS"]
 layout_mode = 0
-offset_top = -72.0
-offset_right = 192.0
-offset_bottom = -32.0
+offset_left = 40.0
+offset_top = -144.0
+offset_right = 232.0
+offset_bottom = -97.0
 theme = ExtResource("4_21y2s")
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 text = "EQUIP"
@@ -54,37 +76,37 @@ icon = SubResource("AtlasTexture_pia31")
 
 [node name="SELL_BUTTON" parent="BUTTONS" instance=ExtResource("6_wo1tg")]
 layout_mode = 1
-offset_left = -108.0
-offset_top = -108.0
-offset_right = 60.0
-offset_bottom = -56.0
+offset_left = 44.0
+offset_top = -172.0
+offset_right = 325.0
+offset_bottom = -120.0
 text = "SELL"
 icon = ExtResource("7_5jmdg")
 
 [node name="BUY_BUTTON" parent="BUTTONS" instance=ExtResource("6_wo1tg")]
 layout_mode = 1
-offset_left = -108.0
-offset_top = -108.0
-offset_right = 60.0
-offset_bottom = -56.0
+offset_left = 60.0
+offset_top = -244.0
+offset_right = 327.0
+offset_bottom = -192.0
 text = "BUY"
 icon = ExtResource("7_5jmdg")
 
 [node name="RECYCLE_BUTTON" parent="BUTTONS" instance=ExtResource("6_wo1tg")]
 layout_mode = 1
-offset_left = 68.0
-offset_top = -108.0
-offset_right = 273.0
-offset_bottom = -56.0
+offset_left = -4.0
+offset_top = -100.0
+offset_right = 326.0
+offset_bottom = -48.0
 text = "RECYCLE"
 icon = ExtResource("8_ovwcu")
 
 [node name="UNEQUIP_BUTTON" type="Button" parent="BUTTONS"]
 layout_mode = 0
-offset_left = -16.0
-offset_top = -80.0
-offset_right = 190.0
-offset_bottom = -25.0
+offset_left = 24.0
+offset_top = -144.0
+offset_right = 230.0
+offset_bottom = -89.0
 theme = ExtResource("4_21y2s")
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 text = "UNEQUIP"

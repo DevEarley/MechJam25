@@ -92,6 +92,22 @@ do[lose pilot(0)]
 do[get voicemail(1)]
 do[unlock pilot(1)]
 do[unlock pilot(2)]
+do[unlock pilot(3)]
+do[unlock pilot(4)]
+do[unlock pilot(5)]
+do[unlock pilot(6)]
+do[unlock pilot(7)]
+do[unlock pilot(8)]
+do[unlock pilot(9)]
+do[unlock pilot(10)]
+do[unlock pilot(11)]
+do[unlock pilot(12)]
+do[unlock pilot(13)]
+do[unlock pilot(14)]
+do[unlock pilot(15)]
+do[unlock pilot(16)]
+do[unlock pilot(18)]
+do[unlock pilot(19)]
 \"
 MISSION_1_FAIL_SCRIPT=\"
 say[Jack broke his crown. GAME OVER]
@@ -197,7 +213,7 @@ say[I wonder what the Dualists will do with all this ammo?](pilot)
 say[According to our intel, Gradients will be spying on any deliveries going in and out of Steelhaven. We need to be careful!](pilot)
 \"
 MISSION_5_SUCCESS_SCRIPT=\"
-say[That wad dicey.](pilot)
+say[That was dicey.](pilot)
 do[complete mission(5)]
 do[unlock voicemail(7)]
 \"

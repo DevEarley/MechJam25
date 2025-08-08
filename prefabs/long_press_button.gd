@@ -6,6 +6,7 @@ var ON_TIMER_DONE:Callable
 func _ready():
 	timer = Timer.new()
 	timer.one_shot = true;
+	timer.wait_time= 0.4
 	timer.connect("timeout",on_timer_done);
 	add_child(timer)
 

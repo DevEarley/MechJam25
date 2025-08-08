@@ -122,7 +122,7 @@ func on_back_to_mission_list():
 	show_missions()
 
 func on_mission_pressed(mission:Mission):
-
+	STATE.CURRENT_MISSION_ID = mission.ID;
 	SFX.play_click_sound()
 	STATE.ON_BACK_BUTTON_PRESSED =on_back_to_mission_list
 	MAP.CURSOR.show()
@@ -148,6 +148,12 @@ func on_mission_pressed(mission:Mission):
 	else:
 		STATE.CURRENT_MECH_ID=-1
 		STATE.CURRENT_PILOT_ID=-1
+		var mech:Mech = LINQ.First(STATE.MECHS,func (mech:Mech):return mech.mission_id == STATE.CURRENT_MISSION_ID)
+		if(mech!=null):
+			STATE.CURRENT_MECH_ID = mech.ID
+			var pilot:Pilot = LINQ.First(STATE.PILOTS,func ( pilot:Pilot ):return pilot.mech_id == mech.ID)
+			if(pilot!=null):
+				STATE.CURRENT_PILOT_ID = pilot.ID
 	var mission_bonus = CALCULATOR.get_mission_bonus(mission);
 	var return_bonus = CALCULATOR.get_return_bonus(mission);
 	for child in MISSION_BOX.get_children():
@@ -175,7 +181,7 @@ func on_mission_pressed(mission:Mission):
 		STATE.CURRENT_PILOT_ID = -1
 
 	var location:Location = LINQ.First(STATE.LOCATIONS,func (location:Location): return location.ID==mission.location_id);
-	STATE.CURRENT_MISSION_ID = mission.ID;
+
 
 	STATE.CURRENT_LOCATION_ID = location.ID;
 	MISSION_BOX.show()

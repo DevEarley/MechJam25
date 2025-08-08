@@ -31,99 +31,100 @@ func get_return_bonus(mission:Mission)->int:
 
 func calculate_mission_bonus_for_part(part:Part,mission:Mission,pilot:Pilot,location:Location, mech:Mech)->int:
 	match(part.criteria_for_mission_odds):
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_0:
+		ENUMS.MISSION_CRITERIA.ADVANTAGE_DURING_OFFENSIVE_COMBAT:
 			return part.mission_odds;
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_1:
+		ENUMS.MISSION_CRITERIA.ADVANTAGE_DURING_RESCUE:
 			return part.mission_odds;
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_2:
+		ENUMS.MISSION_CRITERIA.ADVANTAGE_DURING_DELIVERY:
 			return part.mission_odds;
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_3:
+		ENUMS.MISSION_CRITERIA.ADVANTAGE_DURING_ESCORT:
 			return part.mission_odds;
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_4:
+		ENUMS.MISSION_CRITERIA.ADVANTAGE_DURING_INTEL_GATHERING:
 			return part.mission_odds;
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_5:
+		ENUMS.MISSION_CRITERIA.ADVANTAGE_DURING_DEFENSIVE_COMBAT:
 			return part.mission_odds;
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_6:
+		ENUMS.MISSION_CRITERIA.ADVANTAGE_DURING_TRAVEL:
 			return part.mission_odds;
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_7:
+		ENUMS.MISSION_CRITERIA.ADVANTAGE_IN_SPACE:
 			return part.mission_odds;
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_8:
+		ENUMS.MISSION_CRITERIA.UNDERWATER_COMBAT_ADVANTAGE:
 			return part.mission_odds;
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_9:
+		ENUMS.MISSION_CRITERIA.ADVANTAGE_RACING:
 			return part.mission_odds;
-	return 3;
+	return 0;
 
 func calculate_mission_bonus_for_pilot(parts:Array[Part],mission:Mission,pilot:Pilot,location:Location, mech:Mech)->int:
 	match(pilot.criteria_for_mission_odds):
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_0:
+		ENUMS.MISSION_CRITERIA.ADVANTAGE_DURING_OFFENSIVE_COMBAT:
 			return pilot.mission_odds;
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_1:
+		ENUMS.MISSION_CRITERIA.ADVANTAGE_DURING_RESCUE:
 			return pilot.mission_odds;
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_2:
+		ENUMS.MISSION_CRITERIA.ADVANTAGE_DURING_DELIVERY:
 			return pilot.mission_odds;
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_3:
+		ENUMS.MISSION_CRITERIA.ADVANTAGE_DURING_ESCORT:
 			return pilot.mission_odds;
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_4:
+		ENUMS.MISSION_CRITERIA.ADVANTAGE_DURING_INTEL_GATHERING:
 			return pilot.mission_odds;
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_5:
+		ENUMS.MISSION_CRITERIA.ADVANTAGE_DURING_DEFENSIVE_COMBAT:
 			return pilot.mission_odds;
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_6:
+		ENUMS.MISSION_CRITERIA.ADVANTAGE_DURING_TRAVEL:
 			return pilot.mission_odds;
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_7:
+		ENUMS.MISSION_CRITERIA.ADVANTAGE_IN_SPACE:
 			return pilot.mission_odds;
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_8:
+		ENUMS.MISSION_CRITERIA.UNDERWATER_COMBAT_ADVANTAGE:
 			return pilot.mission_odds;
-		ENUMS.MISSION_CRITERIA.MISSION_CRITERIA_9:
+		ENUMS.MISSION_CRITERIA.ADVANTAGE_RACING:
 			return pilot.mission_odds;
-	return 3;
+	return 0;
 
 func calculate_return_bonus_for_part(part:Part,mission:Mission,pilot:Pilot,location:Location, mech:Mech)->int:
 	match(part.criteria_for_returning_odds):
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_0:
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_UNDERWATER:
 			return part.returning_odds;
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_1:
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_AERIAL:
 			return part.returning_odds;
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_2:
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_IN_CITY:
 			return part.returning_odds;
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_3:
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_SPECIAL_OPS:
 			return part.returning_odds;
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_4:
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_ESCORT:
 			return part.returning_odds;
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_5:
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_IN_SPACE:
 			return part.returning_odds;
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_6:
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_IN_SWAMP:
 			return part.returning_odds;
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_7:
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_IN_DESERT:
 			return part.returning_odds;
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_8:
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_IN_EXTREME_TEMPERATURES:
 			return part.returning_odds;
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_9:
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_RACING:
 			return part.returning_odds;
-	return 3;
+	return 0;
 
 func calculate_return_bonus_for_pilot(parts:Array[Part],mission:Mission,pilot:Pilot,location:Location, mech:Mech)->int:
 	match(pilot.criteria_for_returning_odds):
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_0:
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_UNDERWATER:
 			return pilot.returning_odds;
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_1:
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_AERIAL:
 			return pilot.returning_odds;
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_2:
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_IN_CITY:
 			return pilot.returning_odds;
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_3:
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_SPECIAL_OPS:
 			return pilot.returning_odds;
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_4:
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_ESCORT:
 			return pilot.returning_odds;
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_5:
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_IN_SPACE:
 			return pilot.returning_odds;
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_6:
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_IN_SWAMP:
 			return pilot.returning_odds;
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_7:
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_IN_DESERT:
 			return pilot.returning_odds;
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_8:
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_IN_EXTREME_TEMPERATURES:
 			return pilot.returning_odds;
-		ENUMS.RETURN_CRITERIA.RETURN_CRITERIA_9:
+		ENUMS.RETURN_CRITERIA.ADVANTAGE_RACING:
 			return pilot.returning_odds;
-	return 3;
+	return 0;
+
 func print_rng_and_odds(rng_number,odds):
 	print("RNG: %s | out of %s | ODS: %s | 1/RNG: %s | 1/ODDS: %s" % [rng_number,RNG.RNG_COUNT,odds,rng_number/ RNG.RNG_COUNT,1.0/odds] )
 
@@ -166,21 +167,17 @@ func has_passed_current_mission():
 	if(returned==false):
 		mech.current_health -=1
 	mech.current_health-=1
-	mech.mission_id = -1
-	pilot.mech_id = -1
+
+
+
+
 	if(mech.current_health<=0 ):
-		mech.status = ENUMS.MECH_STATUS.NOT_AVAILABLE
-		pilot.status = ENUMS.PILOT_STATUS.DEAD
-		DATA.save_everything()
+
 		return false;
 	elif(completed_mission== true):
-		mech.status = ENUMS.MECH_STATUS.IN_GARAGE
-		pilot.status = ENUMS.PILOT_STATUS.HIRED
-		DATA.save_everything()
+
 		return true;
 
 	else:
-		mech.status = ENUMS.MECH_STATUS.IN_GARAGE
-		pilot.status = ENUMS.PILOT_STATUS.HIRED
-		DATA.save_everything()
+
 		return false;

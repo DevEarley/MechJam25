@@ -52,6 +52,27 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 			var id:int = int(values[0])
 			var mission:Mission = LINQ.First(STATE.MISSIONS,func (mission:Mission): return mission.ID==id);
 			mission.status = ENUMS.MISSION_STATUS.FAILED
+
+			var mech:Mech = LINQ.First(STATE.MECHS,func (mech:Mech):return mech.mission_id == id)
+			var pilot:Pilot = LINQ.First(STATE.PILOTS,func ( pilot:Pilot ):return pilot.mech_id == mech.ID)
+
+
+			mech.mission_id = -1
+			pilot.mech_id = -1
+
+			if(mech.current_health<=0 ):
+				mech.status = ENUMS.MECH_STATUS.NOT_AVAILABLE
+				pilot.status = ENUMS.PILOT_STATUS.DEAD
+				DATA.save_everything()
+
+			else:
+				mech.status = ENUMS.MECH_STATUS.IN_GARAGE
+				pilot.status = ENUMS.PILOT_STATUS.HIRED
+				DATA.save_everything()
+
+
+
+
 			DATA.save_missions_to_user_data()
 			QS.CURRENT_LINE+=1;
 			QS.run_script__process_line();
@@ -60,6 +81,24 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 			var id:int = int(values[0])
 			var mission:Mission = LINQ.First(STATE.MISSIONS,func (mission:Mission): return mission.ID==id);
 			mission.status = ENUMS.MISSION_STATUS.SUCCESS
+
+			var mech:Mech = LINQ.First(STATE.MECHS,func (mech:Mech):return mech.mission_id == id)
+			var pilot:Pilot = LINQ.First(STATE.PILOTS,func ( pilot:Pilot ):return pilot.mech_id == mech.ID)
+
+			mech.mission_id = -1
+			pilot.mech_id = -1
+
+			if(mech.current_health<=0 ):
+				mech.status = ENUMS.MECH_STATUS.NOT_AVAILABLE
+				pilot.status = ENUMS.PILOT_STATUS.DEAD
+				DATA.save_everything()
+
+			else:
+				mech.status = ENUMS.MECH_STATUS.IN_GARAGE
+				pilot.status = ENUMS.PILOT_STATUS.HIRED
+				DATA.save_everything()
+
+
 
 			DATA.save_missions_to_user_data()
 			QS.CURRENT_LINE+=1;

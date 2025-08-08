@@ -3,33 +3,33 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://nlmcc4mmvv0b"
-path="res://.godot/imported/MetalHead.glb-75025f1e8dc4d36bb02f329bd65e1ac5.scn"
+uid="uid://b0rx4ab5hx5wf"
+path="res://.godot/imported/mech-002.glb-9820914022222f55fffa47d1c21b6d3e.scn"
 
 [deps]
 
-source_file="res://parts-3D/MetalHead.glb"
-dest_files=["res://.godot/imported/MetalHead.glb-75025f1e8dc4d36bb02f329bd65e1ac5.scn"]
+source_file="res://mechs-3D/mech-002.glb"
+dest_files=["res://.godot/imported/mech-002.glb-9820914022222f55fffa47d1c21b6d3e.scn"]
 
 [params]
 
 nodes/root_type=""
 nodes/root_name=""
 nodes/apply_root_scale=true
-nodes/root_scale=1.0
+nodes/root_scale=0.18
 nodes/import_as_skeleton_bones=false
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=false
 meshes/generate_lods=false
 meshes/create_shadow_meshes=false
-meshes/light_baking=0
+meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=false
 animation/import=false
 animation/fps=30
 animation/trimming=false
-animation/remove_immutable_tracks=false
+animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={}

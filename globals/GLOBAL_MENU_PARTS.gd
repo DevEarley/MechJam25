@@ -118,7 +118,7 @@ func on_part_pressed(id:int):
 	if(current_part.status == ENUMS.PART_STATUS.PURCHASED):
 		SELL_BUTTON.disabled = false
 		SELL_BUTTON.visible = true
-		BUY_BUTTON.visible = false
+		BUY_BUTTON.visible = true
 		RECYCLE_BUTTON.visible = true;
 		RECYCLE_BUTTON.disabled = false
 		EQUIP_BUTTON.disabled = false
@@ -133,7 +133,7 @@ func on_part_pressed(id:int):
 
 		BUY_BUTTON.visible = true
 		SELL_BUTTON.disabled = true
-		SELL_BUTTON.visible = false
+		SELL_BUTTON.visible = true
 
 		RECYCLE_BUTTON.visible = true;
 		RECYCLE_BUTTON.disabled = true
@@ -145,7 +145,7 @@ func on_part_pressed(id:int):
 		SELL_BUTTON.disabled = true
 		SELL_BUTTON.visible = true
 		BUY_BUTTON.disabled = true
-		BUY_BUTTON.visible = false
+		BUY_BUTTON.visible = true
 
 		RECYCLE_BUTTON.visible = true;
 		RECYCLE_BUTTON.disabled = true
@@ -157,7 +157,7 @@ func on_part_pressed(id:int):
 		SELL_BUTTON.disabled = true
 		SELL_BUTTON.visible = true
 		BUY_BUTTON.disabled = true
-		BUY_BUTTON.visible = false
+		BUY_BUTTON.visible = true
 
 		RECYCLE_BUTTON.visible = true;
 		RECYCLE_BUTTON.disabled = true

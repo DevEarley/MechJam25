@@ -1,11 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://b046x8i5jrnqw"]
+[gd_scene load_steps=22 format=3 uid="uid://b046x8i5jrnqw"]
 
 [ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="1_jiv2m"]
 [ext_resource type="Environment" uid="uid://c7ssmhiiplyg8" path="res://world_environment.tres" id="1_ph5yv"]
 [ext_resource type="Script" uid="uid://cpjutl2vxvyra" path="res://addons/mrminimal_camera_shake/scripts/shaky_camera.gd" id="2_h87oc"]
-[ext_resource type="PackedScene" uid="uid://dimmt4xbgqqdb" path="res://mechs-3D/mech-001.glb" id="3_jiv2m"]
 [ext_resource type="AnimationLibrary" uid="uid://n8a7jdk5h04r" path="res://addons/mrminimal_camera_shake/animations/shaky_camera_lib.tres" id="3_sgwqr"]
-[ext_resource type="Material" uid="uid://dj2chdusgvktn" path="res://materials/world_mat_alt.tres" id="4_pg47d"]
+[ext_resource type="PackedScene" uid="uid://dgr4yfbt644k6" path="res://prefabs/mechs_node.tscn" id="5_jcufk"]
 [ext_resource type="PackedScene" uid="uid://jqfcrgtcowf1" path="res://prefabs/left-hand-button.tscn" id="5_pg47d"]
 [ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="7_b1eyc"]
 [ext_resource type="PackedScene" uid="uid://buc3pa7ovo81q" path="res://prefabs/long-press-button.tscn" id="8_26s2w"]
@@ -235,6 +234,7 @@ _data = {
 visibility_layer = 13
 layout_mode = 3
 anchors_preset = 0
+metadata/_edit_vertical_guides_ = [-32.0]
 
 [node name="BG2" parent="." instance=ExtResource("1_jiv2m")]
 layout_mode = 0
@@ -248,16 +248,16 @@ light_mask = 0
 visibility_layer = 13
 layout_mode = 0
 offset_left = 88.0
-offset_top = 80.0
+offset_top = 16.0
 offset_right = 588.0
-offset_bottom = 480.0
+offset_bottom = 266.0
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
 canvas_cull_mask = 4293918728
-size = Vector2i(500, 400)
+size = Vector2i(500, 250)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Node3D" parent="SubViewportContainer/SubViewport"]
@@ -295,82 +295,7 @@ next/look_up_at_mech_3 = &"look_up_at_mech"
 next/spin_up = &"spin"
 blend_times = [&"spin", &"spin_up", 0.25, &"spin_up", &"spin", 0.25]
 
-[node name="MECHS_NODE" type="Node3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 4.46638e-06, 0, 1, 0, -4.46638e-06, 0, 1, 0, 0, 0)
-
-[node name="BLUE_MECH_001" parent="SubViewportContainer/SubViewport/MECHS_NODE" instance=ExtResource("3_jiv2m")]
-transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0, 0, 0)
-
-[node name="Cube2_copy4" parent="SubViewportContainer/SubViewport/MECHS_NODE/BLUE_MECH_001" index="0"]
-layers = 8
-
-[node name="RED_MECH_001" parent="SubViewportContainer/SubViewport/MECHS_NODE" instance=ExtResource("3_jiv2m")]
-transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0, 0, 0)
-visible = false
-
-[node name="Cube2_copy4" parent="SubViewportContainer/SubViewport/MECHS_NODE/RED_MECH_001" index="0"]
-layers = 8
-surface_material_override/0 = ExtResource("4_pg47d")
-
-[node name="BLUE_MECH_002" parent="SubViewportContainer/SubViewport/MECHS_NODE" instance=ExtResource("3_jiv2m")]
-transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0, 0, 0)
-visible = false
-
-[node name="Cube2_copy4" parent="SubViewportContainer/SubViewport/MECHS_NODE/BLUE_MECH_002" index="0"]
-layers = 8
-
-[node name="RED_MECH_002" parent="SubViewportContainer/SubViewport/MECHS_NODE" instance=ExtResource("3_jiv2m")]
-transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0, 0, 0)
-visible = false
-
-[node name="Cube2_copy4" parent="SubViewportContainer/SubViewport/MECHS_NODE/RED_MECH_002" index="0"]
-layers = 8
-surface_material_override/0 = ExtResource("4_pg47d")
-
-[node name="BLUE_MECH_003" parent="SubViewportContainer/SubViewport/MECHS_NODE" instance=ExtResource("3_jiv2m")]
-transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0, 0, 0)
-visible = false
-
-[node name="Cube2_copy4" parent="SubViewportContainer/SubViewport/MECHS_NODE/BLUE_MECH_003" index="0"]
-layers = 8
-
-[node name="RED_MECH_003" parent="SubViewportContainer/SubViewport/MECHS_NODE" instance=ExtResource("3_jiv2m")]
-transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0, 0, 0)
-visible = false
-
-[node name="Cube2_copy4" parent="SubViewportContainer/SubViewport/MECHS_NODE/RED_MECH_003" index="0"]
-layers = 8
-surface_material_override/0 = ExtResource("4_pg47d")
-
-[node name="BLUE_MECH_004" parent="SubViewportContainer/SubViewport/MECHS_NODE" instance=ExtResource("3_jiv2m")]
-transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0, 0, 0)
-visible = false
-
-[node name="Cube2_copy4" parent="SubViewportContainer/SubViewport/MECHS_NODE/BLUE_MECH_004" index="0"]
-layers = 8
-
-[node name="RED_MECH_004" parent="SubViewportContainer/SubViewport/MECHS_NODE" instance=ExtResource("3_jiv2m")]
-transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0, 0, 0)
-visible = false
-
-[node name="Cube2_copy4" parent="SubViewportContainer/SubViewport/MECHS_NODE/RED_MECH_004" index="0"]
-layers = 8
-surface_material_override/0 = ExtResource("4_pg47d")
-
-[node name="BLUE_MECH_005" parent="SubViewportContainer/SubViewport/MECHS_NODE" instance=ExtResource("3_jiv2m")]
-transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0, 0, 0)
-visible = false
-
-[node name="Cube2_copy4" parent="SubViewportContainer/SubViewport/MECHS_NODE/BLUE_MECH_005" index="0"]
-layers = 8
-
-[node name="RED_MECH_005" parent="SubViewportContainer/SubViewport/MECHS_NODE" instance=ExtResource("3_jiv2m")]
-transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0, 0, 0)
-visible = false
-
-[node name="Cube2_copy4" parent="SubViewportContainer/SubViewport/MECHS_NODE/RED_MECH_005" index="0"]
-layers = 8
-surface_material_override/0 = ExtResource("4_pg47d")
+[node name="MECHS_NODE" parent="SubViewportContainer/SubViewport" instance=ExtResource("5_jcufk")]
 
 [node name="MECH_BOX" type="Control" parent="."]
 layout_mode = 1
@@ -383,9 +308,9 @@ mouse_filter = 2
 
 [node name="STATUS3" type="Label" parent="MECH_BOX"]
 layout_mode = 0
-offset_left = 9.0
+offset_left = -15.0
 offset_top = -248.0
-offset_right = 62.0
+offset_right = 38.0
 offset_bottom = -234.0
 theme = ExtResource("7_b1eyc")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -395,18 +320,18 @@ text = "BASE P."
 
 [node name="BASE_HEALTH" parent="MECH_BOX" instance=ExtResource("10_h87oc")]
 layout_mode = 0
-offset_left = 0.0
+offset_left = -24.0
 offset_top = -239.0
-offset_right = 62.0
+offset_right = 38.0
 offset_bottom = -211.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "[right][dim]00[/dim]1"
 
 [node name="STATUS4" type="Label" parent="MECH_BOX"]
 layout_mode = 0
-offset_left = 9.0
+offset_left = -15.0
 offset_top = -184.0
-offset_right = 63.0
+offset_right = 39.0
 offset_bottom = -170.0
 theme = ExtResource("7_b1eyc")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -416,9 +341,9 @@ text = "STATUS"
 
 [node name="STATUS5" type="Label" parent="MECH_BOX"]
 layout_mode = 0
-offset_left = -8.0
+offset_left = -16.0
 offset_top = -120.0
-offset_right = 75.0
+offset_right = 67.0
 offset_bottom = -106.0
 theme = ExtResource("7_b1eyc")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -428,21 +353,20 @@ text = "VIEW PARTS"
 
 [node name="STATUS" type="Label" parent="MECH_BOX"]
 layout_mode = 0
-offset_left = -32.0
+offset_left = -8.0
 offset_top = -168.0
-offset_right = 104.0
+offset_right = 120.0
 offset_bottom = -154.0
 theme = ExtResource("7_b1eyc")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
 text = "IN_GARAGE"
-horizontal_alignment = 1
 
 [node name="STATUS2" type="Label" parent="MECH_BOX"]
 layout_mode = 0
-offset_left = 9.0
+offset_left = -15.0
 offset_top = -312.0
-offset_right = 62.0
+offset_right = 38.0
 offset_bottom = -298.0
 theme = ExtResource("7_b1eyc")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -452,9 +376,9 @@ text = "POWER"
 
 [node name="CURRENT_HEALTH" parent="MECH_BOX" instance=ExtResource("10_h87oc")]
 layout_mode = 0
-offset_left = 0.0
+offset_left = -24.0
 offset_top = -303.0
-offset_right = 62.0
+offset_right = 38.0
 offset_bottom = -275.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "[right][dim]00[/dim]1"
@@ -462,16 +386,16 @@ text = "[right][dim]00[/dim]1"
 [node name="BG2" parent="MECH_BOX" instance=ExtResource("1_jiv2m")]
 layout_mode = 0
 offset_left = 104.0
-offset_top = -16.0
+offset_top = -168.0
 offset_right = 608.0
-offset_bottom = 112.0
+offset_bottom = -40.0
 
 [node name="FLAVOR" type="Label" parent="MECH_BOX"]
 layout_mode = 2
 offset_left = 128.0
-offset_top = 24.0
+offset_top = -128.0
 offset_right = 592.0
-offset_bottom = 120.0
+offset_bottom = -32.0
 theme = ExtResource("7_b1eyc")
 text = "Flavor Text Flavor Text Flavor Text Flavor Text Flavor Text Flavor Text  assd"
 autowrap_mode = 2
@@ -480,18 +404,18 @@ text_overrun_behavior = 3
 [node name="NAME" type="Label" parent="MECH_BOX"]
 layout_mode = 2
 offset_left = 128.0
-offset_top = 8.0
+offset_top = -144.0
 offset_right = 166.0
-offset_bottom = 22.0
+offset_bottom = -130.0
 theme = ExtResource("7_b1eyc")
 theme_override_font_sizes/font_size = 16
 text = "NAME"
 
 [node name="PARTS_BUTTON" parent="MECH_BOX" node_paths=PackedStringArray("VBOX") instance=ExtResource("5_pg47d")]
 layout_mode = 1
-offset_left = -328.0
+offset_left = -336.0
 offset_top = -184.0
-offset_right = -248.0
+offset_right = -256.0
 offset_bottom = -140.0
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 icon = ExtResource("13_b8b24")
@@ -539,13 +463,14 @@ layout_mode = 2
 
 [node name="NAME2" type="Label" parent="MECH_BOX"]
 layout_mode = 2
-offset_left = 400.0
-offset_top = -368.0
-offset_right = 596.0
-offset_bottom = -354.0
+offset_left = -16.0
+offset_top = -8.0
+offset_right = 89.0
+offset_bottom = 23.0
 theme = ExtResource("7_b1eyc")
 theme_override_font_sizes/font_size = 16
-text = "COMPATIBLE ENVIRONMENTS"
+text = "COMPATIBLE
+ENVIRONMENTS"
 
 [node name="NAME3" type="Label" parent="MECH_BOX"]
 layout_mode = 2
@@ -558,62 +483,47 @@ theme_override_font_sizes/font_size = 16
 text = "TYPE"
 
 [node name="COMPATIBLE_ENVIRONMENT" type="Label" parent="MECH_BOX"]
-layout_mode = 2
-anchor_left = 0.05
-anchor_top = 0.318
-anchor_right = 0.925
-anchor_bottom = 0.455
-offset_left = 16.0
-offset_top = -407.968
-offset_right = 7.99994
-offset_bottom = -404.08
+layout_mode = 0
+offset_left = -8.0
+offset_top = 24.0
+offset_right = 168.0
+offset_bottom = 184.0
 theme = ExtResource("7_b1eyc")
 text = "ENVS"
-horizontal_alignment = 2
 
 [node name="TYPE" type="Label" parent="MECH_BOX"]
 layout_mode = 2
-offset_left = -8.0
+offset_left = -16.0
 offset_top = -352.0
-offset_right = 64.0
+offset_right = 56.0
 offset_bottom = -324.0
 theme = ExtResource("7_b1eyc")
 text = "TYPE"
 
 [node name="BUY_MECH_BUTTON" parent="." instance=ExtResource("8_26s2w")]
 layout_mode = 1
-offset_left = 248.0
-offset_top = 520.0
-offset_right = 576.0
-offset_bottom = 572.0
+offset_left = 238.5
+offset_top = 376.0
+offset_right = 566.5
+offset_bottom = 428.0
+text = "BUY"
 icon = ExtResource("9_sgwqr")
 
 [node name="REPAIR_MECH_BUTTON" parent="." instance=ExtResource("8_26s2w")]
 layout_mode = 1
-offset_left = -24.0
+offset_left = 184.0
 offset_top = 520.0
-offset_right = 235.0
+offset_right = 568.0
 offset_bottom = 572.0
 text = "REPAIR [-1RP]"
 icon = ExtResource("9_jcufk")
 
 [node name="SELL_MECH_BUTTON" parent="." instance=ExtResource("8_26s2w")]
 layout_mode = 1
-offset_left = 248.0
-offset_top = 520.0
-offset_right = 576.0
-offset_bottom = 572.0
+offset_left = 240.0
+offset_top = 448.0
+offset_right = 568.0
+offset_bottom = 500.0
 icon = ExtResource("9_sgwqr")
 
 [connection signal="pressed" from="MECH_BOX/PARTS_BUTTON" to="MECH_BOX/PARTS_BUTTON" method="_on_pressed"]
-
-[editable path="SubViewportContainer/SubViewport/MECHS_NODE/BLUE_MECH_001"]
-[editable path="SubViewportContainer/SubViewport/MECHS_NODE/RED_MECH_001"]
-[editable path="SubViewportContainer/SubViewport/MECHS_NODE/BLUE_MECH_002"]
-[editable path="SubViewportContainer/SubViewport/MECHS_NODE/RED_MECH_002"]
-[editable path="SubViewportContainer/SubViewport/MECHS_NODE/BLUE_MECH_003"]
-[editable path="SubViewportContainer/SubViewport/MECHS_NODE/RED_MECH_003"]
-[editable path="SubViewportContainer/SubViewport/MECHS_NODE/BLUE_MECH_004"]
-[editable path="SubViewportContainer/SubViewport/MECHS_NODE/RED_MECH_004"]
-[editable path="SubViewportContainer/SubViewport/MECHS_NODE/BLUE_MECH_005"]
-[editable path="SubViewportContainer/SubViewport/MECHS_NODE/RED_MECH_005"]

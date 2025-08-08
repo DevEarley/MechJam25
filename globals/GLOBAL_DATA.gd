@@ -19,6 +19,8 @@ func load_or_create_everything():
 	load_or_create_user_parts()
 	load_or_create_user_mechs()
 	load_or_create_user_pilots()
+	STATE.PILOTS.sort_custom(func(pilot:Pilot,pilot_b:Pilot):return pilot.ID<pilot_b.ID)
+
 	load_or_create_user_voicemails()
 	load_or_create_user_game_state()
 	STATUS_BAR.update_status()
@@ -26,6 +28,8 @@ func load_or_create_everything():
 func reset_data():
 	reset_mission_data();
 	reset_pilot_data()
+
+	STATE.PILOTS.sort_custom(func(pilot:Pilot,pilot_b:Pilot):return pilot.ID<pilot_b.ID)
 	reset_part_data()
 	reset_location_data()
 	reset_mech_data()
@@ -735,6 +739,7 @@ func create_and_push_game_state_data_to_STATE(section,user_data):
 			STATE.BENEFACTOR_IS_GIVING_YOU_MONEY  = user_data.get_value(section,"BENEFACTOR_IS_GIVING_YOU_MONEY")
 			STATE.DT_ROSE_IS_GIVING_YOU_MONEY  = user_data.get_value(section,"DT_ROSE_IS_GIVING_YOU_MONEY")
 			STATE.YOU_ARE_RACING_WITH_JACK_AND_JILL  = user_data.get_value(section,"YOU_ARE_RACING_WITH_JACK_AND_JILL")
+			RNG.RNG_INDEX  = user_data.get_value(section,"RNG_INDEX")
 
 func create_and_push_game_state_data_to_STATE_try_from_user(section,data,user_data:ConfigFile):
 
@@ -775,6 +780,11 @@ func create_and_push_game_state_data_to_STATE_try_from_user(section,data,user_da
 			else:
 				STATE.YOU_ARE_RACING_WITH_JACK_AND_JILL = data.get_value("DEFAULT","YOU_ARE_RACING_WITH_JACK_AND_JILL")
 
+			if(user_data.get_value(section,"RNG_INDEX")):
+				RNG.RNG_INDEX = user_data.get_value(section,"RNG_INDEX")
+			else:
+				RNG.RNG_INDEX = data.get_value("DEFAULT","RNG_INDEX")
+
 
 func save_game_state_to_user_data():
 	var slot_index = 1
@@ -788,6 +798,7 @@ func save_game_state_to_user_data():
 	user_data.set_value(section,"BENEFACTOR_IS_GIVING_YOU_MONEY",STATE.BENEFACTOR_IS_GIVING_YOU_MONEY)
 	user_data.set_value(section,"DT_ROSE_IS_GIVING_YOU_MONEY",STATE.DT_ROSE_IS_GIVING_YOU_MONEY)
 	user_data.set_value(section,"YOU_ARE_RACING_WITH_JACK_AND_JILL",STATE.YOU_ARE_RACING_WITH_JACK_AND_JILL)
+	user_data.set_value(section,"RNG_INDEX",RNG.RNG_INDEX)
 
 	var err = user_data.save("user://game_state.cfg")
 	if err != OK:
