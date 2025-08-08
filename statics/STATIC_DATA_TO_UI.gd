@@ -39,6 +39,7 @@ static func build_small_part_box(BOX_PREFAB,part:Part):
 		part_button.get_node("ID").text = DATA_TO_UI.insert_leading_zeros(part.ID)
 		part_button.get_node("NAME").text = "%s"%part.name
 		build_status(part_button,part)
+		return part_button
 
 static func build_status(part_button,part:Part):
 		if(part_button.has_node("STATUS") == false): return;

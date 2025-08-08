@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_475fa")
 CONFIG_FILE = "[DEFAULT]
-VERSION=1.2
+VERSION=1.5
 NUMBER_OF_VOICEMAILS =37
 
 VOICEMAIL_0_ID=0
@@ -184,7 +184,9 @@ VOICEMAIL_11_ID=11
 VOICEMAIL_11_STATUS=0
 VOICEMAIL_11_FROM=\"Benefactor\"
 VOICEMAIL_11_SCRIPT=\"say[I need access to an old decommissioned comms tower.]Benefactor
-do[unlock mission(11)]\"
+do[unlock mission(11)]
+do[complete voicemail(11)]
+\"
 VOICEMAIL_11_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 say[*CLICK*]
@@ -196,6 +198,7 @@ VOICEMAIL_12_STATUS=0
 VOICEMAIL_12_FROM=\"Benefactor\"
 VOICEMAIL_12_SCRIPT=\"say[Now that we have access, I need you to do some reconnaissance.]Benefactor
 do[unlock mission(12)]
+do[complete voicemail(12)]
 do[unlock mission(13)]
 do[unlock mission(14)]\"
 VOICEMAIL_12_CALLBACK=\"
@@ -225,6 +228,7 @@ VOICEMAIL_15_STATUS=0
 VOICEMAIL_15_FROM=\"Benefactor\"
 
 VOICEMAIL_15_SCRIPT=\"say[Your next assignment is simple. Broadcast this script to the comms tower once you are in range of the provided location.]Benefactor
+do[complete voicemail(15)]
 do[unlock mission(15)]
 \"
 VOICEMAIL_15_CALLBACK=\"
@@ -236,6 +240,7 @@ VOICEMAIL_16_ID=16
 VOICEMAIL_16_STATUS=0
 VOICEMAIL_16_FROM=\"Benefactor\"
 VOICEMAIL_16_SCRIPT=\"say[Just like before, broadcast this script to the comms tower once you are in range.]Benefactor
+do[complete voicemail(16)]
 do[unlock mission(16)]
 \"
 VOICEMAIL_16_CALLBACK=\"
@@ -247,6 +252,7 @@ VOICEMAIL_17_ID=17
 VOICEMAIL_17_STATUS=0
 VOICEMAIL_17_FROM=\"Benefactor\"
 VOICEMAIL_17_SCRIPT=\"say[I have a long term contract for you.]Benefactor
+do[complete voicemail(17)]
 do[unlock mission(17)]
 \"
 VOICEMAIL_17_CALLBACK=\"
@@ -274,6 +280,8 @@ VOICEMAIL_19_SCRIPT=\"say[I need you to destroy a target and get creative with i
 say[I need you to make it look like an accident]Benefactor
 say[Wait till their transport is below the cliff line. Then push a boulder onto them or something.]Benefactor
 say[Cause a landslide. Do what it takes. No fire arms. Special-Ops only.]Benefactor
+do[complete voicemail(19)]
+do[unlock mission(19)]
 \"
 VOICEMAIL_19_CALLBACK=\"
 say[*THIS CALL CANNOT BE COMPLETED. GOOD BYE.*]
@@ -326,10 +334,12 @@ choices[Yes. I will help you.,No way. I’m done.]
 [Yes. I will help you.]
 say[Good.]Benefactor
 do[unlock mission(22)]
+do[complete voicemail(22)]
 go[done]
 [No way. I’m done.]
 say[Your final mistake.]Benefactor
 do[unlock mission(24)]
+do[complete voicemail(22)]
 [done]
 \"
 VOICEMAIL_22_CALLBACK=\"say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
@@ -349,6 +359,7 @@ say[The Benefactor wants to cut you off. As in cut off a loose end. Not just sto
 say[I can get him off your back.]Rose
 say[Just do this one mission for me...]Rose
 do[unlock mission(25)]
+do[complete voicemail(25)]
 \"
 VOICEMAIL_23_CALLBACK=\"say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 say[*CLICK*]
@@ -438,6 +449,7 @@ VOICEMAIL_32_FROM=\"???\"
 VOICEMAIL_32_SCRIPT=\"
 say[Race today! Anyone can sign up, any day!]???
 say[The odds are always changing. So you need to be ready for anything!]???
+do[complete voicemail(32)]
 \"
 VOICEMAIL_32_CALLBACK=\"say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 say[*CLICK*]
@@ -449,6 +461,7 @@ VOICEMAIL_33_FROM=\"???\"
 VOICEMAIL_33_SCRIPT=\"
 say[Congratulations. You have been selected for the 1st Round of the racing tournament.]???
 say[Event details have been sent to your PC.]???
+do[complete voicemail(33)]
 do[unlock mission(33)]
 \"
 VOICEMAIL_33_CALLBACK=\"say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
@@ -461,6 +474,7 @@ VOICEMAIL_34_FROM=\"???\"
 VOICEMAIL_34_SCRIPT=\"
 say[Congratulations. You have qualified for the QUARTER-FINALS.]???
 say[Event details have been sent to your PC.]???
+do[complete voicemail(34)]
 do[unlock mission(34)]
 \"
 VOICEMAIL_34_CALLBACK=\"say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
@@ -473,6 +487,7 @@ VOICEMAIL_35_FROM=\"???\"
 VOICEMAIL_35_SCRIPT=\"
 say[Congratulations. You have qualified for the SEMI-FINALS.]???
 say[Event details have been sent to your PC.]???
+do[complete voicemail(35)]
 do[unlock mission(35)]
 \"
 VOICEMAIL_35_CALLBACK=\"say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
@@ -485,6 +500,7 @@ VOICEMAIL_36_FROM=\"???\"
 VOICEMAIL_36_SCRIPT=\"
 say[Congratulations. You have qualified for the FINALS.]???
 say[Event details have been sent to your PC.]???
+do[complete voicemail(36)]
 do[unlock mission(36)]
 \"
 VOICEMAIL_36_CALLBACK=\"say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]

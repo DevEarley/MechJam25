@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_2ubog")
 CONFIG_FILE = "[DEFAULT]
-VERSION=1.2
+VERSION=1.5
 NUMBER_OF_MISSIONS=37
 MISSION_0_ID=0
 MISSION_0_NAME=\"The lost part.\"
@@ -131,10 +131,9 @@ MISSION_2_SUCCESS_SCRIPT=\"
 say[I encountered some scouts. I wasn't spotted.](pilot)
 say[Also, I noticed a small camp outside of their base](pilot)
 say[I was able to spot Jack!](pilot)
-say[I know it isn't the Benefactor's mission, but maybe we can save him!]
+say[I know it isn't the Benefactor's mission, but maybe we can save him!](pilot)
 do[complete mission(2)]
 do[get voicemail(3)]
-
 \"
 MISSION_2_FAIL_SCRIPT=\"
 say[You may retry this mission.]

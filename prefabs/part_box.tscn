@@ -120,9 +120,10 @@ text_overrun_behavior = 3
 
 [node name="STATUS" type="Label" parent="."]
 layout_mode = 2
-offset_left = 429.0
+offset_left = 296.0
 offset_top = 37.0
 offset_right = 537.0
 offset_bottom = 65.0
 theme = ExtResource("1_w8og1")
 text = "STATUS"
+horizontal_alignment = 2

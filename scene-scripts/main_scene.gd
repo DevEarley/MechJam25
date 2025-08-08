@@ -1,5 +1,11 @@
 extends Node
 
+func _input(event):
+	if(event.is_action_pressed("fullscreen")):
+		var mode := DisplayServer.window_get_mode()
+		var is_window: bool = mode != DisplayServer.WINDOW_MODE_FULLSCREEN
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if is_window else DisplayServer.WINDOW_MODE_WINDOWED)
+
 func _ready():
 
 	STATE.MAP_BG = $BG2

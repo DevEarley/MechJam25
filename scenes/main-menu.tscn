@@ -365,6 +365,14 @@ offset_right = 287.0
 offset_bottom = 482.0
 text = "EXIT"
 
+[node name="FULLSCREEN" parent="Main_Menu_Buttons" instance=ExtResource("4_nbft7")]
+layout_mode = 1
+offset_left = -1.0
+offset_top = 506.0
+offset_right = 287.0
+offset_bottom = 546.0
+text = "FULLSCREEN"
+
 [node name="OPTIONS" parent="Main_Menu_Buttons" instance=ExtResource("4_nbft7")]
 layout_mode = 1
 offset_left = -1.0

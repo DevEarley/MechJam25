@@ -31,6 +31,7 @@ theme_override_font_sizes/normal_font_size = 16
 text = "[dim]00[/dim]0"
 
 [node name="FLAVOR" type="Label" parent="."]
+layout_mode = 0
 offset_left = 24.0
 offset_top = 80.0
 offset_right = 448.0

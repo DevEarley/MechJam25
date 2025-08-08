@@ -6,6 +6,7 @@ func _ready():
 	# otherwise  - go to main menu.
 	$START.connect("pressed",_on_START_pressed)
 	$EXIT.connect("pressed",_on_EXIT_pressed)
+	$FULLSCREEN.connect("pressed",_on_fullscreen)
 	$OPTIONS.connect("pressed",_on_OPTIONS_pressed)
 
 func on_back_to_main_menu():
@@ -58,3 +59,8 @@ func _on_OPTIONS_pressed():
 	STATE.MAIN_MENU_CANVAS.hide()
 	STATE.OPTIONS_MENU_CANVAS.show()
 	STATE.ON_BACK_BUTTON_PRESSED = on_back_to_main_menu
+
+func _on_fullscreen():
+		var mode := DisplayServer.window_get_mode()
+		var is_window: bool = mode != DisplayServer.WINDOW_MODE_FULLSCREEN
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if is_window else DisplayServer.WINDOW_MODE_WINDOWED)

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_wtl8l")
 CONFIG_FILE = "[DEFAULT]
-VERSION=1.2
+VERSION=1.5
 SFX_VOLUME=1.0
 MUSIC_VOLUME=1.0
 "
