@@ -1,14 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://bo8kdbsr15ptf"]
+[gd_scene load_steps=9 format=3 uid="uid://bo8kdbsr15ptf"]
 
 [ext_resource type="PackedScene" uid="uid://jqfcrgtcowf1" path="res://prefabs/left-hand-button.tscn" id="2_tm0v0"]
 [ext_resource type="Script" uid="uid://bjyrsimh7r721" path="res://scripts/save_options_button.gd" id="3_d6dia"]
 [ext_resource type="PackedScene" uid="uid://bunfxp7cx281n" path="res://prefabs/title-bar-wide.tscn" id="3_giamy"]
 [ext_resource type="PackedScene" uid="uid://c4koj71ge37td" path="res://prefabs/back_button.tscn" id="4_qukfs"]
-[ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="5_rk5b5"]
+[ext_resource type="Texture2D" uid="uid://86yf6tf46r08" path="res://UI/crosshairs64.png" id="5_wtvj4"]
 [ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="6_fgfsr"]
-[ext_resource type="Script" uid="uid://24v83hvf5tg2" path="res://scene-scripts/options_menu.gd" id="7_qrwdr"]
-[ext_resource type="PackedScene" uid="uid://buc3pa7ovo81q" path="res://prefabs/long-press-button.tscn" id="8_d6dia"]
-[ext_resource type="Texture2D" uid="uid://bng8j8q10k6yt" path="res://prefabs/recycle-icon.tres" id="9_x5il8"]
+[ext_resource type="PackedScene" uid="uid://d3ymch01expmt" path="res://prefabs/options_menu_buttons.tscn" id="8_d6dia"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrybq"]
+atlas = ExtResource("5_wtvj4")
+region = Rect2(68, 70, 58, 52)
 
 [node name="OPTIONS_MENU" type="CanvasLayer"]
 metadata/_edit_vertical_guides_ = [640.0, 336.0, 944.0, 784.0, 800.0, 360.0]
@@ -17,12 +19,13 @@ metadata/_edit_vertical_guides_ = [640.0, 336.0, 944.0, 784.0, 800.0, 360.0]
 anchors_preset = 7
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = -128.0
+offset_left = 40.0
 offset_top = -72.0
-offset_right = 128.0
+offset_right = 440.0
 offset_bottom = -16.0
 grow_vertical = 0
-text = "SAVE"
+theme_override_colors/icon_normal_color = Color(0, 1, 0.666667, 1)
+text = "SAVE EVERYTHING   "
 script = ExtResource("3_d6dia")
 
 [node name="TITLE2" parent="." instance=ExtResource("3_giamy")]
@@ -37,9 +40,12 @@ grow_vertical = 1
 text = "[center]OPTIONS"
 
 [node name="BACK_BUTTON" parent="." instance=ExtResource("4_qukfs")]
-offset_top = -704.0
-offset_right = 213.0
-offset_bottom = -664.0
+offset_left = 208.0
+offset_top = -72.0
+offset_right = 651.0
+theme_override_colors/icon_normal_color = Color(1, 0, 0.364706, 1)
+text = "  CANCEL & DON'T SAVE   "
+icon = SubResource("AtlasTexture_xrybq")
 
 [node name="Control" type="Control" parent="."]
 clip_contents = true
@@ -50,9 +56,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -300.0
+offset_left = -376.0
 offset_top = -300.0
-offset_right = 300.0
+offset_right = 368.0
 offset_bottom = 264.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -61,28 +67,33 @@ grow_vertical = 2
 clip_contents = false
 custom_minimum_size = Vector2(600, 564)
 layout_mode = 0
-offset_right = 600.0
-offset_bottom = 564.0
+offset_left = 24.0
+offset_top = 4.0
+offset_right = 736.0
+offset_bottom = 568.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/ScrollContainer"]
-custom_minimum_size = Vector2(600, 0)
+[node name="VBoxContainer" type="Control" parent="Control/ScrollContainer"]
+custom_minimum_size = Vector2(600, 1000)
 layout_mode = 2
 
-[node name="BG2" parent="Control/ScrollContainer/VBoxContainer" instance=ExtResource("5_rk5b5")]
-custom_minimum_size = Vector2(496, 224)
-layout_mode = 2
+[node name="options_menu_buttons" parent="Control/ScrollContainer/VBoxContainer" instance=ExtResource("8_d6dia")]
+layout_mode = 1
+offset_left = -8.0
+offset_top = 24.0
+offset_right = -8.0
+offset_bottom = 24.0
 
-[node name="TITLE" type="Label" parent="Control/ScrollContainer/VBoxContainer/BG2"]
+[node name="TITLE" type="Label" parent="Control/ScrollContainer/VBoxContainer"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -272.0
-offset_top = -96.0
-offset_right = -130.0
-offset_bottom = -82.0
+offset_left = -240.0
+offset_top = -484.0
+offset_right = -98.0
+offset_bottom = -470.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("6_fgfsr")
@@ -90,65 +101,57 @@ theme_override_font_sizes/font_size = 16
 text = "SELECT GAME MODE"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="Control/ScrollContainer/VBoxContainer/BG2"]
+[node name="Label" type="Label" parent="Control/ScrollContainer/VBoxContainer"]
 layout_mode = 0
-offset_left = 460.0
+offset_left = 492.0
 offset_top = 44.0
-offset_right = 574.0
+offset_right = 606.0
 offset_bottom = 103.0
 theme = ExtResource("6_fgfsr")
 theme_override_colors/font_color = Color(1, 0, 0.364706, 1)
 text = "24 HOUR
 MODE"
 
-[node name="Label2" type="Label" parent="Control/ScrollContainer/VBoxContainer/BG2"]
+[node name="Label3" type="Label" parent="Control/ScrollContainer/VBoxContainer"]
 layout_mode = 0
-offset_left = 460.0
+offset_left = 544.0
+offset_top = 344.0
+offset_right = 658.0
+offset_bottom = 403.0
+theme = ExtResource("6_fgfsr")
+theme_override_colors/font_color = Color(1, 0, 0.364706, 1)
+text = "CANNOT
+UNDO"
+
+[node name="Label4" type="Label" parent="Control/ScrollContainer/VBoxContainer"]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 432.0
+offset_right = 658.0
+offset_bottom = 491.0
+theme = ExtResource("6_fgfsr")
+theme_override_colors/font_color = Color(1, 0, 0.364706, 1)
+text = "CANNOT
+UNDO"
+
+[node name="Label5" type="Label" parent="Control/ScrollContainer/VBoxContainer"]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 536.0
+offset_right = 658.0
+offset_bottom = 564.0
+theme = ExtResource("6_fgfsr")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "TOGGLE"
+
+[node name="Label2" type="Label" parent="Control/ScrollContainer/VBoxContainer"]
+layout_mode = 0
+offset_left = 492.0
 offset_top = 140.0
-offset_right = 574.0
+offset_right = 606.0
 offset_bottom = 199.0
 theme = ExtResource("6_fgfsr")
 text = "INSTANT
 MODE"
 
-[node name="options_menu_buttons" type="Control" parent="Control/ScrollContainer/VBoxContainer/BG2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -600.0
-offset_bottom = -224.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("7_qrwdr")
-
-[node name="RESET_GAME" parent="Control/ScrollContainer/VBoxContainer/BG2/options_menu_buttons" instance=ExtResource("8_d6dia")]
-layout_mode = 1
-offset_left = 148.0
-offset_top = 260.0
-offset_right = 428.0
-offset_bottom = 312.0
-theme_override_colors/icon_normal_color = Color(1, 0, 0.364706, 1)
-text = "RESET GAME"
-icon = ExtResource("9_x5il8")
-
-[node name="difficulty_24_hours_button" parent="Control/ScrollContainer/VBoxContainer/BG2/options_menu_buttons" instance=ExtResource("2_tm0v0")]
-layout_mode = 1
-offset_left = 28.0
-offset_top = 44.0
-offset_right = 444.0
-offset_bottom = 100.0
-text = "TURN RESETS AFTER
-ONE DAY IN REAL TIME"
-
-[node name="difficulty_instant_button" parent="Control/ScrollContainer/VBoxContainer/BG2/options_menu_buttons" instance=ExtResource("2_tm0v0")]
-layout_mode = 1
-offset_left = 28.0
-offset_top = 140.0
-offset_right = 444.0
-offset_bottom = 196.0
-text = "TURN RESETS
-AT YOUR WILL"
-
-[connection signal="visibility_changed" from="." to="Control/ScrollContainer/VBoxContainer/BG2/options_menu_buttons" method="_on_options_menu_visibility_changed"]
 [connection signal="pressed" from="save_button" to="save_button" method="_on_pressed"]

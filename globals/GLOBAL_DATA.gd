@@ -4,13 +4,13 @@ func _input(event:InputEvent):
 	if(event.is_action_released("refresh")):
 		load_or_create_everything()
 
-func save_everything():
-	save_game_state_to_user_data()
-	save_mechs_to_user_data()
-	save_missions_to_user_data()
-	save_parts_to_user_data()
-	save_pilots_to_user_data()
-	save_voicemails_to_user_data()
+func save_everything(bypass_autosave_settings_and_save_anyways=false):
+	save_game_state_to_user_data(bypass_autosave_settings_and_save_anyways)
+	save_mechs_to_user_data(bypass_autosave_settings_and_save_anyways)
+	save_missions_to_user_data(bypass_autosave_settings_and_save_anyways)
+	save_parts_to_user_data(bypass_autosave_settings_and_save_anyways)
+	save_pilots_to_user_data(bypass_autosave_settings_and_save_anyways)
+	save_voicemails_to_user_data(bypass_autosave_settings_and_save_anyways)
 
 func load_or_create_everything():
 	load_or_create_user_user_options()
@@ -25,7 +25,23 @@ func load_or_create_everything():
 	load_or_create_user_game_state()
 	STATUS_BAR.update_status()
 
-func reset_data():
+func soft_reset_data():
+	reset_missions();
+	reset_pilots()
+	reset_parts()
+	reset_mechs()
+	reset_voicemails()
+	STATE.BENEFACTOR_IS_GIVING_YOU_MONEY = true
+	STATE.DT_ROSE_IS_GIVING_YOU_MONEY = false
+	STATE.YOU_ARE_RACING_WITH_JACK_AND_JILL = false
+	STATE.CREDITS = 0
+	STATE.RECYCLE_POINTS = 0
+	STATUS_BAR.update_status()
+	STATE.DIFFICULTY_SETTTING_MENU_CANVAS.hide()
+	QS.run_script_from_file(preload("res://quest_scripts/intro.qs.tres"))
+	STATE.ON_QUEST_SCRIPT_DONE = on_initial_script_done
+
+func hard_reset_data():
 	reset_mission_data();
 	reset_pilot_data()
 
@@ -40,12 +56,37 @@ func reset_data():
 	STATE.CREDITS = 0
 	STATE.RECYCLE_POINTS = 0
 
-	save_everything();
+	save_everything(true);
 	STATUS_BAR.update_status()
 	STATE.DIFFICULTY_SETTTING_MENU_CANVAS.hide()
 	QS.run_script_from_file(preload("res://quest_scripts/intro.qs.tres"))
 	STATE.ON_QUEST_SCRIPT_DONE = on_initial_script_done
 
+
+func reset_missions():
+	for mission:Mission in STATE.MISSIONS:
+		mission.status = ENUMS.MISSION_STATUS.LOCKED;
+		mission.time_started = 0
+
+func reset_parts():
+	for part:Part in STATE.PARTS:
+		part.attached_to_mech_id = -1;
+		part.status = ENUMS.PART_STATUS.FOR_SALE
+
+func reset_voicemails():
+	for voicemail:Voicemail in STATE.VOICEMAILS:
+		voicemail.status = ENUMS.VOICEMAIL_STATUS.LOCKED
+	STATE.VOICEMAILS[0].status = ENUMS.VOICEMAIL_STATUS.UNHEARD
+
+func reset_pilots():
+	for pilot:Pilot in STATE.PILOTS:
+		pilot.mech_id = -1;
+		pilot.status = ENUMS.PILOT_STATUS.NOT_AVAILABLE_YET
+
+func reset_mechs():
+	for mech:Mech in STATE.MECHS:
+		mech.mission_id = -1;
+		mech.status = ENUMS.MECH_STATUS.FOR_SALE
 
 func reset_mission_data():
 	var resource_data:ConfigFile = ConfigFile.new()
@@ -153,6 +194,8 @@ func load_or_create_user_missions():
 		save_missions_to_user_data()
 	elif(user_data_err != 7):
 		if(user_data.has_section_key(section,"VERSION")==false):
+
+			print("creating backup of mission data")
 			user_data.save("user://missions_backup__no_version.cfg")
 			var number_of_missions:int = resource_data.get_value("DEFAULT","NUMBER_OF_MISSIONS")
 			for mission_index in number_of_missions:
@@ -164,12 +207,14 @@ func load_or_create_user_missions():
 			for mission_index in number_of_missions:
 				create_and_push_mission_to_STATE(section,mission_index,user_data)
 		elif(user_version<STATE.MISSIONS_VERSION):
+			print("creating backup of mission data")
 			user_data.save("user://missions_backup_%s.cfg"%user_version)
 			var number_of_missions:int = resource_data.get_value("DEFAULT","NUMBER_OF_MISSIONS")
 			for mission_index in number_of_missions:
 				create_and_push_mission_to_STATE_try_from_user(section,mission_index,resource_data,user_data)
 			save_missions_to_user_data()
 		elif(user_version>STATE.MISSIONS_VERSION):
+			print("creating backup of mission data")
 			var number_of_missions:int = resource_data.get_value("DEFAULT","NUMBER_OF_MISSIONS")
 			user_data.save("user://missions_backup_%s.cfg"%user_version)
 			for mission_index in number_of_missions:
@@ -222,7 +267,8 @@ func create_and_push_mission_to_STATE_try_from_user(section,mission_index,data,u
 				mission.time_started = int(data.get_value("DEFAULT","MISSION_%s_TIME_STARTED"%mission_index))
 			STATE.MISSIONS.push_back(mission);
 
-func save_missions_to_user_data():
+func save_missions_to_user_data(bypass_autosave_settings_and_save_anyways=false):
+	if(	STATE.AUTOSAVE == false && bypass_autosave_settings_and_save_anyways == false):return
 	var slot_index = 1
 	var section = "SAVESLOT_%s"%slot_index
 	var user_data = ConfigFile.new()
@@ -270,6 +316,7 @@ func load_or_create_user_parts():
 		save_parts_to_user_data()
 	elif(user_data_err != 7 ):
 		if(user_data.has_section_key(section,"VERSION")==false):
+			print("creating backup of part data")
 			user_data.save("user://parts_backup__no_version.cfg")
 			var number_of_parts:int = resource_data.get_value("DEFAULT","NUMBER_OF_PARTS")
 			for part_index in number_of_parts:
@@ -281,12 +328,14 @@ func load_or_create_user_parts():
 			for part_index in number_of_parts:
 				create_and_push_part_to_STATE(section,part_index,user_data)
 		elif(user_version<STATE.PARTS_VERSION):
+			print("creating backup of part data")
 			user_data.save("user://parts_backup_%s.cfg"%user_version)
 			var number_of_parts:int = resource_data.get_value("DEFAULT","NUMBER_OF_PARTS")
 			for part_index in number_of_parts:
 				create_and_push_part_to_STATE_try_from_user(section,part_index,resource_data,user_data)
 			save_parts_to_user_data()
 		elif(user_version>STATE.PARTS_VERSION):
+			print("creating backup of part data")
 			var number_of_parts:int = resource_data.get_value("DEFAULT","NUMBER_OF_PARTS")
 			user_data.save("user://parts_backup_%s.cfg"%user_version)
 			for part_index in number_of_parts:
@@ -339,7 +388,8 @@ func create_and_push_part_to_STATE_try_from_user(section,part_index,data,user_da
 
 			STATE.PARTS.push_back(part);
 
-func save_parts_to_user_data():
+func save_parts_to_user_data(bypass_autosave_settings_and_save_anyways=false):
+	if(	STATE.AUTOSAVE == false && bypass_autosave_settings_and_save_anyways == false):return
 
 	var slot_index = 1
 	var section = "SAVESLOT_%s"%slot_index
@@ -451,7 +501,8 @@ func create_and_push_pilot_to_STATE_try_from_user(section,pilot_index,data,user_
 
 			STATE.PILOTS.push_back(pilot);
 
-func save_pilots_to_user_data():
+func save_pilots_to_user_data(bypass_autosave_settings_and_save_anyways=false):
+	if(	STATE.AUTOSAVE == false && bypass_autosave_settings_and_save_anyways == false):return
 	var slot_index = 1
 	var section = "SAVESLOT_%s"%slot_index
 	var user_data = ConfigFile.new()
@@ -496,6 +547,7 @@ func load_or_create_user_locations():
 		save_locations_to_user_data()
 	elif(user_data_err != 7 ):
 		if(user_data.has_section_key(section,"VERSION")==false):
+			print("creating backup of location data")
 			user_data.save("user://locations_backup__no_version.cfg")
 			var number_of_locations:int = resource_data.get_value("DEFAULT","NUMBER_OF_LOCATIONS")
 			for location_index in number_of_locations:
@@ -566,6 +618,7 @@ func load_or_create_user_mechs():
 		save_mechs_to_user_data()
 	elif(user_data_err != 7 ):
 		if(user_data.has_section_key(section,"VERSION")==false):
+			print("creating backup of mech data")
 			user_data.save("user://mechs_backup__no_version.cfg")
 			var number_of_mechs:int = resource_data.get_value("DEFAULT","NUMBER_OF_MECHS")
 			for mech_index in number_of_mechs:
@@ -577,6 +630,7 @@ func load_or_create_user_mechs():
 			for mech_index in number_of_mechs:
 				create_and_push_mech_to_STATE(section,mech_index,user_data)
 		elif(user_version<STATE.MECHS_VERSION):
+			print("creating backup of mech data")
 			user_data.save("user://mechs_backup_%s.cfg"%user_version)
 			var number_of_mechs:int = resource_data.get_value("DEFAULT","NUMBER_OF_MECHS")
 			for mech_index in number_of_mechs:
@@ -629,7 +683,8 @@ func create_and_push_mech_to_STATE_try_from_user(section,mech_index,data,user_da
 				mech.current_health = data.get_value("DEFAULT","MECH_%s_CURRENT_HEALTH"%mech_index)
 			STATE.MECHS.push_back(mech);
 
-func save_mechs_to_user_data():
+func save_mechs_to_user_data(bypass_autosave_settings_and_save_anyways=false):
+	if(	STATE.AUTOSAVE == false && bypass_autosave_settings_and_save_anyways == false):return
 	var slot_index = 1
 	var section = "SAVESLOT_%s"%slot_index
 	var user_data = ConfigFile.new()
@@ -672,6 +727,7 @@ func load_or_create_user_user_options():
 	elif(user_data_err != 7 ):
 
 		if(user_data.has_section_key(section,"VERSION")==false):
+
 			create_and_push_user_option_to_STATE("DEFAULT",resource_data)
 			return
 		var user_version:float = user_data.get_value(section,"VERSION")
@@ -714,6 +770,8 @@ func load_or_create_user_game_state():
 		save_game_state_to_user_data()
 	elif(user_data_err != 7 ):
 		if(user_data.has_section_key(section,"VERSION")==false):
+
+			print("creating backup of game state data")
 			user_data.save("user://game_state_backup__no_version.cfg")
 			create_and_push_game_state_data_to_STATE_try_from_user(section,resource_data,user_data)
 			return
@@ -722,10 +780,12 @@ func load_or_create_user_game_state():
 		if(user_version==STATE.GAME_STATE_VERSION):
 			create_and_push_game_state_data_to_STATE(section,user_data)
 		elif(user_version<STATE.GAME_STATE_VERSION):
+			print("creating backup of game state data")
 			user_data.save("user://game_state_backup_%s.cfg"%user_version)
 			create_and_push_game_state_data_to_STATE_try_from_user(section,resource_data,user_data)
 			save_game_state_to_user_data()
 		elif(user_version>STATE.GAME_STATE_VERSION):
+			print("creating backup of game state data")
 			user_data.save("user://game_state_backup_%s.cfg"%user_version)
 			create_and_push_game_state_data_to_STATE("DEFAULT",resource_data)
 
@@ -786,7 +846,9 @@ func create_and_push_game_state_data_to_STATE_try_from_user(section,data,user_da
 				RNG.RNG_INDEX = data.get_value("DEFAULT","RNG_INDEX")
 
 
-func save_game_state_to_user_data():
+func save_game_state_to_user_data(bypass_autosave_settings_and_save_anyways=false):
+	if(	STATE.AUTOSAVE == false && bypass_autosave_settings_and_save_anyways == false):return
+
 	var slot_index = 1
 	var section = "SAVESLOT_%s"%slot_index
 	var user_data = ConfigFile.new()
@@ -806,7 +868,7 @@ func save_game_state_to_user_data():
 
 
 func load_or_create_user_voicemails():
-	STATE.VOICEMAILS
+	STATE.VOICEMAILS = []
 	var slot_index = 1
 	var section = "SAVESLOT_%s"%slot_index
 	var user_data = ConfigFile.new()
@@ -824,6 +886,7 @@ func load_or_create_user_voicemails():
 		save_voicemails_to_user_data()
 	elif(user_data_err != 7):
 		if(user_data.has_section_key(section,"VERSION")==false):
+			print("creating backup of voicemail data")
 			user_data.save("user://voicemails_backup__no_version.cfg")
 			var number_of_voicemails:int = resource_data.get_value("DEFAULT","NUMBER_OF_VOICEMAILS")
 			for voicemail_index in number_of_voicemails:
@@ -835,12 +898,14 @@ func load_or_create_user_voicemails():
 			for voicemail_index in number_of_voicemails:
 				create_and_push_voicemail_to_STATE(section,voicemail_index,user_data)
 		elif(user_version<STATE.VOICEMAILS_VERSION):
+			print("creating backup of voicemail data")
 			user_data.save("user://voicemails_backup_%s.cfg"%user_version)
 			var number_of_voicemails:int = resource_data.get_value("DEFAULT","NUMBER_OF_VOICEMAILS")
 			for voicemail_index in number_of_voicemails:
 				create_and_push_voicemail_to_STATE_try_from_user(section,voicemail_index,resource_data,user_data)
 			save_voicemails_to_user_data()
 		elif(user_version>STATE.VOICEMAILS_VERSION):
+			print("creating backup of voicemail data")
 			var number_of_voicemails:int = resource_data.get_value("DEFAULT","NUMBER_OF_VOICEMAILS")
 			user_data.save("user://voicemails_backup_%s.cfg"%user_version)
 			for voicemail_index in number_of_voicemails:
@@ -878,7 +943,8 @@ func create_and_push_voicemail_to_STATE_try_from_user(section,voicemail_index,da
 
 			STATE.VOICEMAILS.push_back(voicemail);
 
-func save_voicemails_to_user_data():
+func save_voicemails_to_user_data(bypass_autosave_settings_and_save_anyways=false):
+	if(	STATE.AUTOSAVE == false && bypass_autosave_settings_and_save_anyways == false):return
 	var slot_index = 1
 	var section = "SAVESLOT_%s"%slot_index
 	var user_data = ConfigFile.new()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://bwlhvw7r5jrdg"]
+[gd_scene load_steps=28 format=4 uid="uid://bwlhvw7r5jrdg"]
 
 [ext_resource type="Environment" uid="uid://c7ssmhiiplyg8" path="res://world_environment.tres" id="1_2e7hn"]
 [ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="1_eucbt"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://dswmh08ynwaj7" path="res://parts-3D/HammerKnuckle.glb" id="6_6n5it"]
 [ext_resource type="PackedScene" uid="uid://cpi68ocj80k7q" path="res://parts-3D/gun.glb" id="6_qixk2"]
 [ext_resource type="PackedScene" uid="uid://ca0aqieh8anio" path="res://parts-3D/NanoApplicator.glb" id="7_edtmm"]
+[ext_resource type="Material" uid="uid://c3itow5c6pqcn" path="res://materials/world_mat_alt_3.tres" id="13_6n5it"]
+[ext_resource type="Material" uid="uid://bwpp1tyyxytn3" path="res://materials/world_mat_alt_2.tres" id="14_edtmm"]
 [ext_resource type="PackedScene" uid="uid://bxp7vjefp22e" path="res://parts-3D/engine.glb" id="14_maueq"]
 
 [sub_resource type="Animation" id="Animation_d1idq"]
@@ -278,6 +280,27 @@ visible = false
 layers = 4
 mesh = SubResource("ArrayMesh_toch8")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_nfuy1")
+
+[node name="TAN_NUT" type="Node3D" parent="SubViewportContainer/SubViewport/PARTS_NODE"]
+transform = Transform3D(-0.134246, 0.228578, 0.964225, 0.862284, 0.506425, 0, -0.488308, 0.831436, -0.265085, 0, 1, 0)
+visible = false
+
+[node name="Cylinder1" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/PARTS_NODE/TAN_NUT"]
+layers = 4
+mesh = SubResource("ArrayMesh_toch8")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_6n5it")
+
+[node name="DARK_NUT" type="Node3D" parent="SubViewportContainer/SubViewport/PARTS_NODE"]
+transform = Transform3D(-0.134246, 0.228578, 0.964225, 0.862284, 0.506425, 0, -0.488308, 0.831436, -0.265085, 0, 1, 0)
+visible = false
+
+[node name="Cylinder1" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/PARTS_NODE/DARK_NUT"]
+layers = 4
+mesh = SubResource("ArrayMesh_toch8")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("14_edtmm")
 
 [node name="HEAT_BLADE" parent="SubViewportContainer/SubViewport/PARTS_NODE" instance=ExtResource("5_jh33o")]
 transform = Transform3D(0.79886, -0.414514, 3.29659e-09, 0.414514, 0.79886, -6.61392e-08, 2.75357e-08, 6.02249e-08, 0.9, 0.0982654, 0.375826, -1.16733e-07)
@@ -296,6 +319,24 @@ layers = 4
 mesh = SubResource("ArrayMesh_04fvn")
 skeleton = NodePath("")
 
+[node name="TAN_BLADE" parent="SubViewportContainer/SubViewport/PARTS_NODE" instance=ExtResource("5_jh33o")]
+transform = Transform3D(0.79886, -0.414514, 3.29659e-09, 0.414514, 0.79886, -6.61392e-08, 2.75357e-08, 6.02249e-08, 0.9, 0.0982654, 0.375826, -1.16733e-07)
+visible = false
+
+[node name="HEAT-BLADE" parent="SubViewportContainer/SubViewport/PARTS_NODE/TAN_BLADE" index="0"]
+layers = 4
+surface_material_override/0 = ExtResource("13_6n5it")
+
+[node name="DARK_BLADE" type="Node3D" parent="SubViewportContainer/SubViewport/PARTS_NODE"]
+transform = Transform3D(0.79886, -0.414514, 3.29659e-09, 0.414514, 0.79886, -6.61392e-08, 2.75357e-08, 6.02249e-08, 0.9, 0.0982654, 0.375826, -1.16733e-07)
+visible = false
+
+[node name="HEAT-BLADE" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/PARTS_NODE/DARK_BLADE"]
+layers = 4
+mesh = SubResource("ArrayMesh_04fvn")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("14_edtmm")
+
 [node name="RED_ENGINE" parent="SubViewportContainer/SubViewport/PARTS_NODE" instance=ExtResource("14_maueq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1443, 0)
 visible = false
@@ -313,6 +354,7 @@ layers = 4
 surface_material_override/0 = ExtResource("3_6bmw3")
 
 [node name="Button" parent="." instance=ExtResource("2_jh33o")]
+visible = false
 layout_mode = 1
 anchors_preset = 0
 anchor_left = 0.0
@@ -356,5 +398,6 @@ mouse_filter = 2
 [editable path="SubViewportContainer/SubViewport/PARTS_NODE/BLUE_GUN"]
 [editable path="SubViewportContainer/SubViewport/PARTS_NODE/BLUE_NUT"]
 [editable path="SubViewportContainer/SubViewport/PARTS_NODE/HEAT_BLADE"]
+[editable path="SubViewportContainer/SubViewport/PARTS_NODE/TAN_BLADE"]
 [editable path="SubViewportContainer/SubViewport/PARTS_NODE/RED_ENGINE"]
 [editable path="SubViewportContainer/SubViewport/PARTS_NODE/BLUE_ENGINE"]

@@ -28,9 +28,15 @@ func _on_pressed() -> void:
 				$MECH_LIST/Control/ScrollContainer/VBoxContainer.add_child(new_button);
 
 		else:
+
 			var current_mech:Mech = LINQ.First(STATE.MECHS, func (mech:Mech):
 				return mech.ID == STATE.CURRENT_MECH_ID);
-			show_mech_info(current_mech,true);
+			var mission = LINQ.First(STATE.MISSIONS,func (mission): return mission.ID == current_mech.mission_id);
+			if(mission!= null && mission.status == ENUMS.MISSION_STATUS.UNLOCKED):
+				show_mech_info(current_mech,true);
+			else:
+				show_mech_info(current_mech,false);
+
 
 func hide_mech_info():
 

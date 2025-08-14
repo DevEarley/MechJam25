@@ -3,5 +3,5 @@ extends Button
 
 
 func _on_pressed() -> void:
-	DATA.save_game_state_to_user_data()
+	DATA.save_everything(true)
 	STATE.ON_BACK_BUTTON_PRESSED.call()

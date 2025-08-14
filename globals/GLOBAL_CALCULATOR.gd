@@ -142,22 +142,25 @@ func has_passed_current_mission():
 	if(mission_odds + mission_bonus>0.0):
 		mission_odds += mission_bonus
 		completed_mission =abs (1.0/mission_odds) < rng_value
+		prints("PRINT MISSION ODDS:")
 		print_rng_and_odds(rng_number,mission_odds)
 	else:
 		var calculated_odds =1.0-abs ((1.0+mission_bonus)/mission_odds)
 		completed_mission =calculated_odds < rng_value
-		print("RNG: %s | out of %s | ODS: %s | 1/RNG: %s | 1/ODDS: %s" % [rng_number,RNG.RNG_COUNT,mission_odds,rng_value,calculated_odds] )
+		print("MISSION | RNG: %s | out of %s | ODS: %s | 1/RNG: %s | 1/ODDS: %s" % [rng_number,RNG.RNG_COUNT,mission_odds,rng_value,calculated_odds] )
 
 	var rng_number_2 = RNG.Next()
 	var rng_value_2 = rng_number_2/ RNG.RNG_COUNT
 	if(return_odds+return_bonus>0.0):
 		return_odds+= return_bonus
 		returned = abs(1.0/return_odds) < rng_value_2
+		prints("PRINT RETURN ODDS:")
+
 		print_rng_and_odds(rng_number_2,return_odds)
 	else:
 		var calculated_odds = 1.0-abs ((1.0+return_bonus)/return_odds)
 		returned = calculated_odds< rng_value_2
-		print("RNG: %s | out of %s | ODS: %s | 1/RNG: %s | 1/ODDS: %s" % [rng_number,RNG.RNG_COUNT,return_odds,rng_number/ RNG.RNG_COUNT,calculated_odds] )
+		print("RETURN | RNG: %s | out of %s | ODS: %s | 1/RNG: %s | 1/ODDS: %s" % [rng_number,RNG.RNG_COUNT,return_odds,rng_number/ RNG.RNG_COUNT,calculated_odds] )
 
 	var mech:Mech = LINQ.First(STATE.MECHS,func (mech:Mech):return mech.mission_id == STATE.CURRENT_MISSION_ID)
 	var pilot:Pilot = LINQ.First(STATE.PILOTS,func ( pilot:Pilot ):return pilot.mech_id == mech.ID)
@@ -167,7 +170,7 @@ func has_passed_current_mission():
 	if(returned==false):
 		mech.current_health -=1
 	mech.current_health-=1
-
+	print("mech health after mission:%s"%mech.current_health);
 
 
 

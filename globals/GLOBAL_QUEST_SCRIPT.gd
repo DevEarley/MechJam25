@@ -42,7 +42,7 @@ func continue_script():
 		on_script_finished();
 
 func process_script_for_quotes(_script:String):
-	return _script.replace("“","\"").replace("”","\"");
+	return _script.replace("“","\"").replace("”","\"").replace("’","'").replace("‘","'").replace("…","...");
 
 func init_script(_script:String,callback:Callable):
 	call_back_on_finished = callback;
@@ -64,9 +64,6 @@ func run_script(_script:String):
 	var lines:PackedStringArray = _script.split("\n",false)
 
 	for line in lines.size():
-		lines.set(line,lines[line].replace("’","'"))
-		lines.set(line,lines[line].replace("‘","'"))
-		lines.set(line,lines[line].replace("…","..."))
 		lines.set(line,lines[line].trim_prefix("\t"))
 		lines.set(line,(lines[line]).strip_edges(true,true))
 	CURRENT_LINE = 0;
@@ -88,66 +85,13 @@ func get_line_index_for_marker(marker:String):
 	return target;
 
 func process_info(rest_of_line):
-	var message:String;
-	var options:String = "";
-	var split_on_commas:PackedStringArray = rest_of_line.split(",",false);
-	if(split_on_commas.size()==1):
-		message = split_on_commas[0];
-	if(split_on_commas.size()==2):
-		message = split_on_commas[0];
-		options = split_on_commas[1];
-	run_script__info(message,options);
+	run_script__info(rest_of_line);
 
 func process_say(rest_of_line):
 	SFX.play_click_sound()
 	var message:String;
 	var speaker:String;
-	var options:String;
-	if(rest_of_line.contains("\"")):
-		var split_on_quotes:PackedStringArray = rest_of_line.split("\"",false);
-		if(split_on_quotes.size() == 2):
-			message = split_on_quotes[0]
-			speaker = split_on_quotes[1].trim_prefix(",");
-		elif(split_on_quotes.size() == 3):
-			message = split_on_quotes[0]
-			speaker = split_on_quotes[1].trim_prefix(",");
-			options = split_on_quotes[2].trim_prefix(",")
-		else:
-			var split_on_commas:PackedStringArray = split_on_quotes[1].split(",",false)
-			var last_index = split_on_commas.size()-1;
-			var first_choice = ""
-			var index = 0;
-			for part in split_on_commas:
-				if(index<last_index-1):
-					first_choice+=part;
-				index+=1;
-			message = first_choice
-			speaker = split_on_commas[last_index-1];
-			options = split_on_commas[last_index]
-	#elif(rest_of_line.contains(",")):
-#
-		#var split_on_commas:PackedStringArray = rest_of_line.split(",",false);
-#
-		#if(split_on_commas.size()==2):
-#
-			#message = split_on_commas[0];
-			#speaker = split_on_commas[1];
-		#if(split_on_commas.size()==3):
-#
-			#message = split_on_commas[0];
-			#speaker = split_on_commas[1];
-			#options = split_on_commas[2];
-		#if(split_on_commas.size()>3):
-			#var last_index = split_on_commas.size()-1;
-			#var first_choice = ""
-			#var index = 0;
-			#for choice in split_on_commas:
-				#if(index<last_index-1):
-					#first_choice+=choice;
-				#index+=1;
-			#message = first_choice;
-			#speaker = split_on_commas[last_index];
-	elif(rest_of_line.contains("]")):
+	if(rest_of_line.contains("]")):
 		message = rest_of_line.split("]")[0]
 		speaker= rest_of_line.split("]")[1]
 	else:
@@ -156,7 +100,7 @@ func process_say(rest_of_line):
 	speaker = speaker.trim_prefix("[")
 	speaker = speaker.trim_suffix(" ")
 	speaker = speaker.trim_suffix("]")
-	run_script__say(message,speaker,options);
+	run_script__say(message,speaker);
 
 func process_choices_or_actions(rest_of_line, show_speaker_for_choices):
 	var choices = []
@@ -187,14 +131,31 @@ func process_choices_or_actions(rest_of_line, show_speaker_for_choices):
 			index+=1;
 		run_script__choices_4_or_actions(first_choice, choices[last_index-2], choices[last_index-1], choices[last_index], show_speaker_for_choices)
 
+func process_expressions_for_qs(line_with_expressions:String):
+
+
+	if(line_with_expressions.contains("{") == false):return line_with_expressions
+
+	if(line_with_expressions.contains("{pilot}") == true):
+		var pilot:Pilot = LINQ.First(STATE.PILOTS,func(pilot:Pilot):pilot.ID == STATE.CURRENT_PILOT_ID)
+		if(pilot!=null):
+			line_with_expressions = line_with_expressions.replacen("{pilot}",pilot.name)
+	return line_with_expressions;
+
 func run_script__process_line():
 	if(CURRENT_LINE > CURRENT_SCRIPT.size()-1):
 		on_script_finished()
 		return
 	var line = CURRENT_SCRIPT[CURRENT_LINE];
+	line = process_expressions_for_qs(line)
 	print(line)
 	if(line.contains("[") == false):
-		continue_script();
+		process_say(line)
+		return
+	if(line.begins_with("#") == true || line.begins_with("//") == true):
+		print(line)
+		CURRENT_LINE+=1;
+		run_script__process_line();
 		return
 	if(line.begins_with("[")):
 		CURRENT_LINE+=1;
@@ -204,6 +165,9 @@ func run_script__process_line():
 	var start_of_line:String = split_line[0];
 	var rest_of_line:String = split_line[1];
 	rest_of_line = rest_of_line.trim_suffix("]")
+	rest_of_line = process_expressions_for_qs(rest_of_line)
+
+
 	if(start_of_line != ""):
 		match(start_of_line.to_lower()):
 			"say":
@@ -228,14 +192,14 @@ func run_script__process_line():
 				var predicate:String;
 				var marker:String;
 
-				if(rest_of_line.contains("\"")):
-					var split_on_quotes:PackedStringArray = rest_of_line.split("\"");
-					marker = split_on_quotes[1]
-					predicate = split_on_quotes[0].trim_suffix(",")
-				else:
-					var split_on_commas = rest_of_line.split(",",false)
-					predicate = split_on_commas[0]
-					marker = split_on_commas[1]
+				#if(rest_of_line.contains("\"")):
+					#var split_on_quotes:PackedStringArray = rest_of_line.split("\"");
+					#marker = split_on_quotes[1]
+					#predicate = split_on_quotes[0].trim_suffix(",")
+				#else:
+				var split_on_bracket = rest_of_line.split("]",false)
+				predicate = split_on_bracket[0]
+				marker = split_on_bracket[1]
 				var should_go_to_marker  = QS_IF.if_predicate(predicate)
 				if(should_go_to_marker):
 					CURRENT_LINE = get_line_index_for_marker(marker);
@@ -251,16 +215,12 @@ func run_script__process_line():
 			"on":
 				REGISTERED_SIGNALS.push_back(rest_of_line)
 
-func run_script__say(message:String, character_name:String, options:String):
-	if(message.contains("%s")):
-		var processed_options = process_options(options);
-		message = message % processed_options;
+func run_script__say(message:String, character_name:String):
+
 	CONVERSATION_UI.continue_conversation(message,character_name)
 
-func run_script__info(message:String, options:String):
-	if(message.contains("%s")):
-		var processed_options = process_options(options);
-		message = message % processed_options;
+func run_script__info(message:String):
+
 	CONVERSATION_UI.show_info(message)
 
 func run_script__choices_or_actions(choice_1:String,choice_2:String, show_speaker_for_choices):

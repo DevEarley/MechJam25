@@ -35,7 +35,7 @@ func show_start_menu():
 	STATE.START_MENU_CANVAS.get_node("VOICEMAIL").text = "VOICEMAILS [%s]" % count
 
 func on_voicemail_done():
-	DATA.save_everything()
+	DATA.save_everything(true)
 	MUSIC.AUDIO_SOURCE.play(0)
 	MUSIC.play_music_for_start_menu()
 	show_start_menu()
@@ -58,7 +58,6 @@ func on_voice_mail_done(voicemail:Voicemail):
 			do[play(ring ring)]\n
 			say[*RING!! RING!!*]\n
 			%s\n
-			say[*Click*]\n
 			do[on voicemail callback(%s)]\n
 			go[very end]\n
 			[No! Don't call them back.]\n

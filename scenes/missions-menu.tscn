@@ -661,10 +661,10 @@ layout_mode = 2
 
 [node name="MECH_BOX" parent="MISSION_BOX/MECH" instance=ExtResource("6_5pnbf")]
 visible = false
-offset_left = 1072.0
-offset_top = -241.0
-offset_right = 1072.0
-offset_bottom = -241.0
+offset_left = 480.0
+offset_top = -281.0
+offset_right = 480.0
+offset_bottom = -281.0
 
 [node name="PILOT_BUTTON" parent="MISSION_BOX" instance=ExtResource("5_wo4en")]
 layout_mode = 1

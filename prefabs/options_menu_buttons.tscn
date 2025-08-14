@@ -1,0 +1,157 @@
+[gd_scene load_steps=10 format=3 uid="uid://d3ymch01expmt"]
+
+[ext_resource type="Script" uid="uid://24v83hvf5tg2" path="res://scene-scripts/options_menu.gd" id="1_sy4hg"]
+[ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="2_eb7hu"]
+[ext_resource type="PackedScene" uid="uid://buc3pa7ovo81q" path="res://prefabs/long-press-button.tscn" id="2_ljbxc"]
+[ext_resource type="Texture2D" uid="uid://bng8j8q10k6yt" path="res://prefabs/recycle-icon.tres" id="3_br2jb"]
+[ext_resource type="Texture2D" uid="uid://l6oe44m1j68v" path="res://UI/ui-sheet-1.png" id="4_eb7hu"]
+[ext_resource type="Texture2D" uid="uid://d1exujn7egkcm" path="res://prefabs/credits-icon.tres" id="5_ghvkt"]
+[ext_resource type="PackedScene" uid="uid://jqfcrgtcowf1" path="res://prefabs/left-hand-button.tscn" id="6_s2xg6"]
+[ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="9_ghvkt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtvj4"]
+atlas = ExtResource("4_eb7hu")
+region = Rect2(866, 671, 35, 45)
+
+[node name="options_menu_buttons" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_sy4hg")
+
+[node name="BG3" parent="." instance=ExtResource("2_eb7hu")]
+custom_minimum_size = Vector2(496, 224)
+layout_mode = 0
+offset_left = 0.0
+offset_top = 216.0
+offset_right = 704.0
+offset_bottom = 576.0
+
+[node name="BG2" parent="." instance=ExtResource("2_eb7hu")]
+custom_minimum_size = Vector2(496, 224)
+layout_mode = 0
+offset_left = 48.0
+offset_top = -16.0
+offset_right = 648.0
+offset_bottom = 208.0
+
+[node name="BG4" parent="." instance=ExtResource("2_eb7hu")]
+custom_minimum_size = Vector2(496, 224)
+layout_mode = 0
+offset_left = 0.0
+offset_top = 584.0
+offset_right = 592.0
+offset_bottom = 992.0
+
+[node name="difficulty_24_hours_button" parent="." instance=ExtResource("6_s2xg6")]
+layout_mode = 1
+offset_left = 72.0
+offset_top = 24.0
+offset_right = 488.0
+offset_bottom = 80.0
+text = "TURN RESETS AFTER
+ONE DAY IN REAL TIME"
+
+[node name="difficulty_instant_button" parent="." instance=ExtResource("6_s2xg6")]
+layout_mode = 1
+offset_left = 72.0
+offset_top = 120.0
+offset_right = 488.0
+offset_bottom = 176.0
+text = "TURN RESETS
+AT YOUR WILL"
+
+[node name="RESET_GAME" parent="." instance=ExtResource("2_ljbxc")]
+layout_mode = 1
+offset_left = 36.0
+offset_top = 236.0
+offset_right = 540.0
+offset_bottom = 288.0
+theme_override_colors/icon_normal_color = Color(1, 0, 0.364706, 1)
+text = "RESET STATE"
+icon = ExtResource("3_br2jb")
+
+[node name="HARD_RESET" parent="." instance=ExtResource("2_ljbxc")]
+layout_mode = 1
+offset_left = 32.0
+offset_top = 324.0
+offset_right = 544.0
+offset_bottom = 376.0
+theme_override_colors/icon_normal_color = Color(1, 0, 0.364706, 1)
+text = "CLEAR MODS & RESET"
+icon = ExtResource("3_br2jb")
+
+[node name="TOGGLE_AUTOSAVE" parent="." instance=ExtResource("2_ljbxc")]
+layout_mode = 1
+offset_left = 36.0
+offset_top = 500.0
+offset_right = 540.0
+offset_bottom = 552.0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+text = "AUTOSAVE OFF"
+icon = SubResource("AtlasTexture_wtvj4")
+
+[node name="UNLOCK_EVERYTHING" parent="." instance=ExtResource("2_ljbxc")]
+layout_mode = 1
+offset_left = 36.0
+offset_top = 412.0
+offset_right = 540.0
+offset_bottom = 464.0
+theme_override_colors/icon_normal_color = Color(0, 1, 0.666667, 1)
+text = "UNLOCK EVERYTHING"
+icon = ExtResource("5_ghvkt")
+alignment = 0
+
+[node name="TextEdit" type="TextEdit" parent="."]
+custom_minimum_size = Vector2(550, 200)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 608.0
+offset_right = 566.0
+offset_bottom = 808.0
+theme = ExtResource("9_ghvkt")
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 16
+placeholder_text = " 
+	┏┓┳┳┏┓┏┓┏┳┓ 
+ 	┃┃┃┃┣  ┗┓  ┃  
+ 	┗┻┗┛┗┛┗┛  ┻  
+ 	┏┓┏┓┳┓┳┏┓┏┳┓
+ 	┗┓┃  ┣┫┃┃┃  ┃ 
+ 	┗┛┗┛┛┗┻┣┛  ┻ 
+
+
+																													1.1.4"
+caret_blink = true
+
+[node name="EXECUTE_SCRIPT" parent="." instance=ExtResource("2_ljbxc")]
+layout_mode = 1
+offset_left = 64.0
+offset_top = 832.0
+offset_right = 568.0
+offset_bottom = 884.0
+theme_override_colors/icon_normal_color = Color(0, 1, 0.666667, 1)
+text = "EXECUTE SCRIPT"
+icon = ExtResource("5_ghvkt")
+alignment = 0
+
+[node name="OPEN_DOCUMENTAION" parent="." instance=ExtResource("2_ljbxc")]
+layout_mode = 1
+offset_left = 56.0
+offset_top = 912.0
+offset_right = 560.0
+offset_bottom = 964.0
+theme_override_colors/icon_normal_color = Color(0, 1, 0.666667, 1)
+text = "OPEN DOCUMENTATION"
+icon = ExtResource("5_ghvkt")
+alignment = 0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 592.0
+offset_right = 248.0
+offset_bottom = 606.0
+theme = ExtResource("9_ghvkt")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "Quest Script Console"

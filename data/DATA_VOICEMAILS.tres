@@ -5,51 +5,72 @@
 [resource]
 script = ExtResource("1_475fa")
 CONFIG_FILE = "[DEFAULT]
-VERSION=1.5
-NUMBER_OF_VOICEMAILS =37
 
+VERSION=1.6
+NUMBER_OF_VOICEMAILS=37
 VOICEMAIL_0_ID=0
-VOICEMAIL_0_STATUS=1
 VOICEMAIL_0_FROM=\"Jack\"
-VOICEMAIL_0_SCRIPT=\"say[Hey, It’s me. Give me a call back. ASAP!]Jack
+VOICEMAIL_0_STATUS=1
+VOICEMAIL_0_SCRIPT=\"
+say[Hey, It's me. Give me a call back. ASAP!]Jack
 \"
-VOICEMAIL_0_CALLBACK=\"say[Hello?]Jack
+VOICEMAIL_0_CALLBACK=\"
+say[Hello?]Jack
 say[I know it has been awhile, but I need your help with something.]Jack
 say[I lost contact with Jill while she was on a mission.]Jack
 say[She was looking for this part in the Sunfire Desert.]Jack
 say[I sent the location and mission request to your PC.]Jack
 say[Buy a mech and assign me as the pilot.]Jack
-say[When you are all ready, hit Start Mission.]Jack
+say[When you are all ready, press the 'Start Mission' button.]Jack
 do[hire pilot(0)]
 do[unlock mission(0)]
 [end]
 \"
-
 VOICEMAIL_1_ID=1
-VOICEMAIL_1_STATUS=0
 VOICEMAIL_1_FROM=\"Benefactor\"
-VOICEMAIL_1_SCRIPT=\"say[I sent a mission to your PC. Do not fail me.]Benefactor
+VOICEMAIL_1_STATUS=0
+VOICEMAIL_1_SCRIPT=\"
+say[It seems you are missing your pilot.]Benefactor
+say[Hire a new one before you start your next mission.]Benefactor
+say[I sent a mission to your PC. Do not fail me.]Benefactor
 do[unlock mission(2)]
 do[complete voicemail(1)]
+do[unlock pilot(1)]
+do[unlock pilot(2)]
+do[unlock pilot(3)]
+do[unlock pilot(4)]
+do[unlock pilot(5)]
+do[unlock pilot(6)]
+do[unlock pilot(7)]
+do[unlock pilot(8)]
+do[unlock pilot(9)]
+do[unlock pilot(10)]
+do[unlock pilot(11)]
+do[unlock pilot(12)]
+do[unlock pilot(13)]
+do[unlock pilot(14)]
+do[unlock pilot(15)]
+do[unlock pilot(16)]
+do[unlock pilot(18)]
+do[unlock pilot(19)]
 \"
 VOICEMAIL_1_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
-say[*CLICK*]
 \"
-
 VOICEMAIL_2_ID=2
-VOICEMAIL_2_STATUS=0
 VOICEMAIL_2_FROM=\"Jack\"
-VOICEMAIL_2_SCRIPT=\"say[Hey, It’s me. Got a lead on Jill.]Jack
+VOICEMAIL_2_STATUS=0
+VOICEMAIL_2_SCRIPT=\"
+say[Hey, It's me. Got a lead on Jill.]Jack
 say[My new friend, Jam, told me there is a new Gradient settlement in the Muckthorn swamp.]Jack
-say[Jill wasn’t a Gradient, but her friends usually were.]Jack
+say[Jill wasn't a Gradient, but her friends usually were.]Jack
 say[Can I use this mech again? I want to see if they know anything.]Jack
 say[Call me back!]Jack
 \"
 VOICEMAIL_2_CALLBACK=\"
-say[Thanks for calling me back. I know it’s not cheap to help me out like this. But it’s for Jill]Jack
-choices[Of course. Let’s go., For Jill.]
-[Of course. Let’s go.]
+say[Thanks for calling me back. I know it's not cheap to help me out like this. But it's for Jill]Jack
+choices[Of course. Let's go., For Jill.]
+[Of course. Let's go.]
 go[end]
 [For Jill.]
 say[I think about her every second. Mom is a wreck. We have to find her.]Jack
@@ -58,11 +79,11 @@ go[end]
 say[It should be an easy mission.]Jack
 do[unlock mission(1)]
 \"
-
 VOICEMAIL_3_ID=3
-VOICEMAIL_3_STATUS=0
 VOICEMAIL_3_FROM=\"Benefactor\"
-VOICEMAIL_3_SCRIPT=\"say[I sent another mission to your PC. Do not fail me.]Benefactor
+VOICEMAIL_3_STATUS=0
+VOICEMAIL_3_SCRIPT=\"
+say[I sent another mission to your PC. Do not fail me.]Benefactor
 do[unlock mission(3)]
 do[complete voicemail(3)]
 \"
@@ -70,13 +91,12 @@ VOICEMAIL_3_CALLBACK=\"
 do[play(ring ring)]
 say[*RING!! RING!!*]
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
-say[*CLICK*]
 \"
-
 VOICEMAIL_4_ID=4
-VOICEMAIL_4_STATUS=0
 VOICEMAIL_4_FROM=\"Benefactor\"
-VOICEMAIL_4_SCRIPT=\"say[I sent another mission to your PC. Do not fail me.]Benefactor
+VOICEMAIL_4_STATUS=0
+VOICEMAIL_4_SCRIPT=\"
+say[I sent another mission to your PC. Do not fail me.]Benefactor
 do[unlock mission(5)]
 do[complete voicemail(4)]
 \"
@@ -84,24 +104,23 @@ VOICEMAIL_4_CALLBACK=\"
 do[play(ring ring)]
 say[*RING!! RING!!*]
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
-say[*CLICK*]
 \"
-
 VOICEMAIL_5_ID=5
-VOICEMAIL_5_STATUS=0
 VOICEMAIL_5_FROM=\"???\"
-VOICEMAIL_5_SCRIPT=\"say[Hello]???
+VOICEMAIL_5_STATUS=0
+VOICEMAIL_5_SCRIPT=\"
+say[Hello]???
 say[I apologize for the secrecy. But these days, there are more ears on one call than on-a whole cornfield.]???
 say[You can call me D.T.]DT
-say[Just know, I’m a friend. I am callin’ to tell ya something important.]DT
+say[Just know, I'm a friend. I am callin' to tell ya something important.]DT
 say[This 'Benefactor' fella your working with...]DT
-say[Ain’t someone you should be hangin’ your hat with.]DT
+say[Ain't someone you should be hangin' your hat with.]DT
 say[I only say this because I have followed their work for a long time.]DT
-say[They don’t care about Dualists. They don’t give a damn about the Gradients.]DT
-say[Benefactors are like vultures. Preyin’ on death.]DT
+say[They don't care about Dualists. They don't give a damn about the Gradients.]DT
+say[Benefactors are like vultures. Preyin' on death.]DT
 say[I can help your friend Jack. Send him to these coordinates.]DT
-say[Tell ‘em you whatever you need to, but don’t mention who sent ya. I need ya to keep a tight lid our conversation. ]DT
-say[Good luck on your mission. I’ll be callin’ ya back soon.]DT
+say[Tell 'em you whatever you need to, but don't mention who sent ya. I need ya to keep a tight lid our conversation. ]DT
+say[Good luck on your mission. I'll be callin' ya back soon.]DT
 do[unlock mission(8)]
 do[complete voicemail(5)]
 \"
@@ -109,14 +128,12 @@ VOICEMAIL_5_CALLBACK=\"
 do[play(ring ring)]
 say[*RING!! RING!!*]
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
-say[*CLICK*]
 \"
-
 VOICEMAIL_6_ID=6
-VOICEMAIL_6_STATUS=0
 VOICEMAIL_6_FROM=\"Jack\"
+VOICEMAIL_6_STATUS=0
 VOICEMAIL_6_SCRIPT=\"
-say[Hey! It’s me. Call me back. I have another lead. Maybe.]Jack
+say[Hey! It's me. Call me back. I have another lead. Maybe.]Jack
 \"
 VOICEMAIL_6_CALLBACK=\"
 say[Miss me yet?]Jack
@@ -126,35 +143,36 @@ say[Maybe someone there knows her?]Jack
 say[By the way. If you ever need some money, try participating in a race.]Jack
 say[But honestly, they are impossible to win without a racing mech.]Jack
 say[Maybe one day, when we find Jill, we can start a proper racing team!]Jack
-say[I’ll send you my location in case you are interested in trying out for a race one day.]Jack
+say[I'll send you my location in case you are interested in trying out for a race one day.]Jack
 do[unlock mission(6)]
 \"
-
 VOICEMAIL_7_ID=7
-VOICEMAIL_7_STATUS=0
 VOICEMAIL_7_FROM=\"Benefactor\"
-VOICEMAIL_7_SCRIPT=\"say[I need you to tell the leaders at the Gradient base in Muckthorn about the Dualists’ plans to destroy them.]Benefactor
-do[unlock mission(7)]\"
-VOICEMAIL_7_CALLBACK=\"say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
-say[*CLICK*]
+VOICEMAIL_7_STATUS=0
+VOICEMAIL_7_SCRIPT=\"
+say[I need you to tell the leaders at the Gradient base in Muckthorn about the Dualists' plans to destroy them.]Benefactor
+do[unlock mission(7)]
+do[complete voicemail(7)]
 \"
+VOICEMAIL_7_CALLBACK=\"
+say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
+\"
 VOICEMAIL_8_ID=8
-VOICEMAIL_8_STATUS=0
 VOICEMAIL_8_FROM=\"Benefactor\"
-VOICEMAIL_8_SCRIPT=\"say[You are to help the Dualists destroy the Gradient’s base in Muckthorn.]Benefactor
+VOICEMAIL_8_STATUS=0
+VOICEMAIL_8_SCRIPT=\"
+say[You are to help the Dualists destroy the Gradient's base in Muckthorn.]Benefactor
 do[unlock mission(9)]
 do[complete voicemail(8)]
 \"
 VOICEMAIL_8_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
-say[*CLICK*]
+
 \"
-
-
 VOICEMAIL_9_ID=9
-VOICEMAIL_9_STATUS=0
 VOICEMAIL_9_FROM=\"Jack\"
+VOICEMAIL_9_STATUS=0
 VOICEMAIL_9_SCRIPT=\"
 say[Congrats on winning the qualifiers!]
 say[You have been invited you back to race. ]
@@ -163,120 +181,118 @@ do[unlock mission(33)]
 \"
 VOICEMAIL_9_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
-say[*CLICK*]
-\"
 
+\"
 VOICEMAIL_10_ID=10
-VOICEMAIL_10_STATUS=0
 VOICEMAIL_10_FROM=\"Cat Lady\"
+VOICEMAIL_10_STATUS=0
 VOICEMAIL_10_SCRIPT=\"
 say[Hey! You!]???
-say[You stepped on my cat’s tail!]Cat Lady
+say[You stepped on my cat's tail!]Cat Lady
 say[You better take my cat to the vet.]Cat Lady
 do[unlock mission(10)]
 \"
 VOICEMAIL_10_CALLBACK=\"
 say[You and your dumb mech better take my cat to the vet!]Cat Lady
-say[*CLICK*]
-\"
 
+\"
 VOICEMAIL_11_ID=11
-VOICEMAIL_11_STATUS=0
 VOICEMAIL_11_FROM=\"Benefactor\"
-VOICEMAIL_11_SCRIPT=\"say[I need access to an old decommissioned comms tower.]Benefactor
+VOICEMAIL_11_STATUS=0
+VOICEMAIL_11_SCRIPT=\"
+say[I need access to an old decommissioned comms tower.]Benefactor
 do[unlock mission(11)]
 do[complete voicemail(11)]
 \"
 VOICEMAIL_11_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
-say[*CLICK*]
+
 \"
-
-
 VOICEMAIL_12_ID=12
-VOICEMAIL_12_STATUS=0
 VOICEMAIL_12_FROM=\"Benefactor\"
-VOICEMAIL_12_SCRIPT=\"say[Now that we have access, I need you to do some reconnaissance.]Benefactor
+VOICEMAIL_12_STATUS=0
+VOICEMAIL_12_SCRIPT=\"
+say[Now that we have access, I need you to do some reconnaissance.]Benefactor
 do[unlock mission(12)]
 do[complete voicemail(12)]
 do[unlock mission(13)]
 do[unlock mission(14)]\"
 VOICEMAIL_12_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
-say[*CLICK*]
-\"
 
+\"
 VOICEMAIL_13_ID=13
-VOICEMAIL_13_STATUS=0
 VOICEMAIL_13_FROM=\"Larry\"
-VOICEMAIL_13_SCRIPT=\"say[Hello! It’s your landlord! Remember me?]Landlord Larry
+VOICEMAIL_13_STATUS=0
+VOICEMAIL_13_SCRIPT=\"
+say[Hello! It's your landlord! Remember me?]Landlord Larry
 say[You owe me 6k bud. I wanna see that money yesterday.]Larry
 \"
-VOICEMAIL_13_CALLBACK=\"say[Hello. You have reached the voicemail of Larry Lord. Please leave a message and I will get back to you. *BEEP*]
+VOICEMAIL_13_CALLBACK=\"
+say[Hello. You have reached the voicemail of Larry Lord. Please leave a message and I will get back to you. *BEEP*]
 \"
-
 VOICEMAIL_14_ID=14
-VOICEMAIL_14_STATUS=0
 VOICEMAIL_14_FROM=\"Larry\"
-VOICEMAIL_14_SCRIPT=\"say[Listen, buddy. Is this some kind of game to you?]Larry
+VOICEMAIL_14_STATUS=0
+VOICEMAIL_14_SCRIPT=\"
+say[Listen, buddy. Is this some kind of game to you?]Larry
 \"
-VOICEMAIL_14_CALLBACK=\"say[Hello. You have reached the voicemail of Larry Lord. Please leave a message and I will get back to you. Have a righteous day.  *BEEP*]
+VOICEMAIL_14_CALLBACK=\"
+say[Hello. You have reached the voicemail of Larry Lord. Please leave a message and I will get back to you. Have a righteous day.  *BEEP*]
 \"
-
 VOICEMAIL_15_ID=15
-VOICEMAIL_15_STATUS=0
 VOICEMAIL_15_FROM=\"Benefactor\"
-
-VOICEMAIL_15_SCRIPT=\"say[Your next assignment is simple. Broadcast this script to the comms tower once you are in range of the provided location.]Benefactor
+VOICEMAIL_15_STATUS=0
+VOICEMAIL_15_SCRIPT=\"
+say[Your next assignment is simple. Broadcast this script to the comms tower once you are in range of the provided location.]Benefactor
 do[complete voicemail(15)]
 do[unlock mission(15)]
 \"
 VOICEMAIL_15_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
-say[*CLICK*]
-\"
 
+\"
 VOICEMAIL_16_ID=16
-VOICEMAIL_16_STATUS=0
 VOICEMAIL_16_FROM=\"Benefactor\"
-VOICEMAIL_16_SCRIPT=\"say[Just like before, broadcast this script to the comms tower once you are in range.]Benefactor
+VOICEMAIL_16_STATUS=0
+VOICEMAIL_16_SCRIPT=\"
+say[Just like before, broadcast this script to the comms tower once you are in range.]Benefactor
 do[complete voicemail(16)]
 do[unlock mission(16)]
 \"
 VOICEMAIL_16_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
-say[*CLICK*]
-\"
 
+\"
 VOICEMAIL_17_ID=17
-VOICEMAIL_17_STATUS=0
 VOICEMAIL_17_FROM=\"Benefactor\"
-VOICEMAIL_17_SCRIPT=\"say[I have a long term contract for you.]Benefactor
+VOICEMAIL_17_STATUS=0
+VOICEMAIL_17_SCRIPT=\"
+say[I have a long term contract for you.]Benefactor
 do[complete voicemail(17)]
 do[unlock mission(17)]
 \"
 VOICEMAIL_17_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
-say[*CLICK*]
-\"
 
+\"
 VOICEMAIL_18_ID=18
-VOICEMAIL_18_STATUS=0
 VOICEMAIL_18_FROM=\"???\"
-VOICEMAIL_18_SCRIPT=\"say[It’s …]???
-say[I’ve been …]???
-say[Jill is … She’s with our…]???
+VOICEMAIL_18_STATUS=0
+VOICEMAIL_18_SCRIPT=\"
+say[It's …]???
+say[I've been …]???
+say[Jill is … She's with our…]???
 \"
 VOICEMAIL_18_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
-say[*CLICK*]
+
 \"
-
-
 VOICEMAIL_19_ID=19
-VOICEMAIL_19_STATUS=0
 VOICEMAIL_19_FROM=\"Benefactor\"
-VOICEMAIL_19_SCRIPT=\"say[I need you to destroy a target and get creative with it.]Benefactor
+VOICEMAIL_19_STATUS=0
+VOICEMAIL_19_SCRIPT=\"
+say[I need you to destroy a target and get creative with it.]Benefactor
 say[I need you to make it look like an accident]Benefactor
 say[Wait till their transport is below the cliff line. Then push a boulder onto them or something.]Benefactor
 say[Cause a landslide. Do what it takes. No fire arms. Special-Ops only.]Benefactor
@@ -285,30 +301,32 @@ do[unlock mission(19)]
 \"
 VOICEMAIL_19_CALLBACK=\"
 say[*THIS CALL CANNOT BE COMPLETED. GOOD BYE.*]
-say[*CLICK*]
-\"
 
+\"
 VOICEMAIL_20_ID=20
-VOICEMAIL_20_STATUS=0
 VOICEMAIL_20_FROM=\"Larry\"
-VOICEMAIL_20_SCRIPT=\"say[Hello. My name is Larry Lord. You may have noticed I left you quite a few voicemails in the last few days.]Larry
+VOICEMAIL_20_STATUS=0
+VOICEMAIL_20_SCRIPT=\"
+say[Hello. My name is Larry Lord. You may have noticed I left you quite a few voicemails in the last few days.]Larry
 say[My previous tenant left me an incorrect number. Please disregard my previous messages]Larry
 say[If you are looking for residence we have vacancies available. Have a righteous day. Please note, Gradient scum need not apply.]Larry
 \"
-VOICEMAIL_20_CALLBACK=\"say[Hello. You have reached the voicemail of Larry Lord. Please leave a message and I will get back to you. Have a righteous day.  *BEEP*]
+VOICEMAIL_20_CALLBACK=\"
+say[Hello. You have reached the voicemail of Larry Lord. Please leave a message and I will get back to you. Have a righteous day.  *BEEP*]
 \"
-
 VOICEMAIL_21_ID=21
-VOICEMAIL_21_STATUS=0
 VOICEMAIL_21_FROM=\"Jack\"
-VOICEMAIL_21_SCRIPT=\"say[Hello, is this on? Ok. Hey! It’s me.]Jack
+VOICEMAIL_21_STATUS=0
+VOICEMAIL_21_SCRIPT=\"
+say[Hello, is this on? Ok. Hey! It's me.]Jack
 say[You should be able to call me back this time. I am safe. I know where Jill is.]Jack
 say[CALL ME.]Jack
 \"
-VOICEMAIL_21_CALLBACK=\"say[Hey! *Sigh* what a wild ride.]Jack
+VOICEMAIL_21_CALLBACK=\"
+say[Hey! *Sigh* what a wild ride.]Jack
 say[I was captured. Again. This time by Dualists. I was snooping around under the racetracks when I saw it. A Racing mech. Hidden under the raceway.]Jack
 say[And get this, it belongs to Jill!]Jack
-say[I called mom as soon I could and shes like, ‘Yeah, I know. Jill is right here.’]Jack
+say[I called mom as soon I could and shes like, 'Yeah, I know. Jill is right here.']Jack
 say[They are off-world. Jill got trapped into a toxic relationship with a benefactor.]Jack
 say[She is free of her contracts and the benefactor has moved on to other pawns.]Jack
 say[For your sake, follow in her footsteps. Get free of that horrible benefactor.]Jack
@@ -319,202 +337,192 @@ choices[Goodbye for now.,Will you race again?]
 say[See ya!]Jack
 go[end]
 [Will you race again?]
-say[Yes! I can’t wait to get on the raceway. Jill and I’s first mission is going to be to rescue that racing mech she stashed under the EAU raceway.]Jack
+say[Yes! I can't wait to get on the raceway. Jill and I's first mission is going to be to rescue that racing mech she stashed under the EAU raceway.]Jack
 [end]
 say[It was nice talking to you. FREEDOM! It never tasted so good. ]Jack
 \"
-
 VOICEMAIL_22_ID=22
-VOICEMAIL_22_STATUS=0
 VOICEMAIL_22_FROM=\"Benefactor\"
-VOICEMAIL_22_SCRIPT=\"say[This is my final offer.]Benefactor
+VOICEMAIL_22_STATUS=0
+VOICEMAIL_22_SCRIPT=\"
+say[This is my final offer.]Benefactor
 say[Continue attacking the base like I told you to or you will need to face me.]Benefactor
 say[What is it going to be?]Benefactor
-choices[Yes. I will help you.,No way. I’m done.]
+choices[Yes. I will help you.,No way. I'm done.]
 [Yes. I will help you.]
 say[Good.]Benefactor
 do[unlock mission(22)]
 do[complete voicemail(22)]
 go[done]
-[No way. I’m done.]
+[No way. I'm done.]
 say[Your final mistake.]Benefactor
 do[unlock mission(24)]
 do[complete voicemail(22)]
 [done]
 \"
-VOICEMAIL_22_CALLBACK=\"say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
-say[*CLICK*]
-\"
+VOICEMAIL_22_CALLBACK=\"
+say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
+\"
 VOICEMAIL_23_ID=23
-VOICEMAIL_23_STATUS=0
 VOICEMAIL_23_FROM=\"DT\"
-VOICEMAIL_23_SCRIPT=\"say[Hey there.]DT
-say[I am sorry, you know me as ‘D.T.’. I have been lying to you. ]DT
+VOICEMAIL_23_STATUS=0
+VOICEMAIL_23_SCRIPT=\"
+say[Hey there.]DT
+say[I am sorry, you know me as 'D.T.'. I have been lying to you. ]DT
 say[My real name is Rose. Pleased to meet you.]Rose
 
 say[You are an unknown. Benefactors call you the Pawn behind closed doors.]Rose
-say[A pawn can win any game. They don’t see that. I do.]Rose
+say[A pawn can win any game. They don't see that. I do.]Rose
 say[The Benefactor wants to cut you off. As in cut off a loose end. Not just stop paying you.]Rose
 say[I can get him off your back.]Rose
 say[Just do this one mission for me...]Rose
 do[unlock mission(25)]
 do[complete voicemail(25)]
 \"
-VOICEMAIL_23_CALLBACK=\"say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
-say[*CLICK*]
-\"
+VOICEMAIL_23_CALLBACK=\"
+say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
+\"
 VOICEMAIL_24_ID=24
-VOICEMAIL_24_STATUS=0
 VOICEMAIL_24_FROM=\"Larry\"
-VOICEMAIL_24_SCRIPT=\"say[Alright- I get it. You think you are better than me! I am going to come over there if I don’t see a check under my door...TONIGHT!]Larry
+VOICEMAIL_24_STATUS=0
+VOICEMAIL_24_SCRIPT=\"
+say[Alright- I get it. You think you are better than me! I am going to come over there if I don't see a check under my door...TONIGHT!]Larry
 \"
-VOICEMAIL_24_CALLBACK=\"say[Hello. You have reached the voicemail of Larry Lord. Please leave a message and I will get back to you. Have a righteous day.  *BEEP*]\"
-
-
+VOICEMAIL_24_CALLBACK=\"
+say[Hello. You have reached the voicemail of Larry Lord. Please leave a message and I will get back to you. Have a righteous day.  *BEEP*]\"
 VOICEMAIL_25_ID=25
-VOICEMAIL_25_STATUS=0
 VOICEMAIL_25_FROM=\"Jack\"
+VOICEMAIL_25_STATUS=0
 VOICEMAIL_25_SCRIPT=\"
 \"
-VOICEMAIL_25_CALLBACK=\"say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
-say[*CLICK*]
-\"
+VOICEMAIL_25_CALLBACK=\"
+say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
+\"
 VOICEMAIL_26_ID=26
-VOICEMAIL_26_STATUS=0
 VOICEMAIL_26_FROM=\"Jack\"
+VOICEMAIL_26_STATUS=0
 VOICEMAIL_26_SCRIPT=\"
 \"
-VOICEMAIL_26_CALLBACK=\"say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
-say[*CLICK*]
-\"
+VOICEMAIL_26_CALLBACK=\"
+say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
+\"
 VOICEMAIL_27_ID=27
-VOICEMAIL_27_STATUS=0
 VOICEMAIL_27_FROM=\"Jack\"
+VOICEMAIL_27_STATUS=0
 VOICEMAIL_27_SCRIPT=\"
 \"
-VOICEMAIL_27_CALLBACK=\"say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
-say[*CLICK*]
-\"
+VOICEMAIL_27_CALLBACK=\"
+say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
+\"
 VOICEMAIL_28_ID=28
-VOICEMAIL_28_STATUS=0
 VOICEMAIL_28_FROM=\"Jack\"
+VOICEMAIL_28_STATUS=0
 VOICEMAIL_28_SCRIPT=\"
 \"
-VOICEMAIL_28_CALLBACK=\"say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
-say[*CLICK*]
-\"
+VOICEMAIL_28_CALLBACK=\"
+say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
+\"
 VOICEMAIL_29_ID=29
-VOICEMAIL_29_STATUS=0
 VOICEMAIL_29_FROM=\"Jack\"
+VOICEMAIL_29_STATUS=0
 VOICEMAIL_29_SCRIPT=\"
 \"
-VOICEMAIL_29_CALLBACK=\"say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
-say[*CLICK*]
-\"
+VOICEMAIL_29_CALLBACK=\"
+say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
+\"
 VOICEMAIL_30_ID=30
-VOICEMAIL_30_STATUS=0
 VOICEMAIL_30_FROM=\"Jack\"
+VOICEMAIL_30_STATUS=0
 VOICEMAIL_30_SCRIPT=\"
 \"
-VOICEMAIL_30_CALLBACK=\"say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
-say[*CLICK*]
-\"
+VOICEMAIL_30_CALLBACK=\"
+say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
+\"
 VOICEMAIL_31_ID=31
-VOICEMAIL_31_STATUS=0
 VOICEMAIL_31_FROM=\"Jack\"
+VOICEMAIL_31_STATUS=0
 VOICEMAIL_31_SCRIPT=\"
 say[Hey. Call me back.]Jack
 \"
 VOICEMAIL_31_CALLBACK=\"
 say[A little bird told me that you beat Rose at her own game...]Jack
-say[It was me, I’m the little bird...]Jill
-say[So now that you are ‘free’, when are you leaving?]Jack
+say[It was me, I'm the little bird...]Jill
+say[So now that you are 'free', when are you leaving?]Jack
 say[Yeah! We want to check out your new racing mech!]Jill
 say[Sure, but we also really wanna see you. Right Jill?]Jack
 say[Yeah...]Jill
 do[unlock mission(31)]
 \"
-
 VOICEMAIL_32_ID=32
-VOICEMAIL_32_STATUS=0
 VOICEMAIL_32_FROM=\"???\"
+VOICEMAIL_32_STATUS=0
 VOICEMAIL_32_SCRIPT=\"
 say[Race today! Anyone can sign up, any day!]???
 say[The odds are always changing. So you need to be ready for anything!]???
 do[complete voicemail(32)]
 \"
-VOICEMAIL_32_CALLBACK=\"say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
-say[*CLICK*]
-\"
+VOICEMAIL_32_CALLBACK=\"
+say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
+\"
 VOICEMAIL_33_ID=33
-VOICEMAIL_33_STATUS=0
 VOICEMAIL_33_FROM=\"???\"
+VOICEMAIL_33_STATUS=0
 VOICEMAIL_33_SCRIPT=\"
 say[Congratulations. You have been selected for the 1st Round of the racing tournament.]???
 say[Event details have been sent to your PC.]???
 do[complete voicemail(33)]
 do[unlock mission(33)]
 \"
-VOICEMAIL_33_CALLBACK=\"say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
-say[*CLICK*]
-\"
+VOICEMAIL_33_CALLBACK=\"
+say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
+\"
 VOICEMAIL_34_ID=34
-VOICEMAIL_34_STATUS=0
 VOICEMAIL_34_FROM=\"???\"
+VOICEMAIL_34_STATUS=0
 VOICEMAIL_34_SCRIPT=\"
 say[Congratulations. You have qualified for the QUARTER-FINALS.]???
 say[Event details have been sent to your PC.]???
 do[complete voicemail(34)]
 do[unlock mission(34)]
 \"
-VOICEMAIL_34_CALLBACK=\"say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
-say[*CLICK*]
-\"
+VOICEMAIL_34_CALLBACK=\"
+say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
+\"
 VOICEMAIL_35_ID=35
-VOICEMAIL_35_STATUS=0
 VOICEMAIL_35_FROM=\"???\"
+VOICEMAIL_35_STATUS=0
 VOICEMAIL_35_SCRIPT=\"
 say[Congratulations. You have qualified for the SEMI-FINALS.]???
 say[Event details have been sent to your PC.]???
 do[complete voicemail(35)]
 do[unlock mission(35)]
 \"
-VOICEMAIL_35_CALLBACK=\"say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
-say[*CLICK*]
-\"
+VOICEMAIL_35_CALLBACK=\"
+say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
+\"
 VOICEMAIL_36_ID=36
-VOICEMAIL_36_STATUS=0
 VOICEMAIL_36_FROM=\"???\"
+VOICEMAIL_36_STATUS=0
 VOICEMAIL_36_SCRIPT=\"
 say[Congratulations. You have qualified for the FINALS.]???
 say[Event details have been sent to your PC.]???
 do[complete voicemail(36)]
 do[unlock mission(36)]
 \"
-VOICEMAIL_36_CALLBACK=\"say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
-say[*CLICK*]
+VOICEMAIL_36_CALLBACK=\"
+say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
+
 \"
-
-
-
-
-
-
-
-
-
-
-
 "

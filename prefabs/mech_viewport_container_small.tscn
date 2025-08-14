@@ -36,33 +36,29 @@ _data = {
 visibility_layer = 13
 layout_mode = 3
 anchors_preset = 0
-offset_left = 696.0
-offset_top = 32.0
-offset_right = 696.0
-offset_bottom = 32.0
+
+[node name="BG2" parent="." instance=ExtResource("1_vwrtx")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 760.0
+offset_bottom = 376.0
 
 [node name="BG3" parent="." instance=ExtResource("1_vwrtx")]
 layout_mode = 0
-offset_left = -368.0
-offset_top = -24.0
-offset_right = 152.0
-offset_bottom = 232.0
-
-[node name="BG2" parent="." instance=ExtResource("1_vwrtx")]
-layout_mode = 0
-offset_left = -632.0
-offset_top = -24.0
-offset_right = -376.0
-offset_bottom = 232.0
+offset_left = 344.0
+offset_top = 24.0
+offset_right = 744.0
+offset_bottom = 280.0
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 light_mask = 0
 visibility_layer = 13
 layout_mode = 0
-offset_left = -632.0
-offset_top = -24.0
-offset_right = -376.0
-offset_bottom = 232.0
+offset_left = 88.0
+offset_top = 24.0
+offset_right = 344.0
+offset_bottom = 280.0
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 transparent_bg = true
@@ -120,16 +116,17 @@ layers = 256
 
 [node name="BG4" parent="." instance=ExtResource("1_vwrtx")]
 layout_mode = 0
-offset_left = -632.0
-offset_top = 176.0
-offset_right = -376.0
-offset_bottom = 240.0
+offset_left = 88.0
+offset_top = 224.0
+offset_right = 344.0
+offset_bottom = 288.0
 
 [node name="FLAVOR" type="Label" parent="."]
 layout_mode = 2
-offset_left = -216.0
-offset_right = 64.0
-offset_bottom = 201.0
+offset_left = 504.0
+offset_top = 88.0
+offset_right = 744.0
+offset_bottom = 289.0
 theme = ExtResource("2_7rhkb")
 text = "Flavor Text Flavor Text Flavor Text Flavor Text Flavor Text"
 autowrap_mode = 2
@@ -137,63 +134,63 @@ justification_flags = 162
 
 [node name="COMPATIBLE_ENVIRONMENT" type="Label" parent="."]
 layout_mode = 2
-offset_left = -352.0
-offset_top = 48.0
-offset_right = -232.0
-offset_bottom = 192.0
+offset_left = 384.0
+offset_top = 144.0
+offset_right = 504.0
+offset_bottom = 288.0
 theme = ExtResource("2_7rhkb")
 text = "ENVS"
 horizontal_alignment = 2
 
 [node name="TYPE" type="Label" parent="."]
 layout_mode = 2
-offset_left = -344.0
-offset_top = 8.0
-offset_right = -200.0
-offset_bottom = 36.0
+offset_left = 368.0
+offset_top = 112.0
+offset_right = 512.0
+offset_bottom = 140.0
 theme = ExtResource("2_7rhkb")
 text = "TYPE"
 
 [node name="STATUS" type="Label" parent="."]
 layout_mode = 2
-offset_left = 16.0
-offset_top = 184.0
-offset_right = 124.0
-offset_bottom = 212.0
+offset_left = 112.0
+offset_top = 240.0
+offset_right = 320.0
+offset_bottom = 268.0
 theme = ExtResource("2_7rhkb")
 text = "STATUS"
 
 [node name="ID" parent="." instance=ExtResource("2_jlplf")]
 layout_mode = 0
-offset_left = -600.0
-offset_top = 184.0
-offset_right = -538.0
-offset_bottom = 200.0
+offset_left = 376.0
+offset_top = 40.0
+offset_right = 438.0
+offset_bottom = 56.0
 theme_override_font_sizes/normal_font_size = 16
 
 [node name="NAME" type="Label" parent="."]
 layout_mode = 2
-offset_left = -600.0
-offset_top = 200.0
-offset_right = -400.0
-offset_bottom = 228.0
+offset_left = 368.0
+offset_top = 56.0
+offset_right = 712.0
+offset_bottom = 84.0
 theme = ExtResource("2_7rhkb")
 text = "NAME"
 
 [node name="DISMISS_BUTTON" parent="." instance=ExtResource("6_4fkpd")]
 layout_mode = 1
-offset_left = -632.0
-offset_top = 248.0
-offset_right = -147.0
-offset_bottom = 304.0
+offset_left = 144.0
+offset_top = 296.0
+offset_right = 694.0
+offset_bottom = 352.0
 text = "DISMISS MECH FROM MISSION"
 
 [node name="STATUS3" type="Label" parent="."]
 layout_mode = 0
-offset_left = 73.0
-offset_top = 39.0
-offset_right = 126.0
-offset_bottom = 53.0
+offset_left = 25.0
+offset_top = 71.0
+offset_right = 78.0
+offset_bottom = 85.0
 theme = ExtResource("2_7rhkb")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -202,19 +199,19 @@ text = "BASE P."
 
 [node name="BASE_HEALTH" parent="." instance=ExtResource("2_jlplf")]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 48.0
-offset_right = 126.0
-offset_bottom = 76.0
+offset_left = 16.0
+offset_top = 80.0
+offset_right = 78.0
+offset_bottom = 108.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "[right][dim]00[/dim]1"
 
 [node name="STATUS2" type="Label" parent="."]
 layout_mode = 0
-offset_left = 73.0
-offset_top = -8.0
-offset_right = 126.0
-offset_bottom = 6.0
+offset_left = 25.0
+offset_top = 24.0
+offset_right = 78.0
+offset_bottom = 38.0
 theme = ExtResource("2_7rhkb")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -223,10 +220,10 @@ text = "POWER"
 
 [node name="STATUS4" type="Label" parent="."]
 layout_mode = 0
-offset_left = -336.0
-offset_top = -8.0
-offset_right = -283.0
-offset_bottom = 6.0
+offset_left = 376.0
+offset_top = 96.0
+offset_right = 429.0
+offset_bottom = 110.0
 theme = ExtResource("2_7rhkb")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -235,10 +232,10 @@ text = "TYPE"
 
 [node name="CURRENT_HEALTH" parent="." instance=ExtResource("2_jlplf")]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 1.0
-offset_right = 126.0
-offset_bottom = 29.0
+offset_left = 16.0
+offset_top = 33.0
+offset_right = 78.0
+offset_bottom = 61.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "[right][dim]00[/dim]1"
 

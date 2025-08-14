@@ -35,6 +35,7 @@ var MISSIONS:Array[Mission]
 var LOCATIONS:Array[Location]
 var VOICEMAILS:Array[Voicemail]
 
+var AUTOSAVE:bool = false
 
 var CURRENT_PART_ID:int;
 var CURRENT_MECH_ID:int;

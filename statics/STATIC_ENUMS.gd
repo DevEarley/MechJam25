@@ -1,16 +1,5 @@
 class_name ENUMS
 
-#Mech Types
-#Mech Theme
-#Mech Status
-#Pilot Theme
-#Pilot Status
-#Odds Criteria
-#Mission Flavor Type
-#Mission Status
-#Environments (Location Types)
-#Part Type (Equipable or Not)
-#Part Status
 
 enum MECH_TYPE {
 	UNDECIDED = -1,
@@ -21,17 +10,17 @@ enum MECH_TYPE {
 	SPACE = 4,
 	EXTREME_TEMP = 5,
 	LONG_HAUL = 6,
-	HAND_TO_HAND = 7,
+	ANTI_CORROSIVE = 7,
 	HIGH_GRAVITY = 8,
-	ANTI_CORROSIVE = 9,
-	RACING = 10,
+	RACING = 9,
+	ANY_TYPE = 10
 }
 
 enum MECH_THEME {
 	UNDECIDED = -1,
 	RED = 0,
-	BLUE = 0,
-	DARK = 0,
+	BLUE = 1,
+	DARK = 2
 }
 
 enum MECH_STATUS {
@@ -96,7 +85,6 @@ enum MISSION_STATUS {
 	NEEDS_DEBRIEF = 5
 }
 
-
 enum ENVIRONMENT {
 	UNDECIDED = -1,
 	DESERT = 0,
@@ -125,16 +113,15 @@ enum PART_STATUS {
 	FOR_SALE = 0,
 	PURCHASED = 1,
 	EQUIPT = 2,
-	NOT_AVAILABLE = 3, #Destroyed, sold or recycled.
-
+	NOT_AVAILABLE = 3,
 }
 
 enum PART_THEME{
 	UNDECIDED = -1,
 	RED =0,
-	BLUE =0,
-
+	BLUE =1
 }
+
 enum PILOT_STATUS{
 	UNDECIDED = -1,
 	FOR_HIRE = 0,
@@ -143,6 +130,7 @@ enum PILOT_STATUS{
 	DEAD = 3,
 	NOT_AVAILABLE_YET=4
 }
+
 enum PILOT_THEME{
 	UNDECIDED = -1,
 	RED_FEMALE = 0,
@@ -150,7 +138,6 @@ enum PILOT_THEME{
 	RED_MALE = 2,
 	BLUE_MALE = 3
 }
-
 
 enum VOICEMAIL_STATUS{
 	UNDECIDED = -1,

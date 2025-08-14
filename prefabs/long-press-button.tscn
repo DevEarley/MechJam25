@@ -1,14 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://buc3pa7ovo81q"]
+[gd_scene load_steps=14 format=3 uid="uid://buc3pa7ovo81q"]
 
 [ext_resource type="FontFile" uid="uid://c1mvwrbaacjl" path="res://fonts/justabit.ttf" id="1_m3iat"]
 [ext_resource type="Script" uid="uid://bqvmb8jp7gq63" path="res://prefabs/long_press_button.gd" id="2_d3c4o"]
+[ext_resource type="StyleBox" uid="uid://d22tqh3v4a8h" path="res://themes/long-press-button_DISABLED.tres" id="2_dp3ge"]
 [ext_resource type="StyleBox" uid="uid://ns3bff4psl7v" path="res://prefabs/long-press.tres" id="2_j3eit"]
+[ext_resource type="StyleBox" uid="uid://b5vk4q4aa7oa2" path="res://themes/long-press-button_OVER.tres" id="3_05awy"]
 [ext_resource type="Texture2D" uid="uid://l6oe44m1j68v" path="res://UI/ui-sheet-1.png" id="4_dp3ge"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2bgus"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bauvy"]
 
 [sub_resource type="Theme" id="Theme_05awy"]
-Button/colors/font_color = Color(0.32, 0.32, 0.32, 1)
+Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_disabled_color = Color(0.29, 0.29, 0.29, 1)
 Button/colors/font_focus_color = Color(0, 0, 0, 1)
 Button/colors/font_hover_color = Color(0, 0, 0, 1)
@@ -21,9 +23,9 @@ Button/colors/icon_pressed_color = Color(0, 1, 0.666667, 1)
 Button/constants/h_separation = 20
 Button/font_sizes/font_size = 32
 Button/fonts/font = ExtResource("1_m3iat")
-Button/styles/disabled = SubResource("StyleBoxEmpty_2bgus")
-Button/styles/focus = ExtResource("2_j3eit")
-Button/styles/hover = ExtResource("2_j3eit")
+Button/styles/disabled = ExtResource("2_dp3ge")
+Button/styles/focus = SubResource("StyleBoxEmpty_bauvy")
+Button/styles/hover = ExtResource("3_05awy")
 Button/styles/normal = ExtResource("2_j3eit")
 Button/styles/pressed = ExtResource("2_j3eit")
 Label/colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -55,17 +57,18 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_j3eit"]
 resource_name = "fill"
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("NinePatchRect:position")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.97),
+"times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(0.143587, 1.27456),
 "update": 0,
-"values": [Vector2(-31, -10), Vector2(30, -10)]
+"values": [Vector2(-31, -10), Vector2(30, -11)]
 }
 
 [sub_resource type="Animation" id="Animation_m3iat"]
@@ -128,3 +131,6 @@ libraries = {
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]
 [connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

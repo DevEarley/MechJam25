@@ -212,9 +212,9 @@ static func display_node_for_part(id,part_nodes_parent):
 		_node.hide()
 	match(id):
 			0:
-				part_nodes_parent.get_node("HEAT_BLADE").show();
-			1:
 				part_nodes_parent.get_node("ICE_BLADE").show();
+			1:
+				part_nodes_parent.get_node("HEAT_BLADE").show();
 			2:
 				part_nodes_parent.get_node("BLUE_NUT").show();
 			3:
@@ -251,6 +251,14 @@ static func display_node_for_part(id,part_nodes_parent):
 				part_nodes_parent.get_node("RED_ENGINE").show();
 			19:
 				part_nodes_parent.get_node("BLUE_ENGINE").show();
+			20:
+				part_nodes_parent.get_node("TAN_NUT").show();
+			21:
+				part_nodes_parent.get_node("DARK_NUT").show();
+			21:
+				part_nodes_parent.get_node("TAN_BLADE").show();
+			22:
+				part_nodes_parent.get_node("DARK_NUT").show();
 
 static func display_node_for_mech(id,mech_nodes_parent):
 
@@ -341,8 +349,8 @@ static func get_mech_type(mech):
 			ENUMS.MECH_TYPE.LONG_HAUL:
 				type_text = "LONG HAUL"
 				#environment_tint = Vector3(21,99,188);
-			ENUMS.MECH_TYPE.HAND_TO_HAND:
-				type_text = "HAND TO HAND"
+			ENUMS.MECH_TYPE.ANY_TYPE:
+				type_text = "ANY TYPE"
 				#environment_tint = Vector3(255,0,93);
 			ENUMS.MECH_TYPE.HIGH_GRAVITY:
 				type_text = "HIGH GRAVITY"
