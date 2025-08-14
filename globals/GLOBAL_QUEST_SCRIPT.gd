@@ -151,6 +151,9 @@ func run_script__process_line():
 			QS_DO.run_script__do(line)
 		elif(line !=""):
 			process_say(line);
+		else:
+			CURRENT_LINE+=1;
+			run_script__process_line();
 		return
 	if(line.begins_with("#") == true || line.begins_with("//") == true):
 		print(line)

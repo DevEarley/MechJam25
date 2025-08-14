@@ -167,26 +167,26 @@ expand_mode = 1
 
 [node name="TextureRect5" type="TextureRect" parent="StatusBar"]
 layout_mode = 0
-offset_left = 1080.0
+offset_left = 1038.0
 offset_top = 669.0
-offset_right = 1118.0
+offset_right = 1076.0
 offset_bottom = 711.0
 texture = SubResource("AtlasTexture_uk8sn")
 
 [node name="TextureRect6" type="TextureRect" parent="StatusBar"]
 layout_mode = 0
-offset_left = 960.0
+offset_left = 918.0
 offset_top = 668.0
-offset_right = 998.0
+offset_right = 956.0
 offset_bottom = 709.0
 texture = SubResource("AtlasTexture_bfer4")
 
 [node name="RECYCLE_POINTS" type="RichTextLabel" parent="StatusBar"]
 clip_contents = false
 layout_mode = 1
-offset_left = 1000.0
+offset_left = 958.0
 offset_top = 675.0
-offset_right = 1032.0
+offset_right = 990.0
 offset_bottom = 710.0
 theme = ExtResource("2_vmkjb")
 bbcode_enabled = true
@@ -199,9 +199,9 @@ custom_effects = [ExtResource("5_d0ec2")]
 [node name="CREDITS" type="RichTextLabel" parent="StatusBar"]
 clip_contents = false
 layout_mode = 1
-offset_left = 1120.0
+offset_left = 1079.0
 offset_top = 675.0
-offset_right = 1152.0
+offset_right = 1192.0
 offset_bottom = 710.0
 theme = ExtResource("2_vmkjb")
 bbcode_enabled = true

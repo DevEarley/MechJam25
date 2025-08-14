@@ -385,6 +385,20 @@ static func insert_leading_zeros(value:int):
 		string_value = "[dim]0[/dim]%s" %value
 	return string_value
 
+static func insert_more_leading_zeros(value:int):
+	var string_value = "%s" % value
+	if(string_value.length() == 0):
+		string_value = "[dim]00000[/dim]"
+	elif(string_value.length() == 1):
+		string_value = "[dim]0000[/dim]%s" %value
+	elif(string_value.length() == 2):
+		string_value = "[dim]000[/dim]%s" %value
+	elif(string_value.length() == 3):
+		string_value = "[dim]00[/dim]%s" %value
+	elif(string_value.length() == 4):
+		string_value = "[dim]0[/dim]%s" %value
+	return string_value
+
 static func one_over_dim_zeros(value:int):
 	if(value < 0):
 		return "[right][dim]1/[/dim]%s"%(value*-1)

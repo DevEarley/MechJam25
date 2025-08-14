@@ -62,8 +62,8 @@ func execute_script():
 	if($TextEdit.text==""):return;
 	STATE.OPTIONS_MENU_CANVAS.hide()
 	last_script = $TextEdit.text
-	QS.run_script($TextEdit.text)
 	STATE.ON_QUEST_SCRIPT_DONE=execute_script_done
+	QS.run_script($TextEdit.text)
 
 var last_script =""
 

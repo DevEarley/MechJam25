@@ -10,4 +10,4 @@ func update_status():
 	STATE.STATUS_BAR_CANVAS.get_node("StatusBar/PILOT_TEXT").text =DATA_TO_UI.insert_leading_zeros( number_of_available_or_active_pilots)
 	STATE.STATUS_BAR_CANVAS.get_node("StatusBar/RECYCLE_POINTS").text = DATA_TO_UI.insert_leading_zeros( STATE.RECYCLE_POINTS)
 
-	STATE.STATUS_BAR_CANVAS.get_node("StatusBar/CREDITS").text = "%s K"%DATA_TO_UI.insert_leading_zeros( int(STATE.CREDITS / 1000))
+	STATE.STATUS_BAR_CANVAS.get_node("StatusBar/CREDITS").text = "%s K"%DATA_TO_UI.insert_more_leading_zeros( int(STATE.CREDITS / 1000))

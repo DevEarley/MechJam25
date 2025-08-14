@@ -9,7 +9,7 @@ CONFIG_FILE = "[DEFAULT]
 VERSION=1.6
 NUMBER_OF_MISSIONS=37
 
-region=\"Mission #0\"
+region=\"#0 - J - The loast part\"
 MISSION_0_ID=0
 MISSION_0_NAME=\"The lost part.\"
 MISSION_0_FLAVOR=\"Help Jack find Jill. She was looking for a part in the Sunfire Desert.\"
@@ -60,7 +60,7 @@ do[game over]
 \"
 region=\"end\"
 
-region=\"Mission #1\"
+region=\"#1 - J - Look for jill at the Gradient base\"
 MISSION_1_ID=1
 MISSION_1_NAME=\"Visit the new Gradient base.\"
 MISSION_1_FLAVOR=\"Get info about Jill from the Gradients. Hopefully they are friendly.\"
@@ -102,7 +102,7 @@ do[game over]
 \"
 region=\"end\"
 
-region=\"Mission #2\"
+region=\"#2 - B - Intel on Gradient base\"
 MISSION_2_ID=2
 MISSION_2_NAME=\"Benefactor Mission - Intel on Gradient base.\"
 MISSION_2_FLAVOR=\"The benefactor wants you to get more information about this new Gradient base.\"
@@ -133,7 +133,7 @@ do[unlock mission(2)]
 
 region=\"end\"
 
-region=\"Mission #3\"
+region=\"#3 - B -  Deliver intel to Dualists\"
 MISSION_3_ID=3
 MISSION_3_NAME=\"Benefactor Mission - Deliver intel to Dualists\"
 MISSION_3_FLAVOR=\"The benefactor wants you to deliver intel to the Dualists.\"
@@ -164,7 +164,7 @@ do[unlock mission(3)]
 
 region=\"end\"
 
-region=\"Mission #4\"
+region=\"#4 - J - Rescue Jack\"
 MISSION_4_ID=4
 MISSION_4_NAME=\"Rescue Jack!\"
 MISSION_4_FLAVOR=\"Jack was spotted in a Gradient prisoner camp.\"
@@ -202,7 +202,7 @@ do[unlock mission(4)]
 
 region=\"end\"
 
-region=\"Mission #5\"
+region=\"#5 - B - Deliver ammo to Dualists\"
 MISSION_5_ID=5
 MISSION_5_NAME=\"Deliver ammo to Dualists.\"
 MISSION_5_FLAVOR=\"The benefactor wants us to deliver this ammo package to an armory in Steelhaven.\"
@@ -215,9 +215,10 @@ MISSION_5_ONE_OVER_ODDS_FOR_MISSION=5
 MISSION_5_ONE_OVER_ODDS_FOR_RETURNING=6
 
 MISSION_5_START_SCRIPT=\"
+play(ring ring)
+say[No more side-missions. Stay focused on the missions I give you!]Benefactor
+say[*Click!!*]
 say[I wonder what the Dualists will do with all this ammo?]{pilot}
-say[According to our intel, Gradients will be spying on any deliveries going in and out of Steelhaven.]{pilot}
-say[We need to be careful!]{pilot}
 \"
 
 MISSION_5_SUCCESS_SCRIPT=\"
@@ -233,7 +234,7 @@ do[unlock mission(5)]
 
 region=\"end\"
 
-region=\"Mission #6\"
+region=\"#6 - J - RACE\"
 MISSION_6_ID=6
 MISSION_6_NAME=\"RACE!\"
 MISSION_6_FLAVOR=\"Jack is inviting you to a racetrack in the Veil.\"
@@ -265,24 +266,27 @@ do[fail mission(6)]
 
 region=\"end\"
 
-region=\"Mission #7\"
+region=\"#7 - B - Deliver intel to the Gradients\"
 MISSION_7_ID=7
 MISSION_7_NAME=\"Deliver intel to the Gradients\"
 MISSION_7_FLAVOR=\"Let the Gradient base know about the Dualist attack.\"
-MISSION_7_TYPE=0
+MISSION_7_TYPE=2
 MISSION_7_ALLOWED_MECH_TYPES=Array[int]([10])
 MISSION_7_LOCATION_ID=1
 MISSION_7_STATUS=0
 MISSION_7_TIME_STARTED=\"0\"
 MISSION_7_ONE_OVER_ODDS_FOR_MISSION=4
 MISSION_7_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_7_START_SCRIPT=\"
+say[I find it interesting the big 'B' wants us to help the Gradients.]{pilot}
+say[Weren't we just delivering ammo and stuff to the Dualists? Not very righteous...]{pilot}
+\"
 MISSION_7_SUCCESS_SCRIPT=\"
 say[No serious problems.]{pilot}
 do[complete mission(7)]
 do[unlock voicemail(8)]
 \"
-MISSION_7_START_SCRIPT=\"
-say[I find it interesting the big 'B' wants us to help the Gradients. Weren't we just delivering ammo and stuff to the Dualists? Not very righteous. . .]{pilot}\"
+
 MISSION_7_FAIL_SCRIPT=\"
 say[You may retry this mission.]
 do[unlock mission(7)]
@@ -290,7 +294,7 @@ do[unlock mission(7)]
 
 region=\"end\"
 
-region=\"Mission #8\"
+region=\"#8 - EMPTY \"
 MISSION_8_ID=8
 MISSION_8_NAME=\"MISSION-008\"
 MISSION_8_FLAVOR=\"MISSION FLAVOR TEXT\"
@@ -310,25 +314,27 @@ MISSION_8_FAIL_SCRIPT=\"
 
 region=\"end\"
 
-region=\"Mission #9\"
+region=\"#9 - B - Attack the Gradient base\"
 MISSION_9_ID=9
 MISSION_9_NAME=\"Help Dualists attack the Gradient base.\"
-MISSION_9_FLAVOR=\"The day has come for the attack on the Gradient base.\"
-MISSION_9_TYPE=0
+MISSION_9_FLAVOR=\"Destroy everything and everyone at the base.\"
+MISSION_9_TYPE=1
 MISSION_9_ALLOWED_MECH_TYPES=Array[int]([10])
 MISSION_9_LOCATION_ID=1
 MISSION_9_STATUS=0
 MISSION_9_TIME_STARTED=\"0\"
 MISSION_9_ONE_OVER_ODDS_FOR_MISSION=6
 MISSION_9_ONE_OVER_ODDS_FOR_RETURNING=12
-MISSION_9_SUCCESS_SCRIPT=\"
-say[Their faces will haunt me for the rest of my life.]{pilot}
-do[complete mission(9)]
-do[unlock voicemail(11)]
-\"
 MISSION_9_START_SCRIPT=\"
 say[I hope this doesn't get out of hand.]{pilot}
 \"
+MISSION_9_SUCCESS_SCRIPT=\"
+say[Their faces will haunt me for the rest of my life.]{pilot}
+do[complete mission(9)]
+do[unlock voicemail(10)]
+do[unlock voicemail(11)]
+\"
+
 MISSION_9_FAIL_SCRIPT=\"
 say[You may retry this mission.]
 do[unlock mission(9)]
@@ -336,26 +342,27 @@ do[unlock mission(9)]
 
 region=\"end\"
 
-region=\"Mission #10\"
+region=\"#10 - Poor kitty\"
 MISSION_10_ID=10
 MISSION_10_NAME=\"Poor kitty\"
 MISSION_10_FLAVOR=\"You stepped on a cat's tail. Their owner wants you to take the cat into the vet.\"
-MISSION_10_TYPE=0
+MISSION_10_TYPE=2
 MISSION_10_ALLOWED_MECH_TYPES=Array[int]([10])
-MISSION_10_LOCATION_ID=0
+MISSION_10_LOCATION_ID=2
 MISSION_10_STATUS=0
 MISSION_10_TIME_STARTED=\"0\"
 MISSION_10_ONE_OVER_ODDS_FOR_MISSION=6
 MISSION_10_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_10_START_SCRIPT=\"
+say[You stepped on my cat's tail!]Cat Lady
+say[You better take my cat to the vet.]Cat Lady
+\"
 MISSION_10_SUCCESS_SCRIPT=\"
 say[Awww. There is my baby.]Cat Lady
 say[You better watch where your steppin' next time!]Cat Lady
 do[complete mission(10)]
 \"
-MISSION_10_START_SCRIPT=\"
-say[You stepped on my cat's tail!]Cat Lady
-say[You better take my cat to the vet.]Cat Lady
-\"
+
 MISSION_10_FAIL_SCRIPT=\"
 say[Where is my baby?!]Cat Lady
 say[I should have never trusted you!]Cat Lady
@@ -374,13 +381,15 @@ MISSION_11_STATUS=0
 MISSION_11_TIME_STARTED=\"0\"
 MISSION_11_ONE_OVER_ODDS_FOR_MISSION=5
 MISSION_11_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_11_START_SCRIPT=\"
+say['B' needs us to find a comms tower? I wonder what they are up to this time]{pilot}
+\"
 MISSION_11_SUCCESS_SCRIPT=\"
 say[What's next boss?]{pilot}
 do[complete mission(11)]
 do[unlock voicemail(12)]
 \"
-MISSION_11_START_SCRIPT=\"
-say['B' needs us to find a comms tower? I wonder what they are up to this time]{pilot}\"
+
 MISSION_11_FAIL_SCRIPT=\"
 say[You may retry this mission.]
 do[unlock mission(11)]
