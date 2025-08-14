@@ -132,12 +132,9 @@ func process_choices_or_actions(rest_of_line, show_speaker_for_choices):
 		run_script__choices_4_or_actions(first_choice, choices[last_index-2], choices[last_index-1], choices[last_index], show_speaker_for_choices)
 
 func process_expressions_for_qs(line_with_expressions:String):
-
-
 	if(line_with_expressions.contains("{") == false):return line_with_expressions
-
 	if(line_with_expressions.contains("{pilot}") == true):
-		var pilot:Pilot = LINQ.First(STATE.PILOTS,func(pilot:Pilot):pilot.ID == STATE.CURRENT_PILOT_ID)
+		var pilot:Pilot = LINQ.First(STATE.PILOTS,func(pilot:Pilot):return pilot.ID == STATE.CURRENT_PILOT_ID)
 		if(pilot!=null):
 			line_with_expressions = line_with_expressions.replacen("{pilot}",pilot.name)
 	return line_with_expressions;
@@ -165,7 +162,7 @@ func run_script__process_line():
 	var start_of_line:String = split_line[0];
 	var rest_of_line:String = split_line[1];
 	rest_of_line = rest_of_line.trim_suffix("]")
-	rest_of_line = process_expressions_for_qs(rest_of_line)
+
 
 
 	if(start_of_line != ""):

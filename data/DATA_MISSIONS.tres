@@ -113,15 +113,16 @@ MISSION_2_TIME_STARTED=\"0\"
 MISSION_2_ONE_OVER_ODDS_FOR_MISSION=5
 MISSION_2_ONE_OVER_ODDS_FOR_RETURNING=12
 MISSION_2_SUCCESS_SCRIPT=\"
-say[I encountered some scouts. I wasn't spotted.](pilot)
-say[Also, I noticed a small camp outside of their base](pilot)
-say[I was able to spot Jack!](pilot)
-say[I know it isn't the Benefactor's mission, but maybe we can save him!](pilot)
+say[I encountered some scouts. I wasn't spotted.]{pilot}
+say[Also, I noticed a small camp outside of their base]{pilot}
+say[I was able to spot Jack!]{pilot}
+say[Maybe we can save him!]{pilot}
 do[complete mission(2)]
 do[get voicemail(3)]
 \"
 MISSION_2_START_SCRIPT=\"
-say[I need you to gather intel on a new Gradient base. Rumor says it is near the Muckthorn swamp.]Benefactor
+say[I need you to gather intel on a new Gradient base.]Benefactor
+say[Rumor says it is near the Muckthorn swamp.]Benefactor
 \"
 MISSION_2_FAIL_SCRIPT=\"
 say[You may retry this mission.]
@@ -142,9 +143,9 @@ MISSION_3_TIME_STARTED=\"0\"
 MISSION_3_ONE_OVER_ODDS_FOR_MISSION=6
 MISSION_3_ONE_OVER_ODDS_FOR_RETURNING=12
 MISSION_3_SUCCESS_SCRIPT=\"
-say[Well, that was pretty simple. They were happy about the intel.](pilot)
-say[However, I noticed they were very keen on destroying that base in Muckthorn.](pilot)
-say[I am worried about Jack.](pilot)
+say[Well, that was pretty simple. They were happy about the intel.]{pilot}
+say[However, I noticed they were very keen on destroying that base in Muckthorn.]{pilot}
+say[I am worried about Jack.]{pilot}
 say[I know it isn't the Benefactor's mission, but maybe we can still save him!]
 do[complete mission(3)]
 do[unlock mission(4)]
@@ -185,7 +186,7 @@ do[unlock voicemail(4)]
 do[jack leaves]
 \"
 MISSION_4_START_SCRIPT=\"
-say[We gotta get Jack out of that swampy camp before the whole place is wiped out!](pilot)
+say[We gotta get Jack out of that swampy camp before the whole place is wiped out!]{pilot}
 \"
 MISSION_4_FAIL_SCRIPT=\"
 say[You may retry this mission.]
@@ -206,13 +207,13 @@ MISSION_5_TIME_STARTED=\"0\"
 MISSION_5_ONE_OVER_ODDS_FOR_MISSION=6
 MISSION_5_ONE_OVER_ODDS_FOR_RETURNING=6
 MISSION_5_SUCCESS_SCRIPT=\"
-say[That was dicey.](pilot)
+say[That was dicey.]{pilot}
 do[complete mission(5)]
 do[unlock voicemail(7)]
 \"
 MISSION_5_START_SCRIPT=\"
-say[I wonder what the Dualists will do with all this ammo?](pilot)
-say[According to our intel, Gradients will be spying on any deliveries going in and out of Steelhaven. We need to be careful!](pilot)
+say[I wonder what the Dualists will do with all this ammo?]{pilot}
+say[According to our intel, Gradients will be spying on any deliveries going in and out of Steelhaven. We need to be careful!]{pilot}
 \"
 MISSION_5_FAIL_SCRIPT=\"
 say[You may retry this mission.]
@@ -241,7 +242,7 @@ MISSION_6_START_SCRIPT=\"
 say[Hey! I am so glad you made it!]Jack
 say[I think the Dualists suck, but man I love their raceways. The Veil is beautiful today.]Jack
 say[Oh, this must be your racer.]
-say[Yo!](pilot)
+say[Yo!]{pilot}
 say[This race is 24 hours long. I hope you are ready!]Jack
 \"
 MISSION_6_FAIL_SCRIPT=\"
@@ -263,12 +264,12 @@ MISSION_7_TIME_STARTED=\"0\"
 MISSION_7_ONE_OVER_ODDS_FOR_MISSION=4
 MISSION_7_ONE_OVER_ODDS_FOR_RETURNING=12
 MISSION_7_SUCCESS_SCRIPT=\"
-say[No serious problems.](pilot)
+say[No serious problems.]{pilot}
 do[complete mission(7)]
 do[unlock voicemail(8)]
 \"
 MISSION_7_START_SCRIPT=\"
-say[I find it interesting the big ‘B' wants us to help the Gradients. Weren't we just delivering ammo and stuff to the Dualists? Not very righteous. . .](pilot)\"
+say[I find it interesting the big ‘B' wants us to help the Gradients. Weren't we just delivering ammo and stuff to the Dualists? Not very righteous. . .]{pilot}\"
 MISSION_7_FAIL_SCRIPT=\"
 say[You may retry this mission.]
 do[unlock mission(7)]
@@ -308,12 +309,12 @@ MISSION_9_TIME_STARTED=\"0\"
 MISSION_9_ONE_OVER_ODDS_FOR_MISSION=6
 MISSION_9_ONE_OVER_ODDS_FOR_RETURNING=12
 MISSION_9_SUCCESS_SCRIPT=\"
-say[Their faces will haunt me for the rest of my life.](pilot)
+say[Their faces will haunt me for the rest of my life.]{pilot}
 do[complete mission(9)]
 do[unlock voicemail(11)]
 \"
 MISSION_9_START_SCRIPT=\"
-say[I hope this doesn't get out of hand.](pilot)
+say[I hope this doesn't get out of hand.]{pilot}
 \"
 MISSION_9_FAIL_SCRIPT=\"
 say[You may retry this mission.]
@@ -361,12 +362,12 @@ MISSION_11_TIME_STARTED=\"0\"
 MISSION_11_ONE_OVER_ODDS_FOR_MISSION=5
 MISSION_11_ONE_OVER_ODDS_FOR_RETURNING=12
 MISSION_11_SUCCESS_SCRIPT=\"
-say[What's next boss?](pilot)
+say[What's next boss?]{pilot}
 do[complete mission(11)]
 do[unlock voicemail(12)]
 \"
 MISSION_11_START_SCRIPT=\"
-say[‘B' needs us to find a comms tower? I wonder what they are up to this time](pilot)\"
+say[‘B' needs us to find a comms tower? I wonder what they are up to this time]{pilot}\"
 MISSION_11_FAIL_SCRIPT=\"
 say[You may retry this mission.]
 do[unlock mission(11)]
@@ -386,12 +387,12 @@ MISSION_12_TIME_STARTED=\"0\"
 MISSION_12_ONE_OVER_ODDS_FOR_MISSION=5
 MISSION_12_ONE_OVER_ODDS_FOR_RETURNING=10
 MISSION_12_SUCCESS_SCRIPT=\"
-say[Nothing to it.](pilot)
+say[Nothing to it.]{pilot}
 do[complete mission(12)]
 do[unlock voicemail(13)]
 \"
 MISSION_12_START_SCRIPT=\"
-say[Alright, my plan is to go in from the west. I will be in-range 12 hours from now. ](pilot)
+say[Alright, my plan is to go in from the west. I will be in-range 12 hours from now. ]{pilot}
 \"
 MISSION_12_FAIL_SCRIPT=\"
 say[You may retry this mission.]
@@ -412,11 +413,11 @@ MISSION_13_TIME_STARTED=\"0\"
 MISSION_13_ONE_OVER_ODDS_FOR_MISSION=6
 MISSION_13_ONE_OVER_ODDS_FOR_RETURNING=10
 MISSION_13_SUCCESS_SCRIPT=\"
-say[That was too easy.](pilot)
+say[That was too easy.]{pilot}
 do[complete mission(13)]
 \"
 MISSION_13_START_SCRIPT=\"
-say[I have a very bad feeling.](pilot)
+say[I have a very bad feeling.]{pilot}
 \"
 MISSION_13_FAIL_SCRIPT=\"
 say[You may retry this mission.]
@@ -437,12 +438,12 @@ MISSION_14_TIME_STARTED=\"0\"
 MISSION_14_ONE_OVER_ODDS_FOR_MISSION=6
 MISSION_14_ONE_OVER_ODDS_FOR_RETURNING=8
 MISSION_14_SUCCESS_SCRIPT=\"
-say[I went all the way out there, sent a signal, and nothing happened.](pilot)
+say[I went all the way out there, sent a signal, and nothing happened.]{pilot}
 do[complete mission(14)]
 do[unlock voicemail(15)]
 \"
 MISSION_14_START_SCRIPT=\"
-say[I am nervous about this mission, boss.](pilot)
+say[I am nervous about this mission, boss.]{pilot}
 \"
 MISSION_14_FAIL_SCRIPT=\"
 say[You may retry this mission.]
@@ -463,14 +464,14 @@ MISSION_15_TIME_STARTED=\"0\"
 MISSION_15_ONE_OVER_ODDS_FOR_MISSION=12
 MISSION_15_ONE_OVER_ODDS_FOR_RETURNING=6
 MISSION_15_SUCCESS_SCRIPT=\"
-say[That satellite came out of nowhere.](pilot)
-say[It fell out of the sky right as I was leaving. I am so lucky to be alive.](pilot)
-say[Did we have anything to do with that?](pilot)
+say[That satellite came out of nowhere.]{pilot}
+say[It fell out of the sky right as I was leaving. I am so lucky to be alive.]{pilot}
+say[Did we have anything to do with that?]{pilot}
 do[complete mission(15)]
 do[unlock mission(16)]
 \"
 MISSION_15_START_SCRIPT=\"
-say[What are in these scripts? Their file size is so small. . .](pilot)
+say[What are in these scripts? Their file size is so small. . .]{pilot}
 \"
 MISSION_15_FAIL_SCRIPT=\"
 say[You may retry this mission.]
@@ -491,15 +492,15 @@ MISSION_16_TIME_STARTED=\"0\"
 MISSION_16_ONE_OVER_ODDS_FOR_MISSION=12
 MISSION_16_ONE_OVER_ODDS_FOR_RETURNING=4
 MISSION_16_SUCCESS_SCRIPT=\"
-say[Another satellite. The news said the first one was a freak accident.](pilot)
-say[We did that too. Didn't we?](pilot)
-say[Their blood is on my hands. . .](pilot)
+say[Another satellite. The news said the first one was a freak accident.]{pilot}
+say[We did that too. Didn't we?]{pilot}
+say[Their blood is on my hands. . .]{pilot}
 do[complete mission(16)]
 do[unlock voicemail(14)]
 do[unlock voicemail(17)]
 \"
 MISSION_16_START_SCRIPT=\"
-say[Not sure about this boss. Should we really trust this benefactor guy?](pilot)
+say[Not sure about this boss. Should we really trust this benefactor guy?]{pilot}
 \"
 MISSION_16_FAIL_SCRIPT=\"
 say[You may retry this mission.]
@@ -520,14 +521,14 @@ MISSION_17_TIME_STARTED=\"0\"
 MISSION_17_ONE_OVER_ODDS_FOR_MISSION=12
 MISSION_17_ONE_OVER_ODDS_FOR_RETURNING=12
 MISSION_17_SUCCESS_SCRIPT=\"
-say[It is going to take forever to get to through their bunker.](pilot)
-say[It's like trying to level a mountain with a spoon.](pilot)
+say[It is going to take forever to get to through their bunker.]{pilot}
+say[It's like trying to level a mountain with a spoon.]{pilot}
 do[complete mission(17)]
 do[unlock voicemail(18)]
 do[unlock voicemail(19)]
 \"
 MISSION_17_START_SCRIPT=\"
-say[. . .whatever you say boss. . .](pilot)
+say[. . .whatever you say boss. . .]{pilot}
 \"
 MISSION_17_FAIL_SCRIPT=\"
 say[You may retry this mission.]
@@ -591,8 +592,8 @@ MISSION_20_TIME_STARTED=\"0\"
 MISSION_20_ONE_OVER_ODDS_FOR_MISSION=4
 MISSION_20_ONE_OVER_ODDS_FOR_RETURNING=4
 MISSION_20_SUCCESS_SCRIPT=\"
-say[I pushed a boulder down a cliff and I killed some random f&*%!^$ people.](pilot)
-say[I have too much callus on my soul. . .](pilot)
+say[I pushed a boulder down a cliff and I killed some random f&*%!^$ people.]{pilot}
+say[I have too much callus on my soul. . .]{pilot}
 do[complete mission(20)]
 do[unlock mission(24)]
 \"
@@ -600,15 +601,15 @@ MISSION_20_START_SCRIPT=\"
 say[Rain slowly starts to tap on the windows of the garage.]
 say[The air smells fresh and you get a chill down your spine.]
 say[The rain's tempo starts to pick up.]
-say[Mech's ready to go boss. You aight?](pilot)
+say[Mech's ready to go boss. You aight?]{pilot}
 choices[I'm fine., I'm worried.]
 [I'm fine.]
 go[end]
 [I'm worried.]
-say[You will know it when it's time to trust your gut again.](pilot)
+say[You will know it when it's time to trust your gut again.]{pilot}
 [end]
-say[Sometimes you gotta just keep pushing forward.](pilot)
-say[We aren't in any position to do anything but make a little progress everyday](pilot)
+say[Sometimes you gotta just keep pushing forward.]{pilot}
+say[We aren't in any position to do anything but make a little progress everyday]{pilot}
 \"
 MISSION_20_FAIL_SCRIPT=\"
 say[You may retry this mission.]

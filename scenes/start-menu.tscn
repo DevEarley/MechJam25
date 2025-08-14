@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://fkcd1xnw1b1y"]
+[gd_scene load_steps=17 format=3 uid="uid://fkcd1xnw1b1y"]
 
 [ext_resource type="Script" uid="uid://bxy3br0irscae" path="res://scripts/add-self-to-scaled-ui.gd" id="1_3xs3o"]
 [ext_resource type="Script" uid="uid://b1vfqm6g6si6x" path="res://scene-scripts/start_menu.gd" id="1_xf5ny"]
@@ -11,6 +11,60 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_w3k7h"]
 atlas = ExtResource("5_o1opb")
 region = Rect2(597, 676, 46, 45)
+
+[sub_resource type="Animation" id="Animation_oy7i1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_w3k7h"]
+resource_name = "empty"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_o50yc"]
+resource_name = "flash"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.533333, 0.933333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0.364706, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xjg16"]
+_data = {
+&"RESET": SubResource("Animation_oy7i1"),
+&"empty": SubResource("Animation_w3k7h"),
+&"flash": SubResource("Animation_o50yc")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oy7i1"]
 atlas = ExtResource("5_o1opb")
@@ -85,6 +139,11 @@ offset_bottom = 448.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VOICEMAIL/BOX/ScrollContainer"]
 layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VOICEMAIL"]
+libraries = {
+&"": SubResource("AnimationLibrary_xjg16")
+}
 
 [node name="START_MENU_BUTTONS" type="VBoxContainer" parent="."]
 anchors_preset = 8

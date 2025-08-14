@@ -135,7 +135,6 @@ theme = ExtResource("1_nkykf")
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 40
-text = "TEST Test This is some text for a test TEST Test This is some text for a test TEST Test This is some text for a test TEST Test This is some text for a test ?!.,134154]["
 
 [node name="NAME" type="Label" parent="."]
 anchors_preset = 8
@@ -151,7 +150,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_nkykf")
 theme_override_colors/font_color = Color(0, 1, 0.666667, 1)
-text = "NAME"
 
 [node name="CONTINUE_LABEL" type="Label" parent="."]
 anchors_preset = 8

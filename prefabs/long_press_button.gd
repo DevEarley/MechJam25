@@ -15,6 +15,7 @@ func _on_button_down() -> void:
 	SFX.play_long_press_sound()
 	$AnimationPlayer.play("fill")
 	timer.start()
+	$NinePatchRect.modulate = Color(1,1,1)
 
 
 func _on_button_up() -> void:

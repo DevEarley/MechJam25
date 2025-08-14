@@ -33,6 +33,11 @@ func show_start_menu():
 		button.connect("pressed",on_play_voicemail.bind(voicemail))
 		STATE.START_MENU_CANVAS.get_node("VOICEMAIL/BOX/ScrollContainer/VBoxContainer").add_child(button)
 	STATE.START_MENU_CANVAS.get_node("VOICEMAIL").text = "VOICEMAILS [%s]" % count
+	if(count==0):
+		STATE.START_MENU_CANVAS.get_node("VOICEMAIL/AnimationPlayer").play("empty")
+	else:
+		STATE.START_MENU_CANVAS.get_node("VOICEMAIL/AnimationPlayer").play("flash")
+
 
 func on_voicemail_done():
 	DATA.save_everything(true)

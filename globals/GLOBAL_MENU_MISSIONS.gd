@@ -12,9 +12,10 @@ func show_missions():
 		var mech= LINQ.First(STATE.MECHS,func (mech:Mech): return mech.mission_id==STATE.CURRENT_MISSION_ID);
 		if(mech != null):
 			var pilot= LINQ.First(STATE.PILOTS,func (pilot:Pilot): return pilot.mech_id==mech.ID);
-			pilot.mech_id = -1
+			if(pilot != null):
+				pilot.mech_id = -1
+				pilot.status=ENUMS.PILOT_STATUS.HIRED
 			mech.mission_id = -1
-			pilot.status=ENUMS.PILOT_STATUS.HIRED
 			mech.status=ENUMS.MECH_STATUS.IN_GARAGE
 	LAST_LOCATION = null
 	MISSION_BUTTONS = STATE.MISSIONS_MENU_CANVAS.get_node("SCROLLABLE/BUTTONS")
