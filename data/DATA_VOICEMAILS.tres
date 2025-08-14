@@ -8,6 +8,8 @@ CONFIG_FILE = "[DEFAULT]
 
 VERSION=1.6
 NUMBER_OF_VOICEMAILS=37
+
+#region VM #0
 VOICEMAIL_0_ID=0
 VOICEMAIL_0_FROM=\"Jack\"
 VOICEMAIL_0_STATUS=1
@@ -26,6 +28,9 @@ do[hire pilot(0)]
 do[unlock mission(0)]
 [end]
 \"
+
+#endregion
+#region VM #1
 VOICEMAIL_1_ID=1
 VOICEMAIL_1_FROM=\"Benefactor\"
 VOICEMAIL_1_STATUS=0
@@ -57,6 +62,9 @@ do[unlock pilot(19)]
 VOICEMAIL_1_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
+
+#endregion
+#region VM #2
 VOICEMAIL_2_ID=2
 VOICEMAIL_2_FROM=\"Jack\"
 VOICEMAIL_2_STATUS=0
@@ -79,6 +87,9 @@ go[end]
 say[It should be an easy mission.]Jack
 do[unlock mission(1)]
 \"
+
+#endregion
+#region VM #3
 VOICEMAIL_3_ID=3
 VOICEMAIL_3_FROM=\"Benefactor\"
 VOICEMAIL_3_STATUS=0
@@ -92,6 +103,9 @@ do[play(ring ring)]
 say[*RING!! RING!!*]
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
+
+#endregion
+#region VM #4
 VOICEMAIL_4_ID=4
 VOICEMAIL_4_FROM=\"Benefactor\"
 VOICEMAIL_4_STATUS=0
@@ -105,6 +119,9 @@ do[play(ring ring)]
 say[*RING!! RING!!*]
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
+
+#endregion
+#region VM #5
 VOICEMAIL_5_ID=5
 VOICEMAIL_5_FROM=\"???\"
 VOICEMAIL_5_STATUS=0
@@ -129,6 +146,9 @@ do[play(ring ring)]
 say[*RING!! RING!!*]
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
+
+#endregion
+#region VM #6
 VOICEMAIL_6_ID=6
 VOICEMAIL_6_FROM=\"Jack\"
 VOICEMAIL_6_STATUS=0
@@ -146,6 +166,9 @@ say[Maybe one day, when we find Jill, we can start a proper racing team!]Jack
 say[I'll send you my location in case you are interested in trying out for a race one day.]Jack
 do[unlock mission(6)]
 \"
+
+#endregion
+#region VM #7
 VOICEMAIL_7_ID=7
 VOICEMAIL_7_FROM=\"Benefactor\"
 VOICEMAIL_7_STATUS=0
@@ -158,6 +181,9 @@ VOICEMAIL_7_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
 \"
+
+#endregion
+#region VM #8
 VOICEMAIL_8_ID=8
 VOICEMAIL_8_FROM=\"Benefactor\"
 VOICEMAIL_8_STATUS=0
@@ -170,6 +196,9 @@ VOICEMAIL_8_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
 \"
+
+#endregion
+#region VM #9
 VOICEMAIL_9_ID=9
 VOICEMAIL_9_FROM=\"Jack\"
 VOICEMAIL_9_STATUS=0
@@ -183,6 +212,9 @@ VOICEMAIL_9_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
 \"
+
+#endregion
+#region VM #10
 VOICEMAIL_10_ID=10
 VOICEMAIL_10_FROM=\"Cat Lady\"
 VOICEMAIL_10_STATUS=0
@@ -196,6 +228,9 @@ VOICEMAIL_10_CALLBACK=\"
 say[You and your dumb mech better take my cat to the vet!]Cat Lady
 
 \"
+
+#endregion
+#region VM #11
 VOICEMAIL_11_ID=11
 VOICEMAIL_11_FROM=\"Benefactor\"
 VOICEMAIL_11_STATUS=0
@@ -208,6 +243,9 @@ VOICEMAIL_11_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
 \"
+
+#endregion
+#region VM #12
 VOICEMAIL_12_ID=12
 VOICEMAIL_12_FROM=\"Benefactor\"
 VOICEMAIL_12_STATUS=0
@@ -221,6 +259,9 @@ VOICEMAIL_12_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
 \"
+
+#endregion
+#region VM #13
 VOICEMAIL_13_ID=13
 VOICEMAIL_13_FROM=\"Larry\"
 VOICEMAIL_13_STATUS=0
@@ -231,6 +272,9 @@ say[You owe me 6k bud. I wanna see that money yesterday.]Larry
 VOICEMAIL_13_CALLBACK=\"
 say[Hello. You have reached the voicemail of Larry Lord. Please leave a message and I will get back to you. *BEEP*]
 \"
+
+#endregion
+#region VM #14
 VOICEMAIL_14_ID=14
 VOICEMAIL_14_FROM=\"Larry\"
 VOICEMAIL_14_STATUS=0
@@ -240,6 +284,9 @@ say[Listen, buddy. Is this some kind of game to you?]Larry
 VOICEMAIL_14_CALLBACK=\"
 say[Hello. You have reached the voicemail of Larry Lord. Please leave a message and I will get back to you. Have a righteous day.  *BEEP*]
 \"
+
+#endregion
+#region VM #15
 VOICEMAIL_15_ID=15
 VOICEMAIL_15_FROM=\"Benefactor\"
 VOICEMAIL_15_STATUS=0
@@ -252,6 +299,9 @@ VOICEMAIL_15_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
 \"
+
+#endregion
+#region VM #16
 VOICEMAIL_16_ID=16
 VOICEMAIL_16_FROM=\"Benefactor\"
 VOICEMAIL_16_STATUS=0
@@ -264,6 +314,9 @@ VOICEMAIL_16_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
 \"
+
+#endregion
+#region VM #17
 VOICEMAIL_17_ID=17
 VOICEMAIL_17_FROM=\"Benefactor\"
 VOICEMAIL_17_STATUS=0
@@ -276,6 +329,9 @@ VOICEMAIL_17_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
 \"
+
+#endregion
+#region VM #18
 VOICEMAIL_18_ID=18
 VOICEMAIL_18_FROM=\"???\"
 VOICEMAIL_18_STATUS=0
@@ -288,6 +344,9 @@ VOICEMAIL_18_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
 \"
+
+#endregion
+#region VM #19
 VOICEMAIL_19_ID=19
 VOICEMAIL_19_FROM=\"Benefactor\"
 VOICEMAIL_19_STATUS=0
@@ -303,6 +362,9 @@ VOICEMAIL_19_CALLBACK=\"
 say[*THIS CALL CANNOT BE COMPLETED. GOOD BYE.*]
 
 \"
+
+#endregion
+#region VM #20
 VOICEMAIL_20_ID=20
 VOICEMAIL_20_FROM=\"Larry\"
 VOICEMAIL_20_STATUS=0
@@ -314,6 +376,9 @@ say[If you are looking for residence we have vacancies available. Have a righteo
 VOICEMAIL_20_CALLBACK=\"
 say[Hello. You have reached the voicemail of Larry Lord. Please leave a message and I will get back to you. Have a righteous day.  *BEEP*]
 \"
+
+#endregion
+#region VM #21
 VOICEMAIL_21_ID=21
 VOICEMAIL_21_FROM=\"Jack\"
 VOICEMAIL_21_STATUS=0
@@ -341,6 +406,9 @@ say[Yes! I can't wait to get on the raceway. Jill and I's first mission is going
 [end]
 say[It was nice talking to you. FREEDOM! It never tasted so good. ]Jack
 \"
+
+#endregion
+#region VM #22
 VOICEMAIL_22_ID=22
 VOICEMAIL_22_FROM=\"Benefactor\"
 VOICEMAIL_22_STATUS=0
@@ -364,6 +432,9 @@ VOICEMAIL_22_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
 \"
+
+#endregion
+#region VM #23
 VOICEMAIL_23_ID=23
 VOICEMAIL_23_FROM=\"DT\"
 VOICEMAIL_23_STATUS=0
@@ -384,6 +455,9 @@ VOICEMAIL_23_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
 \"
+
+#endregion
+#region VM #24
 VOICEMAIL_24_ID=24
 VOICEMAIL_24_FROM=\"Larry\"
 VOICEMAIL_24_STATUS=0
@@ -391,7 +465,11 @@ VOICEMAIL_24_SCRIPT=\"
 say[Alright- I get it. You think you are better than me! I am going to come over there if I don't see a check under my door...TONIGHT!]Larry
 \"
 VOICEMAIL_24_CALLBACK=\"
-say[Hello. You have reached the voicemail of Larry Lord. Please leave a message and I will get back to you. Have a righteous day.  *BEEP*]\"
+say[Hello. You have reached the voicemail of Larry Lord. Please leave a message and I will get back to you. Have a righteous day.  *BEEP*]
+\"
+
+#endregion
+#region VM #25
 VOICEMAIL_25_ID=25
 VOICEMAIL_25_FROM=\"Jack\"
 VOICEMAIL_25_STATUS=0
@@ -401,6 +479,9 @@ VOICEMAIL_25_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
 \"
+
+#endregion
+#region VM #26
 VOICEMAIL_26_ID=26
 VOICEMAIL_26_FROM=\"Jack\"
 VOICEMAIL_26_STATUS=0
@@ -410,6 +491,9 @@ VOICEMAIL_26_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
 \"
+
+#endregion
+#region VM #27
 VOICEMAIL_27_ID=27
 VOICEMAIL_27_FROM=\"Jack\"
 VOICEMAIL_27_STATUS=0
@@ -419,6 +503,9 @@ VOICEMAIL_27_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
 \"
+
+#endregion
+#region VM #28
 VOICEMAIL_28_ID=28
 VOICEMAIL_28_FROM=\"Jack\"
 VOICEMAIL_28_STATUS=0
@@ -428,6 +515,9 @@ VOICEMAIL_28_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
 \"
+
+#endregion
+#region VM #29
 VOICEMAIL_29_ID=29
 VOICEMAIL_29_FROM=\"Jack\"
 VOICEMAIL_29_STATUS=0
@@ -437,6 +527,9 @@ VOICEMAIL_29_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
 \"
+
+#endregion
+#region VM #30
 VOICEMAIL_30_ID=30
 VOICEMAIL_30_FROM=\"Jack\"
 VOICEMAIL_30_STATUS=0
@@ -446,6 +539,9 @@ VOICEMAIL_30_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
 \"
+
+#endregion
+#region VM #31
 VOICEMAIL_31_ID=31
 VOICEMAIL_31_FROM=\"Jack\"
 VOICEMAIL_31_STATUS=0
@@ -461,6 +557,9 @@ say[Sure, but we also really wanna see you. Right Jill?]Jack
 say[Yeah...]Jill
 do[unlock mission(31)]
 \"
+
+#endregion
+#region VM #32
 VOICEMAIL_32_ID=32
 VOICEMAIL_32_FROM=\"???\"
 VOICEMAIL_32_STATUS=0
@@ -473,6 +572,9 @@ VOICEMAIL_32_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
 \"
+
+#endregion
+#region VM #33
 VOICEMAIL_33_ID=33
 VOICEMAIL_33_FROM=\"???\"
 VOICEMAIL_33_STATUS=0
@@ -486,6 +588,9 @@ VOICEMAIL_33_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
 \"
+
+#endregion
+#region VM #34
 VOICEMAIL_34_ID=34
 VOICEMAIL_34_FROM=\"???\"
 VOICEMAIL_34_STATUS=0
@@ -499,6 +604,9 @@ VOICEMAIL_34_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
 \"
+
+#endregion
+#region VM #35
 VOICEMAIL_35_ID=35
 VOICEMAIL_35_FROM=\"???\"
 VOICEMAIL_35_STATUS=0
@@ -512,6 +620,9 @@ VOICEMAIL_35_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
 \"
+
+#endregion
+#region VM #36
 VOICEMAIL_36_ID=36
 VOICEMAIL_36_FROM=\"???\"
 VOICEMAIL_36_STATUS=0
@@ -525,4 +636,5 @@ VOICEMAIL_36_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
 \"
+#endregion
 "
