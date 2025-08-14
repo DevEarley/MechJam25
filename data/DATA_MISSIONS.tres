@@ -8,6 +8,7 @@ CONFIG_FILE = "[DEFAULT]
 
 VERSION=1.6
 NUMBER_OF_MISSIONS=37
+
 region=\"Mission #0\"
 MISSION_0_ID=0
 MISSION_0_NAME=\"The lost part.\"
@@ -110,8 +111,12 @@ MISSION_2_ALLOWED_MECH_TYPES=Array[int]([10])
 MISSION_2_LOCATION_ID=1
 MISSION_2_STATUS=0
 MISSION_2_TIME_STARTED=\"0\"
-MISSION_2_ONE_OVER_ODDS_FOR_MISSION=5
+MISSION_2_ONE_OVER_ODDS_FOR_MISSION=8
 MISSION_2_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_2_START_SCRIPT=\"
+say[I need you to gather intel on a new Gradient base.]Benefactor
+say[Rumor says it is near the Muckthorn swamp.]Benefactor
+\"
 MISSION_2_SUCCESS_SCRIPT=\"
 say[I encountered some scouts. I wasn't spotted.]{pilot}
 say[Also, I noticed a small camp outside of their base]{pilot}
@@ -120,10 +125,7 @@ say[Maybe we can save him!]{pilot}
 do[complete mission(2)]
 do[get voicemail(3)]
 \"
-MISSION_2_START_SCRIPT=\"
-say[I need you to gather intel on a new Gradient base.]Benefactor
-say[Rumor says it is near the Muckthorn swamp.]Benefactor
-\"
+
 MISSION_2_FAIL_SCRIPT=\"
 say[You may retry this mission.]
 do[unlock mission(2)]
@@ -142,16 +144,18 @@ MISSION_3_STATUS=0
 MISSION_3_TIME_STARTED=\"0\"
 MISSION_3_ONE_OVER_ODDS_FOR_MISSION=6
 MISSION_3_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_3_START_SCRIPT=\"
+say[Never been to the big city before.]{pilot}
+play(ring ring)
+say[Do not let me down. Deliver this intel and report back.]Benefactor
+\"
 MISSION_3_SUCCESS_SCRIPT=\"
 say[Well, that was pretty simple. They were happy about the intel.]{pilot}
 say[However, I noticed they were very keen on destroying that base in Muckthorn.]{pilot}
 say[I am worried about Jack.]{pilot}
-say[I know it isn't the Benefactor's mission, but maybe we can still save him!]
+say[Maybe we can still save him!]{pilot}
 do[complete mission(3)]
 do[unlock mission(4)]
-\"
-MISSION_3_START_SCRIPT=\"
-say[I need you to deliver this info to the Dualists in Steelhaven.]Benefactor
 \"
 MISSION_3_FAIL_SCRIPT=\"
 say[You may retry this mission.]
@@ -171,9 +175,14 @@ MISSION_4_STATUS=0
 MISSION_4_TIME_STARTED=\"0\"
 MISSION_4_ONE_OVER_ODDS_FOR_MISSION=4
 MISSION_4_ONE_OVER_ODDS_FOR_RETURNING=8
+MISSION_4_START_SCRIPT=\"
+say[We gotta get Jack out of that swampy camp before the whole place is wiped out!]{pilot}
+\"
 MISSION_4_SUCCESS_SCRIPT=\"
+say[Look who we have here!]{pilot}
 say[Thanks for bustin' me out of there!]Jack
-say[That place was awful! For all their righteousness, them Gradients treat their POW like dogs.]Jack
+say[For all their righteousness, them Gradients treat their POW like dogs.]Jack
+say[Seriously! That place was awful!]{pilot}
 choices[Are you OK Jack?, What should we do next?]
 [Are you OK Jack?]
 say[I am OK. I survived. I am just worried about my sister.]Jack
@@ -185,9 +194,7 @@ do[unlock mission(6)]
 do[unlock voicemail(4)]
 do[jack leaves]
 \"
-MISSION_4_START_SCRIPT=\"
-say[We gotta get Jack out of that swampy camp before the whole place is wiped out!]{pilot}
-\"
+
 MISSION_4_FAIL_SCRIPT=\"
 say[You may retry this mission.]
 do[unlock mission(4)]
@@ -199,22 +206,26 @@ region=\"Mission #5\"
 MISSION_5_ID=5
 MISSION_5_NAME=\"Deliver ammo to Dualists.\"
 MISSION_5_FLAVOR=\"The benefactor wants us to deliver this ammo package to an armory in Steelhaven.\"
-MISSION_5_TYPE=0
+MISSION_5_TYPE=2
 MISSION_5_ALLOWED_MECH_TYPES=Array[int]([10])
 MISSION_5_LOCATION_ID=2
 MISSION_5_STATUS=0
 MISSION_5_TIME_STARTED=\"0\"
-MISSION_5_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_5_ONE_OVER_ODDS_FOR_MISSION=5
 MISSION_5_ONE_OVER_ODDS_FOR_RETURNING=6
+
+MISSION_5_START_SCRIPT=\"
+say[I wonder what the Dualists will do with all this ammo?]{pilot}
+say[According to our intel, Gradients will be spying on any deliveries going in and out of Steelhaven.]{pilot}
+say[We need to be careful!]{pilot}
+\"
+
 MISSION_5_SUCCESS_SCRIPT=\"
 say[That was dicey.]{pilot}
 do[complete mission(5)]
 do[unlock voicemail(7)]
 \"
-MISSION_5_START_SCRIPT=\"
-say[I wonder what the Dualists will do with all this ammo?]{pilot}
-say[According to our intel, Gradients will be spying on any deliveries going in and out of Steelhaven. We need to be careful!]{pilot}
-\"
+
 MISSION_5_FAIL_SCRIPT=\"
 say[You may retry this mission.]
 do[unlock mission(5)]
@@ -235,15 +246,17 @@ MISSION_6_ONE_OVER_ODDS_FOR_MISSION=-25
 MISSION_6_ONE_OVER_ODDS_FOR_RETURNING=12
 MISSION_6_SUCCESS_SCRIPT=\"
 say[Holy crap! You won? What are the odds?!]Jack
+say[Looks like you won some credits too!]Jack
+get credits(200000)
 do[unlock voicemail(9)]
 do[complete mission(6)]
 \"
 MISSION_6_START_SCRIPT=\"
 say[Hey! I am so glad you made it!]Jack
 say[I think the Dualists suck, but man I love their raceways. The Veil is beautiful today.]Jack
-say[Oh, this must be your racer.]
+say[Oh, this must be your racer.]Jack
 say[Yo!]{pilot}
-say[This race is 24 hours long. I hope you are ready!]Jack
+say[This race is 24 hours long. I hope you are ready {pilot}!]Jack
 \"
 MISSION_6_FAIL_SCRIPT=\"
 say[Dang. Next time use better gear.]Jack
@@ -269,7 +282,7 @@ do[complete mission(7)]
 do[unlock voicemail(8)]
 \"
 MISSION_7_START_SCRIPT=\"
-say[I find it interesting the big ‘B' wants us to help the Gradients. Weren't we just delivering ammo and stuff to the Dualists? Not very righteous. . .]{pilot}\"
+say[I find it interesting the big 'B' wants us to help the Gradients. Weren't we just delivering ammo and stuff to the Dualists? Not very righteous. . .]{pilot}\"
 MISSION_7_FAIL_SCRIPT=\"
 say[You may retry this mission.]
 do[unlock mission(7)]
@@ -367,7 +380,7 @@ do[complete mission(11)]
 do[unlock voicemail(12)]
 \"
 MISSION_11_START_SCRIPT=\"
-say[‘B' needs us to find a comms tower? I wonder what they are up to this time]{pilot}\"
+say['B' needs us to find a comms tower? I wonder what they are up to this time]{pilot}\"
 MISSION_11_FAIL_SCRIPT=\"
 say[You may retry this mission.]
 do[unlock mission(11)]

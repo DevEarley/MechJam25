@@ -47,7 +47,6 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 			DATA.save_voicemails_to_user_data()
 			QS.CURRENT_LINE+=1;
 			QS.run_script__process_line();
-
 		"fail mission":
 			var id:int = int(values[0])
 			var mission:Mission = LINQ.First(STATE.MISSIONS,func (mission:Mission): return mission.ID==id);
@@ -76,7 +75,6 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 			DATA.save_missions_to_user_data()
 			QS.CURRENT_LINE+=1;
 			QS.run_script__process_line();
-
 		"complete mission":
 			var id:int = int(values[0])
 			var mission:Mission = LINQ.First(STATE.MISSIONS,func (mission:Mission): return mission.ID==id);
@@ -103,14 +101,12 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 			DATA.save_missions_to_user_data()
 			QS.CURRENT_LINE+=1;
 			QS.run_script__process_line();
-
 		"get credits":
 			STATE.CREDITS+=int(values[0])
 			STATUS_BAR.update_status()
 			DATA.save_game_state_to_user_data()
 			QS.CURRENT_LINE+=1;
 			QS.run_script__process_line();
-
 		"get pilot","hire pilot":
 			var pilot_id = int(values[0])
 			var pilot:Pilot = LINQ.First(STATE.PILOTS,func (pilot:Pilot): return pilot.ID == pilot_id);
@@ -120,7 +116,6 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 			DATA.save_pilots_to_user_data()
 			QS.CURRENT_LINE+=1;
 			QS.run_script__process_line();
-
 		"unlock pilot":
 			var pilot_id = int(values[0])
 			var pilot:Pilot = LINQ.First(STATE.PILOTS,func (pilot:Pilot): return pilot.ID == pilot_id);
@@ -130,7 +125,6 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 			DATA.save_pilots_to_user_data()
 			QS.CURRENT_LINE+=1;
 			QS.run_script__process_line();
-
 		"lose pilot", "lock pilot":
 			var pilot_id = int(values[0])
 			var pilot:Pilot = LINQ.First(STATE.PILOTS,func (pilot:Pilot): return pilot.ID == pilot_id);
@@ -141,7 +135,6 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 			DATA.save_pilots_to_user_data()
 			QS.CURRENT_LINE+=1;
 			QS.run_script__process_line();
-
 		"get mech", "unlock mech":
 			var mech_id = int(values[0])
 			var mech:Mech = LINQ.First(STATE.MECHS,func (mech:Mech): return mech.ID == mech_id);
@@ -151,12 +144,10 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 			DATA.save_mechs_to_user_data()
 			QS.CURRENT_LINE+=1;
 			QS.run_script__process_line();
-
 		"on voicemail callback":
 			var voicemail_id = int(values[0])
 			var voicemail:Voicemail = LINQ.First(STATE.VOICEMAILS,func (voicemail:Voicemail): return voicemail.ID == voicemail_id);
 			START_MENU.on_callback_done(voicemail)
-
 		"get part","unlock part":
 			var part_id = int(values[0])
 			var part:Part = LINQ.First(STATE.PARTS,func (part:Part): return part.ID == part_id);
@@ -166,24 +157,26 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 			DATA.save_parts_to_user_data()
 			QS.CURRENT_LINE+=1;
 			QS.run_script__process_line();
-		"play":
+		"play","sfx":
 			QS.CURRENT_LINE+=1;
 			QS.run_script__process_line();
+			MUSIC.AUDIO_SOURCE.stop()
+			MUSIC.TRACK_POSITION = MUSIC.AUDIO_SOURCE.get_playback_position()
 			await WAIT.for_seconds(0.1)
 			match(values[0]):
-				"success":
+				"success","complete","completed":
 					SFX.play_mission_success_sound()
+
 					pass
-				"fail","failure":
+				"fail","failure","failed":
 					SFX.play_mission_fail_sound()
 
 					pass
-				"ring ring":
+				"ring ring","ring":
 					SFX.play_ring_ring_sound()
 					pass
-
-
-
+			await WAIT.for_seconds(3.0)
+			MUSIC.AUDIO_SOURCE.play(MUSIC.TRACK_POSITION)
 		"destroy benefactor":
 			STATE.BENEFACTOR_IS_GIVING_YOU_MONEY = false;
 			STATE.DT_ROSE_IS_GIVING_YOU_MONEY = true;
@@ -197,4 +190,5 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 			STATE.YOU_ARE_RACING_WITH_JACK_AND_JILL = true
 			DATA.save_game_state_to_user_data()
 			pass
+
 	pass;

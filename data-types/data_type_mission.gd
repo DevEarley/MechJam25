@@ -3,7 +3,7 @@ class_name Mission
 var ID : int
 var name : String
 var flavor : String
-var flavor_icon : ENUMS.MISSION_FLAVOR_TYPE
+var type : ENUMS.MISSION_FLAVOR_TYPE
 var one_over_odds_for_mission : int
 var one_over_odds_for_returning : int
 var location_id : int

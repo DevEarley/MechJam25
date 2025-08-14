@@ -14,11 +14,11 @@ func on_debrief():
 
 	if(CALCULATOR.has_passed_current_mission() ):
 
-		QS.run_script("say[MISSION COMPLETE!]\n%s"%mission.success_script)
+		QS.run_script("do[play(success)]\nsay[MISSION COMPLETE!]\n%s"%mission.success_script)
 	#elif(mech.status == ENUMS.MECH_STATUS.DESTROYED):
 		#QS.run_script("say[Your mech was destroyed...] \n%s"%mission.fail_script)
 	else:
-		QS.run_script("say[MISSION FAILED.]\n%s"%mission.fail_script)
+		QS.run_script("do[play(fail)]\nsay[MISSION FAILED.]\n%s"%mission.fail_script)
 
 func do_daily_if_needed_or_go_to_menu():
 

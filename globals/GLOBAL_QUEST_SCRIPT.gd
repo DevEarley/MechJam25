@@ -147,7 +147,10 @@ func run_script__process_line():
 	line = process_expressions_for_qs(line)
 	print(line)
 	if(line.contains("[") == false):
-		process_say(line)
+		if(line.contains("(") == true):
+			QS_DO.run_script__do(line)
+		elif(line !=""):
+			process_say(line);
 		return
 	if(line.begins_with("#") == true || line.begins_with("//") == true):
 		print(line)
