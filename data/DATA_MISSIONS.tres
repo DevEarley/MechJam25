@@ -1,13 +1,13 @@
-[gd_resource type=\"Resource" load_steps=2 format=3 uid=\"uid://de64wjr3404qq"]
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dmc4jn4s0ue5g"]
 
-[ext_resource type=\"Script" uid=\"uid://d2s1dviaylokl" path=\"res://resource-types/multiline_resource.gd" id=\"1_2ubog"]
+[ext_resource type="Script" uid="uid://d2s1dviaylokl" path="res://resource-types/multiline_resource.gd" id="1_2ubog"]
 
 [resource]
 script = ExtResource("1_2ubog")
 CONFIG_FILE = "[DEFAULT]
+
 VERSION=1.6
 NUMBER_OF_MISSIONS=37
-
 region=\"Mission #0\"
 MISSION_0_ID=0
 MISSION_0_NAME=\"The lost part.\"
@@ -57,7 +57,7 @@ MISSION_0_FAIL_SCRIPT=\"
 say[Jack broke his crown. GAME OVER]
 do[game over]
 \"
-region=\"end\""
+region=\"end\"
 
 region=\"Mission #1\"
 MISSION_1_ID=1

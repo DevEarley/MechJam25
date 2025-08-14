@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_nkgge")
-QUEST_SCRIPT = "if[working for benefactor,benefactor]
-if[working for rose,rose]
-if[racing with jack and jill,jnj]
+QUEST_SCRIPT = "if[working for benefactor]benefactor
+if[working for rose]rose
+if[racing with jack and jill]jnj
 go[end-daily]
 [benefactor]
 do[play(ring ring)]
