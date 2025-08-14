@@ -8,7 +8,7 @@ CONFIG_FILE = "[DEFAULT]
 VERSION=1.6
 NUMBER_OF_MISSIONS=37
 
-#region Mission #0
+region=Mission #0
 MISSION_0_ID=0
 MISSION_0_NAME=\"The lost part.\"
 MISSION_0_FLAVOR=\"Help Jack find Jill. She was looking for a part in the Sunfire Desert.\"
@@ -57,9 +57,9 @@ MISSION_0_FAIL_SCRIPT=\"
 say[Jack broke his crown. GAME OVER]
 do[game over]
 \"
-#endregion
+endregion
 
-#region Mission #1
+region= Mission #1
 MISSION_1_ID=1
 MISSION_1_NAME=\"Visit the new Gradient base.\"
 MISSION_1_FLAVOR=\"Get info about Jill from the Gradients. Hopefully they are friendly.\"
@@ -99,9 +99,9 @@ MISSION_1_FAIL_SCRIPT=\"
 say[Jack broke his crown. GAME OVER]
 do[game over]
 \"
-#endregion
+region=end
 
-#region Mission #2
+region= Mission #2
 MISSION_2_ID=2
 MISSION_2_NAME=\"Benefactor Mission - Intel on Gradient base.\"
 MISSION_2_FLAVOR=\"The benefactor wants you to get more information about this new Gradient base.\"
@@ -128,9 +128,9 @@ say[You may retry this mission.]
 do[unlock mission(2)]
 \"
 
-#endregion
+region=end
 
-#region Mission #3
+region= Mission #3
 MISSION_3_ID=3
 MISSION_3_NAME=\"Benefactor Mission - Deliver intel to Dualists\"
 MISSION_3_FLAVOR=\"Your benefactor wants you to deliver this intel on the Gradient base to the Dualists.\"
@@ -157,9 +157,9 @@ say[You may retry this mission.]
 do[unlock mission(3)]
 \"
 
-#endregion
+region=end
 
-#region Mission #4
+region= Mission #4
 MISSION_4_ID=4
 MISSION_4_NAME=\"Rescue Jack!\"
 MISSION_4_FLAVOR=\"Jack was spotted in a Gradient prisoner camp.\"
@@ -192,9 +192,9 @@ say[You may retry this mission.]
 do[unlock mission(4)]
 \"
 
-#endregion
+region=end
 
-#region Mission #5
+region= Mission #5
 MISSION_5_ID=5
 MISSION_5_NAME=\"Deliver ammo to Dualists.\"
 MISSION_5_FLAVOR=\"The benefactor wants us to deliver this ammo package to an armory in Steelhaven.\"
@@ -219,9 +219,9 @@ say[You may retry this mission.]
 do[unlock mission(5)]
 \"
 
-#endregion
+region=end
 
-#region Mission #6
+region= Mission #6
 MISSION_6_ID=6
 MISSION_6_NAME=\"RACE!\"
 MISSION_6_FLAVOR=\"Jack is inviting you to a racetrack in the Veil.\"
@@ -249,9 +249,9 @@ say[Dang. Next time use better gear.]Jack
 do[fail mission(6)]
 \"
 
-#endregion
+region=end
 
-#region Mission #7
+region= Mission #7
 MISSION_7_ID=7
 MISSION_7_NAME=\"Deliver intel to the Gradients\"
 MISSION_7_FLAVOR=\"Let the Gradient base know about the Dualist attack.\"
@@ -274,9 +274,9 @@ say[You may retry this mission.]
 do[unlock mission(7)]
 \"
 
-#endregion
+region=end
 
-#region Mission #8
+region= Mission #8
 MISSION_8_ID=8
 MISSION_8_NAME=\"MISSION-008\"
 MISSION_8_FLAVOR=\"MISSION FLAVOR TEXT\"
@@ -294,9 +294,9 @@ MISSION_8_START_SCRIPT=\"
 MISSION_8_FAIL_SCRIPT=\"
 \"
 
-#endregion
+region=end
 
-#region Mission #9
+region= Mission #9
 MISSION_9_ID=9
 MISSION_9_NAME=\"Help Dualists attack the Gradient base.\"
 MISSION_9_FLAVOR=\"The day has come for the attack on the Gradient base.\"
@@ -320,9 +320,9 @@ say[You may retry this mission.]
 do[unlock mission(9)]
 \"
 
-#endregion
+region=end
 
-#region Mission #10
+region= Mission #10
 MISSION_10_ID=10
 MISSION_10_NAME=\"Poor kitty\"
 MISSION_10_FLAVOR=\"You stepped on a cat's tail. Their owner wants you to take the cat into the vet.\"
@@ -347,9 +347,9 @@ say[Where is my baby?!]Cat Lady
 say[I should have never trusted you!]Cat Lady
 \"
 
-#endregion
+region=end
 
-#region Mission #11
+region= Mission #11
 MISSION_11_ID=11
 MISSION_11_NAME=\"Find communication tower.\"
 MISSION_11_FLAVOR=\"Your assignment is to find and connect to  a comms tower.\"
@@ -372,9 +372,9 @@ say[You may retry this mission.]
 do[unlock mission(11)]
 \"
 
-#endregion
+region=end
 
-#region Mission #12
+region= Mission #12
 MISSION_12_ID=12
 MISSION_12_NAME=\"Gather intel on the blockade\"
 MISSION_12_FLAVOR=\"The Gradients have set up a blockade in the jungle south of Steelhaven. Our mission is to investigate.\"
@@ -398,9 +398,9 @@ say[You may retry this mission.]
 do[unlock mission(12)]
 \"
 
-#endregion
+region=end
 
-#region Mission #13
+region= Mission #13
 MISSION_13_ID=13
 MISSION_13_NAME=\"Execute script - pt. 1\"
 MISSION_13_FLAVOR=\"Now that you are connected to the comms tower, move to the marked location and execute this script.\"
@@ -423,9 +423,9 @@ say[You may retry this mission.]
 do[unlock mission(13)]
 \"
 
-#endregion
+region=end
 
-#region Mission #14
+region= Mission #14
 MISSION_14_ID=14
 MISSION_14_NAME=\"Execute script - pt. 2\"
 MISSION_14_FLAVOR=\"Another script. This time much closer to the Gradient blockade.\"
@@ -449,9 +449,9 @@ say[You may retry this mission.]
 do[unlock mission(14)]
 \"
 
-#endregion
+region=end
 
-#region Mission #15
+region= Mission #15
 MISSION_15_ID=15
 MISSION_15_NAME=\"Execute script - pt. 3\"
 MISSION_15_FLAVOR=\"We need to execute this script practically on top of the blockade.\"
@@ -477,9 +477,9 @@ say[You may retry this mission.]
 do[unlock mission(15)]
 \"
 
-#endregion
+region=end
 
-#region Mission #16
+region= Mission #16
 MISSION_16_ID=16
 MISSION_16_NAME=\"Execute script - pt. 3\"
 MISSION_16_FLAVOR=\"The Hall of Chambers is in the middle of Steelhaven. It's a gathering place for the Dualist elite.\"
@@ -506,9 +506,9 @@ say[You may retry this mission.]
 do[unlock mission(16)]
 \"
 
-#endregion
+region=end
 
-#region Mission #17
+region= Mission #17
 MISSION_17_ID=17
 MISSION_17_NAME=\"Attack underground bunker(Repeatable)\"
 MISSION_17_FLAVOR=\"The benefactor wants you to continuously launch attacks on this underground base till there is nothing left but rubble.\"
@@ -534,9 +534,9 @@ say[You may retry this mission.]
 do[unlock mission(17)]
 \"
 
-#endregion
+region=end
 
-#region Mission #18
+region= Mission #18
 MISSION_18_ID=18
 MISSION_18_NAME=\"MISSION-009\"
 MISSION_18_FLAVOR=\"MISSION FLAVOR TEXT\"
@@ -555,9 +555,9 @@ MISSION_18_START_SCRIPT=\"
 MISSION_18_FAIL_SCRIPT=\"
 \"
 
-#endregion
+region=end
 
-#region Mission #19
+region= Mission #19
 MISSION_19_ID=19
 MISSION_19_NAME=\"MISSION-009\"
 MISSION_19_FLAVOR=\"MISSION FLAVOR TEXT\"
@@ -577,9 +577,9 @@ MISSION_19_START_SCRIPT=\"
 MISSION_19_FAIL_SCRIPT=\"
 \"
 
-#endregion
+region=end
 
-#region Mission #20
+region= Mission #20
 MISSION_20_ID=20
 MISSION_20_NAME=\"'Make it look like an accident.'\"
 MISSION_20_FLAVOR=\"Benefactor wants you to murder some Dualist royals.\"
@@ -616,9 +616,9 @@ do[unlock mission(20)]
 
 \"
 
-#endregion
+region=end
 
-#region Mission #21
+region= Mission #21
 MISSION_21_ID=21
 MISSION_21_NAME=\"MISSION-009\"
 MISSION_21_FLAVOR=\"MISSION FLAVOR TEXT\"
@@ -638,9 +638,9 @@ MISSION_21_START_SCRIPT=\"
 MISSION_21_FAIL_SCRIPT=\"
 \"
 
-#endregion
+region=end
 
-#region Mission #22
+region= Mission #22
 MISSION_22_ID=22
 MISSION_22_NAME=\"MISSION-009\"
 MISSION_22_FLAVOR=\"MISSION FLAVOR TEXT\"
@@ -660,9 +660,9 @@ MISSION_22_START_SCRIPT=\"
 MISSION_22_FAIL_SCRIPT=\"
 \"
 
-#endregion
+region=end
 
-#region Mission #23
+region= Mission #23
 MISSION_23_ID=23
 MISSION_23_NAME=\"MISSION-009\"
 MISSION_23_FLAVOR=\"MISSION FLAVOR TEXT\"
@@ -684,9 +684,9 @@ say[You may retry this mission.]
 do[unlock mission(23)]
 \"
 
-#endregion
+region=end
 
-#region Mission #24
+region= Mission #24
 MISSION_24_ID=24
 MISSION_24_NAME=\"Destroy your Benefactor.\"
 MISSION_24_FLAVOR=\"DT has given you the location to the Benefactor's whereabouts. Destroy him before he destroys you.\"
@@ -716,9 +716,9 @@ say[Mwahaha! You cannot defeat me!]Benefactor
 do[unlock mission(24)]
 \"
 
-#endregion
+region=end
 
-#region Mission #25
+region= Mission #25
 MISSION_25_ID=25
 MISSION_25_NAME=\"Rose Delivery\"
 MISSION_25_FLAVOR=\"Rose wants you to deliver munitions to the Dualists.\"
@@ -749,9 +749,9 @@ say[Disastrous. . .Well there is always next time.]Rose
 do[unlock mission(25)]
 \"
 
-#endregion
+region=end
 
-#region Mission #26
+region= Mission #26
 MISSION_26_ID=26
 MISSION_26_NAME=\"MISSION-009\"
 MISSION_26_FLAVOR=\"MISSION FLAVOR TEXT\"
@@ -771,9 +771,9 @@ MISSION_26_START_SCRIPT=\"
 MISSION_26_FAIL_SCRIPT=\"
 \"
 
-#endregion
+region=end
 
-#region Mission #27
+region= Mission #27
 MISSION_27_ID=27
 MISSION_27_NAME=\"MISSION-009\"
 MISSION_27_FLAVOR=\"MISSION FLAVOR TEXT\"
@@ -796,9 +796,9 @@ MISSION_27_FAIL_SCRIPT=\"
 say[The smell of roses fills the air.]
 \"
 
-#endregion
+region=end
 
-#region Mission #28
+region= Mission #28
 MISSION_28_ID=28
 MISSION_28_NAME=\"MISSION-009\"
 MISSION_28_FLAVOR=\"MISSION FLAVOR TEXT\"
@@ -818,9 +818,9 @@ MISSION_28_START_SCRIPT=\"
 MISSION_28_FAIL_SCRIPT=\"
 \"
 
-#endregion
+region=end
 
-#region Mission #29
+region= Mission #29
 MISSION_29_ID=29
 MISSION_29_NAME=\"MISSION-009\"
 MISSION_29_FLAVOR=\"MISSION FLAVOR TEXT\"
@@ -840,9 +840,9 @@ MISSION_29_START_SCRIPT=\"
 MISSION_29_FAIL_SCRIPT=\"
 \"
 
-#endregion
+region=end
 
-#region Mission #30
+region= Mission #30
 MISSION_30_ID=30
 MISSION_30_NAME=\"Save Jill\"
 MISSION_30_FLAVOR=\"Rose has Jill. You need to save her.\"
@@ -874,9 +874,9 @@ say[You cannot defeat me.]Rose
 do[unlock mission(30)]
 \"
 
-#endregion
+region=end
 
-#region Mission #31
+region= Mission #31
 MISSION_31_ID=31
 MISSION_31_NAME=\"Time to leave\"
 MISSION_31_FLAVOR=\"Jack & Jill have invited you to race with them at the EAU.\"
@@ -907,9 +907,9 @@ say[GAME OVER]
 do[game over]
 \"
 
-#endregion
+region=end
 
-#region Mission #32
+region= Mission #32
 MISSION_32_ID=32
 MISSION_32_NAME=\"RACE - Jack & Jill up a hill\"
 MISSION_32_FLAVOR=\".\"
@@ -935,9 +935,9 @@ say[Maybe next time!]Jack
 say[It's just bad luck.]Jill
 \"
 
-#endregion
+region=end
 
-#region Mission #33
+region= Mission #33
 MISSION_33_ID=33
 MISSION_33_NAME=\"RACE - Qualifiers\"
 MISSION_33_FLAVOR=\"You have been invited to a tournament. you must place in the top 8 to move on\"
@@ -966,9 +966,9 @@ say[Maybe you can try again. . .]Jill
 do[unlock mission(33)]
 \"
 
-#endregion
+region=end
 
-#region Mission #34
+region= Mission #34
 MISSION_34_ID=34
 MISSION_34_NAME=\"RACE - Quarter Finals\"
 MISSION_34_FLAVOR=\"You must place in the top 5\"
@@ -995,9 +995,9 @@ say[Maybe you can try again. . .]Jill
 do[unlock mission(33)]
 \"
 
-#endregion
+region=end
 
-#region Mission #35
+region= Mission #35
 MISSION_35_ID=35
 MISSION_35_NAME=\"RACE - Semi Finals\"
 MISSION_35_FLAVOR=\"You must place in the top 3\"
@@ -1026,9 +1026,9 @@ say[Maybe you can try again. . .]Jill
 do[unlock mission(33)]
 \"
 
-#endregion
+region=end
 
-#region Mission #36
+region= Mission #36
 MISSION_36_ID=36
 MISSION_36_NAME=\"RACE - Finals\"
 MISSION_36_FLAVOR=\"The finals! You need to place 1st!\"
@@ -1061,7 +1061,5 @@ say[DANG! You were so close. . .]Jack
 say[Maybe you can try again. . .]Jill
 do[unlock mission(33)]
 \"
-#endregion
+region=end
 "
-
-

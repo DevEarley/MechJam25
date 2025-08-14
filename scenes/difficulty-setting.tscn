@@ -22,12 +22,14 @@ grow_vertical = 2
 script = ExtResource("2_wcim5")
 
 [node name="BG3" parent="difficulty_settings" instance=ExtResource("5_kenhj")]
+layout_mode = 0
 offset_left = 218.0
 offset_top = 364.0
 offset_right = 1055.0
 offset_bottom = 452.0
 
 [node name="BG" parent="difficulty_settings" instance=ExtResource("5_kenhj")]
+layout_mode = 0
 offset_left = 220.0
 offset_top = 261.0
 offset_right = 1059.0
