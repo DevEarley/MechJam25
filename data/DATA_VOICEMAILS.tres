@@ -9,7 +9,7 @@ CONFIG_FILE = "[DEFAULT]
 VERSION=1.6
 NUMBER_OF_VOICEMAILS=37
 
-region=\"VM #0\"
+region=\"#0 - J - needs help\"
 VOICEMAIL_0_ID=0
 VOICEMAIL_0_FROM=\"Jack\"
 VOICEMAIL_0_STATUS=1
@@ -30,7 +30,7 @@ do[unlock mission(0)]
 \"
 
 region=\"end\"
-region=\"VM #1\"
+region=\"#1 - B - Hire a new one.\"
 VOICEMAIL_1_ID=1
 VOICEMAIL_1_FROM=\"Benefactor\"
 VOICEMAIL_1_STATUS=0
@@ -64,7 +64,7 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"VM #2\"
+region=\"#2 - J - Got a lead - Muckthorn\"
 VOICEMAIL_2_ID=2
 VOICEMAIL_2_FROM=\"Jack\"
 VOICEMAIL_2_STATUS=0
@@ -89,7 +89,7 @@ do[unlock mission(1)]
 \"
 
 region=\"end\"
-region=\"VM #3\"
+region=\"#3 - B - mission 3\"
 VOICEMAIL_3_ID=3
 VOICEMAIL_3_FROM=\"Benefactor\"
 VOICEMAIL_3_STATUS=0
@@ -105,7 +105,7 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"VM #4\"
+region=\"#4 - B - mission 5\"
 VOICEMAIL_4_ID=4
 VOICEMAIL_4_FROM=\"Benefactor\"
 VOICEMAIL_4_STATUS=0
@@ -121,7 +121,7 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"VM #5\"
+region=\"#5 - DT - Intro\"
 VOICEMAIL_5_ID=5
 VOICEMAIL_5_FROM=\"???\"
 VOICEMAIL_5_STATUS=0
@@ -148,7 +148,7 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"VM #6\"
+region=\"#6 - J - Race\"
 VOICEMAIL_6_ID=6
 VOICEMAIL_6_FROM=\"Jack\"
 VOICEMAIL_6_STATUS=0
@@ -157,7 +157,7 @@ say[Hey! It's me. Call me back. I have another lead. Maybe.]Jack
 \"
 VOICEMAIL_6_CALLBACK=\"
 say[Miss me yet?]Jack
-say[I just hit the road. I am headed to the EAU raceway.]Jack
+say[I just hit the road. I am headed to the Veil raceway.]Jack
 say[When we were kids, mom would take Jill and I there.]Jack
 say[Maybe someone there knows her?]Jack
 say[By the way. If you ever need some money, try participating in a race.]Jack
@@ -168,7 +168,7 @@ do[unlock mission(6)]
 \"
 
 region=\"end\"
-region=\"VM #7\"
+region=\"#7 - B - Give gradients heads up about attack.\"
 VOICEMAIL_7_ID=7
 VOICEMAIL_7_FROM=\"Benefactor\"
 VOICEMAIL_7_STATUS=0
@@ -183,7 +183,7 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"VM #8\"
+region=\"#8 - B - Help dualists attack gradients.\"
 VOICEMAIL_8_ID=8
 VOICEMAIL_8_FROM=\"Benefactor\"
 VOICEMAIL_8_STATUS=0
@@ -198,7 +198,7 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"VM #9\"
+region=\"#9 - J - You won the race - invited back.\"
 VOICEMAIL_9_ID=9
 VOICEMAIL_9_FROM=\"Jack\"
 VOICEMAIL_9_STATUS=0
@@ -214,7 +214,7 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"VM #10\"
+region=\"#10 - Cat lady\"
 VOICEMAIL_10_ID=10
 VOICEMAIL_10_FROM=\"Cat Lady\"
 VOICEMAIL_10_STATUS=0
@@ -230,7 +230,7 @@ say[You and your dumb mech better take my cat to the vet!]Cat Lady
 \"
 
 region=\"end\"
-region=\"VM #11\"
+region=\"#11 - B - Comms tower\"
 VOICEMAIL_11_ID=11
 VOICEMAIL_11_FROM=\"Benefactor\"
 VOICEMAIL_11_STATUS=0
@@ -245,7 +245,7 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"VM #12\"
+region=\"#12 - B - Recon\"
 VOICEMAIL_12_ID=12
 VOICEMAIL_12_FROM=\"Benefactor\"
 VOICEMAIL_12_STATUS=0
@@ -261,7 +261,7 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"VM #13\"
+region=\"#13 - Larry 1\"
 VOICEMAIL_13_ID=13
 VOICEMAIL_13_FROM=\"Larry\"
 VOICEMAIL_13_STATUS=0
@@ -274,7 +274,7 @@ say[Hello. You have reached the voicemail of Larry Lord. Please leave a message 
 \"
 
 region=\"end\"
-region=\"VM #14\"
+region=\"#14 - Larry 2\"
 VOICEMAIL_14_ID=14
 VOICEMAIL_14_FROM=\"Larry\"
 VOICEMAIL_14_STATUS=0
@@ -286,7 +286,7 @@ say[Hello. You have reached the voicemail of Larry Lord. Please leave a message 
 \"
 
 region=\"end\"
-region=\"VM #15\"
+region=\"#15 - B - Broadcast script\"
 VOICEMAIL_15_ID=15
 VOICEMAIL_15_FROM=\"Benefactor\"
 VOICEMAIL_15_STATUS=0
@@ -301,7 +301,7 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"VM #16\"
+region=\"#16 - B - Do it again\"
 VOICEMAIL_16_ID=16
 VOICEMAIL_16_FROM=\"Benefactor\"
 VOICEMAIL_16_STATUS=0
@@ -316,7 +316,7 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"VM #17\"
+region=\"#17 - B - Long term contract\"
 VOICEMAIL_17_ID=17
 VOICEMAIL_17_FROM=\"Benefactor\"
 VOICEMAIL_17_STATUS=0
@@ -331,7 +331,7 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"VM #18\"
+region=\"#18 - J - Incomplete message\"
 VOICEMAIL_18_ID=18
 VOICEMAIL_18_FROM=\"???\"
 VOICEMAIL_18_STATUS=0
@@ -346,7 +346,7 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"VM #19\"
+region=\"#19 - B - make it look like an accident\"
 VOICEMAIL_19_ID=19
 VOICEMAIL_19_FROM=\"Benefactor\"
 VOICEMAIL_19_STATUS=0
@@ -364,7 +364,7 @@ say[*THIS CALL CANNOT BE COMPLETED. GOOD BYE.*]
 \"
 
 region=\"end\"
-region=\"VM #20\"
+region=\"#20 - Larry 3 (final)\"
 VOICEMAIL_20_ID=20
 VOICEMAIL_20_FROM=\"Larry\"
 VOICEMAIL_20_STATUS=0
@@ -378,7 +378,7 @@ say[Hello. You have reached the voicemail of Larry Lord. Please leave a message 
 \"
 
 region=\"end\"
-region=\"VM #21\"
+region=\"#21 - J - Found her!\"
 VOICEMAIL_21_ID=21
 VOICEMAIL_21_FROM=\"Jack\"
 VOICEMAIL_21_STATUS=0
@@ -408,7 +408,7 @@ say[It was nice talking to you. FREEDOM! It never tasted so good. ]Jack
 \"
 
 region=\"end\"
-region=\"VM #22\"
+region=\"#22\"
 VOICEMAIL_22_ID=22
 VOICEMAIL_22_FROM=\"Benefactor\"
 VOICEMAIL_22_STATUS=0
@@ -434,7 +434,7 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"VM #23\"
+region=\"#23\"
 VOICEMAIL_23_ID=23
 VOICEMAIL_23_FROM=\"DT\"
 VOICEMAIL_23_STATUS=0
@@ -457,7 +457,7 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"VM #24\"
+region=\"#24\"
 VOICEMAIL_24_ID=24
 VOICEMAIL_24_FROM=\"Larry\"
 VOICEMAIL_24_STATUS=0
@@ -469,19 +469,31 @@ say[Hello. You have reached the voicemail of Larry Lord. Please leave a message 
 \"
 
 region=\"end\"
-region=\"VM #25\"
+region=\"#25\"
 VOICEMAIL_25_ID=25
-VOICEMAIL_25_FROM=\"Jack\"
+VOICEMAIL_25_FROM=\"DT\"
 VOICEMAIL_25_STATUS=0
 VOICEMAIL_25_SCRIPT=\"
+say["Call me back ASAP. You have a decision to make."]DT
 \"
 VOICEMAIL_25_CALLBACK=\"
-say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
+say[It's me again. I have a choice for you.]DT
+say[I need you to gather intel on this satellite.]DT
+say[I also need you to attack this satellite.]DT
+say[What would you rather do? Attack or survey?]DT
+choices[Attack. I want to see some action.,Survey. I don't want to hurt anyone.]
+[Attack. I want to see some action.]
+do[unlock mission]
+go[done with choice]
+[Survey. I don't want to hurt anyone.]
+do[choose to survey the satellite]
+[done with choice]
+say[Ok. Up to you! Just do a good job.]DT
 
 \"
 
 region=\"end\"
-region=\"VM #26\"
+region=\"#26\"
 VOICEMAIL_26_ID=26
 VOICEMAIL_26_FROM=\"Jack\"
 VOICEMAIL_26_STATUS=0
@@ -493,7 +505,7 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"VM #27\"
+region=\"#27\"
 VOICEMAIL_27_ID=27
 VOICEMAIL_27_FROM=\"Jack\"
 VOICEMAIL_27_STATUS=0
@@ -504,7 +516,7 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"VM #28\"
+region=\"#28\"
 VOICEMAIL_28_ID=28
 VOICEMAIL_28_FROM=\"Jack\"
 VOICEMAIL_28_STATUS=0
@@ -515,7 +527,7 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"VM #29\"
+region=\"#29\"
 VOICEMAIL_29_ID=29
 VOICEMAIL_29_FROM=\"Jack\"
 VOICEMAIL_29_STATUS=0
@@ -526,7 +538,7 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"VM #30\"
+region=\"#30\"
 VOICEMAIL_30_ID=30
 VOICEMAIL_30_FROM=\"Jack\"
 VOICEMAIL_30_STATUS=0
@@ -537,7 +549,7 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"VM #31\"
+region=\"#31\"
 VOICEMAIL_31_ID=31
 VOICEMAIL_31_FROM=\"Jack\"
 VOICEMAIL_31_STATUS=0
@@ -555,7 +567,7 @@ do[unlock mission(31)]
 \"
 
 region=\"end\"
-region=\"VM #32\"
+region=\"#32\"
 VOICEMAIL_32_ID=32
 VOICEMAIL_32_FROM=\"???\"
 VOICEMAIL_32_STATUS=0
@@ -570,7 +582,7 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"VM #33\"
+region=\"#33\"
 VOICEMAIL_33_ID=33
 VOICEMAIL_33_FROM=\"???\"
 VOICEMAIL_33_STATUS=0
@@ -586,7 +598,7 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"VM #34\"
+region=\"#34\"
 VOICEMAIL_34_ID=34
 VOICEMAIL_34_FROM=\"???\"
 VOICEMAIL_34_STATUS=0
@@ -602,7 +614,7 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"VM #35\"
+region=\"#35\"
 VOICEMAIL_35_ID=35
 VOICEMAIL_35_FROM=\"???\"
 VOICEMAIL_35_STATUS=0
@@ -618,7 +630,7 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"VM #36\"
+region=\"#36\"
 VOICEMAIL_36_ID=36
 VOICEMAIL_36_FROM=\"???\"
 VOICEMAIL_36_STATUS=0

@@ -245,13 +245,7 @@ MISSION_6_STATUS=0
 MISSION_6_TIME_STARTED=\"0\"
 MISSION_6_ONE_OVER_ODDS_FOR_MISSION=-25
 MISSION_6_ONE_OVER_ODDS_FOR_RETURNING=12
-MISSION_6_SUCCESS_SCRIPT=\"
-say[Holy crap! You won? What are the odds?!]Jack
-say[Looks like you won some credits too!]Jack
-get credits(200000)
-do[unlock voicemail(9)]
-do[complete mission(6)]
-\"
+
 MISSION_6_START_SCRIPT=\"
 say[Hey! I am so glad you made it!]Jack
 say[I think the Dualists suck, but man I love their raceways. The Veil is beautiful today.]Jack
@@ -259,6 +253,15 @@ say[Oh, this must be your racer.]Jack
 say[Yo!]{pilot}
 say[This race is 24 hours long. I hope you are ready {pilot}!]Jack
 \"
+
+MISSION_6_SUCCESS_SCRIPT=\"
+say[Holy crap! You won? What are the odds?!]Jack
+say[Looks like you won some credits too!]Jack
+get credits(200000)
+do[unlock voicemail(9)]
+do[complete mission(6)]
+\"
+
 MISSION_6_FAIL_SCRIPT=\"
 say[Dang. Next time use better gear.]Jack
 do[fail mission(6)]
@@ -294,42 +297,34 @@ do[unlock mission(7)]
 
 region=\"end\"
 
-region=\"#8 - DT- ATTACK or INTEL \"
+region=\"#8 - DT- STEAL SPACE MECH \"
 MISSION_8_ID=8
-MISSION_8_NAME=\"Choices made.\"
-MISSION_8_FLAVOR=\"You need to gather intel from space\"
+MISSION_8_NAME=\"Train Robbery\"
+MISSION_8_FLAVOR=\"There is a train that is going to Steelhaven. We need to rob it.\"
 MISSION_8_TYPE=4
-MISSION_8_ALLOWED_MECH_TYPES=Array[int]([4])
-MISSION_8_LOCATION_ID=0
+MISSION_8_ALLOWED_MECH_TYPES=Array[int]([10])
+MISSION_8_LOCATION_ID=2
 MISSION_8_STATUS=0
 MISSION_8_TIME_STARTED=\"0\"
 MISSION_8_ONE_OVER_ODDS_FOR_MISSION=3
-MISSION_8_ONE_OVER_ODDS_FOR_RETURNING=3
+MISSION_8_ONE_OVER_ODDS_FOR_RETURNING=2
 MISSION_8_START_SCRIPT=\"
-do[play(ring ring)]
-say[It's me again. I have a choice for you.]DT
-say[I need you to gather intel on this satellite.]DT
-say[I also need you to attack this satellite.]DT
-say[What would you rather do? Attack or survey?]DT
-choices[Attack. I want to see some action.,Survey. I don't want to hurt anyone.]
-[Attack. I want to see some action.]
-do[choose to attack the satellite]
-go[done with choice]
-[Survey. I don't want to hurt anyone.]
-do[choose to survey the satellite]
-[done with choice]
-say[Ok. Up to you! Just do a good job.]DT
+say[Once I land on the train, I am going to stop it and swap mechs.]{pilot}
+say[I programmed this one to auto-pilot itself back home.]{pilot}
+say[Odds are pretty low. Wish me luck!]{pilot}
 \"
+
 MISSION_8_SUCCESS_SCRIPT=\"
-if[attacked the satellite]attacked
-say[Thanks for the intel]DT
-go[done]
-[attacked]
-say[Good job. Cleanly done.]DT
-[done]
+say[Good work. We are going to get that mech into orbit very soon.]DT
+do[get mech(9)]
+do[unlock voicemail(25)]
 \"
 
 MISSION_8_FAIL_SCRIPT=\"
+say[You may not try to rob the train again.]DT
+say[That was the only space-type I knew of.]DT
+say[But you can buy a space-type mech in the store.]DT
+do[unlock voicemail(25)]
 \"
 
 region=\"end\"
@@ -371,7 +366,7 @@ MISSION_10_ALLOWED_MECH_TYPES=Array[int]([10])
 MISSION_10_LOCATION_ID=2
 MISSION_10_STATUS=0
 MISSION_10_TIME_STARTED=\"0\"
-MISSION_10_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_10_ONE_OVER_ODDS_FOR_MISSION=16
 MISSION_10_ONE_OVER_ODDS_FOR_RETURNING=12
 MISSION_10_START_SCRIPT=\"
 say[You stepped on my cat's tail!]Cat Lady
@@ -399,7 +394,7 @@ MISSION_11_ALLOWED_MECH_TYPES=Array[int]([10])
 MISSION_11_LOCATION_ID=3
 MISSION_11_STATUS=0
 MISSION_11_TIME_STARTED=\"0\"
-MISSION_11_ONE_OVER_ODDS_FOR_MISSION=5
+MISSION_11_ONE_OVER_ODDS_FOR_MISSION=15
 MISSION_11_ONE_OVER_ODDS_FOR_RETURNING=12
 MISSION_11_START_SCRIPT=\"
 say['B' needs us to find a comms tower? I wonder what they are up to this time]{pilot}
@@ -438,7 +433,7 @@ do[unlock mission(11)]
 
 region=\"end\"
 
-region=\"#12 - Gather intel on the blockade\"
+region=\"#12 - B - Gather intel on the blockade\"
 MISSION_12_ID=12
 MISSION_12_NAME=\"Gather intel on the blockade\"
 MISSION_12_FLAVOR=\"The Gradients have set up a blockade in the jungle south of Steelhaven. Our mission is to investigate.\"
@@ -447,7 +442,7 @@ MISSION_12_ALLOWED_MECH_TYPES=Array[int]([10])
 MISSION_12_LOCATION_ID=3
 MISSION_12_STATUS=0
 MISSION_12_TIME_STARTED=\"0\"
-MISSION_12_ONE_OVER_ODDS_FOR_MISSION=2
+MISSION_12_ONE_OVER_ODDS_FOR_MISSION=12
 MISSION_12_ONE_OVER_ODDS_FOR_RETURNING=10
 MISSION_12_START_SCRIPT=\"
 say[Alright, my plan is to go in from the west. I will be in-range 12 hours from now. ]{pilot}
@@ -466,16 +461,16 @@ do[unlock mission(12)]
 
 region=\"end\"
 
-region=\"#13 - Execute script - pt. 1\"
+region=\"#13 - B - Execute script - pt. 1\"
 MISSION_13_ID=13
 MISSION_13_NAME=\"Execute script - pt. 1\"
 MISSION_13_FLAVOR=\"Now that you are connected to the comms tower, move to the marked location and execute this script.\"
 MISSION_13_TYPE=0
-MISSION_13_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_13_ALLOWED_MECH_TYPES=Array[int]([10])
 MISSION_13_LOCATION_ID=3
 MISSION_13_STATUS=0
 MISSION_13_TIME_STARTED=\"0\"
-MISSION_13_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_13_ONE_OVER_ODDS_FOR_MISSION=12
 MISSION_13_ONE_OVER_ODDS_FOR_RETURNING=10
 MISSION_13_SUCCESS_SCRIPT=\"
 say[That was too easy.]{pilot}
@@ -491,25 +486,28 @@ do[unlock mission(13)]
 
 region=\"end\"
 
-region=\"Mission #14\"
+region=\"#14 - B - Execute script - pt. 2\"
 MISSION_14_ID=14
 MISSION_14_NAME=\"Execute script - pt. 2\"
 MISSION_14_FLAVOR=\"Another script. This time much closer to the Gradient blockade.\"
-MISSION_14_TYPE=0
-MISSION_14_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_14_TYPE=6
+MISSION_14_ALLOWED_MECH_TYPES=Array[int]([10])
 MISSION_14_LOCATION_ID=3
 MISSION_14_STATUS=0
 MISSION_14_TIME_STARTED=\"0\"
 MISSION_14_ONE_OVER_ODDS_FOR_MISSION=6
 MISSION_14_ONE_OVER_ODDS_FOR_RETURNING=8
+
+MISSION_14_START_SCRIPT=\"
+say[I am nervous about this mission, boss.]{pilot}
+\"
+
 MISSION_14_SUCCESS_SCRIPT=\"
 say[I went all the way out there, sent a signal, and nothing happened.]{pilot}
 do[complete mission(14)]
 do[unlock voicemail(15)]
 \"
-MISSION_14_START_SCRIPT=\"
-say[I am nervous about this mission, boss.]{pilot}
-\"
+
 MISSION_14_FAIL_SCRIPT=\"
 say[You may retry this mission.]
 do[unlock mission(14)]
@@ -517,16 +515,16 @@ do[unlock mission(14)]
 
 region=\"end\"
 
-region=\"Mission #15\"
+region=\"#15 - B - Execute script - pt. 3\"
 MISSION_15_ID=15
 MISSION_15_NAME=\"Execute script - pt. 3\"
 MISSION_15_FLAVOR=\"We need to execute this script practically on top of the blockade.\"
-MISSION_15_TYPE=0
-MISSION_15_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_15_TYPE=6
+MISSION_15_ALLOWED_MECH_TYPES=Array[int]([10])
 MISSION_15_LOCATION_ID=3
 MISSION_15_STATUS=0
 MISSION_15_TIME_STARTED=\"0\"
-MISSION_15_ONE_OVER_ODDS_FOR_MISSION=12
+MISSION_15_ONE_OVER_ODDS_FOR_MISSION=3
 MISSION_15_ONE_OVER_ODDS_FOR_RETURNING=6
 MISSION_15_SUCCESS_SCRIPT=\"
 say[That satellite came out of nowhere.]{pilot}
@@ -542,15 +540,14 @@ MISSION_15_FAIL_SCRIPT=\"
 say[You may retry this mission.]
 do[unlock mission(15)]
 \"
-
 region=\"end\"
 
-region=\"Mission #16\"
+region=\"#16 - B - Execute script - pt. 4\"
 MISSION_16_ID=16
-MISSION_16_NAME=\"Execute script - pt. 3\"
+MISSION_16_NAME=\"Execute script - pt. 4\"
 MISSION_16_FLAVOR=\"The Hall of Chambers is in the middle of Steelhaven. It's a gathering place for the Dualist elite.\"
-MISSION_16_TYPE=0
-MISSION_16_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_16_TYPE=6
+MISSION_16_ALLOWED_MECH_TYPES=Array[int]([10])
 MISSION_16_LOCATION_ID=2
 MISSION_16_STATUS=0
 MISSION_16_TIME_STARTED=\"0\"
@@ -571,15 +568,14 @@ MISSION_16_FAIL_SCRIPT=\"
 say[You may retry this mission.]
 do[unlock mission(16)]
 \"
-
 region=\"end\"
 
-region=\"Mission #17\"
+region=\"#17 - Attack underground bunker\"
 MISSION_17_ID=17
 MISSION_17_NAME=\"Attack underground bunker(Repeatable)\"
 MISSION_17_FLAVOR=\"The benefactor wants you to continuously launch attacks on this underground base till there is nothing left but rubble.\"
-MISSION_17_TYPE=0
-MISSION_17_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_17_TYPE=1
+MISSION_17_ALLOWED_MECH_TYPES=Array[int]([10])
 MISSION_17_LOCATION_ID=3
 MISSION_17_STATUS=0
 MISSION_17_TIME_STARTED=\"0\"
@@ -599,83 +595,126 @@ MISSION_17_FAIL_SCRIPT=\"
 say[You may retry this mission.]
 do[unlock mission(17)]
 \"
-
 region=\"end\"
 
-region=\"Mission #18\"
+region=\"#18 - DT-  INTEL \"
 MISSION_18_ID=18
-MISSION_18_NAME=\"MISSION-009\"
-MISSION_18_FLAVOR=\"MISSION FLAVOR TEXT\"
-MISSION_18_TYPE=0
-MISSION_18_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
-MISSION_18_LOCATION_ID=9
+MISSION_18_NAME=\"Choices made. Gather Intel.\"
+MISSION_18_FLAVOR=\"You need to gather intel from space\"
+MISSION_18_TYPE=4
+MISSION_18_ALLOWED_MECH_TYPES=Array[int]([4])
+MISSION_18_LOCATION_ID=0
 MISSION_18_STATUS=0
 MISSION_18_TIME_STARTED=\"0\"
-MISSION_18_ONE_OVER_ODDS_FOR_MISSION=6
-MISSION_18_ONE_OVER_ODDS_FOR_RETURNING=12
-MISSION_18_SUCCESS_SCRIPT=\"
-do[complete mission(18)]
-\"
+MISSION_18_ONE_OVER_ODDS_FOR_MISSION=12
+MISSION_18_ONE_OVER_ODDS_FOR_RETURNING=8
 MISSION_18_START_SCRIPT=\"
-\"
-MISSION_18_FAIL_SCRIPT=\"
+say[I will be back soon. Odds aren't too bad.]{pilot}
 \"
 
+MISSION_18_SUCCESS_SCRIPT=\"
+say[Thanks for the intel. Sending you payment now.]DT
+do[get credits(80000)]
+say[Looks like the Gradients are secretly living there.]DT
+say[I need you to destroy it.]DT
+choices[I thought I had a choice.,Why do I need to destroy it?,Ok boss.]
+[I thought I had a choice.]
+say[And you still do. You don't need to accept the mission.]DT
+go[done]
+[Why do I need to destroy it?]
+say[If you don't, I will find someone that will.]DT
+go[done]
+[Ok boss.]
+say[Good luck.]DT
+[done]
+do[unlock mission (19)]
+\"
+
+MISSION_18_FAIL_SCRIPT=\"
+say[You may retry this mission.]
+do[unlock mission(18)]
+\"
 region=\"end\"
 
-region=\"Mission #19\"
+
+region=\"#19 - DT- ATTACK \"
 MISSION_19_ID=19
-MISSION_19_NAME=\"MISSION-009\"
-MISSION_19_FLAVOR=\"MISSION FLAVOR TEXT\"
-MISSION_19_TYPE=0
-MISSION_19_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
-MISSION_19_LOCATION_ID=9
+MISSION_19_NAME=\"Choices made. Destroy satellite.\"
+MISSION_19_FLAVOR=\"You need to destroy the satellite.\"
+MISSION_19_TYPE=1
+MISSION_19_ALLOWED_MECH_TYPES=Array[int]([4])
+MISSION_19_LOCATION_ID=0
 MISSION_19_STATUS=0
 MISSION_19_TIME_STARTED=\"0\"
 MISSION_19_ONE_OVER_ODDS_FOR_MISSION=6
-MISSION_19_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_19_ONE_OVER_ODDS_FOR_RETURNING=6
+MISSION_19_START_SCRIPT=\"
+say[Do we know if this satellite is manned?]{pilot}
+choices[No. It is empty(lie),I don't think it's manned.(lie),It is probably manned.]
+[No. It is empty(lie)]
+say[Ok. Good. I will be back soon. Odds aren't too bad.]{pilot}
+go[done]
+[I don't think it's manned.(lie)]
+say[Oh. Hmmm. I wonder why we need to destroy it? What is her angle...?]{pilot}
+say[Sorry boss. Just thinking out loud. I will get to it.]{pilot}
+go[done]
+[It is probably manned.]
+say[Sorry boss. I'm not doing that.]{pilot}
+do[play(failed)]
+do[fail mission(19)]
+[done]
+\"
+
 MISSION_19_SUCCESS_SCRIPT=\"
 
-do[complete mission(19)]
-\"
-MISSION_19_START_SCRIPT=\"
-\"
-MISSION_19_FAIL_SCRIPT=\"
+say[Good work. Sending you payment now.]DT
+do[get credits(80000)]
+say[I will have another mission ready for you tomorrow.]DT
+do[unlock voicemail(21)]
 \"
 
+MISSION_19_FAIL_SCRIPT=\"
+say[You may retry this mission.]
+do[unlock mission(19)]
+\"
 region=\"end\"
 
-region=\"Mission #20\"
+
+region=\"#20- B - Accident\"
 MISSION_20_ID=20
 MISSION_20_NAME=\"'Make it look like an accident.'\"
-MISSION_20_FLAVOR=\"Benefactor wants you to murder some Dualist royals.\"
+MISSION_20_FLAVOR=\"you need to murder some Dualist royals. They will be passing through the Sunfire desert. Make it look like an accident.\"
 MISSION_20_TYPE=0
-MISSION_20_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_20_ALLOWED_MECH_TYPES=Array[int]([10])
 MISSION_20_LOCATION_ID=0
 MISSION_20_STATUS=0
 MISSION_20_TIME_STARTED=\"0\"
 MISSION_20_ONE_OVER_ODDS_FOR_MISSION=4
 MISSION_20_ONE_OVER_ODDS_FOR_RETURNING=4
+
+MISSION_20_START_SCRIPT=\"
+say[Rain slowly starts to tap on the windows of the garage.]
+say[The air smells fresh and you get a chill down your spine.]
+say[The rain's tempo starts to pick up.]
+say[Mech's ready to go boss. You aight?]{pilot}
+choices[I'm fine.,I'm worried.]
+[I'm fine.]
+say[Ok boss.]{pilot}
+go[done]
+[I'm worried.]
+say[We aren't in any position to do anything but make a little progress everyday]{pilot}
+say[You will know it when it's time to trust your gut again.]{pilot}
+say[Sometimes you gotta just keep pushing forward.]{pilot}
+[done]
+\"
+
 MISSION_20_SUCCESS_SCRIPT=\"
 say[I pushed a boulder down a cliff and I killed some random f&*%!^$ people.]{pilot}
 say[I have too much callus on my soul. . .]{pilot}
 do[complete mission(20)]
 do[unlock mission(24)]
 \"
-MISSION_20_START_SCRIPT=\"
-say[Rain slowly starts to tap on the windows of the garage.]
-say[The air smells fresh and you get a chill down your spine.]
-say[The rain's tempo starts to pick up.]
-say[Mech's ready to go boss. You aight?]{pilot}
-choices[I'm fine., I'm worried.]
-[I'm fine.]
-go[end]
-[I'm worried.]
-say[You will know it when it's time to trust your gut again.]{pilot}
-[end]
-say[Sometimes you gotta just keep pushing forward.]{pilot}
-say[We aren't in any position to do anything but make a little progress everyday]{pilot}
-\"
+
 MISSION_20_FAIL_SCRIPT=\"
 say[You may retry this mission.]
 do[unlock mission(20)]
@@ -684,56 +723,69 @@ do[unlock mission(20)]
 
 region=\"end\"
 
-region=\"Mission #21\"
+region=\"#21 Noodle delivery\"
 MISSION_21_ID=21
-MISSION_21_NAME=\"MISSION-009\"
-MISSION_21_FLAVOR=\"MISSION FLAVOR TEXT\"
-MISSION_21_TYPE=0
-MISSION_21_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
-MISSION_21_LOCATION_ID=9
+MISSION_21_NAME=\"Noodle delivery\"
+MISSION_21_FLAVOR=\"You need to get some noodles half-way across the world before they go bad.\"
+MISSION_21_TYPE=2
+MISSION_21_ALLOWED_MECH_TYPES=Array[int]([9,1,4,6])
+MISSION_21_LOCATION_ID=8
 MISSION_21_STATUS=0
 MISSION_21_TIME_STARTED=\"0\"
-MISSION_21_ONE_OVER_ODDS_FOR_MISSION=6
-MISSION_21_ONE_OVER_ODDS_FOR_RETURNING=12
-MISSION_21_SUCCESS_SCRIPT=\"
+MISSION_21_ONE_OVER_ODDS_FOR_MISSION=3
+MISSION_21_ONE_OVER_ODDS_FOR_RETURNING=6
 
+MISSION_21_START_SCRIPT=\"
+say[You think I can have a sample of some of the cargo??]{pilot}
+\"
+
+MISSION_21_SUCCESS_SCRIPT=\"
+say[They let me try some of the noodles when I arrived. They were so good.]{pilot}
+say[Sorry boss, I didn't bring any for you.]{pilot}
+say[But I did bring your pay. You can buy plenty of noodles with that!]{pilot}
+do[get credits(80000)]
 do[complete mission(21)]
 \"
-MISSION_21_START_SCRIPT=\"
-\"
+
 MISSION_21_FAIL_SCRIPT=\"
+say[You may not retry this mission.]
 \"
 
 region=\"end\"
 
-region=\"Mission #22\"
+region=\"#22 Lost animal.\"
 MISSION_22_ID=22
-MISSION_22_NAME=\"MISSION-009\"
-MISSION_22_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_22_NAME=\"Deliver animal.\"
+MISSION_22_FLAVOR=\"You found an animal near base. Take it to the Steelhaven vet.\"
 MISSION_22_TYPE=0
-MISSION_22_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
-MISSION_22_LOCATION_ID=9
+MISSION_22_ALLOWED_MECH_TYPES=Array[int]([10])
+MISSION_22_LOCATION_ID=2
 MISSION_22_STATUS=0
 MISSION_22_TIME_STARTED=\"0\"
-MISSION_22_ONE_OVER_ODDS_FOR_MISSION=6
+MISSION_22_ONE_OVER_ODDS_FOR_MISSION=12
 MISSION_22_ONE_OVER_ODDS_FOR_RETURNING=12
-MISSION_22_SUCCESS_SCRIPT=\"
-do[complete mission(22)]
 
-\"
 MISSION_22_START_SCRIPT=\"
+say["Aww, it's cute."]{pilot}
 \"
+
+MISSION_22_SUCCESS_SCRIPT=\"
+say["It scratched me!"]{pilot}
+do[complete mission(22)]
+\"
+
 MISSION_22_FAIL_SCRIPT=\"
+say[You may not retry this mission.]
 \"
 
 region=\"end\"
 
-region=\"Mission #23\"
+region=\"#23 - Missing part\"
 MISSION_23_ID=23
-MISSION_23_NAME=\"MISSION-009\"
-MISSION_23_FLAVOR=\"MISSION FLAVOR TEXT\"
-MISSION_23_TYPE=0
-MISSION_23_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_23_NAME=\"Check out strange lights.\"
+MISSION_23_FLAVOR=\"Reports of strange lights in the desert at night. Camp over night and investigate.\"
+MISSION_23_TYPE=4
+MISSION_23_ALLOWED_MECH_TYPES=Array[int]([10])
 MISSION_23_LOCATION_ID=9
 MISSION_23_STATUS=0
 MISSION_23_TIME_STARTED=\"0\"
