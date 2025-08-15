@@ -763,10 +763,10 @@ offset_bottom = -664.0
 
 [node name="SCROLLABLE" type="ScrollContainer" parent="."]
 custom_minimum_size = Vector2(570, 0)
-offset_left = 276.0
-offset_top = 66.0
-offset_right = 888.0
-offset_bottom = 634.0
+offset_left = 280.0
+offset_top = 72.0
+offset_right = 892.0
+offset_bottom = 640.0
 
 [node name="BUTTONS" type="VBoxContainer" parent="SCROLLABLE"]
 custom_minimum_size = Vector2(560, 0)
