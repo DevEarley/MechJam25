@@ -13,8 +13,18 @@ func _ready():
 	timer.wait_time = 0.24
 	timer.timeout.connect(_on_view_port_resize_timer_timeout)
 	get_viewport().connect("size_changed", _on_viewport_resize)
-	_on_viewport_resize()
+	make_sure_ui_is_fine_on_load()
 
+func make_sure_ui_is_fine_on_load():
+	_on_viewport_resize()
+	await WAIT.for_seconds(2.0)
+	_on_viewport_resize()
+	await WAIT.for_seconds(2.0)
+	_on_viewport_resize()
+	await WAIT.for_seconds(2.0)
+	_on_viewport_resize()
+	await WAIT.for_seconds(2.0)
+	_on_viewport_resize()
 
 
 func _on_viewport_resize():

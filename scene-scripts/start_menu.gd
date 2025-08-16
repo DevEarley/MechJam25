@@ -11,6 +11,7 @@ func _ready():
 	$PARTS.connect("pressed",_on_PARTS_pressed)
 	#$LOCATIONS.connect("pressed",_on_LOCATIONS_pressed)
 	$LOG_OFF.connect("pressed",_on_LOG_OFF_pressed)
+	$OPTIONS.connect("pressed",on_options_pressed)
 
 func _on_back_to_start_menu():
 	MUSIC.play_music_for_start_menu()
@@ -20,6 +21,7 @@ func _on_back_to_start_menu():
 	STATE.MECH_MENU_CANVAS.hide()
 	STATE.DEPLOYMENTS_MENU_CANVAS.hide()
 	STATE.PARTS_MENU_CANVAS.hide()
+	STATE.OPTIONS_START_MENU_CANVAS.hide()
 	STATE.LOCATION_SELECT_MENU_CANVAS.hide()
 
 func _on_MISSIONS_pressed():
@@ -72,7 +74,6 @@ func _on_PARTS_pressed():
 	#STATE.ON_BACK_BUTTON_PRESSED = _on_back_to_start_menu
 
 func _on_LOG_OFF_pressed():
-
 	MUSIC.play_music_for_main_menu()
 	SFX.play_click_sound()
 	#STATE.DID_DAILY_FOR_MISSION = false;
@@ -81,3 +82,12 @@ func _on_LOG_OFF_pressed():
 	STATE.START_MENU_CANVAS.hide()
 	STATE.STATUS_BAR_CANVAS.hide()
 	STATE.ON_BACK_BUTTON_PRESSED = _on_back_to_start_menu
+	await DATA.save_everything(true)
+	DATA.update_ui_after_USER_OPTIONS_are_loaded()
+
+func on_options_pressed():
+
+	STATE.START_MENU_CANVAS.hide()
+	STATE.OPTIONS_START_MENU_CANVAS.show()
+	STATE.ON_BACK_BUTTON_PRESSED = _on_back_to_start_menu
+	MUSIC.play_music_for_options_menu()

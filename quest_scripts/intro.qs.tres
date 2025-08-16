@@ -45,4 +45,5 @@ say[Do not miss my call.]Benefactor
 say[*CLICK*]
 say[YOU RECIEVE 10000 CREDITS]
 do[get credits(10000)]
+do[unlock voicemail(0)]
 "

@@ -766,11 +766,11 @@ MISSION_22_ONE_OVER_ODDS_FOR_MISSION=12
 MISSION_22_ONE_OVER_ODDS_FOR_RETURNING=12
 
 MISSION_22_START_SCRIPT=\"
-say["Aww, it's cute."]{pilot}
+say[Aww. it's cute.]{pilot}
 \"
 
 MISSION_22_SUCCESS_SCRIPT=\"
-say["It scratched me!"]{pilot}
+say[It scratched me!]{pilot}
 do[complete mission(22)]
 \"
 

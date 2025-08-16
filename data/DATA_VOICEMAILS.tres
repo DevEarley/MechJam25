@@ -474,7 +474,7 @@ VOICEMAIL_25_ID=25
 VOICEMAIL_25_FROM=\"DT\"
 VOICEMAIL_25_STATUS=0
 VOICEMAIL_25_SCRIPT=\"
-say["Call me back ASAP. You have a decision to make."]DT
+say[Call me back ASAP. You have a decision to make.]DT
 \"
 VOICEMAIL_25_CALLBACK=\"
 say[It's me again. I have a choice for you.]DT

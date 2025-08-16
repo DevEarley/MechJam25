@@ -1,21 +1,28 @@
-[gd_scene load_steps=9 format=3 uid="uid://bo8kdbsr15ptf"]
+[gd_scene load_steps=13 format=3 uid="uid://crsia6jmcx3g4"]
 
-[ext_resource type="PackedScene" uid="uid://jqfcrgtcowf1" path="res://prefabs/left-hand-button.tscn" id="2_tm0v0"]
-[ext_resource type="Script" uid="uid://bjyrsimh7r721" path="res://scripts/save_options_button.gd" id="3_d6dia"]
-[ext_resource type="PackedScene" uid="uid://bunfxp7cx281n" path="res://prefabs/title-bar-wide.tscn" id="3_giamy"]
-[ext_resource type="PackedScene" uid="uid://c4koj71ge37td" path="res://prefabs/back_button.tscn" id="4_qukfs"]
-[ext_resource type="Texture2D" uid="uid://86yf6tf46r08" path="res://UI/crosshairs64.png" id="5_wtvj4"]
-[ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="6_fgfsr"]
-[ext_resource type="PackedScene" uid="uid://d3ymch01expmt" path="res://prefabs/options_menu_buttons.tscn" id="8_d6dia"]
+[ext_resource type="PackedScene" uid="uid://jqfcrgtcowf1" path="res://prefabs/left-hand-button.tscn" id="1_6x2ou"]
+[ext_resource type="Script" uid="uid://bjyrsimh7r721" path="res://scripts/save_options_button.gd" id="2_73npa"]
+[ext_resource type="PackedScene" uid="uid://bunfxp7cx281n" path="res://prefabs/title-bar-wide.tscn" id="3_26lqx"]
+[ext_resource type="PackedScene" uid="uid://c4koj71ge37td" path="res://prefabs/back_button.tscn" id="4_bt48d"]
+[ext_resource type="Texture2D" uid="uid://86yf6tf46r08" path="res://UI/crosshairs64.png" id="5_auir3"]
+[ext_resource type="Script" uid="uid://24v83hvf5tg2" path="res://scene-scripts/options_menu.gd" id="6_auir3"]
+[ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="7_hvti1"]
+[ext_resource type="PackedScene" uid="uid://buc3pa7ovo81q" path="res://prefabs/long-press-button.tscn" id="8_2mfij"]
+[ext_resource type="Texture2D" uid="uid://l6oe44m1j68v" path="res://UI/ui-sheet-1.png" id="9_0yliw"]
+[ext_resource type="Theme" uid="uid://nowk0pjebs75" path="res://themes/left-hand-button.tres" id="10_w8rbm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xrybq"]
-atlas = ExtResource("5_wtvj4")
+atlas = ExtResource("5_auir3")
 region = Rect2(68, 70, 58, 52)
 
-[node name="OPTIONS_MENU" type="CanvasLayer"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtvj4"]
+atlas = ExtResource("9_0yliw")
+region = Rect2(866, 671, 35, 45)
+
+[node name="OPTION_MENU" type="CanvasLayer"]
 metadata/_edit_vertical_guides_ = [640.0, 336.0, 944.0, 784.0, 800.0, 360.0]
 
-[node name="save_button" parent="." instance=ExtResource("2_tm0v0")]
+[node name="save_button" parent="." instance=ExtResource("1_6x2ou")]
 anchors_preset = 7
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -26,9 +33,9 @@ offset_bottom = -16.0
 grow_vertical = 0
 theme_override_colors/icon_normal_color = Color(0, 1, 0.666667, 1)
 text = "SAVE EVERYTHING   "
-script = ExtResource("3_d6dia")
+script = ExtResource("2_73npa")
 
-[node name="TITLE2" parent="." instance=ExtResource("3_giamy")]
+[node name="TITLE2" parent="." instance=ExtResource("3_26lqx")]
 anchors_preset = 5
 anchor_top = 0.0
 anchor_bottom = 0.0
@@ -39,7 +46,7 @@ offset_bottom = 44.0
 grow_vertical = 1
 text = "[center]OPTIONS"
 
-[node name="BACK_BUTTON" parent="." instance=ExtResource("4_qukfs")]
+[node name="BACK_BUTTON" parent="." instance=ExtResource("4_bt48d")]
 offset_left = 208.0
 offset_top = -72.0
 offset_right = 651.0
@@ -47,111 +54,125 @@ theme_override_colors/icon_normal_color = Color(1, 0, 0.364706, 1)
 text = "  CANCEL & DON'T SAVE   "
 icon = SubResource("AtlasTexture_xrybq")
 
-[node name="Control" type="Control" parent="."]
-clip_contents = true
-custom_minimum_size = Vector2(600, 564)
+[node name="options_menu_buttons" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -376.0
-offset_top = -300.0
-offset_right = 368.0
-offset_bottom = 264.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_left = 280.0
+offset_top = 88.0
+offset_right = 280.0
+offset_bottom = 88.0
+script = ExtResource("6_auir3")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Control"]
-clip_contents = false
-custom_minimum_size = Vector2(600, 564)
+[node name="BG3" parent="options_menu_buttons" instance=ExtResource("7_hvti1")]
+custom_minimum_size = Vector2(496, 100)
 layout_mode = 0
-offset_left = 24.0
-offset_top = 4.0
-offset_right = 736.0
-offset_bottom = 568.0
+offset_left = 40.0
+offset_top = 304.0
+offset_right = 744.0
+offset_bottom = 416.0
 
-[node name="VBoxContainer" type="Control" parent="Control/ScrollContainer"]
-custom_minimum_size = Vector2(600, 1000)
-layout_mode = 2
-
-[node name="options_menu_buttons" parent="Control/ScrollContainer/VBoxContainer" instance=ExtResource("8_d6dia")]
+[node name="TOGGLE_AUTOSAVE" parent="options_menu_buttons" instance=ExtResource("8_2mfij")]
 layout_mode = 1
-offset_left = -8.0
-offset_top = 24.0
-offset_right = -8.0
-offset_bottom = 24.0
+offset_left = 88.0
+offset_top = 336.0
+offset_right = 592.0
+offset_bottom = 388.0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+text = "AUTOSAVE OFF"
+icon = SubResource("AtlasTexture_wtvj4")
 
-[node name="TITLE" type="Label" parent="Control/ScrollContainer/VBoxContainer"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -240.0
-offset_top = -484.0
-offset_right = -98.0
-offset_bottom = -470.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("6_fgfsr")
-theme_override_font_sizes/font_size = 16
-text = "SELECT GAME MODE"
-horizontal_alignment = 1
-
-[node name="Label" type="Label" parent="Control/ScrollContainer/VBoxContainer"]
+[node name="Label7" type="Label" parent="options_menu_buttons"]
 layout_mode = 0
-offset_left = 492.0
-offset_top = 44.0
-offset_right = 606.0
-offset_bottom = 103.0
-theme = ExtResource("6_fgfsr")
-theme_override_colors/font_color = Color(1, 0, 0.364706, 1)
-text = "24 HOUR
-MODE"
-
-[node name="Label3" type="Label" parent="Control/ScrollContainer/VBoxContainer"]
-layout_mode = 0
-offset_left = 544.0
-offset_top = 344.0
-offset_right = 658.0
-offset_bottom = 403.0
-theme = ExtResource("6_fgfsr")
-theme_override_colors/font_color = Color(1, 0, 0.364706, 1)
-text = "CANNOT
-UNDO"
-
-[node name="Label4" type="Label" parent="Control/ScrollContainer/VBoxContainer"]
-layout_mode = 0
-offset_left = 544.0
-offset_top = 432.0
-offset_right = 658.0
-offset_bottom = 491.0
-theme = ExtResource("6_fgfsr")
-theme_override_colors/font_color = Color(1, 0, 0.364706, 1)
-text = "CANNOT
-UNDO"
-
-[node name="Label5" type="Label" parent="Control/ScrollContainer/VBoxContainer"]
-layout_mode = 0
-offset_left = 544.0
-offset_top = 536.0
-offset_right = 658.0
-offset_bottom = 564.0
-theme = ExtResource("6_fgfsr")
+offset_left = 612.0
+offset_top = 348.0
+offset_right = 726.0
+offset_bottom = 376.0
+theme = ExtResource("10_w8rbm")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "TOGGLE"
 
-[node name="Label2" type="Label" parent="Control/ScrollContainer/VBoxContainer"]
+[node name="BG5" parent="options_menu_buttons" instance=ExtResource("7_hvti1")]
+custom_minimum_size = Vector2(496, 50)
 layout_mode = 0
-offset_left = 492.0
-offset_top = 140.0
-offset_right = 606.0
-offset_bottom = 199.0
-theme = ExtResource("6_fgfsr")
-text = "INSTANT
-MODE"
+offset_left = 40.0
+offset_top = 64.0
+offset_right = 688.0
+offset_bottom = 168.0
+
+[node name="SFX_VALUE_TITLE" type="Label" parent="options_menu_buttons"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 72.0
+offset_right = 304.0
+offset_bottom = 86.0
+theme = ExtResource("10_w8rbm")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "Sound FX Volume"
+
+[node name="SFX_SLIDER" type="HSlider" parent="options_menu_buttons"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 0
+offset_left = 64.0
+offset_top = 88.0
+offset_right = 564.0
+offset_bottom = 142.0
+theme = ExtResource("10_w8rbm")
+max_value = 1.0
+step = 0.05
+tick_count = 21
+ticks_on_borders = true
+
+[node name="BG6" parent="options_menu_buttons" instance=ExtResource("7_hvti1")]
+custom_minimum_size = Vector2(496, 50)
+layout_mode = 0
+offset_left = 40.0
+offset_top = 184.0
+offset_right = 688.0
+offset_bottom = 288.0
+
+[node name="MUSIC_VALUE_TITLE" type="Label" parent="options_menu_buttons"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 192.0
+offset_right = 304.0
+offset_bottom = 206.0
+theme = ExtResource("10_w8rbm")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "Music Volume"
+
+[node name="MUSIC_SLIDER" type="HSlider" parent="options_menu_buttons"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 0
+offset_left = 64.0
+offset_top = 208.0
+offset_right = 564.0
+offset_bottom = 262.0
+theme = ExtResource("10_w8rbm")
+max_value = 1.0
+step = 0.05
+tick_count = 21
+ticks_on_borders = true
+
+[node name="SFX_VALUE" type="Label" parent="options_menu_buttons"]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 104.0
+offset_right = 672.0
+offset_bottom = 132.0
+theme = ExtResource("10_w8rbm")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "0%"
+
+[node name="MUSIC_VALUE" type="Label" parent="options_menu_buttons"]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 224.0
+offset_right = 672.0
+offset_bottom = 252.0
+theme = ExtResource("10_w8rbm")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "0%"
 
 [connection signal="pressed" from="save_button" to="save_button" method="_on_pressed"]

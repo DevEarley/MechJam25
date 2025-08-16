@@ -38,6 +38,10 @@ func _ready():
 	SCALED_UI.add_canvas_to_viewport(STATE.OPTIONS_MENU_CANVAS)
 	STATE.OPTIONS_MENU_CANVAS.hide()
 
+	STATE.OPTIONS_START_MENU_CANVAS = preload("res://scenes/options-start-menu.tscn").instantiate();
+	SCALED_UI.add_canvas_to_viewport(STATE.OPTIONS_START_MENU_CANVAS)
+	STATE.OPTIONS_START_MENU_CANVAS.hide()
+
 	STATE.START_MENU_CANVAS = preload("res://scenes/start-menu.tscn").instantiate();
 	SCALED_UI.add_canvas_to_viewport(STATE.START_MENU_CANVAS)
 	STATE.START_MENU_CANVAS.hide()

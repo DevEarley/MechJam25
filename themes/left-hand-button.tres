@@ -1,15 +1,21 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://nowk0pjebs75"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://nowk0pjebs75"]
 
 [ext_resource type="Texture2D" uid="uid://x66vokp7xc81" path="res://UI/ui-sheet-1.svg" id="1_2bgus"]
 [ext_resource type="FontFile" uid="uid://c1mvwrbaacjl" path="res://fonts/justabit.ttf" id="1_limxw"]
 [ext_resource type="StyleBox" uid="uid://c7tt7io1m63p0" path="res://themes/focus_box.tres" id="3_vhmof"]
 [ext_resource type="StyleBox" uid="uid://do7ngev6e5m41" path="res://themes/normal_box.tres" id="4_lecfs"]
+[ext_resource type="Texture2D" uid="uid://chknv7skv7xt2" path="res://prefabs/slider.tres" id="5_lecfs"]
+[ext_resource type="Texture2D" uid="uid://mwipoy6vj00m" path="res://prefabs/tick.tres" id="6_7rasc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2bgus"]
 atlas = ExtResource("1_2bgus")
 region = Rect2(350, 48, 40, 40)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2bgus"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_7rasc"]
+color = Color(1, 1, 1, 1)
+thickness = 2
 
 [resource]
 Button/colors/font_color = Color(0.32, 0.32, 0.32, 1)
@@ -31,6 +37,11 @@ Button/styles/focus = ExtResource("3_vhmof")
 Button/styles/hover = ExtResource("3_vhmof")
 Button/styles/normal = ExtResource("4_lecfs")
 Button/styles/pressed = ExtResource("3_vhmof")
+HSlider/icons/grabber = ExtResource("5_lecfs")
+HSlider/icons/grabber_disabled = ExtResource("5_lecfs")
+HSlider/icons/grabber_highlight = ExtResource("5_lecfs")
+HSlider/icons/tick = ExtResource("6_7rasc")
+HSlider/styles/slider = SubResource("StyleBoxLine_7rasc")
 Label/colors/font_shadow_color = Color(0, 0, 0, 1)
 Label/font_sizes/font_size = 32
 Label/fonts/font = ExtResource("1_limxw")

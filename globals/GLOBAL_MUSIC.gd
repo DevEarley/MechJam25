@@ -22,45 +22,45 @@ func play_music_for_main_menu():
 	TRACK_POSITION = AUDIO_SOURCE.get_playback_position()
 	AUDIO_SOURCE.stream = main_menu_music
 	AUDIO_SOURCE.play(TRACK_POSITION)
-	AUDIO_SOURCE.volume_db = 0.0
+	AUDIO_SOURCE.volume_linear = STATE.MUSIC_VOLUME
 
 func play_music_for_options_menu():
 	TRACK_POSITION = AUDIO_SOURCE.get_playback_position()
 	AUDIO_SOURCE.stream = options_menu_music
 	AUDIO_SOURCE.play(TRACK_POSITION)
-	AUDIO_SOURCE.volume_db = -5.0
+	AUDIO_SOURCE.volume_linear = STATE.MUSIC_VOLUME / 1.5
 func play_music_for_start_menu():
 	TRACK_POSITION = AUDIO_SOURCE.get_playback_position()
 	AUDIO_SOURCE.stream = start_menu_music
 	AUDIO_SOURCE.play(TRACK_POSITION)
-	AUDIO_SOURCE.volume_db = -5.0
+	AUDIO_SOURCE.volume_linear = STATE.MUSIC_VOLUME / 1.5
 
 func play_music_for_part_menu():
 	TRACK_POSITION = AUDIO_SOURCE.get_playback_position()
 	AUDIO_SOURCE.stream = part_menu_music
 	AUDIO_SOURCE.play(TRACK_POSITION)
-	AUDIO_SOURCE.volume_db = 0.0
+	AUDIO_SOURCE.volume_linear = STATE.MUSIC_VOLUME
 
 func play_music_for_mech_menu():
 	TRACK_POSITION = AUDIO_SOURCE.get_playback_position()
 	AUDIO_SOURCE.stream = mech_menu_music
 	AUDIO_SOURCE.play(TRACK_POSITION)
-	AUDIO_SOURCE.volume_db = 0.0
+	AUDIO_SOURCE.volume_linear =  STATE.MUSIC_VOLUME
 
 func play_music_for_pilot_menu():
 	TRACK_POSITION = AUDIO_SOURCE.get_playback_position()
 	AUDIO_SOURCE.stream = pilot_menu_music
 	AUDIO_SOURCE.play(TRACK_POSITION)
-	AUDIO_SOURCE.volume_db = 0.0
+	AUDIO_SOURCE.volume_linear =  STATE.MUSIC_VOLUME
 
 func play_music_for_mission_menu():
 	TRACK_POSITION = AUDIO_SOURCE.get_playback_position()
 	AUDIO_SOURCE.stream = mission_menu_music
 	AUDIO_SOURCE.play(TRACK_POSITION)
-	AUDIO_SOURCE.volume_db = -10.0
+	AUDIO_SOURCE.volume_linear =STATE.MUSIC_VOLUME / 2.0
 
 func play_music_for_conversation_menu():
 	TRACK_POSITION = AUDIO_SOURCE.get_playback_position()
 	AUDIO_SOURCE.stream = conversation_menu_music
 	AUDIO_SOURCE.play(TRACK_POSITION)
-	AUDIO_SOURCE.volume_db = -10.0
+	AUDIO_SOURCE.volume_linear =STATE.MUSIC_VOLUME / 2.0

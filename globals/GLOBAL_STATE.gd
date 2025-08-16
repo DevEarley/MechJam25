@@ -1,4 +1,15 @@
 extends Node
+
+var SAVE_SLOT = "SAVESLOT_1"
+
+var SAVE_SLOT_1_IS_FRESH = true
+var SAVE_SLOT_2_IS_FRESH = true
+var SAVE_SLOT_3_IS_FRESH = true
+
+var LAST_TIME_PLAYED_SLOT_1 = "--/--/--"
+var LAST_TIME_PLAYED_SLOT_2 = "--/--/--"
+var LAST_TIME_PLAYED_SLOT_3 = "--/--/--"
+
 var LAST_CAMERA
 var CURRENT_MISSION:Mission
 var ON_QUEST_SCRIPT_DONE:Callable
@@ -6,6 +17,7 @@ var ON_BACK_BUTTON_PRESSED:Callable
 var HAS_MISSION_IN_PROGRESS:bool = false
 var DIFFICULTY_SETTTING_MENU_CANVAS: CanvasLayer;
 var OPTIONS_MENU_CANVAS:CanvasLayer;
+var OPTIONS_START_MENU_CANVAS:CanvasLayer;
 var MAIN_MENU_CANVAS:CanvasLayer;
 var LOCATION_SELECT_MENU_CANVAS:CanvasLayer;
 var PARTS_MENU_CANVAS:CanvasLayer;
