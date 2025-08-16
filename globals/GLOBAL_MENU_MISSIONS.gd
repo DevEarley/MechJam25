@@ -6,6 +6,7 @@ var MISSION_BOX
 var MAP_MATERIAL:ShaderMaterial = preload("res://materials/map_mat.tres")
 var BACK_BUTTON
 var LAST_LOCATION
+
 func show_missions():
 	var _mission = LINQ.First(STATE.MISSIONS,func (mission:Mission): return mission.ID == STATE.CURRENT_MISSION_ID)
 	if(_mission != null && _mission.status == ENUMS.MISSION_STATUS.UNLOCKED):

@@ -317,6 +317,7 @@ say[Odds are pretty low. Wish me luck!]{pilot}
 MISSION_8_SUCCESS_SCRIPT=\"
 say[Good work. We are going to get that mech into orbit very soon.]DT
 do[get mech(9)]
+do[complete mission(8)]
 do[unlock voicemail(25)]
 \"
 
