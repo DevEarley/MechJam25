@@ -1,6 +1,5 @@
-[gd_scene load_steps=24 format=3 uid="uid://q3apfh65koxm"]
+[gd_scene load_steps=23 format=3 uid="uid://q3apfh65koxm"]
 
-[ext_resource type="Script" uid="uid://bxy3br0irscae" path="res://scripts/add-self-to-scaled-ui.gd" id="1_xg1py"]
 [ext_resource type="Texture2D" uid="uid://l6oe44m1j68v" path="res://UI/ui-sheet-1.png" id="2_1000w"]
 [ext_resource type="Script" uid="uid://dv6573lowt7bf" path="res://scene-scripts/main_menu.gd" id="3_ismwm"]
 [ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="3_nbft7"]
@@ -225,7 +224,6 @@ _data = {
 }
 
 [node name="MAIN_MENU" type="CanvasLayer"]
-script = ExtResource("1_xg1py")
 metadata/_edit_vertical_guides_ = [775.0]
 metadata/_edit_horizontal_guides_ = [616.0]
 

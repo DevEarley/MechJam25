@@ -893,48 +893,6 @@ func load_or_create_user_user_options():
 			await save_user_options_to_user_data()
 
 
-func update_ui_after_USER_OPTIONS_are_loaded():
-	var options:OptionsMenu = STATE.OPTIONS_MENU_CANVAS.get_node("options_menu_buttons")
-	var options_start:OptionsStartMenu = STATE.OPTIONS_START_MENU_CANVAS.get_node("Control/ScrollContainer/VBoxContainer/options_menu_buttons")
-	options.on_music_slider_changed(STATE.MUSIC_VOLUME)
-	options.on_SFX_slider_changed(STATE.SFX_VOLUME)
-	options_start.on_music_slider_changed(STATE.MUSIC_VOLUME)
-	options_start.on_SFX_slider_changed(STATE.SFX_VOLUME)
-	var music_slider:HSlider = options.get_node("MUSIC_SLIDER")
-	var sfx_slider:HSlider = options.get_node("SFX_SLIDER")
-	music_slider.value = STATE.MUSIC_VOLUME
-	sfx_slider.value = STATE.SFX_VOLUME
-	var music_slider_start:HSlider = options_start.get_node("MUSIC_SLIDER")
-	var sfx_slider_start:HSlider = options_start.get_node("SFX_SLIDER")
-	music_slider_start.value = STATE.MUSIC_VOLUME
-	sfx_slider_start.value = STATE.SFX_VOLUME
-	var file_1_button = STATE.MAIN_MENU_CANVAS.get_node("Main_Menu_Buttons/START1")
-	var file_2_button = STATE.MAIN_MENU_CANVAS.get_node("Main_Menu_Buttons/START2")
-	var file_3_button = STATE.MAIN_MENU_CANVAS.get_node("Main_Menu_Buttons/START3")
-	var file_1_label = STATE.MAIN_MENU_CANVAS.get_node("Main_Menu_Buttons/FILE_1_LAST_PLAYED")
-	var file_2_label = STATE.MAIN_MENU_CANVAS.get_node("Main_Menu_Buttons/FILE_2_LAST_PLAYED")
-	var file_3_label = STATE.MAIN_MENU_CANVAS.get_node("Main_Menu_Buttons/FILE_3_LAST_PLAYED")
-	if(STATE.SAVE_SLOT_1_IS_FRESH == true):
-		file_1_label.text =  "LAST PLAYED: --/--/--"
-		file_1_button.text = "NEW GAME"
-	else:
-		file_1_label.text =  "LAST PLAYED: %s"%STATE.LAST_TIME_PLAYED_SLOT_1
-		file_1_button.text = "CONTINUE GAME"
-
-	if(STATE.SAVE_SLOT_2_IS_FRESH == true):
-		file_2_label.text =  "LAST PLAYED: --/--/--"
-		file_2_button.text = "NEW GAME"
-	else:
-		file_2_label.text = "LAST PLAYED: %s"%STATE.LAST_TIME_PLAYED_SLOT_2
-		file_2_button.text = "CONTINUE GAME"
-
-	if(STATE.SAVE_SLOT_3_IS_FRESH == true):
-		file_3_label.text =  "LAST PLAYED: --/--/--"
-		file_3_button.text = "NEW GAME"
-	else:
-		file_3_label.text =  "LAST PLAYED: %s"%STATE.LAST_TIME_PLAYED_SLOT_3
-		file_3_button.text = "CONTINUE GAME"
-
 func create_and_push_user_option_to_STATE(section,data):
 	STATE.SFX_VOLUME = data.get_value(section,"SFX_VOLUME")
 	STATE.MUSIC_VOLUME  = data.get_value(section,"MUSIC_VOLUME")
@@ -960,18 +918,21 @@ func save_user_options_to_user_data(bypass_autosave_settings_and_save_anyways=fa
 	var date = Time.get_datetime_dict_from_system()
 	var today = "%02d/%02d/%02d" % [date.get("month"),date.get("day"),date.get("year")]
 	if(STATE.SAVE_SLOT=="SAVESLOT_1"):
+		STATE.LAST_TIME_PLAYED_SLOT_1 = today;
 		user_data.set_value(section,"LAST_TIME_PLAYED_SLOT_1",today)
 		if(STATE.SAVE_SLOT_2_IS_FRESH == false):
 			user_data.set_value(section,"LAST_TIME_PLAYED_SLOT_2",STATE.LAST_TIME_PLAYED_SLOT_2)
 		if(STATE.SAVE_SLOT_3_IS_FRESH == false):
 			user_data.set_value(section,"LAST_TIME_PLAYED_SLOT_3",STATE.LAST_TIME_PLAYED_SLOT_3)
 	if(STATE.SAVE_SLOT=="SAVESLOT_2"):
+		STATE.LAST_TIME_PLAYED_SLOT_2 = today;
 		user_data.set_value(section,"LAST_TIME_PLAYED_SLOT_2",today)
 		if(STATE.SAVE_SLOT_1_IS_FRESH == false):
 			user_data.set_value(section,"LAST_TIME_PLAYED_SLOT_1",STATE.LAST_TIME_PLAYED_SLOT_1)
 		if(STATE.SAVE_SLOT_3_IS_FRESH == false):
 			user_data.set_value(section,"LAST_TIME_PLAYED_SLOT_3",STATE.LAST_TIME_PLAYED_SLOT_3)
 	if(STATE.SAVE_SLOT=="SAVESLOT_3"):
+		STATE.LAST_TIME_PLAYED_SLOT_3 = today;
 		user_data.set_value(section,"LAST_TIME_PLAYED_SLOT_3",today)
 		if(STATE.SAVE_SLOT_1_IS_FRESH == false):
 			user_data.set_value(section,"LAST_TIME_PLAYED_SLOT_1",STATE.LAST_TIME_PLAYED_SLOT_1)
@@ -1196,3 +1157,46 @@ func save_voicemails_to_user_data(bypass_autosave_settings_and_save_anyways=fals
 	var err = await user_data.save("user://voicemails.cfg")
 	if err != OK:
 		print(err)
+
+#todo make a new global called UI or something
+func update_ui_after_USER_OPTIONS_are_loaded():
+	var options:OptionsMenu = STATE.OPTIONS_MENU_CANVAS.get_node("options_menu_buttons")
+	var options_start:OptionsStartMenu = STATE.OPTIONS_START_MENU_CANVAS.get_node("Control/ScrollContainer/VBoxContainer/options_menu_buttons")
+	options.on_music_slider_changed(STATE.MUSIC_VOLUME)
+	options.on_SFX_slider_changed(STATE.SFX_VOLUME)
+	options_start.on_music_slider_changed(STATE.MUSIC_VOLUME)
+	options_start.on_SFX_slider_changed(STATE.SFX_VOLUME)
+	var music_slider:HSlider = options.get_node("MUSIC_SLIDER")
+	var sfx_slider:HSlider = options.get_node("SFX_SLIDER")
+	music_slider.value = STATE.MUSIC_VOLUME
+	sfx_slider.value = STATE.SFX_VOLUME
+	var music_slider_start:HSlider = options_start.get_node("MUSIC_SLIDER")
+	var sfx_slider_start:HSlider = options_start.get_node("SFX_SLIDER")
+	music_slider_start.value = STATE.MUSIC_VOLUME
+	sfx_slider_start.value = STATE.SFX_VOLUME
+	var file_1_button = STATE.MAIN_MENU_CANVAS.get_node("Main_Menu_Buttons/START1")
+	var file_2_button = STATE.MAIN_MENU_CANVAS.get_node("Main_Menu_Buttons/START2")
+	var file_3_button = STATE.MAIN_MENU_CANVAS.get_node("Main_Menu_Buttons/START3")
+	var file_1_label = STATE.MAIN_MENU_CANVAS.get_node("Main_Menu_Buttons/FILE_1_LAST_PLAYED")
+	var file_2_label = STATE.MAIN_MENU_CANVAS.get_node("Main_Menu_Buttons/FILE_2_LAST_PLAYED")
+	var file_3_label = STATE.MAIN_MENU_CANVAS.get_node("Main_Menu_Buttons/FILE_3_LAST_PLAYED")
+	if(STATE.SAVE_SLOT_1_IS_FRESH == true):
+		file_1_label.text =  "LAST PLAYED: --/--/--"
+		file_1_button.text = "NEW GAME"
+	else:
+		file_1_label.text =  "LAST PLAYED: %s"%STATE.LAST_TIME_PLAYED_SLOT_1
+		file_1_button.text = "CONTINUE GAME"
+
+	if(STATE.SAVE_SLOT_2_IS_FRESH == true):
+		file_2_label.text =  "LAST PLAYED: --/--/--"
+		file_2_button.text = "NEW GAME"
+	else:
+		file_2_label.text = "LAST PLAYED: %s"%STATE.LAST_TIME_PLAYED_SLOT_2
+		file_2_button.text = "CONTINUE GAME"
+
+	if(STATE.SAVE_SLOT_3_IS_FRESH == true):
+		file_3_label.text =  "LAST PLAYED: --/--/--"
+		file_3_button.text = "NEW GAME"
+	else:
+		file_3_label.text =  "LAST PLAYED: %s"%STATE.LAST_TIME_PLAYED_SLOT_3
+		file_3_button.text = "CONTINUE GAME"

@@ -781,7 +781,7 @@ say[You may not retry this mission.]
 
 region=\"end\"
 
-region=\"#23 - Missing part\"
+region=\"#23 - strange lights\"
 MISSION_23_ID=23
 MISSION_23_NAME=\"Check out strange lights.\"
 MISSION_23_FLAVOR=\"Reports of strange lights in the desert at night. Camp over night and investigate.\"
@@ -792,12 +792,13 @@ MISSION_23_STATUS=0
 MISSION_23_TIME_STARTED=\"0\"
 MISSION_23_ONE_OVER_ODDS_FOR_MISSION=6
 MISSION_23_ONE_OVER_ODDS_FOR_RETURNING=12
-MISSION_23_SUCCESS_SCRIPT=\"
-do[complete mission(23)]
-\"
 MISSION_23_START_SCRIPT=\"
 
 \"
+MISSION_23_SUCCESS_SCRIPT=\"
+do[complete mission(23)]
+\"
+
 MISSION_23_FAIL_SCRIPT=\"
 say[You may retry this mission.]
 do[unlock mission(23)]
@@ -805,17 +806,27 @@ do[unlock mission(23)]
 
 region=\"end\"
 
-region=\"Mission #24\"
+region=\"#24 - Destroy your Benefactor.\"
 MISSION_24_ID=24
 MISSION_24_NAME=\"Destroy your Benefactor.\"
 MISSION_24_FLAVOR=\"DT has given you the location to the Benefactor's whereabouts. Destroy him before he destroys you.\"
-MISSION_24_TYPE=0
-MISSION_24_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_24_TYPE=1
+MISSION_24_ALLOWED_MECH_TYPES=Array[int]([4])
 MISSION_24_LOCATION_ID=4
 MISSION_24_STATUS=0
 MISSION_24_TIME_STARTED=\"0\"
 MISSION_24_ONE_OVER_ODDS_FOR_MISSION=-6
 MISSION_24_ONE_OVER_ODDS_FOR_RETURNING=2
+
+MISSION_24_START_SCRIPT=\"
+say[The smell of roses fills the air.]
+say[A hooded figure approaches you.]
+say[It's uh- me. DT. Let me help you with this mission.]DT
+say[I will give you the benefactor's exact location]DT
+say[Good luck!]DT
+do[betray benefactor]
+\"
+
 MISSION_24_SUCCESS_SCRIPT=\"
 say[The smell of roses fills the air.]
 say[You are finally free from his grasp.]DT
@@ -823,38 +834,27 @@ do[unlock voicemail(23)]
 do[complete mission(24)]
 do[destroy benefactor]
 \"
-MISSION_24_START_SCRIPT=\"
-say[The smell of roses fills the air.]
-say[A hooded figure approaches you.]
-say[It's uh- me. DT. Let me help you with this mission.]DT
-say[I will give you the benefactor's exact location]DT
-say[Good luck!]DT
-\"
+
 MISSION_24_FAIL_SCRIPT=\"
-say[Mwahaha! You cannot defeat me!]Benefactor
+say[You cannot defeat me!]Benefactor
+say[You may retry this mission.]
 do[unlock mission(24)]
 \"
 
 region=\"end\"
 
-region=\"Mission #25\"
+region=\"#25 Rose Delivery\"
 MISSION_25_ID=25
 MISSION_25_NAME=\"Rose Delivery\"
 MISSION_25_FLAVOR=\"Rose wants you to deliver munitions to the Dualists.\"
-MISSION_25_TYPE=0
-MISSION_25_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_25_TYPE=2
+MISSION_25_ALLOWED_MECH_TYPES=Array[int]([10])
 MISSION_25_LOCATION_ID=2
 MISSION_25_STATUS=0
 MISSION_25_TIME_STARTED=\"0\"
 MISSION_25_ONE_OVER_ODDS_FOR_MISSION=4
 MISSION_25_ONE_OVER_ODDS_FOR_RETURNING=4
-MISSION_25_SUCCESS_SCRIPT=\"
-say[The smell of roses fills the air.]
-say[Good work]Rose
-do[unlock mission(25)]
 
-do[complete mission(25)]
-\"
 MISSION_25_START_SCRIPT=\"
 say[The smell of roses fills the air.]
 say[I need you to transport some military supplies for the Dualists]Rose
@@ -862,6 +862,14 @@ say[No death or destruction on your part]Rose
 say[Just some routine deliveries]Rose
 say[Good luck!]Rose
 \"
+
+MISSION_25_SUCCESS_SCRIPT=\"
+say[The smell of roses fills the air.]
+say[Good work]Rose
+do[unlock mission(25)]
+do[complete mission(25)]
+\"
+
 MISSION_25_FAIL_SCRIPT=\"
 say[The smell of roses fills the air.]
 say[Disastrous. . .Well there is always next time.]Rose
@@ -961,17 +969,23 @@ MISSION_29_FAIL_SCRIPT=\"
 
 region=\"end\"
 
-region=\"Mission #30\"
+region=\"#30 Save Jill\"
 MISSION_30_ID=30
 MISSION_30_NAME=\"Save Jill\"
 MISSION_30_FLAVOR=\"Rose has Jill. You need to save her.\"
 MISSION_30_TYPE=0
-MISSION_30_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_30_ALLOWED_MECH_TYPES=Array[int]([7])
 MISSION_30_LOCATION_ID=9
 MISSION_30_STATUS=0
 MISSION_30_TIME_STARTED=\"0\"
 MISSION_30_ONE_OVER_ODDS_FOR_MISSION=-6
 MISSION_30_ONE_OVER_ODDS_FOR_RETURNING=12
+MISSION_30_START_SCRIPT=\"
+say[The smell of roses fills the air.]
+say[How dare you!]Rose
+say[I cannot believe you would cross me. After everything I have done for you!]Rose
+say[Prepare to die.]Rose
+\"
 MISSION_30_SUCCESS_SCRIPT=\"
 say[A stench of rot fills the air.]
 say[How could you. . .]Rose
@@ -980,27 +994,22 @@ do[unlock voicemail(31)]
 do[complete mission(30)]
 do[destroy rose]
 \"
-MISSION_30_START_SCRIPT=\"
-say[The smell of roses fills the air.]
-say[How dare you!]Rose
-say[I cannot believe you would cross me. After everything I have done for you]Rose
-say[Prepare to die.]Rose
-\"
 MISSION_30_FAIL_SCRIPT=\"
 say[The smell of roses fills the air.]
 say[Let this be a lesson to you:]Rose
 say[You cannot defeat me.]Rose
+say[You may retry this mission.]
 do[unlock mission(30)]
 \"
 
 region=\"end\"
 
-region=\"Mission #31\"
+region=\"#31 Time to leave\"
 MISSION_31_ID=31
 MISSION_31_NAME=\"Time to leave\"
 MISSION_31_FLAVOR=\"Jack & Jill have invited you to race with them at the EAU.\"
-MISSION_31_TYPE=0
-MISSION_31_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_31_TYPE=3
+MISSION_31_ALLOWED_MECH_TYPES=Array[int]([10])
 MISSION_31_LOCATION_ID=6
 MISSION_31_STATUS=0
 MISSION_31_TIME_STARTED=\"0\"
@@ -1028,12 +1037,12 @@ do[game over]
 
 region=\"end\"
 
-region=\"Mission #32\"
+region=\"#32  Race Jack & Jill up a hill\"
 MISSION_32_ID=32
 MISSION_32_NAME=\"RACE - Jack & Jill up a hill\"
 MISSION_32_FLAVOR=\".\"
 MISSION_32_TYPE=0
-MISSION_32_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_32_ALLOWED_MECH_TYPES=Array[int]([9])
 MISSION_32_LOCATION_ID=6
 MISSION_32_STATUS=0
 MISSION_32_TIME_STARTED=\"0\"

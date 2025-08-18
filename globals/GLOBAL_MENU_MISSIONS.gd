@@ -61,15 +61,34 @@ func on_mission_pressed(mission:Mission):
 	else:
 		time_24_hours = 8.0
 	var time_now = Time.get_unix_time_from_system()
-	var mech = null
+	var mech:Mech = null
 	var parts = [];
 	var pilot = null
 	if(mission.status == ENUMS.MISSION_STATUS.IN_PROGRESS):
 		if(mission.time_started + time_24_hours <= time_now):
 			mission.status = ENUMS.MISSION_STATUS.NEEDS_DEBRIEF;
-			DATA.save_missions_to_user_data()
-
-	if(mission.status == ENUMS.MISSION_STATUS.UNLOCKED ||mission.status == ENUMS.MISSION_STATUS.IN_PROGRESS || mission.status == ENUMS.MISSION_STATUS.NEEDS_DEBRIEF):
+			STATE.CURRENT_MISSION_ID = -1;
+			show_missions();
+			return
+	if(mission.status == ENUMS.MISSION_STATUS.UNLOCKED ):
+		mech= LINQ.First(STATE.MECHS,func (mech:Mech): return mech.mission_id==mission.ID);
+		if(mech!=null):
+			if(mech.current_health <=0):
+				STATE.CURRENT_MECH_ID =-1
+				pilot = LINQ.First(STATE.PILOTS,func (pilot:Pilot): return pilot.mech_id==mech.ID);
+				STATE.CURRENT_PILOT_ID = -1
+				if(pilot!=null):
+					pilot.mech_id = -1;
+					pilot.status = ENUMS.PILOT_STATUS.HIRED;#todo - should be dead,but we should not be in this state.
+					parts = STATE.PARTS.filter(func (part:Part): return part.attached_to_mech_id==mech.ID);
+			else:
+				pilot = LINQ.First(STATE.PILOTS,func (pilot:Pilot): return pilot.mech_id==mech.ID);
+				parts = STATE.PARTS.filter(
+					func (part:Part): return part.attached_to_mech_id==mech.ID && part.status == ENUMS.PART_STATUS.EQUIPT);
+				STATE.CURRENT_MECH_ID = mech.ID
+				if(pilot!=null):
+					STATE.CURRENT_PILOT_ID = pilot.ID;
+	elif(mission.status == ENUMS.MISSION_STATUS.IN_PROGRESS || mission.status == ENUMS.MISSION_STATUS.NEEDS_DEBRIEF):
 		mech= LINQ.First(STATE.MECHS,func (mech:Mech): return mech.mission_id==mission.ID);
 		if(mech!=null):
 			STATE.CURRENT_MECH_ID = mech.ID

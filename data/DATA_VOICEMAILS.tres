@@ -408,7 +408,7 @@ say[It was nice talking to you. FREEDOM! It never tasted so good. ]Jack
 \"
 
 region=\"end\"
-region=\"#22\"
+region=\"#22 - B - Final offer\"
 VOICEMAIL_22_ID=22
 VOICEMAIL_22_FROM=\"Benefactor\"
 VOICEMAIL_22_STATUS=0
@@ -434,7 +434,7 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"#23\"
+region=\"#23 - DT - My name is Rose\"
 VOICEMAIL_23_ID=23
 VOICEMAIL_23_FROM=\"DT\"
 VOICEMAIL_23_STATUS=0
@@ -457,19 +457,17 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"#24\"
+region=\"#24 \"
 VOICEMAIL_24_ID=24
-VOICEMAIL_24_FROM=\"Larry\"
+VOICEMAIL_24_FROM=\"\"
 VOICEMAIL_24_STATUS=0
 VOICEMAIL_24_SCRIPT=\"
-say[Alright- I get it. You think you are better than me! I am going to come over there if I don't see a check under my door...TONIGHT!]Larry
 \"
 VOICEMAIL_24_CALLBACK=\"
-say[Hello. You have reached the voicemail of Larry Lord. Please leave a message and I will get back to you. Have a righteous day.  *BEEP*]
 \"
 
 region=\"end\"
-region=\"#25\"
+region=\"#25 - DT- decision to make\"
 VOICEMAIL_25_ID=25
 VOICEMAIL_25_FROM=\"DT\"
 VOICEMAIL_25_STATUS=0
@@ -549,7 +547,7 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"#31\"
+region=\"#31 - J - Start racing! \"
 VOICEMAIL_31_ID=31
 VOICEMAIL_31_FROM=\"Jack\"
 VOICEMAIL_31_STATUS=0
@@ -567,12 +565,12 @@ do[unlock mission(31)]
 \"
 
 region=\"end\"
-region=\"#32\"
+region=\"#32 - RA - Sign up\"
 VOICEMAIL_32_ID=32
-VOICEMAIL_32_FROM=\"???\"
+VOICEMAIL_32_FROM=\"Race Authority\"
 VOICEMAIL_32_STATUS=0
 VOICEMAIL_32_SCRIPT=\"
-say[Race today! Anyone can sign up, any day!]???
+say[Sign up to race today! Anyone can sign up, any day!]???
 say[The odds are always changing. So you need to be ready for anything!]???
 do[complete voicemail(32)]
 \"
@@ -582,9 +580,9 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"#33\"
+region=\"#33 - RA - Congrats - picked for 1st round.\"
 VOICEMAIL_33_ID=33
-VOICEMAIL_33_FROM=\"???\"
+VOICEMAIL_33_FROM=\"Race Authority\"
 VOICEMAIL_33_STATUS=0
 VOICEMAIL_33_SCRIPT=\"
 say[Congratulations. You have been selected for the 1st Round of the racing tournament.]???
@@ -598,9 +596,9 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"#34\"
+region=\"#34 - RA - Congrats - qualified for quarter-finals\"
 VOICEMAIL_34_ID=34
-VOICEMAIL_34_FROM=\"???\"
+VOICEMAIL_34_FROM=\"Racing Authority\"
 VOICEMAIL_34_STATUS=0
 VOICEMAIL_34_SCRIPT=\"
 say[Congratulations. You have qualified for the QUARTER-FINALS.]???
@@ -614,9 +612,9 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"#35\"
+region=\"#35 - RA - Congrats - qualified for semi-finals\"
 VOICEMAIL_35_ID=35
-VOICEMAIL_35_FROM=\"???\"
+VOICEMAIL_35_FROM=\"Racing Authority\"
 VOICEMAIL_35_STATUS=0
 VOICEMAIL_35_SCRIPT=\"
 say[Congratulations. You have qualified for the SEMI-FINALS.]???
@@ -630,9 +628,9 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"#36\"
+region=\"#36 - RA- Congrats - qualified of Finals\"
 VOICEMAIL_36_ID=36
-VOICEMAIL_36_FROM=\"???\"
+VOICEMAIL_36_FROM=\"Race Authority\"
 VOICEMAIL_36_STATUS=0
 VOICEMAIL_36_SCRIPT=\"
 say[Congratulations. You have qualified for the FINALS.]???

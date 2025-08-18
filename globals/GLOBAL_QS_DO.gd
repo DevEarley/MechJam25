@@ -178,8 +178,11 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 			await WAIT.for_seconds(3.0)
 			MUSIC.AUDIO_SOURCE.play(MUSIC.TRACK_POSITION)
 		"destroy benefactor":
-			STATE.BENEFACTOR_IS_GIVING_YOU_MONEY = false;
 			STATE.DT_ROSE_IS_GIVING_YOU_MONEY = true;
+			DATA.save_game_state_to_user_data()
+			pass
+		"betray benefactor":
+			STATE.BENEFACTOR_IS_GIVING_YOU_MONEY = false;
 			DATA.save_game_state_to_user_data()
 			pass
 		"destroy rose":

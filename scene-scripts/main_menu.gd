@@ -12,6 +12,7 @@ func _ready():
 	$OPTIONS.connect("pressed",_on_OPTIONS_pressed)
 
 func on_back_to_main_menu():
+	DATA.update_ui_after_USER_OPTIONS_are_loaded()
 	MUSIC.play_music_for_main_menu()
 	MAP.ANIMATOR.play("still")
 	STATE.MAIN_MENU_CANVAS.show()
