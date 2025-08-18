@@ -24,6 +24,7 @@ func hire_pilot(pilot:Pilot):
 	SFX.play_click_sound()
 	STATE.CREDITS -= pilot.cost
 	pilot.status = ENUMS.PILOT_STATUS.HIRED;
+	QS.run_script(pilot.on_hire_script);
 	DATA.save_pilots_to_user_data()
 	DATA.save_game_state_to_user_data()
 	STATUS_BAR.update_status()

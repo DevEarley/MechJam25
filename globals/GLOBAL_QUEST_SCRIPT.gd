@@ -60,15 +60,20 @@ func run_script(_script:String):
 		return
 	RUNNING_SCRIPT = true;
 	CONVERSATION_UI.start_conversation()
+
+	CURRENT_LINE = 0;
+	CURRENT_SCRIPT = process_script_into_array(_script)
+	run_script__process_line();
+
+
+func process_script_into_array(_script:String):
 	_script = process_script_for_quotes(_script)
 	var lines:PackedStringArray = _script.split("\n",false)
 
 	for line in lines.size():
 		lines.set(line,lines[line].trim_prefix("\t"))
 		lines.set(line,(lines[line]).strip_edges(true,true))
-	CURRENT_LINE = 0;
-	CURRENT_SCRIPT = lines
-	run_script__process_line();
+	return lines;
 
 func get_line_index_for_marker(marker:String):
 	if(marker.begins_with("[")==false):
@@ -138,6 +143,12 @@ func process_expressions_for_qs(line_with_expressions:String):
 		if(pilot!=null):
 			line_with_expressions = line_with_expressions.replacen("{pilot}",pilot.name)
 	return line_with_expressions;
+
+func insert_script(_script:String):
+	var index = 0;
+	for line in process_script_into_array(_script):
+		CURRENT_SCRIPT.insert(CURRENT_LINE+index, line)
+		index+=1;
 
 func run_script__process_line():
 	if(CURRENT_LINE > CURRENT_SCRIPT.size()-1):

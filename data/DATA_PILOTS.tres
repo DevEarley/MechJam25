@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_4skxx")
 CONFIG_FILE = "[DEFAULT]
-VERSION=1.5
+VERSION=1.6
 NUMBER_OF_PILOTS=21
 
 region=\"p0 - JACK\"

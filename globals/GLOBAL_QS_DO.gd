@@ -28,6 +28,15 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 			var id:int = int(values[0])
 			var mission:Mission = LINQ.First(STATE.MISSIONS,func (mission:Mission): return mission.ID==id);
 			mission.status = ENUMS.MISSION_STATUS.UNLOCKED
+
+
+			#sometimes we unlock missions after you have failed them for a retry.
+			var mech:Mech = LINQ.First(STATE.MECHS,func (mech:Mech):return mech.mission_id == id)
+			var pilot:Pilot = LINQ.First(STATE.PILOTS,func ( pilot:Pilot ):return pilot.mech_id == mech.ID)
+			destroy_or_reset_mech(mech,pilot)
+
+
+
 			DATA.save_missions_to_user_data()
 			QS.CURRENT_LINE+=1;
 			QS.run_script__process_line();
@@ -54,21 +63,7 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 
 			var mech:Mech = LINQ.First(STATE.MECHS,func (mech:Mech):return mech.mission_id == id)
 			var pilot:Pilot = LINQ.First(STATE.PILOTS,func ( pilot:Pilot ):return pilot.mech_id == mech.ID)
-
-
-			mech.mission_id = -1
-			pilot.mech_id = -1
-
-			if(mech.current_health<=0 ):
-				mech.status = ENUMS.MECH_STATUS.NOT_AVAILABLE
-				pilot.status = ENUMS.PILOT_STATUS.DEAD
-				DATA.save_everything()
-
-			else:
-				mech.status = ENUMS.MECH_STATUS.IN_GARAGE
-				pilot.status = ENUMS.PILOT_STATUS.HIRED
-				DATA.save_everything()
-
+			destroy_or_reset_mech(mech,pilot)
 
 
 
@@ -82,21 +77,7 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 
 			var mech:Mech = LINQ.First(STATE.MECHS,func (mech:Mech):return mech.mission_id == id)
 			var pilot:Pilot = LINQ.First(STATE.PILOTS,func ( pilot:Pilot ):return pilot.mech_id == mech.ID)
-
-			mech.mission_id = -1
-			pilot.mech_id = -1
-
-			if(mech.current_health<=0 ):
-				mech.status = ENUMS.MECH_STATUS.NOT_AVAILABLE
-				pilot.status = ENUMS.PILOT_STATUS.DEAD
-				DATA.save_everything()
-
-			else:
-				mech.status = ENUMS.MECH_STATUS.IN_GARAGE
-				pilot.status = ENUMS.PILOT_STATUS.HIRED
-				DATA.save_everything()
-
-
+			destroy_or_reset_mech(mech,pilot)
 
 			DATA.save_missions_to_user_data()
 			QS.CURRENT_LINE+=1;
@@ -195,3 +176,26 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 			pass
 
 	pass;
+
+
+
+func destroy_or_reset_mech(mech,pilot):
+		if(mech!=null):
+
+			mech.mission_id = -1
+			if(pilot!=null):
+				pilot.mech_id = -1
+
+			if(mech.current_health<=0 ):
+				mech.status = ENUMS.MECH_STATUS.NOT_AVAILABLE
+				if(pilot !=null):
+					pilot.mech_id = -1
+					pilot.status = ENUMS.PILOT_STATUS.DEAD
+				QS.insert_script(pilot.on_death_script)
+				DATA.save_everything()
+
+			else:
+				mech.status = ENUMS.MECH_STATUS.IN_GARAGE
+				if(pilot !=null):
+					pilot.status = ENUMS.PILOT_STATUS.HIRED
+				DATA.save_everything()

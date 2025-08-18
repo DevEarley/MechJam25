@@ -12,3 +12,7 @@ var mission_odds:int;
 var criteria_for_returning_odds:ENUMS.RETURN_CRITERIA
 var criteria_for_mission_odds:ENUMS.MISSION_CRITERIA
 var status:ENUMS.PILOT_STATUS
+var in_lobby_script:String;
+var at_bar_script:String;
+var on_hire_script:String;
+var on_death_script:String;

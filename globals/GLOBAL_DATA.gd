@@ -546,80 +546,74 @@ func load_or_create_user_pilots():
 			for pilot_index in number_of_pilots:
 				create_and_push_pilot_to_STATE("DEFAULT",pilot_index,resource_data)
 
-func create_and_push_pilot_to_STATE(section,pilot_index,user_data):
+func create_and_push_pilot_to_STATE(section,pilot_index,data):
 			var pilot = Pilot.new();
-			#todo - add checks to this- so the game doesn't crash if the user messes something up.
-			pilot.ID = user_data.get_value(section,"PILOT_%s_ID"%pilot_index)
-			pilot.mech_id = user_data.get_value(section,"PILOT_%s_MECH_ID"%pilot_index)
-			pilot.name = user_data.get_value(section,"PILOT_%s_NAME"%pilot_index)
-			pilot.cost = user_data.get_value(section,"PILOT_%s_COST"%pilot_index)
-			pilot.flavor = user_data.get_value(section,"PILOT_%s_FLAVOR"%pilot_index)
-			pilot.theme = user_data.get_value(section,"PILOT_%s_THEME"%pilot_index)
-			pilot.status = user_data.get_value(section,"PILOT_%s_STATUS"%pilot_index)
-			pilot.mission_odds = user_data.get_value(section,"PILOT_%s_MISSION_ODDS"%pilot_index)
-			pilot.criteria_for_mission_odds = user_data.get_value(section,"PILOT_%s_CRITERIA_FOR_MISSION_ODDS"%pilot_index)
-			pilot.returning_odds = user_data.get_value(section,"PILOT_%s_RETURNING_ODDS"%pilot_index)
-			pilot.criteria_for_returning_odds = user_data.get_value(section,"PILOT_%s_CRITERIA_FOR_RETURNING_ODDS"%pilot_index)
+			if(data.get_value(section,"PILOT_%s_ID"%pilot_index)):
+				pilot.ID = data.get_value(section,"PILOT_%s_ID"%pilot_index)
+			if(data.get_value(section,"PILOT_%s_NAME"%pilot_index)):
+				pilot.name = data.get_value(section,"PILOT_%s_NAME"%pilot_index)
+			if(data.get_value(section,"PILOT_%s_COST"%pilot_index)):
+				pilot.cost = data.get_value(section,"PILOT_%s_COST"%pilot_index)
+			if(data.get_value(section,"PILOT_%s_FLAVOR"%pilot_index)):
+				pilot.flavor = data.get_value(section,"PILOT_%s_FLAVOR"%pilot_index)
+			if(data.get_value(section,"PILOT_%s_ON_HIRE_SCRIPT"%pilot_index)):
+				pilot.on_hire_script = data.get_value(section,"PILOT_%s_ON_HIRE_SCRIPT"%pilot_index)
+			if(data.get_value(section,"PILOT_%s_ON_DEATH_SCRIPT"%pilot_index)):
+				pilot.on_death_script = data.get_value(section,"PILOT_%s_ON_DEATH_SCRIPT"%pilot_index)
+			if(data.get_value(section,"PILOT_%s_AT_BAR_SCRIPT"%pilot_index)):
+				pilot.at_bar_script = data.get_value(section,"PILOT_%s_AT_BAR_SCRIPT"%pilot_index)
+			if(data.get_value(section,"PILOT_%s_IN_LOBBY_SCRIPT"%pilot_index)):
+				pilot.in_lobby_script = data.get_value(section,"PILOT_%s_IN_LOBBY_SCRIPT"%pilot_index)
+			if(data.get_value(section,"PILOT_%s_MISSION_ODDS"%pilot_index)):
+				pilot.mission_odds = data.get_value(section,"PILOT_%s_MISSION_ODDS"%pilot_index)
+			if(data.get_value(section,"PILOT_%s_CRITERIA_FOR_MISSION_ODDS"%pilot_index)):
+				pilot.criteria_for_mission_odds = data.get_value(section,"PILOT_%s_CRITERIA_FOR_MISSION_ODDS"%pilot_index)
+			if(data.get_value(section,"PILOT_%s_RETURNING_ODDS"%pilot_index)):
+				pilot.returning_odds = data.get_value(section,"PILOT_%s_RETURNING_ODDS"%pilot_index)
+			if(data.get_value(section,"PILOT_%s_CRITERIA_FOR_RETURNING_ODDS"%pilot_index)):
+				pilot.criteria_for_returning_odds = data.get_value(section,"PILOT_%s_CRITERIA_FOR_RETURNING_ODDS"%pilot_index)
+			if(data.get_value(section,"PILOT_%s_STATUS"%pilot_index)):
+				pilot.status = data.get_value(section,"PILOT_%s_STATUS"%pilot_index)
+			if(data.get_value(section,"PILOT_%s_MECH_ID"%pilot_index)):
+				pilot.mech_id = data.get_value(section,"PILOT_%s_MECH_ID"%pilot_index)
 			STATE.PILOTS.push_back(pilot);
 
 func create_and_push_pilot_to_STATE_try_from_user(section,pilot_index,data,user_data:ConfigFile):
 			var pilot = Pilot.new();
-			#todo - add checks to this- so the game doesn't crash if the user messes something up.
-			if(user_data.get_value(section,"PILOT_%s_ID"%pilot_index)):
+			if(data.get_value("DEFAULT","PILOT_%s_ID"%pilot_index)):
 				pilot.ID = data.get_value("DEFAULT","PILOT_%s_ID"%pilot_index)
-			else:
-				pilot.ID = data.get_value("DEFAULT","PILOT_%s_ID"%pilot_index)
-
-			if(user_data.get_value(section,"PILOT_%s_NAME"%pilot_index)):
+			if(data.get_value("DEFAULT","PILOT_%s_NAME"%pilot_index)):
 				pilot.name = data.get_value("DEFAULT","PILOT_%s_NAME"%pilot_index)
-			else:
-				pilot.name = data.get_value("DEFAULT","PILOT_%s_NAME"%pilot_index)
-
-			if(user_data.get_value(section,"PILOT_%s_COST"%pilot_index)):
+			if(data.get_value("DEFAULT","PILOT_%s_COST"%pilot_index)):
 				pilot.cost = data.get_value("DEFAULT","PILOT_%s_COST"%pilot_index)
-			else:
-				pilot.cost = data.get_value("DEFAULT","PILOT_%s_COST"%pilot_index)
-
-			if(user_data.get_value(section,"PILOT_%s_FLAVOR"%pilot_index)):
+			if(data.get_value("DEFAULT","PILOT_%s_FLAVOR"%pilot_index)):
 				pilot.flavor = data.get_value("DEFAULT","PILOT_%s_FLAVOR"%pilot_index)
-			else:
-				pilot.flavor = data.get_value("DEFAULT","PILOT_%s_FLAVOR"%pilot_index)
-
-			if(user_data.get_value(section,"PILOT_%s_THEME"%pilot_index)):
-				pilot.theme = data.get_value("DEFAULT","PILOT_%s_THEME"%pilot_index)
-			else:
-				pilot.theme = data.get_value("DEFAULT","PILOT_%s_THEME"%pilot_index)
-
-			if(user_data.get_value(section,"PILOT_%s_MISSION_ODDS"%pilot_index)):
+			if(data.get_value("DEFAULT","PILOT_%s_ON_HIRE_SCRIPT"%pilot_index)):
+				pilot.on_hire_script = data.get_value("DEFAULT","PILOT_%s_ON_HIRE_SCRIPT"%pilot_index)
+			if(data.get_value("DEFAULT","PILOT_%s_ON_DEATH_SCRIPT"%pilot_index)):
+				pilot.on_death_script = data.get_value("DEFAULT","PILOT_%s_ON_DEATH_SCRIPT"%pilot_index)
+			if(data.get_value("DEFAULT","PILOT_%s_AT_BAR_SCRIPT"%pilot_index)):
+				pilot.at_bar_script = data.get_value("DEFAULT","PILOT_%s_AT_BAR_SCRIPT"%pilot_index)
+			if(data.get_value("DEFAULT","PILOT_%s_IN_LOBBY_SCRIPT"%pilot_index)):
+				pilot.in_lobby_script = data.get_value("DEFAULT","PILOT_%s_IN_LOBBY_SCRIPT"%pilot_index)
+			if(data.get_value("DEFAULT","PILOT_%s_MISSION_ODDS"%pilot_index)):
 				pilot.mission_odds = data.get_value("DEFAULT","PILOT_%s_MISSION_ODDS"%pilot_index)
-			else:
-				pilot.mission_odds = data.get_value("DEFAULT","PILOT_%s_MISSION_ODDS"%pilot_index)
-
-			if(user_data.get_value(section,"PILOT_%s_CRITERIA_FOR_MISSION_ODDS"%pilot_index)):
+			if(data.get_value("DEFAULT","PILOT_%s_CRITERIA_FOR_MISSION_ODDS"%pilot_index)):
 				pilot.criteria_for_mission_odds = data.get_value("DEFAULT","PILOT_%s_CRITERIA_FOR_MISSION_ODDS"%pilot_index)
-			else:
-				pilot.criteria_for_mission_odds = data.get_value("DEFAULT","PILOT_%s_CRITERIA_FOR_MISSION_ODDS"%pilot_index)
-
-			if(user_data.get_value(section,"PILOT_%s_RETURNING_ODDS"%pilot_index)):
+			if(data.get_value("DEFAULT","PILOT_%s_RETURNING_ODDS"%pilot_index)):
 				pilot.returning_odds = data.get_value("DEFAULT","PILOT_%s_RETURNING_ODDS"%pilot_index)
-			else:
-				pilot.returning_odds = data.get_value("DEFAULT","PILOT_%s_RETURNING_ODDS"%pilot_index)
-
-			if(user_data.get_value(section,"PILOT_%s_CRITERIA_FOR_RETURNING_ODDS"%pilot_index)):
-				pilot.criteria_for_returning_odds = data.get_value("DEFAULT","PILOT_%s_CRITERIA_FOR_RETURNING_ODDS"%pilot_index)
-			else:
+			if(data.get_value("DEFAULT","PILOT_%s_CRITERIA_FOR_RETURNING_ODDS"%pilot_index)):
 				pilot.criteria_for_returning_odds = data.get_value("DEFAULT","PILOT_%s_CRITERIA_FOR_RETURNING_ODDS"%pilot_index)
 
 			if(user_data.get_value(section,"PILOT_%s_STATUS"%pilot_index)):
 				pilot.status = user_data.get_value(section,"PILOT_%s_STATUS"%pilot_index)
-			else:
+			elif(data.get_value("DEFAULT","PILOT_%s_STATUS"%pilot_index)):
 				pilot.status = data.get_value("DEFAULT","PILOT_%s_STATUS"%pilot_index)
 
 			if(user_data.get_value(section,"PILOT_%s_MECH_ID"%pilot_index)):
 				pilot.mech_id = user_data.get_value(section,"PILOT_%s_MECH_ID"%pilot_index)
-			else:
+			elif(data.get_value("DEFAULT","PILOT_%s_MECH_ID"%pilot_index)):
 				pilot.mech_id = data.get_value("DEFAULT","PILOT_%s_MECH_ID"%pilot_index)
-
 
 			STATE.PILOTS.push_back(pilot);
 
@@ -645,6 +639,10 @@ func save_pilots_to_user_data(bypass_autosave_settings_and_save_anyways=false):
 		user_data.set_value(section,"PILOT_%s_CRITERIA_FOR_MISSION_ODDS"%index,pilot.criteria_for_mission_odds)
 		user_data.set_value(section,"PILOT_%s_RETURNING_ODDS"%index,pilot.returning_odds)
 		user_data.set_value(section,"PILOT_%s_CRITERIA_FOR_RETURNING_ODDS"%index,pilot.criteria_for_returning_odds)
+		user_data.set_value(section,"PILOT_%s_ON_HIRE_SCRIPT"%index,pilot.on_hire_script)
+		user_data.set_value(section,"PILOT_%s_ON_DEATH_SCRIPT"%index,pilot.on_death_script)
+		user_data.set_value(section,"PILOT_%s_AT_BAR_SCRIPT"%index,pilot.at_bar_script)
+		user_data.set_value(section,"PILOT_%s_IN_LOBBY_SCRIPT"%index,pilot.in_lobby_script)
 
 		index+=1;
 	var err = await user_data.save("user://pilots.cfg")
