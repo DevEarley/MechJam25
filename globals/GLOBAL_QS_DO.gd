@@ -32,8 +32,9 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 
 			#sometimes we unlock missions after you have failed them for a retry.
 			var mech:Mech = LINQ.First(STATE.MECHS,func (mech:Mech):return mech.mission_id == id)
-			var pilot:Pilot = LINQ.First(STATE.PILOTS,func ( pilot:Pilot ):return pilot.mech_id == mech.ID)
-			destroy_or_reset_mech(mech,pilot)
+			if(mech!=null):
+				var pilot:Pilot = LINQ.First(STATE.PILOTS,func ( pilot:Pilot ):return pilot.mech_id == mech.ID)
+				destroy_or_reset_mech(mech,pilot)
 
 
 
@@ -62,8 +63,9 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 			mission.status = ENUMS.MISSION_STATUS.FAILED
 
 			var mech:Mech = LINQ.First(STATE.MECHS,func (mech:Mech):return mech.mission_id == id)
-			var pilot:Pilot = LINQ.First(STATE.PILOTS,func ( pilot:Pilot ):return pilot.mech_id == mech.ID)
-			destroy_or_reset_mech(mech,pilot)
+			if(mech!=null):
+				var pilot:Pilot = LINQ.First(STATE.PILOTS,func ( pilot:Pilot ):return pilot.mech_id == mech.ID)
+				destroy_or_reset_mech(mech,pilot)
 
 
 
@@ -76,8 +78,9 @@ func do(func_name_and_value:String, for_NPC:bool, npc:NPC):
 			mission.status = ENUMS.MISSION_STATUS.SUCCESS
 
 			var mech:Mech = LINQ.First(STATE.MECHS,func (mech:Mech):return mech.mission_id == id)
-			var pilot:Pilot = LINQ.First(STATE.PILOTS,func ( pilot:Pilot ):return pilot.mech_id == mech.ID)
-			destroy_or_reset_mech(mech,pilot)
+			if(mech!=null):
+				var pilot:Pilot = LINQ.First(STATE.PILOTS,func ( pilot:Pilot ):return pilot.mech_id == mech.ID)
+				destroy_or_reset_mech(mech,pilot)
 
 			DATA.save_missions_to_user_data()
 			QS.CURRENT_LINE+=1;

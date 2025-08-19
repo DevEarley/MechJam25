@@ -491,23 +491,36 @@ say[Ok. Up to you! Just do a good job.]DT
 \"
 
 region=\"end\"
-region=\"#26\"
+region=\"#26 - White hat\"
 VOICEMAIL_26_ID=26
-VOICEMAIL_26_FROM=\"Jack\"
+VOICEMAIL_26_FROM=\"You need me.\"
 VOICEMAIL_26_STATUS=0
 VOICEMAIL_26_SCRIPT=\"
+say[You have put your self on the map.]???
+say[Do you have any idea what you stepped into?]???
+say[Going forward... You will need to be extra careful.]???
+say[This is the time for you to reevaluate your options.]???
+
 \"
 VOICEMAIL_26_CALLBACK=\"
-say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
+say[*THIS NUMBER HAS BEEN DISCONNECTED*]
 
 \"
 
 region=\"end\"
 region=\"#27\"
 VOICEMAIL_27_ID=27
-VOICEMAIL_27_FROM=\"Jack\"
+VOICEMAIL_27_FROM=\"You need me more.\"
 VOICEMAIL_27_STATUS=0
 VOICEMAIL_27_SCRIPT=\"
+say[Things are only going to get worse for you.]???
+say[The time for being careful is over.]???
+say[You need to be your own benefactor...]???
+say[I won't help you.]???
+say[Only you can help your self.]???
+say[...because at the end of the day...]???
+say[Who cares most about you?]???
+do[unlock voicemail(26)]
 \"
 VOICEMAIL_27_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]

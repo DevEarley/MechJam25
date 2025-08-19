@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://bwlhvw7r5jrdg"]
+[gd_scene load_steps=29 format=4 uid="uid://bwlhvw7r5jrdg"]
 
 [ext_resource type="Environment" uid="uid://c7ssmhiiplyg8" path="res://world_environment.tres" id="1_2e7hn"]
 [ext_resource type="PackedScene" uid="uid://jgrspl5bog1o" path="res://prefabs/bg-nine-slice.tscn" id="1_eucbt"]
@@ -20,6 +20,7 @@
 [ext_resource type="Material" uid="uid://c3itow5c6pqcn" path="res://materials/world_mat_alt_3.tres" id="13_6n5it"]
 [ext_resource type="Material" uid="uid://bwpp1tyyxytn3" path="res://materials/world_mat_alt_2.tres" id="14_edtmm"]
 [ext_resource type="PackedScene" uid="uid://bxp7vjefp22e" path="res://parts-3D/engine.glb" id="14_maueq"]
+[ext_resource type="PackedScene" uid="uid://csgkln1gicnjg" path="res://parts-3D/crystal-mushrooms.glb" id="17_edtmm"]
 
 [sub_resource type="Animation" id="Animation_d1idq"]
 length = 0.001
@@ -353,6 +354,43 @@ visible = false
 layers = 4
 surface_material_override/0 = ExtResource("3_6bmw3")
 
+[node name="CRYSTAL_MUSHROOMS" parent="SubViewportContainer/SubViewport/PARTS_NODE" instance=ExtResource("17_edtmm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.61, 0)
+visible = false
+
+[node name="Crystal_shroom_1_cut69" parent="SubViewportContainer/SubViewport/PARTS_NODE/CRYSTAL_MUSHROOMS" index="0"]
+layers = 4
+
+[node name="Crystal_shroom_1_sep67" parent="SubViewportContainer/SubViewport/PARTS_NODE/CRYSTAL_MUSHROOMS" index="1"]
+layers = 4
+
+[node name="Crystal_shroom_1_sep42" parent="SubViewportContainer/SubViewport/PARTS_NODE/CRYSTAL_MUSHROOMS" index="2"]
+layers = 4
+
+[node name="Crystal_shroom_1_sep41" parent="SubViewportContainer/SubViewport/PARTS_NODE/CRYSTAL_MUSHROOMS" index="3"]
+layers = 4
+
+[node name="Crystal_shroom_1_sep40" parent="SubViewportContainer/SubViewport/PARTS_NODE/CRYSTAL_MUSHROOMS" index="4"]
+layers = 4
+
+[node name="Crystal_shroom_1_sep39" parent="SubViewportContainer/SubViewport/PARTS_NODE/CRYSTAL_MUSHROOMS" index="5"]
+layers = 4
+
+[node name="Crystal_shroom_1_sep38" parent="SubViewportContainer/SubViewport/PARTS_NODE/CRYSTAL_MUSHROOMS" index="6"]
+layers = 4
+
+[node name="Crystal_shroom_1_sep37" parent="SubViewportContainer/SubViewport/PARTS_NODE/CRYSTAL_MUSHROOMS" index="7"]
+layers = 4
+
+[node name="Crystal_shroom_1_sep36" parent="SubViewportContainer/SubViewport/PARTS_NODE/CRYSTAL_MUSHROOMS" index="8"]
+layers = 4
+
+[node name="Crystal_shroom_1_sep2" parent="SubViewportContainer/SubViewport/PARTS_NODE/CRYSTAL_MUSHROOMS" index="9"]
+layers = 4
+
+[node name="Crystal_shroom_1" parent="SubViewportContainer/SubViewport/PARTS_NODE/CRYSTAL_MUSHROOMS" index="10"]
+layers = 4
+
 [node name="Button" parent="." instance=ExtResource("2_jh33o")]
 visible = false
 layout_mode = 1
@@ -401,3 +439,4 @@ mouse_filter = 2
 [editable path="SubViewportContainer/SubViewport/PARTS_NODE/TAN_BLADE"]
 [editable path="SubViewportContainer/SubViewport/PARTS_NODE/RED_ENGINE"]
 [editable path="SubViewportContainer/SubViewport/PARTS_NODE/BLUE_ENGINE"]
+[editable path="SubViewportContainer/SubViewport/PARTS_NODE/CRYSTAL_MUSHROOMS"]

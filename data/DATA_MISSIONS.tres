@@ -878,9 +878,9 @@ do[unlock mission(25)]
 
 region=\"end\"
 
-region=\"Mission #26\"
+region=\"#26 - Getting hacked part 1\"
 MISSION_26_ID=26
-MISSION_26_NAME=\"MISSION-009\"
+MISSION_26_NAME=\"Protect yourself from getting hacked.\"
 MISSION_26_FLAVOR=\"MISSION FLAVOR TEXT\"
 MISSION_26_TYPE=0
 MISSION_26_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
@@ -900,12 +900,12 @@ MISSION_26_FAIL_SCRIPT=\"
 
 region=\"end\"
 
-region=\"Mission #27\"
+region=\" #27 - Getting hacked part 2\"
 MISSION_27_ID=27
 MISSION_27_NAME=\"MISSION-009\"
 MISSION_27_FLAVOR=\"MISSION FLAVOR TEXT\"
 MISSION_27_TYPE=0
-MISSION_27_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
+MISSION_27_ALLOWED_MECH_TYPES=Array[int]([10])
 MISSION_27_LOCATION_ID=9
 MISSION_27_STATUS=0
 MISSION_27_TIME_STARTED=\"0\"

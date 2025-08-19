@@ -64,6 +64,8 @@ func on_mission_pressed(mission:Mission):
 	var mech:Mech = null
 	var parts = [];
 	var pilot = null
+	STATE.CURRENT_MECH_ID=-1
+	STATE.CURRENT_PILOT_ID=-1
 	if(mission.status == ENUMS.MISSION_STATUS.IN_PROGRESS):
 		if(mission.time_started + time_24_hours <= time_now):
 			mission.status = ENUMS.MISSION_STATUS.NEEDS_DEBRIEF;
@@ -103,9 +105,8 @@ func on_mission_pressed(mission:Mission):
 			STATE.CURRENT_PILOT_ID = pilot.ID;
 		else:
 			STATE.CURRENT_PILOT_ID = -1
-	else:
-		STATE.CURRENT_MECH_ID=-1
-		STATE.CURRENT_PILOT_ID=-1
+
+
 	var location:Location = LINQ.First(STATE.LOCATIONS,func (location:Location): return location.ID==mission.location_id);
 	STATE.CURRENT_LOCATION_ID = location.ID;
 	var mission_bonus = CALCULATOR.get_mission_bonus(mission);

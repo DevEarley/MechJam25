@@ -212,7 +212,9 @@ static func display_node_for_part(id,part_nodes_parent):
 		_node.hide()
 	match(id):
 			0:
-				part_nodes_parent.get_node("ICE_BLADE").show();
+				part_nodes_parent.get_node("CRYSTAL_MUSHROOMS").show();
+
+				#part_nodes_parent.get_node("ICE_BLADE").show();
 			1:
 				part_nodes_parent.get_node("HEAT_BLADE").show();
 			2:
@@ -258,7 +260,7 @@ static func display_node_for_part(id,part_nodes_parent):
 			21:
 				part_nodes_parent.get_node("TAN_BLADE").show();
 			22:
-				part_nodes_parent.get_node("DARK_NUT").show();
+				part_nodes_parent.get_node("CRYSTAL_MUSHROOMS").show();
 
 static func display_node_for_mech(id,mech_nodes_parent):
 
