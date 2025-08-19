@@ -22,13 +22,17 @@ func load_or_create_everything():
 	await load_or_create_user_user_options()
 	update_ui_after_USER_OPTIONS_are_loaded();
 	load_or_create_user_locations()
+	STATE.LOCATIONS.sort_custom(func(location_a:Location,location_b:Location):return location_a.ID < location_b.ID)
 	load_or_create_user_missions()
+	STATE.MISSIONS.sort_custom(func(mission_a:Mission,mission_b:Mission):return mission_a.ID < mission_b.ID)
 	load_or_create_user_parts()
+	STATE.PARTS.sort_custom(func(part_a:Part,part_b:Part):return part_a.ID < part_b.ID)
 	load_or_create_user_mechs()
+	STATE.MECHS.sort_custom(func(mech_a:Mech,mech_b:Mech):return mech_a.ID < mech_b.ID)
 	load_or_create_user_pilots()
-	STATE.PILOTS.sort_custom(func(pilot:Pilot,pilot_b:Pilot):return pilot.ID<pilot_b.ID)
-
+	STATE.PILOTS.sort_custom(func(pilot:Pilot,pilot_b:Pilot):return pilot.ID < pilot_b.ID)
 	load_or_create_user_voicemails()
+	STATE.VOICEMAILS.sort_custom(func(voicemail_a:Voicemail,voicemail_b:Voicemail):return voicemail_a.ID < voicemail_b.ID)
 	load_or_create_user_game_state()
 	STATUS_BAR.update_status()
 

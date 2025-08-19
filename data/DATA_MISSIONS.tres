@@ -6,12 +6,41 @@
 script = ExtResource("1_2ubog")
 CONFIG_FILE = "[DEFAULT]
 
-VERSION=1.6
-NUMBER_OF_MISSIONS=37
+VERSION=1.7
+NUMBER_OF_MISSIONS=38
 
-region=\"#0 - J - The lost part\"
+
+region=\"#0\"
+MISSION_37_ID=-2
+MISSION_37_NAME=\"Adjust comms dish\"
+MISSION_37_FLAVOR=\"Fix the comms tower so you can start getting calls.\"
+MISSION_37_TYPE=7
+MISSION_37_ALLOWED_MECH_TYPES=Array[int]([10])
+MISSION_37_LOCATION_ID=7
+MISSION_37_STATUS=1
+MISSION_37_TIME_STARTED=\"0\"
+MISSION_37_ONE_OVER_ODDS_FOR_MISSION=1
+MISSION_37_ONE_OVER_ODDS_FOR_RETURNING=1
+MISSION_37_START_SCRIPT=\"
+say[I'll get it done really quick]{pilot}
+\"
+MISSION_37_SUCCESS_SCRIPT=\"
+say[You have 1 new voicemail.]
+do[unlock voicemail[1]]
+do[complete mission(-1)]
+
+
+\"
+MISSION_37_FAIL_SCRIPT=\"
+do[game over]
+\"
+
+region=\"end\"
+
+
+region=\"#0 - J - Help Jack find Jill.\"
 MISSION_0_ID=0
-MISSION_0_NAME=\"The lost part.\"
+MISSION_0_NAME=\"Help Jack find Jill.\"
 MISSION_0_FLAVOR=\"Help Jack find Jill. She was looking for a part in the Sunfire Desert.\"
 MISSION_0_TYPE=0
 MISSION_0_ALLOWED_MECH_TYPES=Array[int]([10])
@@ -87,7 +116,6 @@ say[DON'T SHOOT! I am coming out.]Jack
 say[*END OF VOICE MEMO.*]
 do[complete mission(1)]
 do[lose pilot(0)]
-do[get voicemail(1)]
 \"
 MISSION_1_START_SCRIPT=\"
 say[Another easy mission.]Jack
@@ -881,7 +909,7 @@ region=\"end\"
 region=\"#26 - Getting hacked part 1\"
 MISSION_26_ID=26
 MISSION_26_NAME=\"Protect yourself from getting hacked.\"
-MISSION_26_FLAVOR=\"MISSION FLAVOR TEXT\"
+MISSION_26_FLAVOR=\"You need a mech with a crystal mushroom module attached.\"
 MISSION_26_TYPE=0
 MISSION_26_ALLOWED_MECH_TYPES=Array[int]([0, 1, 2])
 MISSION_26_LOCATION_ID=9
@@ -1065,7 +1093,7 @@ say[It's just bad luck.]Jill
 
 region=\"end\"
 
-region=\"Mission #33\"
+region=\"#33 - RACE - Qualifiers\"
 MISSION_33_ID=33
 MISSION_33_NAME=\"RACE - Qualifiers\"
 MISSION_33_FLAVOR=\"You have been invited to a tournament. you must place in the top 8 to move on\"
@@ -1096,7 +1124,7 @@ do[unlock mission(33)]
 
 region=\"end\"
 
-region=\"Mission #34\"
+region=\"#34 - RACE - Quarter Finals\"
 MISSION_34_ID=34
 MISSION_34_NAME=\"RACE - Quarter Finals\"
 MISSION_34_FLAVOR=\"You must place in the top 5\"
@@ -1125,7 +1153,7 @@ do[unlock mission(33)]
 
 region=\"end\"
 
-region=\"Mission #35\"
+region=\"#35 - RACE - Semi Finals\"
 MISSION_35_ID=35
 MISSION_35_NAME=\"RACE - Semi Finals\"
 MISSION_35_FLAVOR=\"You must place in the top 3\"
@@ -1156,7 +1184,7 @@ do[unlock mission(33)]
 
 region=\"end\"
 
-region=\"Mission #36\"
+region=\"#36 - RACE - Finals\"
 MISSION_36_ID=36
 MISSION_36_NAME=\"RACE - Finals\"
 MISSION_36_FLAVOR=\"The finals! You need to place 1st!\"

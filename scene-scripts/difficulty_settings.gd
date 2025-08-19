@@ -5,7 +5,7 @@ func _ready():
 	#if there is no save file - show options.
 	# otherwise  - go to main menu.
 	$difficulty_24_hours_button.ON_TIMER_DONE = _on_difficulty_24_hours_button_pressed
-	$difficulty_instant_button.ON_TIMER_DONE =_on_difficulty_instant_button_pressed
+	#$difficulty_instant_button.ON_TIMER_DONE =_on_difficulty_instant_button_pressed
 
 func _on_difficulty_24_hours_button_pressed():
 	STATE.USE_REAL_TIME = true

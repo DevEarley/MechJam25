@@ -5,45 +5,6 @@
 [resource]
 script = ExtResource("1_b4ica")
 QUEST_SCRIPT = "say[Game by AsFunAsFun]
-[Let it ring]
-do[play(ring ring)]
-say[*RING!! RING!! *]
-choice[Answer the phone,Let it ring]
-[Answer the phone]
-say[HELLO?]YOU
-say[Don't tell me your name.]???
-say[I am looking for someone who can manage a fleet of mechs.]???
-say[Are you interested?]???
-choice[YES,NO]
-[NO]
-say[No]YOU
-say[...]
-say[GAME OVER]
-do[quit]
-go[end]
-[YES]
-say[Yeah, sure.]YOU
-say[OK, Just refer to me as the 'Benefactor'.]???
-say[Obtain a mech and recruit a pilot.]Benefator
-choice[How will I afford a mech?,Who are you?,Where can I find a pilot?, Why me?]
-[How will I afford a mech?]
-go[end]
-[Who are you?]
-say[To you, I am your ‘Benefactor’. Besides that, I am no one to you.]Benefactor
-go[end]
-[Where can I find a pilot?]
-say[Pick up your phone and call your acquaintances.]Benefactor
-say[I am sure you can persuade them with enough credits.]Benefactor
-go[end]
-[Why me?]
-say[No more questions.]Benefactor
-[end]
-say[Everyday, I will move ten thousand credits into your account.]Benefator
-say[If you let me down, I am cutting you off.]Benefactor
-say[I will have a mission for you tomorrow.]Benefactor
-say[Do not miss my call.]Benefactor
-say[*CLICK*]
-say[YOU RECIEVE 10000 CREDITS]
-do[get credits(10000)]
+
 do[unlock voicemail(0)]
 "

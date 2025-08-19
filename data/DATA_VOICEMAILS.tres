@@ -35,6 +35,29 @@ VOICEMAIL_1_ID=1
 VOICEMAIL_1_FROM=\"Benefactor\"
 VOICEMAIL_1_STATUS=0
 VOICEMAIL_1_SCRIPT=\"
+say[I am looking for someone who can manage a fleet of mechs.]???
+say[Just refer to me as the 'Benefactor'.]???
+say[Obtain a mech and recruit a pilot.]Benefator
+choice[How will I afford a mech?,Who are you?,Where can I find a pilot?, Why me?]
+[How will I afford a mech?]
+go[end]
+[Who are you?]
+say[To you, I am your 'Benefactor'. Besides that, I am no one to you.]Benefactor
+go[end]
+[Where can I find a pilot?]
+say[Pick up your phone and call your acquaintances.]Benefactor
+say[I am sure you can persuade them with enough credits.]Benefactor
+go[end]
+[Why me?]
+say[No more questions.]Benefactor
+[end]
+say[Everyday, I will move ten thousand credits into your account.]Benefator
+say[If you let me down, I am cutting you off.]Benefactor
+say[I will have a mission for you tomorrow.]Benefactor
+say[Do not miss my call.]Benefactor
+say[*CLICK*]
+say[YOU RECIEVE 10000 CREDITS]
+do[get credits(10000)]
 say[It seems you are missing your pilot.]Benefactor
 say[Hire a new one before you start your next mission.]Benefactor
 say[I sent a mission to your PC. Do not fail me.]Benefactor
@@ -459,11 +482,33 @@ say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 region=\"end\"
 region=\"#24 \"
 VOICEMAIL_24_ID=24
-VOICEMAIL_24_FROM=\"\"
+VOICEMAIL_24_FROM=\"CC: I have a tip.\"
 VOICEMAIL_24_STATUS=0
 VOICEMAIL_24_SCRIPT=\"
+say[This is a collect-call from 'I have a tip.']Automated Voice
+say[Would you like to accept the charges?]Automated Voice
+say[You hear a strange whistle followed by a sequence of tones.]
+say[You are nameless like me.]Mysterious Voice
+say[There is power in being nameless.]Mysterious Voice
+say[You have a number of choices ahead of you.]Mysterious Voice
+say[You don't have to put yourself on the map.]Mysterious Voice
+say[You can do so much good working for yourself.]Mysterious Voice
 \"
 VOICEMAIL_24_CALLBACK=\"
+if[working for benefactor]end
+if[working for rose]one click
+if[racing with jack and jill]three clicks
+[two clicks]
+say[You hear two clicks.]
+go[end]
+[one click]
+say[You hear one click.]
+go[end]
+[three clicks]
+say[You hear three clicks.]
+do[unlock voicemail(28)]
+[end]
+say[*THIS NUMBER IS DISCONNECTED*]
 \"
 
 region=\"end\"
@@ -491,72 +536,146 @@ say[Ok. Up to you! Just do a good job.]DT
 \"
 
 region=\"end\"
-region=\"#26 - White hat\"
+region=\"#26 - White hat?\"
 VOICEMAIL_26_ID=26
-VOICEMAIL_26_FROM=\"You need me.\"
+VOICEMAIL_26_FROM=\"CC: Be careful.\"
 VOICEMAIL_26_STATUS=0
 VOICEMAIL_26_SCRIPT=\"
-say[You have put your self on the map.]???
-say[Do you have any idea what you stepped into?]???
-say[Going forward... You will need to be extra careful.]???
-say[This is the time for you to reevaluate your options.]???
-
+say[This is a collect-call from 'Be careful.']Automated Voice
+say[Would you like to accept the charges?]Automated Voice
+say[You hear a strange whistle followed by a sequence of tones.]
+say[I am a friend. For now. I am going to help you.]Mysterious Voice
+say[You have put yourself on the map.]Mysterious Voice
+say[Going forward... You will need to be extra careful.]Mysterious Voice
+say[This is the time for you to reevaluate your options.]Mysterious Voice
+do[unlock voicemail(27)]
 \"
 VOICEMAIL_26_CALLBACK=\"
-say[*THIS NUMBER HAS BEEN DISCONNECTED*]
-
+if[working for benefactor]end
+if[working for rose]one click
+if[racing with jack and jill]three clicks
+[two clicks]
+say[You hear two clicks.]
+go[end]
+[one click]
+say[You hear one click.]
+go[end]
+[three clicks]
+say[You hear three clicks.]
+do[unlock voicemail(28)]
+[end]
+say[*THIS NUMBER WAS DISCONNECTED*]
 \"
 
 region=\"end\"
-region=\"#27\"
+region=\"#27 - HACKER pt 2\"
 VOICEMAIL_27_ID=27
-VOICEMAIL_27_FROM=\"You need me more.\"
+VOICEMAIL_27_FROM=\"CC: You must trust yourself.\"
 VOICEMAIL_27_STATUS=0
 VOICEMAIL_27_SCRIPT=\"
-say[Things are only going to get worse for you.]???
-say[The time for being careful is over.]???
-say[You need to be your own benefactor...]???
-say[I won't help you.]???
-say[Only you can help your self.]???
-say[...because at the end of the day...]???
-say[Who cares most about you?]???
-do[unlock voicemail(26)]
+say[This is a collect-call from 'You must trust yourself.']Automated Voice
+say[Would you like to accept the charges?]Automated Voice
+say[You hear a low whistle followed by a fast sequence of tones.]
+say[Things are only going to get worse for you.]Mysterious Voice
+say[The time for being careful is over.]Mysterious Voice
+say[One. You need to be your own benefactor...]Mysterious Voice
+say[Two. Roses won't help you.]Mysterious Voice
+say[Three. Only you can help your self.]Mysterious Voice
+say[...because at the end of the day...]Mysterious Voice
+say[Who cares most about you?]Mysterious Voice
 \"
 VOICEMAIL_27_CALLBACK=\"
-say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
+if[working for benefactor]end
+if[working for rose]one click
+if[racing with jack and jill]three clicks
+[two clicks]
+say[You hear two clicks.]
+go[end]
+[one click]
+say[You hear one click.]
+go[end]
+[three clicks]
+say[You hear three clicks.]
+do[unlock voicemail(28)]
+[end]
+say[*THIS NUMBER HAS BEEN DISCONNECTED*]
 \"
 
 region=\"end\"
-region=\"#28\"
+region=\"#28 - HACKER pt 3\"
 VOICEMAIL_28_ID=28
-VOICEMAIL_28_FROM=\"Jack\"
+VOICEMAIL_28_FROM=\"CC: White hat.\"
 VOICEMAIL_28_STATUS=0
 VOICEMAIL_28_SCRIPT=\"
+say[This is a collect-call from 'White hat.']Automated Voice
+say[Would you like to accept the charges?]Automated Voice
+say[You hear a high whistle followed by a slow sequence of tones.]
+say[When you do anything, your actions ripple out.]Mysterious Voice
+say[We all have ghosts, the evidence of our existence.]Mysterious Voice
+say[Reflections of ourselves from the past.]Mysterious Voice
+say[Our ghosts follow our actions as they ripple out.]Mysterious Voice
+say[Those ghosts point directly back to us.]Mysterious Voice
+say[No matter what we call ourselves.]Mysterious Voice
+say[You may call me 'White Hat'.]White Hat
+say[My name doesn't really matter anyways.]White Hat
+say[I am helping you. And as you change the world, your actions will ripple out .]White Hat
+say[My ghost and yours, hand-in-hand, all along the way.]White Hat.
 \"
 VOICEMAIL_28_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"#29\"
+region=\"#29 - B - No more side missions! Last warning.\"
 VOICEMAIL_29_ID=29
-VOICEMAIL_29_FROM=\"Jack\"
+VOICEMAIL_29_FROM=\"Benefactor\"
 VOICEMAIL_29_STATUS=0
 VOICEMAIL_29_SCRIPT=\"
+say[We have a BIG problem.]Benefactor
+say[Multiple sources have identified mechs, FROM YOUR FLEET, in places where they should not be.]Benefactor
+say[Why am I paying you? Those mecha need to be available for my missions.]Benefactor
+say[When I give you a mission, I expect your best pilots and your most expensive equipment.]Benefactor
+say[Do not bother explaining yourself. I do not care.]Benefactor
+say[Last warning. I will cut you off. Do not f#@$ with me.]Benefactor
+say[NO MORE SIDE MISSIONS!]Benefactor
+
 \"
 VOICEMAIL_29_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 \"
 
 region=\"end\"
-region=\"#30\"
+region=\"#30 - Jill - Missing you.\"
 VOICEMAIL_30_ID=30
-VOICEMAIL_30_FROM=\"Jack\"
+VOICEMAIL_30_FROM=\"Jill\"
 VOICEMAIL_30_STATUS=0
 VOICEMAIL_30_SCRIPT=\"
+say[Hey.]Jill
+say[Just wanted to call and say, I miss you.]Jill
+say[Jack misses you too. We wish you could be up out here. Racing every day.]Jill
+say[Call me back... I miss the sound of your voice.]Jill
 \"
 VOICEMAIL_30_CALLBACK=\"
-say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
+say[I know these benefactors pay your bills. But at what cost?]Jill
+say[Sorry. I know that is kind of forward.]Jill
+choices[It's ok. I get it., What do you have against the benefactors?]Jill
+[It's ok. I get it.]
+say[Good. I care about you. you know? We have been friends for so long. ]Jill
+say[One day, maybe soon, you'll get out. Once you do, you can be my manager!]Jill
+say[Jack isn't a racer - but I am. And I am good.]Jill
+say[At the very least, I can promise you we will make a ton of credits!]Jill
+say[But none of that can happen if you are all tied up with those benefactors.]
+choices[I can't wait. One day soon., What do you have against the benefactors?]Jill
+[I can't wait. One day soon.]
+say[Oh that is good to hear!]Jill
+say[I am going to hold you to that!]Jill
+say[Good bye for now.]Jill
+[What do you have against the benefactors?]
+say[Look, they don't care about you.]Jill
+say[Not like I do.]Jill
+say[It's ok. I don't expect you to understand right away.]Jill
+say[Just think about it ok?]Jill
+say[Good bye for now.]Jill
 \"
 
 region=\"end\"
