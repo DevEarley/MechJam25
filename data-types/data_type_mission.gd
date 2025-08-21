@@ -11,6 +11,7 @@ var allowed_mech_types : Array[ENUMS.MECH_TYPE]
 var status : ENUMS.MISSION_STATUS
 
 var time_started = 0 #seconds
+var length = 0 #minutes
 
 
 var start_script:String;

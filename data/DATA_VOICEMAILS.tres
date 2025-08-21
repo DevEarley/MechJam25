@@ -33,7 +33,7 @@ region=\"end\"
 region=\"#1 - B - Hire a new one.\"
 VOICEMAIL_1_ID=1
 VOICEMAIL_1_FROM=\"Benefactor\"
-VOICEMAIL_1_STATUS=0
+VOICEMAIL_1_STATUS=1
 VOICEMAIL_1_SCRIPT=\"
 say[I am looking for someone who can manage a fleet of mechs.]???
 say[Just refer to me as the 'Benefactor'.]???
@@ -773,6 +773,19 @@ do[unlock mission(36)]
 VOICEMAIL_36_CALLBACK=\"
 say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
 
+\"
+region=\"end\"
+region=\"#37 - Strange lights\"
+VOICEMAIL_37_ID=37
+VOICEMAIL_37_FROM=\"Strange lights\"
+VOICEMAIL_37_STATUS=0
+VOICEMAIL_37_SCRIPT=\"
+say[Reports of strange lights in the desert at night.]
+\"
+VOICEMAIL_37_CALLBACK=\"
+say[*THIS NUMBER CANNOT BE REACHED AS DIALED*]
+do[complete voicemail(37)]
+do[unlock mission(23)]
 \"
 region=\"end\"
 "

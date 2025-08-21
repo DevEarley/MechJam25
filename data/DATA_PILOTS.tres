@@ -29,6 +29,18 @@ PILOT_0_ON_DEATH_SCRIPT=\"
 PILOT_0_AT_BAR_SCRIPT=\"
 \"
 PILOT_0_IN_LOBBY_SCRIPT=\"
+if[comms satellite is broken] satellite is broken
+if[working for benefactor]working for B
+
+[satellite is broken]
+say[I tried calling someone, but I think the comms satellite is down again.]Jack
+do[unlock mission(-2)]
+go[end]
+
+go[end]
+[working for B]
+
+[end]
 \"
 
 region=\"end\"

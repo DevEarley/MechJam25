@@ -120,19 +120,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="Line2D2" type="Line2D" parent="MISSION_BOX"]
-position = Vector2(709.225, 347.225)
-scale = Vector2(7.41667, 5.15655)
-points = PackedVector2Array(0, 0, 10, 0, 20, 20)
-width = 0.3
-default_color = Color(0, 0, 0, 1)
-
-[node name="Line2D" type="Line2D" parent="MISSION_BOX"]
-position = Vector2(706.225, 345.547)
-scale = Vector2(7.41667, 5.15655)
-points = PackedVector2Array(0, 0, 10, 0, 20, 20)
-width = 0.3
-
 [node name="NEXT_MISSION" type="Button" parent="MISSION_BOX"]
 layout_mode = 0
 offset_left = 1247.0
@@ -604,6 +591,7 @@ text_overrun_behavior = 3
 script = ExtResource("7_n8kpc")
 
 [node name="MECH_LIST" type="NinePatchRect" parent="MISSION_BOX/MECH"]
+visible = false
 clip_contents = true
 layout_mode = 0
 offset_left = -16.0
@@ -688,6 +676,7 @@ offset_right = 485.0
 offset_bottom = -305.0
 
 [node name="PILOT_LIST" type="NinePatchRect" parent="MISSION_BOX/PILOT_BUTTON"]
+visible = false
 layout_mode = 0
 offset_left = 445.0
 offset_top = -390.0

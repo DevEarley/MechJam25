@@ -34,8 +34,11 @@ func _ready():
 func done_moving_camera():
 	MOVING = false
 
-func start_moving_to_position(new_position:Vector3):
-	CAMERA_MOVE_CHANGE = new_position - CAMERA.global_position;
+func start_moving_to_position( location:Location):
+	if(location.ID == 7):
+		ANIMATOR.play("still_for_map")
+		return
+	CAMERA_MOVE_CHANGE = location.map_position - CAMERA.global_position;
 	CAMERA_MOVE_OG_POSITION = CAMERA.global_position;
 	CAMERA_MOVE_EASING_TIME = 0
 	CAMERA_MOVE_TIMER.start()

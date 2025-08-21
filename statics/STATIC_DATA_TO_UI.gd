@@ -325,6 +325,9 @@ static func get_environment_text_and_tint(environment):
 			ENUMS.ENVIRONMENT.ACID_LAKE:
 				environment_text = "ACID LAKE"
 				environment_tint = Vector3(120,227,86);
+			ENUMS.ENVIRONMENT.IN_ATMOSPHERE:
+				environment_text = "ATMOSPHERE"
+				environment_tint = Vector3(120,227,86);
 	return [environment_text,environment_tint]
 
 static func get_mech_type(mech):

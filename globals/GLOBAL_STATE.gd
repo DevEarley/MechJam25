@@ -73,12 +73,4 @@ var BENEFACTOR_IS_GIVING_YOU_MONEY
 var DT_ROSE_IS_GIVING_YOU_MONEY
 var YOU_ARE_RACING_WITH_JACK_AND_JILL
 #var DID_DAILY_FOR_MISSION = false
-
-# you signed in before 24 hour mark - you are still waiting. You may get Daily on Debrief.
-
-# you signed in after 24 hour mark -
-#	you got daily when you signed in. DID_DAILY_FOR_MISSION_WHEN_LOGGING_IN is true
-
-# you signed in before 24 hour mark -
-#	 - it has past 24 hours now. Get Daily on Debrief. DID_DAILY_FOR_MISSION_WHEN_LOGGING_IN is false
-#    - then maybe you start a new mission. and leave the app open for 24 hours. On Debrief, DID_DAILY_FOR_MISSION_WHEN_LOGGING_IN would still be false.
+var COMMS_SATELLITE_IS_BROKEN = false

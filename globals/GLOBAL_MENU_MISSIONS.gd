@@ -206,7 +206,7 @@ func on_mission_pressed(mission:Mission):
 		if(LAST_LOCATION==null || location!=LAST_LOCATION):
 			MAP.ANIMATOR.stop()
 			MAP.CAMERA.rotation = Vector3(-PI/2,0,0)
-			MAP.start_moving_to_position( location.map_position)
+			MAP.start_moving_to_position( location)
 			await WAIT.for_seconds(0.15)
 			MAP.CURSOR.global_position = Vector3(location.map_position.x,MAP.CURSOR.global_position.y,location.map_position.z)
 		LAST_LOCATION = location

@@ -1,9 +1,47 @@
-[gd_scene load_steps=15 format=3 uid="uid://dsop6y3ld84ai"]
+[gd_scene load_steps=20 format=3 uid="uid://dsop6y3ld84ai"]
 
 [ext_resource type="PackedScene" uid="uid://df6x3in6yu7ai" path="res://locations-3D/map-1.glb" id="1_4xfga"]
+[ext_resource type="PackedScene" uid="uid://w257xgbpg5ya" path="res://locations-3D/HQ.glb" id="2_2klcf"]
 [ext_resource type="Environment" uid="uid://c7ssmhiiplyg8" path="res://world_environment.tres" id="2_paxxb"]
 [ext_resource type="Material" uid="uid://dioy0y3vm4mof" path="res://materials/map_mat_2.tres" id="3_2klcf"]
 [ext_resource type="Material" uid="uid://dnjydsurevcp5" path="res://materials/map_mat_3.tres" id="4_0cso3"]
+
+[sub_resource type="Animation" id="Animation_nakos"]
+resource_name = "rotate"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jh32y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_be0no"]
+_data = {
+&"RESET": SubResource("Animation_jh32y"),
+&"rotate": SubResource("Animation_nakos")
+}
 
 [sub_resource type="Animation" id="Animation_gldc4"]
 length = 0.001
@@ -73,7 +111,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-14.791, 6.962, -15.595)]
+"values": [Vector3(-113.632, 11.871, 222.061)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -85,14 +123,42 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.927606, 3.06563, 0)]
+"values": [Vector3(-0.199917, 0.356103, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_be0no"]
+resource_name = "still_for_map"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CAMERA:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-133.327, 11.871, 234.976)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CAMERA:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.199917, 0.356103, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0cso3"]
 _data = {
 &"RESET": SubResource("Animation_gldc4"),
 &"idle": SubResource("Animation_paxxb"),
-&"still": SubResource("Animation_0cso3")
+&"still": SubResource("Animation_0cso3"),
+&"still_for_map": SubResource("Animation_be0no")
 }
 
 [sub_resource type="Animation" id="Animation_2lpho"]
@@ -223,8 +289,61 @@ transform = Transform3D(-0.997116, -0.0607259, 0.0455149, 0, 0.599751, 0.800186,
 cull_mask = 16
 environment = ExtResource("2_paxxb")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Map/HQ")
+libraries = {
+&"": SubResource("AnimationLibrary_be0no")
+}
+autoplay = "rotate"
+speed_scale = 0.01
+
 [node name="Map" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.54992, 0)
+
+[node name="HQ" parent="Map" instance=ExtResource("2_2klcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -138.667, -67.5213, 205.109)
+
+[node name="Cube2_extract36" parent="Map/HQ" index="0"]
+layers = 16
+
+[node name="Cube2_extract39" parent="Map/HQ" index="1"]
+layers = 16
+
+[node name="Cube2_extract38" parent="Map/HQ" index="2"]
+layers = 16
+
+[node name="Cube2_extract37" parent="Map/HQ" index="3"]
+layers = 16
+
+[node name="Cube2_extract362" parent="Map/HQ" index="4"]
+layers = 16
+
+[node name="Cube2_extract35" parent="Map/HQ" index="5"]
+layers = 16
+
+[node name="Cube26" parent="Map/HQ" index="6"]
+layers = 16
+
+[node name="Cube2_cut25" parent="Map/HQ" index="7"]
+layers = 16
+
+[node name="Cube2_copy46" parent="Map/HQ" index="8"]
+layers = 16
+
+[node name="Cube2_sep44" parent="Map/HQ" index="9"]
+layers = 16
+
+[node name="Cube2_sep12" parent="Map/HQ" index="10"]
+layers = 16
+
+[node name="Cube2_sep9" parent="Map/HQ" index="11"]
+layers = 16
+
+[node name="Cube2" parent="Map/HQ" index="12"]
+layers = 16
+
+[node name="Cube1" parent="Map/HQ" index="13"]
+layers = 16
 
 [node name="map-1" parent="Map" instance=ExtResource("1_4xfga")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.878177, 0)
@@ -278,4 +397,5 @@ mesh = SubResource("SphereMesh_2klcf")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("4_0cso3")
 
+[editable path="Map/HQ"]
 [editable path="Map/map-1"]

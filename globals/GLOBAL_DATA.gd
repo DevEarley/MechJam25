@@ -241,6 +241,7 @@ func create_and_push_mission_to_STATE(section,mission_index,user_data):
 			mission.start_script = user_data.get_value(section,"MISSION_%s_START_SCRIPT"%mission_index)
 			mission.success_script = user_data.get_value(section,"MISSION_%s_SUCCESS_SCRIPT"%mission_index)
 			mission.fail_script = user_data.get_value(section,"MISSION_%s_FAIL_SCRIPT"%mission_index)
+			mission.length = user_data.get_value(section,"MISSION_%s_LENGTH"%mission_index)
 			mission.status = user_data.get_value(section,"MISSION_%s_STATUS"%mission_index)
 			mission.time_started = int(user_data.get_value(section,"MISSION_%s_TIME_STARTED"%mission_index))
 
@@ -249,60 +250,46 @@ func create_and_push_mission_to_STATE(section,mission_index,user_data):
 func create_and_push_mission_to_STATE_try_from_user(section,mission_index,data,user_data:ConfigFile):
 			var mission = Mission.new();
 
-			if(user_data.has_section_key(section,"MISSION_%s_ID"%mission_index)):
-				mission.ID = data.get_value("DEFAULT","MISSION_%s_ID"%mission_index)
-			else:
+			if(data.has_section_key(section,"MISSION_%s_ID"%mission_index)):
 				mission.ID = data.get_value("DEFAULT","MISSION_%s_ID"%mission_index)
 
-			if(user_data.has_section_key(section,"MISSION_%s_NAME"%mission_index)):
-				mission.name = data.get_value("DEFAULT","MISSION_%s_NAME"%mission_index)
-			else:
+
+			if(data.has_section_key(section,"MISSION_%s_NAME"%mission_index)):
 				mission.name = data.get_value("DEFAULT","MISSION_%s_NAME"%mission_index)
 
-			if(user_data.has_section_key(section,"MISSION_%s_FLAVOR"%mission_index)):
-				mission.flavor = data.get_value("DEFAULT","MISSION_%s_FLAVOR"%mission_index)
-			else:
+
+			if(data.has_section_key(section,"MISSION_%s_FLAVOR"%mission_index)):
 				mission.flavor = data.get_value("DEFAULT","MISSION_%s_FLAVOR"%mission_index)
 
-			if(user_data.has_section_key(section,"MISSION_%s_TYPE"%mission_index)):
-				mission.type = data.get_value("DEFAULT","MISSION_%s_TYPE"%mission_index)
-			else:
+
+			if(data.has_section_key(section,"MISSION_%s_TYPE"%mission_index)):
 				mission.type = data.get_value("DEFAULT","MISSION_%s_TYPE"%mission_index)
 
-			if(user_data.has_section_key(section,"MISSION_%s_ONE_OVER_ODDS_FOR_MISSION"%mission_index)):
-				mission.one_over_odds_for_mission = data.get_value("DEFAULT","MISSION_%s_ONE_OVER_ODDS_FOR_MISSION"%mission_index)
-			else:
+
+			if(data.has_section_key(section,"MISSION_%s_ONE_OVER_ODDS_FOR_MISSION"%mission_index)):
 				mission.one_over_odds_for_mission = data.get_value("DEFAULT","MISSION_%s_ONE_OVER_ODDS_FOR_MISSION"%mission_index)
 
-			if(user_data.has_section_key(section,"MISSION_%s_ONE_OVER_ODDS_FOR_RETURNING"%mission_index)):
+			if(data.has_section_key(section,"MISSION_%s_ONE_OVER_ODDS_FOR_RETURNING"%mission_index)):
 				mission.one_over_odds_for_returning= data.get_value(section,"MISSION_%s_ONE_OVER_ODDS_FOR_RETURNING"%mission_index)
-			else:
-				mission.one_over_odds_for_returning = data.get_value("DEFAULT","MISSION_%s_ONE_OVER_ODDS_FOR_RETURNING"%mission_index)
 
-			if(user_data.has_section_key(section,"MISSION_%s_ALLOWED_MECH_TYPES"%mission_index)):
-				mission.allowed_mech_types = data.get_value("DEFAULT","MISSION_%s_ALLOWED_MECH_TYPES"%mission_index)
-			else:
+
+			if(data.has_section_key(section,"MISSION_%s_ALLOWED_MECH_TYPES"%mission_index)):
 				mission.allowed_mech_types = data.get_value("DEFAULT","MISSION_%s_ALLOWED_MECH_TYPES"%mission_index)
 
-			if(user_data.has_section_key(section,"MISSION_%s_LOCATION_ID"%mission_index)):
+			if(data.has_section_key(section,"MISSION_%s_LOCATION_ID"%mission_index)):
 				mission.location_id = data.get_value(section,"MISSION_%s_LOCATION_ID"%mission_index)
-			else:
-				mission.location_id = data.get_value("DEFAULT","MISSION_%s_LOCATION_ID"%mission_index)
 
-			if(user_data.has_section_key(section,"MISSION_%s_START_SCRIPT"%mission_index)):
+			if(data.has_section_key(section,"MISSION_%s_START_SCRIPT"%mission_index)):
 				mission.start_script = data.get_value(section,"MISSION_%s_START_SCRIPT"%mission_index)
-			else:
-				mission.start_script = data.get_value("DEFAULT","MISSION_%s_START_SCRIPT"%mission_index)
 
-			if(user_data.has_section_key(section,"MISSION_%s_SUCCESS_SCRIPT"%mission_index)):
+			if(data.has_section_key(section,"MISSION_%s_SUCCESS_SCRIPT"%mission_index)):
 				mission.success_script = data.get_value(section,"MISSION_%s_SUCCESS_SCRIPT"%mission_index)
-			else:
-				mission.success_script = data.get_value("DEFAULT","MISSION_%s_SUCCESS_SCRIPT"%mission_index)
 
-			if(user_data.has_section_key(section,"MISSION_%s_FAIL_SCRIPT"%mission_index)):
+			if(data.has_section_key(section,"MISSION_%s_FAIL_SCRIPT"%mission_index)):
 				mission.fail_script = data.get_value(section,"MISSION_%s_FAIL_SCRIPT"%mission_index)
-			else:
-				mission.fail_script = data.get_value("DEFAULT","MISSION_%s_FAIL_SCRIPT"%mission_index)
+
+			if(data.has_section_key(section,"MISSION_%s_LENGTH"%mission_index)):
+				mission.length = data.get_value(section,"MISSION_%s_LENGTH"%mission_index)
 
 			if(user_data.has_section_key(section,"MISSION_%s_STATUS"%mission_index)):
 				mission.status = user_data.get_value(section,"MISSION_%s_STATUS"%mission_index)
@@ -338,6 +325,7 @@ func save_missions_to_user_data(bypass_autosave_settings_and_save_anyways=false)
 		user_data.set_value(section,"MISSION_%s_SUCCESS_SCRIPT"%index,mission.success_script)
 		user_data.set_value(section,"MISSION_%s_START_SCRIPT"%index,mission.start_script)
 		user_data.set_value(section,"MISSION_%s_FAIL_SCRIPT"%index,mission.fail_script)
+		user_data.set_value(section,"MISSION_%s_LENGTH"%index,mission.length)
 
 		index+=1;
 	var err = await user_data.save("user://missions.cfg")
@@ -387,86 +375,90 @@ func load_or_create_user_parts():
 			for part_index in number_of_parts:
 				create_and_push_part_to_STATE("DEFAULT",part_index,resource_data)
 
-func create_and_push_part_to_STATE(section,part_index,user_data):
+func create_and_push_part_to_STATE(section,part_index,data):
 			var part = Part.new();
 			#todo - add checks to this- so the game doesn't crash if the user messes something up.
-			part.ID = "%s"%user_data.get_value(section,"PART_%s_ID"%part_index)
-			part.name = user_data.get_value(section,"PART_%s_NAME"%part_index)
-			part.flavor = user_data.get_value(section,"PART_%s_FLAVOR"%part_index)
-			part.cost = user_data.get_value(section,"PART_%s_COST"%part_index)
-			part.theme = user_data.get_value(section,"PART_%s_THEME"%part_index)
-			part.recycle_points = user_data.get_value(section,"PART_%s_RECYCLE_POINTS"%part_index)
-			part.selling_price = user_data.get_value(section,"PART_%s_SELLING_PRICE"%part_index)
-			part.mission_odds = user_data.get_value(section,"PART_%s_MISSION_ODDS"%part_index)
-			part.criteria_for_mission_odds = user_data.get_value(section,"PART_%s_CRITERIA_FOR_MISSION_ODDS"%part_index)
-			part.returning_odds = user_data.get_value(section,"PART_%s_RETURNING_ODDS"%part_index)
-			part.criteria_for_returning_odds = user_data.get_value(section,"PART_%s_CRITERIA_FOR_RETURNING_ODDS"%part_index)
-			part.type = user_data.get_value(section,"PART_%s_TYPE"%part_index)
-			part.status = user_data.get_value(section,"PART_%s_STATUS"%part_index)
-			part.attached_to_mech_id = user_data.get_value(section,"PART_%s_ATTACHED_TO_MECH_ID"%part_index)
+			if(data.has_section_key(section,"PART_%s_ID"%part_index)):
+				part.ID = data.get_value(section,"PART_%s_ID"%part_index)
+
+			if(data.has_section_key(section,"PART_%s_NAME"%part_index)):
+				part.name = data.get_value(section,"PART_%s_NAME"%part_index)
+
+			if(data.has_section_key(section,"PART_%s_FLAVOR"%part_index)):
+				part.flavor = data.get_value(section,"PART_%s_FLAVOR"%part_index)
+
+			if(data.has_section_key(section,"PART_%s_COST"%part_index)):
+				part.cost = data.get_value(section,"PART_%s_COST"%part_index)
+
+			if(data.has_section_key(section,"PART_%s_THEME"%part_index)):
+				part.theme = data.get_value(section,"PART_%s_THEME"%part_index)
+
+			if(data.has_section_key(section,"PART_%s_RECYCLE_POINTS"%part_index)):
+				part.recycle_points = data.get_value(section,"PART_%s_RECYCLE_POINTS"%part_index)
+
+			if(data.has_section_key(section,"PART_%s_SELLING_PRICE"%part_index)):
+				part.selling_price = data.get_value(section,"PART_%s_SELLING_PRICE"%part_index)
+
+			if(data.has_section_key(section,"PART_%s_MISSION_ODDS"%part_index)):
+				part.mission_odds = data.get_value(section,"PART_%s_MISSION_ODDS"%part_index)
+
+			if(data.has_section_key(section,"PART_%s_CRITERIA_FOR_MISSION_ODDS"%part_index)):
+				part.criteria_for_mission_odds = data.get_value(section,"PART_%s_CRITERIA_FOR_MISSION_ODDS"%part_index)
+
+			if(data.has_section_key(section,"PART_%s_RETURNING_ODDS"%part_index)):
+				part.returning_odds = data.get_value(section,"PART_%s_RETURNING_ODDS"%part_index)
+
+			if(data.has_section_key(section,"PART_%s_CRITERIA_FOR_RETURNING_ODDS"%part_index)):
+				part.criteria_for_returning_odds = data.get_value(section,"PART_%s_CRITERIA_FOR_RETURNING_ODDS"%part_index)
+
+			if(data.has_section_key(section,"PART_%s_TYPE"%part_index)):
+				part.type = data.get_value(section,"PART_%s_TYPE"%part_index)
+
+			if(data.has_section_key(section,"PART_%s_STATUS"%part_index)):
+				part.status = data.get_value(section,"PART_%s_STATUS"%part_index)
+
+			if(data.has_section_key(section,"PART_%s_ATTACHED_TO_MECH_ID"%part_index)):
+				part.attached_to_mech_id = data.get_value(section,"PART_%s_ATTACHED_TO_MECH_ID"%part_index)
+
 			STATE.PARTS.push_back(part);
 
 func create_and_push_part_to_STATE_try_from_user(section,part_index,data,user_data:ConfigFile):
 			var part = Part.new();
 			#todo - add checks to this- so the game doesn't crash if the user messes something up.
-			if(user_data.has_section_key(section,"PART_%s_ID"%part_index)):
-				part.ID = "%s"%data.get_value("DEFAULT","PART_%s_ID"%part_index)
-			else:
-				part.ID =data.get_value("DEFAULT","PART_%s_ID"%part_index)
+			if(data.has_section_key(section,"PART_%s_ID"%part_index)):
+				part.ID = data.get_value("DEFAULT","PART_%s_ID"%part_index)
 
-			if(user_data.has_section_key(section,"PART_%s_NAME"%part_index)):
-				part.name = data.get_value("DEFAULT","PART_%s_NAME"%part_index)
-			else:
+			if(data.has_section_key(section,"PART_%s_NAME"%part_index)):
 				part.name = data.get_value("DEFAULT","PART_%s_NAME"%part_index)
 
-			if(user_data.has_section_key(section,"PART_%s_FLAVOR"%part_index)):
+			if(data.has_section_key(section,"PART_%s_FLAVOR"%part_index)):
 				part.flavor = data.get_value("DEFAULT","PART_%s_FLAVOR"%part_index)
-			else:
-				part.flavor =data.get_value("DEFAULT","PART_%s_FLAVOR"%part_index)
 
-			if(user_data.has_section_key(section,"PART_%s_COST"%part_index)):
-				part.cost = data.get_value("DEFAULT","PART_%s_COST"%part_index)
-			else:
+			if(data.has_section_key(section,"PART_%s_COST"%part_index)):
 				part.cost = data.get_value("DEFAULT","PART_%s_COST"%part_index)
 
-			if(user_data.has_section_key(section,"PART_%s_THEME"%part_index)):
-				part.theme = data.get_value("DEFAULT","PART_%s_THEME"%part_index)
-			else:
+			if(data.has_section_key(section,"PART_%s_THEME"%part_index)):
 				part.theme = data.get_value("DEFAULT","PART_%s_THEME"%part_index)
 
-			if(user_data.has_section_key(section,"PART_%s_RECYCLE_POINTS"%part_index)):
+			if(data.has_section_key(section,"PART_%s_RECYCLE_POINTS"%part_index)):
 				part.recycle_points = data.get_value("DEFAULT","PART_%s_RECYCLE_POINTS"%part_index)
-			else:
-				part.recycle_points =data.get_value("DEFAULT","PART_%s_RECYCLE_POINTS"%part_index)
 
-			if(user_data.has_section_key(section,"PART_%s_SELLING_PRICE"%part_index)):
-				part.selling_price = data.get_value("DEFAULT","PART_%s_SELLING_PRICE"%part_index)
-			else:
+			if(data.has_section_key(section,"PART_%s_SELLING_PRICE"%part_index)):
 				part.selling_price = data.get_value("DEFAULT","PART_%s_SELLING_PRICE"%part_index)
 
-			if(user_data.has_section_key(section,"PART_%s_MISSION_ODDS"%part_index)):
+			if(data.has_section_key(section,"PART_%s_MISSION_ODDS"%part_index)):
 				part.mission_odds = data.get_value("DEFAULT","PART_%s_MISSION_ODDS"%part_index)
-			else:
-				part.mission_odds =data.get_value("DEFAULT","PART_%s_MISSION_ODDS"%part_index)
 
-			if(user_data.has_section_key(section,"PART_%s_CRITERIA_FOR_MISSION_ODDS"%part_index)):
-				part.criteria_for_mission_odds = data.get_value("DEFAULT","PART_%s_CRITERIA_FOR_MISSION_ODDS"%part_index)
-			else:
+			if(data.has_section_key(section,"PART_%s_CRITERIA_FOR_MISSION_ODDS"%part_index)):
 				part.criteria_for_mission_odds = data.get_value("DEFAULT","PART_%s_CRITERIA_FOR_MISSION_ODDS"%part_index)
 
-			if(user_data.has_section_key(section,"PART_%s_RETURNING_ODDS"%part_index)):
-				part.returning_odds = data.get_value("DEFAULT","PART_%s_RETURNING_ODDS"%part_index)
-			else:
+			if(data.has_section_key(section,"PART_%s_RETURNING_ODDS"%part_index)):
 				part.returning_odds = data.get_value("DEFAULT","PART_%s_RETURNING_ODDS"%part_index)
 
-			if(user_data.has_section_key(section,"PART_%s_CRITERIA_FOR_RETURNING_ODDS"%part_index)):
-				part.criteria_for_returning_odds = data.get_value("DEFAULT","PART_%s_CRITERIA_FOR_RETURNING_ODDS"%part_index)
-			else:
+			if(data.has_section_key(section,"PART_%s_CRITERIA_FOR_RETURNING_ODDS"%part_index)):
 				part.criteria_for_returning_odds = data.get_value("DEFAULT","PART_%s_CRITERIA_FOR_RETURNING_ODDS"%part_index)
 
-			if(user_data.has_section_key(section,"PART_%s_TYPE"%part_index)):
-				part.type = data.get_value("DEFAULT","PART_%s_TYPE"%part_index)
-			else:
+			if(data.has_section_key(section,"PART_%s_TYPE"%part_index)):
 				part.type = data.get_value("DEFAULT","PART_%s_TYPE"%part_index)
 
 			if(user_data.has_section_key(section,"PART_%s_STATUS"%part_index)):
@@ -503,7 +495,6 @@ func save_parts_to_user_data(bypass_autosave_settings_and_save_anyways=false):
 		user_data.set_value(section,"PART_%s_RETURNING_ODDS"%index,part.returning_odds)
 		user_data.set_value(section,"PART_%s_CRITERIA_FOR_RETURNING_ODDS"%index,part.criteria_for_returning_odds)
 		user_data.set_value(section,"PART_%s_TYPE"%index,part.type)
-
 		user_data.set_value(section,"PART_%s_STATUS"%index,part.status)
 		user_data.set_value(section,"PART_%s_ATTACHED_TO_MECH_ID"%index,part.attached_to_mech_id)
 		index+=1;

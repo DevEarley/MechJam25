@@ -4,6 +4,8 @@ func if_predicate(string_of_predicate:String)->bool:
 	match(string_of_predicate.to_lower()):
 		"rng_bool":
 			return RNG.Next_bool()
+		"comms satellite is broken":
+			return STATE.COMMS_SATELLITE_IS_BROKEN
 		"working for benefactor":
 			return STATE.BENEFACTOR_IS_GIVING_YOU_MONEY
 		"working for rose":
