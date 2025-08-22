@@ -79,8 +79,7 @@ say[. . .and I got a possible lead.]Jack
 [anyways]
 do[complete mission(0)]
 do[get part(1)]
-say[I met this porter along the way home. His name was Jam.]Jack
-say[Jam told me there is a new Gradient settlement in the Muckthorn swamp]Jack
+say[A friend told me there is a new Gradient settlement in the Muckthorn swamp]Jack
 say[Jill wasn't a Gradient, but her friends usually were.]Jack
 say[Can I use this mech again? I want to see if anyone at this settlement knows her.]Jack
 choices[Yes. let's go look for Jill., No. maybe tomorrow.]
